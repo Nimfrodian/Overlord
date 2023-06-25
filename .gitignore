@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# folders
+.pio/
+.vs/
+.vscode/
+sdkconfig.old

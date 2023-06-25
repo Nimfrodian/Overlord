@@ -1,0 +1,383 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: RoomController HomeAssistantESP
+
+
+BO_ 256 RelayInvrtReq: 8 Vector__XXX
+ SG_ Relay_invert_request_63 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_62 : 62|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_61 : 61|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_60 : 60|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_59 : 59|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_58 : 58|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_57 : 57|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_56 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_55 : 55|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_54 : 54|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_53 : 53|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_52 : 52|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_51 : 51|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_50 : 50|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_49 : 49|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_48 : 48|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_47 : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_46 : 46|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_45 : 45|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_44 : 44|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_43 : 43|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_42 : 42|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_41 : 41|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_40 : 40|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_39 : 39|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_38 : 38|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_37 : 37|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_36 : 36|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_35 : 35|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_34 : 34|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_33 : 33|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_32 : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_31 : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_30 : 30|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_29 : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_28 : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_27 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_26 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_25 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_24 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_23 : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_22 : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_21 : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_20 : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_19 : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_18 : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_17 : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_16 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_15 : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_14 : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_13 : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_12 : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_11 : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_10 : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_09 : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_08 : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_07 : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_06 : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_05 : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_04 : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_03 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_02 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_01 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_invert_request_00 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 272 Relay_feedback: 8 Vector__XXX
+ SG_ RelaySts_63 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_62 : 62|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_61 : 61|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_60 : 60|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_59 : 59|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_58 : 58|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_57 : 57|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_56 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_55 : 55|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_54 : 54|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_53 : 53|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_52 : 52|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_51 : 51|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_50 : 50|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_49 : 49|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_48 : 48|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_47 : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_46 : 46|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_45 : 45|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_44 : 44|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_43 : 43|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_42 : 42|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_41 : 41|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_40 : 40|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_39 : 39|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_38 : 38|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_37 : 37|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_36 : 36|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_35 : 35|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_34 : 34|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_33 : 33|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_32 : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_31 : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_30 : 30|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_29 : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_28 : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_27 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_26 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_25 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_24 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_23 : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_22 : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_21 : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_20 : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_19 : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_18 : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_17 : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_16 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_15 : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_14 : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_13 : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_12 : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_11 : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_10 : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_09 : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_08 : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_07 : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_06 : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_05 : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_04 : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_03 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_02 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_01 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_00 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 533 RC_SDM120M_3_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 532 RC_SDM120M_3_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 531 RC_SDM120M_3_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 530 RC_SDM120M_3_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 529 RC_SDM120M_3_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 528 RC_SDM120M_3_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 527 RC_SDM120M_3_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 526 RC_SDM120M_3_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 525 RC_SDM120M_3_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 524 RC_SDM120M_3_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 523 RC_SDM120M_3_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
+BO_ 522 RC_SDM120M_2_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 521 RC_SDM120M_2_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 520 RC_SDM120M_2_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 519 RC_SDM120M_2_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 518 RC_SDM120M_2_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 517 RC_SDM120M_2_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 516 RC_SDM120M_2_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 515 RC_SDM120M_2_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 514 RC_SDM120M_2_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 513 RC_SDM120M_2_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 512 RC_SDM120M_2_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
+BO_ 511 RC_SDM120M_1_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 510 RC_SDM120M_1_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 509 RC_SDM120M_1_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 508 RC_SDM120M_1_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 507 RC_SDM120M_1_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 506 RC_SDM120M_1_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 505 RC_SDM120M_1_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 504 RC_SDM120M_1_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 503 RC_SDM120M_1_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 502 RC_SDM120M_1_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 501 RC_SDM120M_1_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
+
+
+BA_DEF_  "MultiplexExtEnabled" ENUM  "No","Yes";
+BA_DEF_ BO_  "CANFD_BRS" ENUM  "0","1";
+BA_DEF_  "DBName" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","StandardCAN_FD","ExtendedCAN_FD";
+BA_DEF_DEF_  "MultiplexExtEnabled" "No";
+BA_DEF_DEF_  "CANFD_BRS" "1";
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+BA_DEF_DEF_  "VFrameFormat" "StandardCAN";
+BA_ "BusType" "CAN FD";
+BA_ "DBName" "CAN_database";
+SIG_VALTYPE_ 533 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 532 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 532 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 531 CurrDmnd_A : 1;
+SIG_VALTYPE_ 531 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 530 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 530 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 529 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 529 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 528 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 528 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 527 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 527 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 526 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 526 Frequency_Hz : 1;
+SIG_VALTYPE_ 525 PwrFctr : 1;
+SIG_VALTYPE_ 525 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 524 ActivePwr_W : 1;
+SIG_VALTYPE_ 523 Current_A : 1;
+SIG_VALTYPE_ 523 Voltage_V : 1;
+SIG_VALTYPE_ 522 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 521 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 521 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 520 CurrDmnd_A : 1;
+SIG_VALTYPE_ 520 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 519 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 519 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 518 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 518 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 517 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 517 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 516 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 516 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 515 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 515 Frequency_Hz : 1;
+SIG_VALTYPE_ 514 PwrFctr : 1;
+SIG_VALTYPE_ 514 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 513 ActivePwr_W : 1;
+SIG_VALTYPE_ 512 Current_A : 1;
+SIG_VALTYPE_ 512 Voltage_V : 1;
+SIG_VALTYPE_ 511 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 510 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 510 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 509 CurrDmnd_A : 1;
+SIG_VALTYPE_ 509 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 508 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 508 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 507 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 507 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 506 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 506 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 505 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 505 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 504 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 504 Frequency_Hz : 1;
+SIG_VALTYPE_ 503 PwrFctr : 1;
+SIG_VALTYPE_ 503 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 502 ActivePwr_W : 1;
+SIG_VALTYPE_ 501 Current_A : 1;
+SIG_VALTYPE_ 501 Voltage_V : 1;
+

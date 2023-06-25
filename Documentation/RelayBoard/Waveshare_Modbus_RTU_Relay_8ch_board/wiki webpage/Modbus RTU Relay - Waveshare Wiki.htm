@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<html class="client-js" dir="ltr" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Modbus RTU Relay - Waveshare Wiki</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"99d35d31b2c71773bd04b359","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Modbus_RTU_Relay","wgTitle":"Modbus RTU Relay","wgCurRevisionId":60444,"wgRevisionId":60444,"wgArticleId":6226,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["RS485 interface"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Modbus_RTU_Relay","wgRelevantArticleId":6226,"wgIsProbablyEditable":!1,"wgRelevantPageIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgMediaViewerOnClick":!0,
+"wgMediaViewerEnabledByDefault":!0};RLSTATE={"ext.gadget.tabber":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","mediawiki.toc.styles":"ready","skins.tweeki.styles":"ready","skins.tweeki.bootstraptheme.styles":"ready","skins.tweeki.externallinks.styles":"ready","skins.tweeki.awesome.styles":"ready"};RLPAGEMODULES=["site","mediawiki.page.startup","mediawiki.page.ready","mediawiki.toc","mmv.head","mmv.bootstrap.autostart","ext.HighlightjsIntegration","skins.tweeki.messages","skins.tweeki.scripts"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/wsllado_003.css">
+<script async="" src="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/wsllado.php"></script>
+<style>
+.mw-ui-button{background-color:#f8f9fa;color:#202122;display:inline-block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;min-width:4em;max-width:28.75em;margin:0;padding:6px 12px;border:1px solid #a2a9b1;border-radius:2px;cursor:pointer;vertical-align:middle;font-family:inherit;font-size:1em;font-weight:bold;line-height:1.28571429em;text-align:center;-webkit-appearance:none}.mw-ui-button:visited{color:#202122}.mw-ui-button:hover{background-color:#ffffff;color:#404244;border-color:#a2a9b1}.mw-ui-button:focus{background-color:#ffffff;color:#202122;border-color:#3366cc;box-shadow:inset 0 0 0 1px #3366cc,inset 0 0 0 2px #ffffff;outline-width:0}.mw-ui-button:focus::-moz-focus-inner{border-color:transparent;padding:0}.mw-ui-button:active,.mw-ui-button.is-on{background-color:#c8ccd1;color:#000000;border-color:#72777d;box-shadow:none}.mw-ui-button:disabled{background-color:#c8ccd1;color:#ffffff;border-color:#c8ccd1;cursor:default}.mw-ui-button:disabled:hover,.mw-ui-button:disabled:active{background-color:#c8ccd1;color:#ffffff;box-shadow:none;border-color:#c8ccd1}.mw-ui-button:not(:disabled){-webkit-transition:background-color 100ms,color 100ms,border-color 100ms,box-shadow 100ms;-moz-transition:background-color 100ms,color 100ms,border-color 100ms,box-shadow 100ms;transition:background-color 100ms,color 100ms,border-color 100ms,box-shadow 100ms}.mw-ui-button.mw-ui-quiet,.mw-ui-button.mw-ui-quiet.mw-ui-progressive,.mw-ui-button.mw-ui-quiet.mw-ui-destructive{background-color:transparent;color:#202122;border-color:transparent}.mw-ui-button.mw-ui-quiet:hover,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:hover,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:hover{background-color:transparent;color:#404244;border-color:transparent;box-shadow:none}.mw-ui-button.mw-ui-quiet:active,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:active,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:active{background-color:transparent;color:#000000;border-color:transparent}.mw-ui-button.mw-ui-quiet:focus,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:focus,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:focus{background-color:transparent;color:#202122;border-color:transparent;box-shadow:none}.mw-ui-button.mw-ui-quiet:disabled,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:disabled,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:disabled,.mw-ui-button.mw-ui-quiet:disabled:hover,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:disabled:hover,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:disabled:hover,.mw-ui-button.mw-ui-quiet:disabled:active,.mw-ui-button.mw-ui-quiet.mw-ui-progressive:disabled:active,.mw-ui-button.mw-ui-quiet.mw-ui-destructive:disabled:active{background-color:transparent;color:#72777d;border-color:transparent}.mw-ui-button.mw-ui-progressive{background-color:#3366cc;color:#fff;border:1px solid #3366cc}.mw-ui-button.mw-ui-progressive:hover{background-color:#447ff5;border-color:#447ff5}.mw-ui-button.mw-ui-progressive:focus{box-shadow:inset 0 0 0 1px #3366cc,inset 0 0 0 2px #ffffff}.mw-ui-button.mw-ui-progressive:active,.mw-ui-button.mw-ui-progressive.is-on{background-color:#2a4b8d;border-color:#2a4b8d;box-shadow:none}.mw-ui-button.mw-ui-progressive:disabled{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1}.mw-ui-button.mw-ui-progressive:disabled:hover,.mw-ui-button.mw-ui-progressive:disabled:active{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1;box-shadow:none}.mw-ui-button.mw-ui-progressive.mw-ui-quiet{color:#3366cc}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:hover{background-color:transparent;color:#447ff5}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:active{color:#2a4b8d}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:focus{background-color:transparent;color:#3366cc}.mw-ui-button.mw-ui-destructive{background-color:#dd3333;color:#fff;border:1px solid #dd3333}.mw-ui-button.mw-ui-destructive:hover{background-color:#ff4242;border-color:#ff4242}.mw-ui-button.mw-ui-destructive:focus{box-shadow:inset 0 0 0 1px #dd3333,inset 0 0 0 2px #ffffff}.mw-ui-button.mw-ui-destructive:active,.mw-ui-button.mw-ui-destructive.is-on{background-color:#b32424;border-color:#b32424;box-shadow:none}.mw-ui-button.mw-ui-destructive:disabled{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1}.mw-ui-button.mw-ui-destructive:disabled:hover,.mw-ui-button.mw-ui-destructive:disabled:active{background-color:#c8ccd1;color:#fff;border-color:#c8ccd1;box-shadow:none}.mw-ui-button.mw-ui-destructive.mw-ui-quiet{color:#dd3333}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:hover{background-color:transparent;color:#ff4242}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:active{color:#b32424}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:focus{background-color:transparent;color:#dd3333}.mw-ui-button.mw-ui-big{font-size:1.3em}.mw-ui-button.mw-ui-block{display:block;width:100%;margin-left:auto;margin-right:auto}input.mw-ui-button::-moz-focus-inner,button.mw-ui-button::-moz-focus-inner{margin-top:-1px;margin-bottom:-1px}a.mw-ui-button{text-decoration:none}a.mw-ui-button:hover,a.mw-ui-button:focus{text-decoration:none}.mw-ui-button-group > *{min-width:48px;border-radius:0;float:left}.mw-ui-button-group > *:first-child{border-top-left-radius:2px;border-bottom-left-radius:2px}.mw-ui-button-group > *:not(:first-child){border-left:0}.mw-ui-button-group > *:last-child{border-top-right-radius:2px;border-bottom-right-radius:2px}.mw-ui-button-group .is-on .button{cursor:default}
+.mw-ui-icon{position:relative;line-height:1.5em;min-height:1.5em;min-width:1.5em}span.mw-ui-icon{display:inline-block}.mw-ui-icon.mw-ui-icon-element{text-indent:-999px;overflow:hidden;width:3.5em;min-width:3.5em;max-width:3.5em}.mw-ui-icon.mw-ui-icon-element:before{left:0;right:0;position:absolute;margin:0 1em}.mw-ui-icon.mw-ui-icon-element.mw-ui-icon-large{width:4.625em;min-width:4.625em;max-width:4.625em;line-height:4.625em;min-height:4.625em}.mw-ui-icon.mw-ui-icon-element.mw-ui-icon-large:before{min-height:4.625em}.mw-ui-icon.mw-ui-icon-before:before,.mw-ui-icon.mw-ui-icon-element:before{background-position:50% 50%;background-repeat:no-repeat;background-size:100% auto;float:left;display:block;min-height:1.5em;content:''}.mw-ui-icon.mw-ui-icon-before:before{position:relative;width:1.5em;margin-right:1em}.mw-ui-icon.mw-ui-icon-small:before{background-size:66.67% auto}
+pre.code2highlight,pre.nohighlight{  padding:0.5em}code.code2highlight.hljs{  padding:1px 4px}.hljs{display:block;overflow-x:auto;padding:0.5em;background:#1E1E1E;color:#DCDCDC}.hljs-keyword,.hljs-literal,.hljs-symbol,.hljs-name{color:#569CD6}.hljs-link{color:#569CD6;text-decoration:underline}.hljs-built_in,.hljs-type{color:#4EC9B0}.hljs-number,.hljs-class{color:#B8D7A3}.hljs-string,.hljs-meta-string{color:#D69D85}.hljs-regexp,.hljs-template-tag{color:#9A5334}.hljs-subst,.hljs-function,.hljs-title,.hljs-params,.hljs-formula{color:#DCDCDC}.hljs-comment,.hljs-quote{color:#57A64A;font-style:italic}.hljs-doctag{color:#608B4E}.hljs-meta,.hljs-meta-keyword,.hljs-tag{color:#9B9B9B}.hljs-variable,.hljs-template-variable{color:#BD63C5}.hljs-attr,.hljs-attribute,.hljs-builtin-name{color:#9CDCFE}.hljs-section{color:gold}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-bullet,.hljs-selector-tag,.hljs-selector-id,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo{color:#D7BA7D}.hljs-addition{background-color:#144212;display:inline-block;width:100%}.hljs-deletion{background-color:#600;display:inline-block;width:100%}
+@media screen {
+	.toctoggle{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;font-size:94%}}</style><style>
+.mw-mmv-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;background-color:#000}body.mw-mmv-lightbox-open{overflow-y:auto;  }body.mw-mmv-lightbox-open #mw-page-base,body.mw-mmv-lightbox-open #mw-head-base,body.mw-mmv-lightbox-open #mw-navigation,body.mw-mmv-lightbox-open #content,body.mw-mmv-lightbox-open #footer,body.mw-mmv-lightbox-open #globalWrapper{ display:none}body.mw-mmv-lightbox-open > *{ display:none}body.mw-mmv-lightbox-open > .mw-mmv-overlay,body.mw-mmv-lightbox-open > .mw-mmv-wrapper{display:block}.mw-mmv-filepage-buttons{margin-top:5px}.mw-mmv-filepage-buttons .mw-mmv-view-expanded,.mw-mmv-filepage-buttons .mw-mmv-view-config{display:block;line-height:inherit}.mw-mmv-filepage-buttons .mw-mmv-view-expanded.mw-ui-icon:before{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1024 768%22%3E %3Cpath d=%22M851.2 71.6L690.7 232.1l-40.1-40.3-9.6 164.8 164.8-9.3-40.3-40.4L926 146.4l58.5 58.5L997.6 0 792.7 13.1%22/%3E %3Cpath d=%22M769.6 89.3H611.9l70.9 70.8 7.9 7.5m-47.1 234.6l-51.2 3 3-51.2 9.4-164.4 5.8-100.3H26.4V768h883.1V387l-100.9 5.8-165 9.4zM813.9 678H113.6l207.2-270.2 31.5-12.9L548 599.8l105.9-63.2 159.8 140.8.2.6zm95.6-291.9V228l-79.1 78.9 7.8 7.9%22/%3E %3C/svg%3E")}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1024 768%22%3E %3Cpath d=%22M897 454.6V313.4L810.4 299c-6.4-23.3-16-45.7-27.3-65.8l50.5-71.4-99.4-100.2-71.4 50.5c-20.9-11.2-42.5-20.9-65.8-27.3L582.6-1H441.4L427 85.6c-23.3 6.4-45.7 16-65.8 27.3l-71.4-50.5-100.3 99.5 50.5 71.4c-11.2 20.9-20.9 42.5-27.3 66.6L127 313.4v141.2l85.8 14.4c6.4 23.3 16 45.7 27.3 66.6L189.6 607l99.5 99.5 71.4-50.5c20.9 11.2 42.5 20.9 66.6 27.3l14.4 85.8h141.2l14.4-86.6c23.3-6.4 45.7-16 65.8-27.3l71.4 50.5 99.5-99.5-50.5-71.4c11.2-20.9 20.9-42.5 27.3-66.6l86.4-13.6zm-385 77c-81.8 0-147.6-66.6-147.6-147.6 0-81.8 66.6-147.6 147.6-147.6S659.6 302.2 659.6 384 593.8 531.6 512 531.6z%22/%3E %3C/svg%3E");opacity:0.75}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before:hover{opacity:1}.mw-mmv-button{background-color:transparent;min-width:0;border:0;padding:0;overflow-x:hidden;text-indent:-9999em}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/wsllado.css">
+<link rel="stylesheet" href="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/wsllado_002.css">
+<meta name="generator" content="MediaWiki 1.35.5">
+<meta property="og:image" content="https://www.waveshare.com/w/wsyabkY/wsumkb.php?f=Modbus-RTU-Relay-1.jpg&amp;width=1200">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://www.waveshare.com/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://www.waveshare.com/w/opensearch_desc.php" title="Waveshare Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://www.waveshare.com/w/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Waveshare Wiki Atom feed" href="https://www.waveshare.com/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<!--[if lt IE 9]><script src="/w/resources/lib/html5shiv/html5shiv.js"></script><![endif]-->
+<style><br>                ddg-runtime-checks {<br>                    display: none;<br>                }<br>            </style></head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Modbus_RTU_Relay rootpage-Modbus_RTU_Relay skin-tweeki action-view tweeki-animateLayout tweeki-non-advanced tweeki-user-anon" style="margin-bottom: 0px; position: relative;">			<!-- navbar -->
+			<div id="mw-navigation" class="navbar navbar-default navbar-fixed-top navbar-expand-lg fixed-top navbar-light bg-light" role="navigation">
+				<h2>Navigation menu</h2>
+				<div id="mw-head" class="navbar-inner">
+					<div class="container">
+
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+
+							<a href="https://www.waveshare.com/wiki/Main_Page" class="navbar-brand"><img src="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Ws-watermark-en.svg" alt="Waveshare Wiki"></a>
+						</div>
+
+						<div id="navbar" class="navbar-collapse collapse">
+													<ul class="nav navbar-nav">
+							<li class="nav"><a href="#" id="n-raspberry-pi" class="dropdown-toggle" data-toggle="dropdown">Raspberry Pi <b class="caret"></b></a><ul class="dropdown-menu " role="menu"><li id="n-main_page.2523rpi-boards"><a href="https://www.waveshare.com/wiki/Main_Page#RPi-Boards" tabindex="-1">Boards/Kits</a></li><li id="n-main_page.2523rpi-displays"><a href="https://www.waveshare.com/wiki/Main_Page#RPi-Displays" tabindex="-1">Displays</a></li><li id="n-main_page.2523rpi-cameras"><a href="https://www.waveshare.com/wiki/Main_Page#RPi-Cameras" tabindex="-1">Cameras</a></li><li id="n-main_page.2523rpi-expansions"><a href="https://www.waveshare.com/wiki/Main_Page#RPi-Expansions" tabindex="-1">Expansions</a></li><li id="n-main_page.2523rpi-laptops"><a href="https://www.waveshare.com/wiki/Main_Page#RPi-Laptops" tabindex="-1">All-in-one</a></li><li id="n-main_page.2523rpi-robots"><a href="https://www.waveshare.com/wiki/Main_Page#RPi-Robots" tabindex="-1">Robots</a></li><li id="n-main_page.2523rpi-games"><a href="https://www.waveshare.com/wiki/Main_Page#RPi-Games" tabindex="-1">Portable Gaming</a></li><li id="n-main_page.2523rpi-acces"><a href="https://www.waveshare.com/wiki/Main_Page#RPi-Acces" tabindex="-1">Accessories</a></li><li id="n-main_page.2523android-linux-boards"><a href="https://www.waveshare.com/wiki/Main_Page#Android-Linux-Boards" tabindex="-1">Other Android/Linux Boards</a></li></ul></li><li class="nav"><a href="#" id="n-ai" class="dropdown-toggle" data-toggle="dropdown">AI <b class="caret"></b></a><ul class="dropdown-menu " role="menu"><li id="n-main_page.2523jetson-ai-boards"><a href="https://www.waveshare.com/wiki/Main_Page#Jetson-AI-Boards" tabindex="-1">Boards/Kits</a></li><li id="n-main_page.2523jetson-ai-displays"><a href="https://www.waveshare.com/wiki/Main_Page#Jetson-AI-Displays" tabindex="-1">Displays</a></li><li id="n-main_page.2523jetson-ai-cameras"><a href="https://www.waveshare.com/wiki/Main_Page#Jetson-AI-Cameras" tabindex="-1">Cameras</a></li><li id="n-main_page.2523jetson-ai-hat"><a href="https://www.waveshare.com/wiki/Main_Page#Jetson-AI-HAT" tabindex="-1">Expansions</a></li><li id="n-main_page.2523jetson-ai-robots"><a href="https://www.waveshare.com/wiki/Main_Page#Jetson-AI-Robots" tabindex="-1">Robots</a></li></ul></li><li class="nav"><a href="#" id="n-displays" class="dropdown-toggle" data-toggle="dropdown">Displays <b class="caret"></b></a><ul class="dropdown-menu " role="menu"><li id="n-main_page.2523display-lcd-oleds"><a href="https://www.waveshare.com/wiki/Main_Page#Display-LCD-OLEDs" tabindex="-1">LCD/OLED</a></li><li id="n-main_page.2523display-e-paper"><a href="https://www.waveshare.com/wiki/Main_Page#Display-e-Paper" tabindex="-1">e-Paper</a></li></ul></li><li class="nav"><a href="#" id="n-iot" class="dropdown-toggle" data-toggle="dropdown">IoT <b class="caret"></b></a><ul class="dropdown-menu " role="menu"><li id="n-main_page.2523long-range-wireless-comm"><a href="https://www.waveshare.com/wiki/Main_Page#Long-range-wireless-comm" tabindex="-1">Long Range Wireless</a></li><li id="n-main_page.2523short-range-wireless-comm"><a href="https://www.waveshare.com/wiki/Main_Page#Short-range-wireless-comm" tabindex="-1">Short Range Wireless</a></li><li id="n-main_page.2523wired-communication"><a href="https://www.waveshare.com/wiki/Main_Page#Wired-communication" tabindex="-1">Wired Comm / Converter</a></li><li id="n-main_page.2523misc-cameras-av"><a href="https://www.waveshare.com/wiki/Main_Page#Misc-cameras-av" tabindex="-1">Cameras / Audio / Video</a></li><li id="n-main_page.2523misc-sensor-modules"><a href="https://www.waveshare.com/wiki/Main_Page#Misc-sensor-modules" tabindex="-1">Sensors</a></li><li id="n-main_page.2523misc-servos-motors"><a href="https://www.waveshare.com/wiki/Main_Page#Misc-servos-motors" tabindex="-1">Motors / Servos</a></li><li id="n-main_page.2523misc-other-modules"><a href="https://www.waveshare.com/wiki/Main_Page#Misc-other-modules" tabindex="-1">others</a></li></ul></li><li class="nav"><a href="#" id="n-robotics" class="dropdown-toggle" data-toggle="dropdown">Robotics <b class="caret"></b></a><ul class="dropdown-menu " role="menu"><li id="n-main_page.2523robotics-cars"><a href="https://www.waveshare.com/wiki/Main_Page#Robotics-cars" tabindex="-1">Mobile Robots</a></li><li id="n-main_page.2523dog-like-robots"><a href="https://www.waveshare.com/wiki/Main_Page#Dog-like-Robots" tabindex="-1">Dog-like Robots</a></li><li id="n-main_page.2523robotics-drivers-sensors"><a href="https://www.waveshare.com/wiki/Main_Page#Robotics-drivers-sensors" tabindex="-1">Drivers / Sensors</a></li><li id="n-main_page.2523robotics-robot-arms"><a href="https://www.waveshare.com/wiki/Main_Page#Robotics-robot-arms" tabindex="-1">Robot Arm / Control</a></li></ul></li><li class="nav"><a href="#" id="n-mcu.252Ffpga" class="dropdown-toggle" data-toggle="dropdown">MCU/FPGA <b class="caret"></b></a><ul class="dropdown-menu " role="menu"><li id="n-main_page.2523arduino-main-boards"><a href="https://www.waveshare.com/wiki/Main_Page#Arduino-main-boards" tabindex="-1">Arduino</a></li><li id="n-main_page.2523micro.253Abit"><a href="https://www.waveshare.com/wiki/Main_Page#micro:bit" tabindex="-1">micro:bit</a></li><li id="n-main_page.2523mcu.2farm" class="LPC"><a href="https://www.waveshare.com/wiki/Main_Page#MCU.2FARM" tabindex="-1">STM32</a></li><li id="n-main_page.2523fpga"><a href="https://www.waveshare.com/wiki/Main_Page#FPGA" tabindex="-1">FPGA</a></li></ul></li><li class="nav"><a href="https://support.waveshare.com/hc/en-us/requests/new" id="n-https.253A.252F.252Fsupport.waveshare.com.252Fhc.252Fen-us.252Frequests.252Fnew" rel="nofollow" target="_blank">Support</a></li><li class="nav"><a href="https://www.klayers.net/" id="n-https.253A.252F.252Fwww.klayers.net.252F" rel="nofollow" target="_blank">IC</a></li>							</ul>
+						
+													<ul class="nav navbar-nav navbar-right">
+							</ul>
+				<form class="navbar-form navbar-right" action="/w/index.php" id="searchform">
+					<div class="form-group"><input type="search" name="search" placeholder="Search" title="Search Waveshare Wiki [Alt+Shift+f]" accesskey="f" id="searchInput" class="search-query form-control"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="mw-searchButton" class="searchButton btn hidden">
+					</div>
+				</form><ul class="nav navbar-nav navbar-right">							</ul>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- /navbar -->
+					<div id="mw-page-base"></div>
+			<div id="mw-head-base"></div>
+			<a id="top"></a>
+
+			<!-- content -->
+			<div id="contentwrapper" class="user-loggedout not-editable container with-navbar with-navbar-fixed">
+
+				
+				<div class="row">
+					<div class="col-md-offset-2 col-md-10" role="main">
+								<div class="mw-body" id="content">
+			<div id="mw-js-message" style="display:none;"></div>
+									<h1 id="firstHeading" class="firstHeading page-header" lang="en"><span dir="auto">Modbus RTU Relay</span></h1>
+									<!-- bodyContent -->
+			<div id="bodyContent">
+								<div id="siteSub">From Waveshare Wiki</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-navigation">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div class="mw-parser-output"><div class="wiki-pages jet-green-color">
+<table class="a-r at-c roundy bgd-green bl-white" style="margin-left: 5px; margin-bottom: 5px; width: 30%;">
+
+<tbody><tr>
+<td>
+<table class="at-c roundy" style="background: transparent;width:100%;">
+
+<tbody><tr>
+<td class="at-c textwhite"><b>Modbus RTU Relay</b>
+</td></tr>
+<tr>
+<td class="at-c bgwhite" style="margin:5px;"><a href="https://www.waveshare.com/modbus-rtu-relay.htm" title="Modbus RTU Relay" target="_blank" rel="nofollow noreferrer noopener"><img alt="Modbus RTU Relay" src="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay-1.jpg" decoding="async" loading="lazy" srcset="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay-1_003.jpg 1.5x, Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay-1_002.jpg 2x" data-file-width="1440" data-file-height="1080" width="400" height="300"></a><br><br><small>Industrial Modbus RTU 8-ch Relay Module, RS485 Bus, Multi Protection</small>
+</td></tr></tbody></table>
+</td></tr>
+<tr style="display:none;">
+<td>
+<table class="roundy" style="background: transparent;width:100%;">
+
+<tbody><tr>
+<td class="at-c textwhite"><b>{{{name2}}}</b>
+</td></tr>
+<tr>
+<td class="at-c bgwhite" style="margin:5px;"><br>
+</td></tr></tbody></table>
+</td></tr>
+<tr style="display:none;">
+<td>
+<table class="roundy" style="background: transparent;width:100%;">
+
+<tbody><tr>
+<td class="at-c textwhite"><b>{{{name3}}}</b>
+</td></tr>
+<tr>
+<td class="at-c bgwhite" style="margin:5px;"><br>
+</td></tr></tbody></table>
+</td></tr>
+<tr style="display:none;">
+<td>
+<table class="roundy" style="background: transparent;width:100%;">
+
+<tbody><tr>
+<td class="at-c textwhite"><b>{{{name4}}}</b>
+</td></tr>
+<tr>
+<td class="at-c bgwhite" style="margin:5px;"><br>
+</td></tr></tbody></table>
+</td></tr>
+<tr style="display:none;">
+<td>
+<table class="roundy" style="background: transparent;width:100%;">
+
+<tbody><tr>
+<td class="at-c textwhite"><b>{{{name5}}}</b>
+</td></tr>
+<tr>
+<td class="at-c bgwhite" style="margin:5px;"><br>
+</td></tr></tbody></table>
+</td></tr>
+<tr>
+<td>
+<table class="roundy" style="display:none;">
+<tbody><tr>
+<td style="width:2%;">
+</td>
+<td style="width:3%;">
+</td>
+<th colspan="2" class="at-c roundytop bgl-white" width="90%">Primary Attribute
+</th>
+<td style="width:3%;">
+</td>
+<td style="width:2%;">
+</td></tr>
+<tr>
+<td colspan="6" class="at-c roundytl roundytr bgwhite b-green" style="border-width: 0 0 1px 0;" width="90px"><b>Category:</b>
+</td></tr>
+<tr style="display:none;">
+<th colspan="3" class="at-r bgwhite b-green" style="border-width: 0 0 1px 0;" width="90px">{{{userDefinedInfo}}}:
+</th>
+<td colspan="3" class="at-l b-green bgwhite" style="border-width: 0 0 1px 0;">{{{userdefinedvalue}}}
+</td></tr>
+<tr style="display:none;">
+<td colspan="6" class="at-c roundybl roundybr bgwhite" width="90px"><b>Brand:</b> Waveshare
+</td></tr></tbody></table>
+</td></tr>
+<tr>
+<td>
+<table class="a-r roundy" style="display:none;">
+<tbody><tr>
+<td style="width:2%;">
+</td>
+<td style="width:3%;">
+</td>
+<th colspan="2" class="at-c roundytop bgl-white" width="90%">Website
+</th>
+<td style="width:3%;">
+</td>
+<td style="width:2%;">
+</td></tr>
+<tr>
+<td colspan="6" class="at-c roundytl roundytr bgwhite b-green" style="border-width: 0 0 1px 0;" width="90px"><b>International:</b> <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="https://www.waveshare.com/modbus-rtu-relay.htm">Website</a>
+</td></tr>
+<tr>
+<td colspan="6" class="at-c roundybl roundybr bgwhite" width="90px"><b>Chinese:</b> <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="http://www.waveshare.net/">中文网站</a>
+</td></tr></tbody></table>
+</td></tr>
+<tr>
+<td>
+<table class="a-r roundy" style="background: transparent; border-collapse:collapse;width:100%;display:none;">
+<tbody><tr>
+<td style="width:2%;">
+</td>
+<td style="width:3%;">
+</td>
+<th colspan="2" class="at-c roundytop bgl-white" width="90%">Onboard Interfaces
+</th>
+<td style="width:3%;">
+</td>
+<td style="width:2%;">
+</td></tr>
+<tr>
+<td colspan="6" class="at-l roundy bgwhite b-green" style="border-width: 0 0 1px 0;" width="90px">
+<table class="roundy bgwhite fulltable" style="text-align:center;">
+
+<tbody><tr>
+<td class="roundy bl-gray bw-1" style="width:25%;;"><small><b><a href="https://www.waveshare.com/wiki/Category:RS485_interface" title="Category:RS485 interface">RS485</a></b></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td></tr>
+<tr>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td></tr>
+<tr>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td></tr>
+<tr>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td></tr>
+<tr>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td>
+<td class="roundy bl-gray bw-1" style="width:25%;display:none;"><small></small>
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+</td></tr>
+<tr style="display:none;">
+<td>
+<table class="a-r roundy" style="background: transparent; border-collapse:collapse;width:100%;;display:none;">
+<tbody><tr>
+<td style="width:2%;">
+</td>
+<td style="width:3%;">
+</td>
+<th colspan="2" class="at-c roundytop bgl-white" width="90%">Related Products
+</th>
+<td style="width:3%;">
+</td>
+<td style="width:2%;">
+</td></tr>
+<tr>
+<td colspan="6" class="at-l roundy bgwhite b-green" style="border-width: 0 0 1px 0;" width="90px">
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+
+<h1><span class="mw-headline" id="Overview">Overview</span></h1>
+<p>This is an industrial 8-ch relay module controlled via RS485 bus, 
+utilizing Modbus RTU protocol. It features embedded protection circuits 
+such as power isolation, ADI magnetical isolation, TVS diode, etc. It 
+also comes with an ABS enclosure.
+The Modbus RTU Relay is very easy to use. Due to its fast communication,
+ stability, reliability, and safety, it is an ideal choice for 
+industrial control equipments and/or applications with high 
+communication requirements.
+</p>
+<h1><span class="mw-headline" id="Development_Protocol_V2">Development Protocol V2</span></h1>
+<p><font color="#FF0000">From September 2021, the V2 of the development 
+protocol will be adopted. The V1 is not compatible with Modbus commands 
+and now the V2 is fully compatible with the Modbus protocol.</font><br>
+<font color="#FF0000">There is no difference in hardware between V1 and 
+V2. Customers who have purchased the V1 version but need to use the V2 
+development agreement, can contact customer service to upgrade the 
+firmware.</font><br>
+</p>
+<h2><span class="mw-headline" id="Function_code">Function code</span></h2>
+<table class="wikitable">
+<tbody><tr>
+<th>Function code</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Read the state of Relay
+</td></tr>
+<tr>
+<td>03</td>
+<td>Read the address and version
+</td></tr>
+<tr>
+<td>05</td>
+<td>Write a single Relay
+</td></tr>
+<tr>
+<td>06</td>
+<td>Set baud rate and address
+</td></tr>
+<tr>
+<td>0F</td>
+<td>Write all Relays
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Control_Single_Relay">Control Single Relay</span></h2>
+<p>Command：01 05 00 00 FF 00 8C 3A
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: device addresses
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Command for controlling Relay
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Address</td>
+<td>The register address of controlled Relay, 0x0000 - 0x0008
+</td></tr>
+<tr>
+<td>FF 00</td>
+<td>Command</td>
+<td>0xFF00: open Relay; <br>0x0000：close Relay;<br>0x5500: flip Relay
+</td></tr>
+<tr>
+<td>8C 3A</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes
+</td></tr></tbody></table>
+<p>Answer： 01 05 00 00 FF 00 8C 3A
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: dives addresses
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Command for controlling relay
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Address</td>
+<td>The register address of controlled Relay,0 x 0000-0 x 0008
+</td></tr>
+<tr>
+<td>FF 00</td>
+<td>Command</td>
+<td>0xFF00: open Relay; <br>0x0000: close Relay<br>0x5500: flip Relay
+</td></tr>
+<tr>
+<td>8C 3A</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Examples：
+[Device with address 01]:<br>
+Relay 0 OFF: 01 05 00 00 00 00 CD CA<br>
+Relay 1 ON: 01 05 00 01 FF 00 DD FA<br>
+Relay 1 OFF: 01 05 00 01 00 00 9C 0A<br>
+Relay 2 ON:  01 05 00 02 FF 00 2D FA <br>
+Relay 2 OFF: 01 05 00 02 00 00 6C 0A <br>
+Relay 3 ON: 01 05 00 03 FF 00 7C 3A<br>
+Relay 3 OFF: 01 05 00 03 00 00 3D CA<br>
+Relay 0 Flip: 01 05 00 00 55 00 F2 9A<br>
+Relay 1 Flip: 01 05 00 01 55 00 A3 5A<br>
+Relay 2 Flip&nbsp;: 01 05 00 02 55 00 53 5A<br>
+Relay 3 Flip&nbsp;: 01 05 00 03 55 00 02 9A<br>
+</p>
+<h2><span class="mw-headline" id="Controll_All_Relays">Controll All Relays</span></h2>
+<p>Command: 01 05 00 FF FF 00 BC 0A<br>
+BC 0A||CRC16|| CRC16 checksum of the first 6 bytes of data<br>
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: devices address
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 command</td>
+<td>Command for controlling Relay
+</td></tr>
+<tr>
+<td>00 FF</td>
+<td>Address</td>
+<td>Fixed 0x00FF
+</td></tr>
+<tr>
+<td>FF 00</td>
+<td>CRC16</td>
+<td>0xFF00: Relay open;<br>0x0000: Relay close;<br>0x5500: Relay flip;
+</td></tr></tbody></table>
+<p>Answer: 01 05 00 FF FF 00 BC 0A<br>
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: devices address
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 command</td>
+<td>Command for controlling Relay
+</td></tr>
+<tr>
+<td>00 FF</td>
+<td>Address</td>
+<td>Fixed 0x00FF
+</td></tr>
+<tr>
+<td>FF 00</td>
+<td>CRC16</td>
+<td>0xFF00: Relay open;<br>0x0000: Relay close;<br>0x5500: Relay flip
+</td></tr>
+<tr>
+<td>BC 0A</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes
+</td></tr></tbody></table>
+<p>Example:<br>
+[Device with Address 01]:<br>
+All relays open&nbsp;: 01 05 00 FF FF 00 BC 0A<br>
+All relays closed&nbsp;: 01 05 00 FF 00 00 FD FA<br>
+All relays flip: 01 05 00 FF 55 00 C2 AA<br>
+</p>
+<h2><span class="mw-headline" id="Read_States_of_Relays">Read States of Relays</span></h2>
+<p>Command：01 01 00 00 00 08 3D CC
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: device addresses
+</td></tr>
+<tr>
+<td>01</td>
+<td>01 Command</td>
+<td>Command for checking states of Relay
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Initial Address</td>
+<td>Fixed 0 x 0000
+</td></tr>
+<tr>
+<td>00 08</td>
+<td>Command</td>
+<td>Fixed 0 x 0008
+</td></tr>
+<tr>
+<td>3D CC</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes
+</td></tr></tbody></table>
+<p>Answer：01 01 01 00 51 88
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: device addresses
+</td></tr>
+<tr>
+<td>01</td>
+<td>01 Command</td>
+<td>Command for checking states of Relay
+</td></tr>
+<tr>
+<td>01</td>
+<td>Number</td>
+<td>The number of bytes returned
+</td></tr>
+<tr>
+<td>00</td>
+<td>Stae</td>
+<td>The state of Relay<br>Bit0:The state of the first Relay；<br>Bit1: The state of the second Relay；<br>Bit2: The state of the third Relay；<br>……<br>Bit7:The state of the eighth Relay；<br>
+</td></tr>
+<tr>
+<td>8C 35</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes
+</td></tr></tbody></table>
+<p>Examples：
+</p><p>[Device with Address 01]
+</p><p>Command&nbsp;: 01 01 00 00 00 08 3D CC<br>
+Answer: 01 01 01 00 51 88    //Close all Relays<br>
+Command&nbsp;: 01 01 00 00 00 08 3D CC<br>
+Answer&nbsp;:  01 01 01 01 90 48    //Open Relay 0 and close other Relays<br>
+Command&nbsp;: 01 01 00 00 00 08 3D CC<br>
+Answer&nbsp;:  01 01 01 41 91 B8    //Open Relay 0 and Relay 6, close other Relays<br>
+</p>
+<h2><span class="mw-headline" id="Write_States_of_Relays">Write States of Relays</span></h2>
+<p>Command: 01 0F 00 00 00 08 01 FF BE D5<br>
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>0F</td>
+<td>0F Command</td>
+<td>Write Relay Status Command
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Relay start address</td>
+<td>Fixed 0x0000
+</td></tr>
+<tr>
+<td>00 08</td>
+<td>Number of relays</td>
+<td>Fixed 0x0008
+</td></tr>
+<tr>
+<td>01</td>
+<td>Number of bytes</td>
+<td>Fixed 0x01
+</td></tr>
+<tr>
+<td>FF</td>
+<td>Relay Status</td>
+<td>Bit0: control the first relay;<br>Bit1: control the second relay;<br>Bit2: control the third relay;<br>……<br> Bit7: Control the eighth relay;<br>
+</td></tr>
+<tr>
+<td>BE D5</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Answer：01 0F 00 00 00 01 94 0B
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>0F</td>
+<td>0F Instruction</td>
+<td>All Register Control Instructions
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Address</td>
+<td>Fixed 0x0000
+</td></tr>
+<tr>
+<td>00 08</td>
+<td>Number of relays</td>
+<td>Fixed 0x0008<br>
+</td></tr>
+<tr>
+<td>54 0D</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Example:<br>
+[Device with Address 01]<br>
+All relays on&nbsp;: 01 0F 00 00 00 08 01 FF BE D5<br>
+All relays off: 01 0F 00 00 00 08 01 00 FE 95<br>
+0-1 ON; 3-7 OFF&nbsp;: 01 0F 00 00 00 08 01 03 BE 94<br>
+</p>
+<h2><span id="Relay_Flash_ON/OFF_Command"></span><span class="mw-headline" id="Relay_Flash_ON.2FOFF_Command">Relay Flash ON/OFF Command</span></h2>
+<p>Command: 01 05 02 00 00 07 8D B0<br>
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Single Control Command
+</td></tr>
+<tr>
+<td>02</td>
+<td>Command</td>
+<td>02 for flashing on, 04 for flashing off
+</td></tr>
+<tr>
+<td>00</td>
+<td>Relay Address</td>
+<td>The address of the relay to be controlled, 0x00~0x08
+</td></tr>
+<tr>
+<td>00 07</td>
+<td>Interval time</td>
+<td>Delay time is data*100ms<br>Value: 0x0007, delay: 7*100MS = 700MS
+</td></tr>
+<tr>
+<td>8D B0</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Answer: 01 05 02 00 00 07 8D B0
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Single Control Command
+</td></tr>
+<tr>
+<td>02</td>
+<td>Command</td>
+<td>02 for flashing on, 04 for flashing off
+</td></tr>
+<tr>
+<td>00</td>
+<td>Relay address</td>
+<td>To control the relay address, 0x00~0x08
+</td></tr>
+<tr>
+<td>00 07</td>
+<td>Interval time</td>
+<td>Delay time is data*100ms<br>Value: 0x0007, delay: 7*100MS = 700MS
+</td></tr>
+<tr>
+<td>8D B0</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Example:
+</p><p>[Device with Address 01]
+</p><p>Relay 0 is open: 01 05 02 00 00 07 8D B0 //700MS = 7*100MS = 700MS<br>
+No. 1 relay out of the way&nbsp;: 01 05 02 01 00 08 9C 74 //800MS <br>
+No. 0 relay flashes off&nbsp;: 01 05 04 00 00 05 0C F9 //500MS<br>
+No. 1 relay flashes off&nbsp;: 01 05 04 01 00 06 1D 38 //600MS<br>
+</p>
+<h2><span class="mw-headline" id="Set_Baud_Rate_Command">Set Baud Rate Command</span></h2>
+<p>Command: 00 06 20 00 00 05 43 D8<br>
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>06</td>
+<td>06 command</td>
+<td>set baud rate and address
+</td></tr>
+<tr>
+<td>20 00</td>
+<td>command register</td>
+<td>0x2000 sets the baud rate, 0x4000 sets the device address
+</td></tr>
+<tr>
+<td>00</td>
+<td>parity</td>
+<td>0x00: no parity check, 0x01: even parity check, 0x02: odd parity check
+</td></tr>
+<tr>
+<td>05</td>
+<td>baud rate value</td>
+<td>the corresponding baud rate value:<br>0x00&nbsp;: 4800<br>0x01&nbsp;: 9600<br>0x02&nbsp;: 19200<br>0x03&nbsp;: 38400<br>0x04&nbsp;: 57600<br>0x05&nbsp;: 115200<br>0x06&nbsp;: 128000<br>0x07&nbsp;: 256000<br>
+</td></tr>
+<tr>
+<td>43 D8</td>
+<td>crc16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Answer: 00 06 20 00 00 05 43 D8<br>
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>06</td>
+<td>06 command</td>
+<td>set baud rate and address
+</td></tr>
+<tr>
+<td>20 00</td>
+<td>command register</td>
+<td>0x2000 sets the baud rate, 0x4000 sets the device address
+</td></tr>
+<tr>
+<td>00</td>
+<td>parity</td>
+<td>0x00: no parity check, 0x01: even parity check, 0x02: odd parity check
+</td></tr>
+<tr>
+<td>05</td>
+<td>baud rate value</td>
+<td>the corresponding baud rate value:<br> 0x00&nbsp;: 4800<br>0x01&nbsp;: 9600<br>0x02&nbsp;: 19200<br>0x03&nbsp;: 38400<br>0x04&nbsp;: 57600<br>0x05&nbsp;: 115200<br>0x06&nbsp;: 128000<br>0x07&nbsp;: 256000<br>
+</td></tr>
+<tr>
+<td>43 D8</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Examples:<br>
+[Device with Address 01]
+</p><p>Set baud rate 4800: 00 06 20 00 00 00 83 DB<br>
+Set baud rate 9600: 00 06 20 00 00 01 42 1B<br>
+Set baud rate 115 200: 00 06 20 00 00 05 43 D8<br>
+</p>
+<h2><span class="mw-headline" id="Set_Device_Address_Command">Set Device Address Command</span></h2>
+<p>Command: 00 06 40 00 00 01 5C 1B<br>
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>06</td>
+<td>06 command</td>
+<td>set the baud rate and device address
+</td></tr>
+<tr>
+<td>40 00</td>
+<td>command register</td>
+<td>0x2000 sets the baud rate, 0x4000 sets the device address
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>device address</td>
+<td>set the device address as 0x0001-0x00FF
+</td></tr>
+<tr>
+<td>5C 1B</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Answer: 00 06 40 00 00 01 5C 1B
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>device address</td>
+<td>0x00: broadcast address; 0x01-0xFF: device addresses
+</td></tr>
+<tr>
+<td>06</td>
+<td>06 command</td>
+<td>set baud rate and device address
+</td></tr>
+<tr>
+<td>40 00</td>
+<td>command register</td>
+<td>0x2000 sets baud rate, 0x4000 sets device address
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>device address</td>
+<td>the device address set; 0x0001-0x00FF
+</td></tr>
+<tr>
+<td>5C 1B</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Examples:<br>
+[Device with Address 01]<br>
+</p><p>Set device address as 0x01: 00 06 40 00 00 01 5C 1b<br>
+Set device address as 0x02: 00 06 40 00 00 02 1C 1A<br>
+Set device address as 0x03: 00 06 40 00 00 03 DD DA<br>
+</p>
+<h2><span class="mw-headline" id="Read_Device_Address_Command">Read Device Address Command</span></h2>
+<p>Command: 00 03 40 00 00 01 90 1B<br>
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>03</td>
+<td>03 command</td>
+<td>read the device address command
+</td></tr>
+<tr>
+<td>40 00</td>
+<td>command register</td>
+<td>0x0200: read the software version, 0x0040: read the device address
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>bytes</td>
+<td>fixed 0x0001
+</td></tr>
+<tr>
+<td>90 1B</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Answer: 01 03 02 00 01 79 84<br>
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>03</td>
+<td>03 command</td>
+<td>read the software version and the device address command
+</td></tr>
+<tr>
+<td>02</td>
+<td>bytes</td>
+<td>return bytes
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>device address</td>
+<td>set the device address as 0x0001-0x00FF
+</td></tr>
+<tr>
+<td>79 84</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Examples:<br>
+[Device with Address 01]<br>
+Command: 00 03 40 00 00 01 90 1B<br> 
+Answer: 01 03 02 00 01 79 84 //address 0x01<br>
+[Device with Address 02]<br>
+Command:00 03 40 00 00 01 90 1B<br> 
+Answer:02 03 02 00 02 7D 85 //address 0x02<br> 
+[Device with Address 03]<br>
+Command:00 03 40 00 00 01 90 1B<br>
+Answer:03 03 02 00 03 81 85 //address 0x03 <br>
+</p>
+<h2><span class="mw-headline" id="Read_Software_Version_Command">Read Software Version Command</span></h2>
+<p>Command: 00 03 80 00 00 01 AC 1B<br>
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00: the broadcast address; 0x01-0xFF: the device address
+</td></tr>
+<tr>
+<td>03</td>
+<td>03 command</td>
+<td>read the software version and the device address command
+</td></tr>
+<tr>
+<td>80 00</td>
+<td>command register</td>
+<td>0x4000:read the device address, 0x8000: read the software version
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>Bytes</td>
+<td>Fixed 0x0001
+</td></tr>
+<tr>
+<td>8F CA</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Answer: 01 03 02 00 C8 F0 B8<br>
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device Adress</td>
+<td>0x00: the broadcast address, 0x01-0xFF: the device addresses
+</td></tr>
+<tr>
+<td>03</td>
+<td>03 Command</td>
+<td>Read the software version and the device address command
+</td></tr>
+<tr>
+<td>02</td>
+<td>Bytes</td>
+<td>Return bytes
+</td></tr>
+<tr>
+<td>00 C8</td>
+<td>Software version</td>
+<td>Convert to decimal and move the decimal point to the left by two places to indicate the software version<br>
+<p>0x00C8 = 200 = V2.00
+</p>
+</td></tr>
+<tr>
+<td>F0 B8</td>
+<td>CRC16</td>
+<td>CRC16 checksum of the first 6 bytes of data
+</td></tr></tbody></table>
+<p>Examples:<br>
+Command: 00 03 80 00 00 01 AC 1B<br>
+Answer: 03 03 02 00 C8 F1 00 //0x00C8 = 200 =V2.00<br>
+</p>
+<h1><span class="mw-headline" id="Development_Protocol_V1">Development Protocol V1</span></h1>
+<p><font color="#FF0000">From September 2021, the V2 of the development 
+protocol will be adopted. The V1 is not compatible with Modbus commands 
+and now the V2 is fully compatible with the Modbus protocol.<br>
+There is no difference in hardware between V1 and V2. Customers who have
+ purchased the V1 version but need to use the V2 development agreement, 
+can contact customer service to upgrade the firmware.</font>
+</p>
+<h2><span class="mw-headline" id="Command_format">Command format</span></h2>
+<p>The command contains 8 bytes:
+</p>
+<dl><dd>Byte 1：Device Address</dd>
+<dd>Byte 2：Function code</dd>
+<dd>Byte 3 4：Address of register (big-endian)</dd>
+<dd>Byte 5 6：data of register (big-endian)</dd>
+<dd>Byte 7 8：CRC16 cheksum (little-endian)</dd></dl>
+<h2><span class="mw-headline" id="Function_code_2">Function code</span></h2>
+<table class="wikitable">
+<tbody><tr>
+<th>Function code</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Read the state of Relay
+</td></tr>
+<tr>
+<td>03</td>
+<td>Read address, revision
+</td></tr>
+<tr>
+<td>05</td>
+<td>Write single Relay
+</td></tr>
+<tr>
+<td>06</td>
+<td>Configure baudrate, address
+</td></tr>
+<tr>
+<td>0F</td>
+<td>Write all Relays
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Control_single_relay_2">Control single relay</span></h2>
+<p>command：01 05 00 00 FF 00 8C 3A
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is broadcast address；0x01-0xFF are device addresses (Device address is 01 by default)
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Command for controlling Relay
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Address</td>
+<td>The register address of controlled Relay, 0 x 0000 - 0 x 0008
+</td></tr>
+<tr>
+<td>FF 00</td>
+<td>Command</td>
+<td>0 x FF00：Open Relay; <br>0 x 0000：Close Relay;<br>0 x 5500：Flip Relay
+</td></tr>
+<tr>
+<td>8C 3A</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Answer： 01 05 00 00 FF 00 8C 3A
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is broadcast address；0 x 01-0 x FF are dives addresses
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Command for controlling relay
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Address</td>
+<td>The register address of controlled Relay,0 x 0000-0 x 0008
+</td></tr>
+<tr>
+<td>FF 00</td>
+<td>Command</td>
+<td>0 x FF00：Open Relay; <br>0 x 0000：Close Relay<br>0 x 5500：Flip Relay.
+</td></tr>
+<tr>
+<td>8C 3A</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Examples：
+[Device with address 01]:
+Open Relay 0:  01 05 00 00 FF 00 8C 3A <br>
+Close Relay 0: 01 05 00 00 00 00 CD CA<br>
+Open Relay 1:  01 05 00 01 FF 00 DD FA <br>
+Close Relay 1: 01 05 00 01 00 00 9C 0A <br>
+Open Relay 2:  01 05 00 02 FF 00 2D FA <br>
+Close Relay 2: 01 05 00 02 00 00 6C 0A <br>
+Open Relay 3:  01 05 00 03 FF 00 7C 3A<br>
+Close Relay 3: 01 05 00 03 00 00 3D CA<br>
+Flip Relay 0:  01 05 00 00 55 00 F2 9A<br>
+Flip Relay 1:  01 05 00 01 55 00 A3 5A<br>
+Flip Relay 2:  01 05 00 02 55 00 53 5A<br>
+Flip Relay 3:  01 05 00 03 55 00 02 9A<br>
+</p>
+<h2><span class="mw-headline" id="Controll_all_Relay">Controll all Relay</span></h2>
+<p>Command：01 05 00 FF FF 00 BC 0A
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is broadcast；0 x 01-0 x FF are devices address
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 command</td>
+<td>Command for controlling Relay
+</td></tr>
+<tr>
+<td>00 FF</td>
+<td>Address</td>
+<td>Fixed 0 x 00FF
+</td></tr>
+<tr>
+<td>00 FF</td>
+<td>Command</td>
+<td>0 x 00FF：Open Relay；
+</td></tr>
+<tr>
+<td>F 00</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes
+</td></tr></tbody></table>
+<p>Answer： 01 05 00 FF FF 00 BC 0A
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Devices</td>
+<td>0 x 00 is broadcast address；0 x 01-0 x FF is device address
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Command for controlling
+</td></tr>
+<tr>
+<td>00 FF</td>
+<td>Address</td>
+<td>Fixed 0 x 00FF
+</td></tr>
+<tr>
+<td>FF 00</td>
+<td>Command</td>
+<td>0 x FFFF：Open Relay；<br>0 x 0000：Close Relay；<br>0 x 5A00：Flip Relay；
+</td></tr>
+<tr>
+<td>BC 0A</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Example：
+</p><p>[Device with address 01]:
+</p><p>Open all Relays&nbsp;:  01 05 00 FF FF 00 BC 0A<br>
+Close all Relays&nbsp;: 01 05 00 FF 00 00 FD FA<br>
+Flip all Relays&nbsp;:  01 05 00 FF 55 00 C2 AA<br>
+</p>
+<h2><span class="mw-headline" id="Read_states_of_Relays_2">Read states of Relays</span></h2>
+<p>Command：01 01 00 00 00 08 3D CC
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Bytes</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is broadcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>01</td>
+<td>01 Command</td>
+<td>Command for checking states of Relay
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Address</td>
+<td>Fixed 0 x 00FF
+</td></tr>
+<tr>
+<td>00 08</td>
+<td>Command</td>
+<td>Fixed 0 x 0008
+</td></tr>
+<tr>
+<td>3D CC</td>
+<td>CRC16</td>
+<td>The CRC16 of the first six bytes
+</td></tr></tbody></table>
+<p>Answer：01 01 01 00 8C 35
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is broadcast address；0 x 01-0 x FF are device addressese
+</td></tr>
+<tr>
+<td>01</td>
+<td>01 Command</td>
+<td>Command for checking states of Relay
+</td></tr>
+<tr>
+<td>01</td>
+<td>Number</td>
+<td>The number of bytes returned。
+</td></tr>
+<tr>
+<td>00</td>
+<td>Sate</td>
+<td>The state of Relay<br>Bit0:The state of the first Relay；<br>Bit1: The state of the second Relay；<br>Bit2: The state of the third Relay；<br>……<br>Bit7:The state of the eighth Relay；<br>
+</td></tr>
+<tr>
+<td>8C 35</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Examples：
+</p><p>[Device with Address 01]
+</p><p>Command&nbsp;: 01 01 00 00 00 08 3D CC<br>
+Answer:   01 01 01 00 51 88    //Close all Relays<br>
+Command&nbsp;: 01 01 00 00 00 08 3D CC<br>
+Answer&nbsp;:  01 01 01 01 90 48    //Open Relay 0 and close other Relays<br>
+Command&nbsp;: 01 01 00 00 00 08 3D CC<br>
+Answer&nbsp;:  01 01 01 41 91 B8    //Open Relay 0 and Relay 6, close other Relays<br>
+</p>
+<h2><span class="mw-headline" id="Write_Relay">Write Relay</span></h2>
+<p>Command：01 0F 00 00 00 08 01 FF BE D5
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00 is the boradcast address；0x01-0xFF are device addresses
+</td></tr>
+<tr>
+<td>0F</td>
+<td>0F Command</td>
+<td>Command for writing Relay
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Begin Address</td>
+<td>Fixed 0x0000
+</td></tr>
+<tr>
+<td>00 08</td>
+<td>number of Channels</td>
+<td>Fixed 0x0008
+</td></tr>
+<tr>
+<td>01</td>
+<td>number of bytes</td>
+<td>Fixed 0x01
+</td></tr>
+<tr>
+<td>Status of Relays</td>
+<td>Bit0：Control the first channel;<br>Bit1: Control the second channel;<br>Bit2: Control the third channel;<br>...<br>Bit7: Control the seventh channel:
+</td></tr>
+<tr>
+<td>BE D5</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Answer：01 0F 00 00 00 08 54 0D
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0x00 is the boradcast address；0x01-0xFF are device addresses
+</td></tr>
+<tr>
+<td>0F</td>
+<td>0F Command</td>
+<td>Command for controlling all Relay
+</td></tr>
+<tr>
+<td>00 00</td>
+<td>Address</td>
+<td>Fixed 0x0000
+</td></tr>
+<tr>
+<td>00 08</td>
+<td>number of channels</td>
+<td>Fixed 0x0008
+</td></tr>
+<tr>
+<td>54 0D</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes
+</td></tr></tbody></table>
+<p>Example：
+</p><p>[Device with address 01]
+</p><p>Open all Relay&nbsp;:       01 0F 00 00 00 08 01 FF BE D5  <br>
+Close all Relay&nbsp;:      01 0F 00 00 00 08 01 00 FE 95 <br>
+0-1 Open；3-7 Close:   01 0F 00 00 00 08 01 03 BE 94 <br>
+</p>
+<h2><span id="Open/Close_Relay_in_certain_time"></span><span class="mw-headline" id="Open.2FClose_Relay_in_certain_time">Open/Close Relay in certain time</span></h2>
+<p>Command：01 05 02 00 00 07 8D B0
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Command for controlling signle Relay
+</td></tr>
+<tr>
+<td>02</td>
+<td>Command</td>
+<td>02 is the command for close Relay in the current time，04 is the command for open Relay in the current time
+</td></tr>
+<tr>
+<td>00</td>
+<td>Address of Relay</td>
+<td>The address of Relay controlled
+</td></tr>
+<tr>
+<td>00 07</td>
+<td>Delay</td>
+<td>The Delay time is Data*100ms<br>Data:0 x 0007，Delay:7*100MS = 700MS
+</td></tr>
+<tr>
+<td>8D B0</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Answer：01 05 02 00 00 07 8D B0
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>05</td>
+<td>05 Command</td>
+<td>Command for controlling single Relay
+</td></tr>
+<tr>
+<td>02</td>
+<td>Command</td>
+<td>02 is the command for close Relay in the current time，04 is the command for open Relay in the current time
+</td></tr>
+<tr>
+<td>00</td>
+<td>Address of Relay</td>
+<td>The address of Relay controlled
+</td></tr>
+<tr>
+<td>00 07</td>
+<td>Delay</td>
+<td>The delay time is the data*100ms<br>data:0 x 0007，Delay:7*100MS = 700MS
+</td></tr>
+<tr>
+<td>8D B0</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Example：
+</p><p>[Device with address 01]
+</p><p>Open Relay 0&nbsp;:  01 05 02 00 00 07 8D B0  //700MS = 7*100MS = 700MS<br>
+Open Relay 1&nbsp;:  01 05 02 01 00 08 9C 74  //800MS <br>
+Close Relay 0&nbsp;: 01 05 04 00 00 05 0C F9  //500MS<br>
+Close Relay 1&nbsp;: 01 05 04 01 00 06 1D 38  //600MS<br>
+</p>
+<h2><span class="mw-headline" id="Set_baud_rate">Set baud rate</span></h2>
+<p>Command：00 06 20 00 00 05 43 D8
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>Device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>06</td>
+<td>06 Command</td>
+<td>Set baud rate or device address
+</td></tr>
+<tr>
+<td>20 00</td>
+<td>Command register</td>
+<td>0x2000: Set baud rate，0 x 4000:Set device address
+</td></tr>
+<tr>
+<td>00</td>
+<td>Parity</td>
+<td>0x00: None; 0 x 01: Even; 0 x 02: Odd
+</td></tr>
+<tr>
+<td>05</td>
+<td>Baud rate</td>
+<td>Baudrate:<br>0 x 00  :  4800<br>0 x 01  :  9600<br>0 x 02  :  19200<br>0 x 03  :  38400<br>0 x 04  :  57600<br>0 x 05  :  115200<br>0 x 06  :  128000<br>0 x 07  :  256000<br>
+</td></tr>
+<tr>
+<td>43 D8</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Answer：00 06 20 00 00 05 43 D8
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>Device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0xFF are device addresses
+</td></tr>
+<tr>
+<td>06</td>
+<td>06 Command</td>
+<td>Set baud rate or device address
+</td></tr>
+<tr>
+<td>20 00</td>
+<td>Command register</td>
+<td>0 x 2000: Set baud rate，0 x 4000 Set device address
+</td></tr>
+<tr>
+<td>00</td>
+<td>Parity</td>
+<td>0 x 00: None; 0 x 01: Even; 0 x 02: Odd
+</td></tr>
+<tr>
+<td>05</td>
+<td>Baud rate</td>
+<td>The baud rate <br>0 x 0000  :  4800<br>0 x 0001  :  9600<br>0 x 0002  :  19200<br>0 x 0003  :  38400<br>0 x 0004  :  57600<br>0 x 0005  :  115200<br>0 x 0006  :  128000<br>0 x 0007  :  256000<br>
+</td></tr>
+<tr>
+<td>43 D8</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Example：
+</p><p>[Device with address 0 x 01]
+</p><p>Set baud rate as  4800 ： 00 06 20 00 00 00 83 DB <br>
+Set baud rate as  9600 ： 00 06 20 00 00 01 42 1B <br>
+Set baud rate as 115200 ：00 06 20 00 00 05 43 D8<br>
+</p>
+<h2><span class="mw-headline" id="Set_device_address">Set device address</span></h2>
+<p>Command：00 06 40 00 00 01 5C 1B
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>Device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>06</td>
+<td>06 Command</td>
+<td>Set baud rate or device address
+</td></tr>
+<tr>
+<td>40 00</td>
+<td>Command register</td>
+<td>0 x 2000: Set baud rate，0 x 4000: Set device address
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>Device address</td>
+<td>The device address,0 x 0001-0 x 00FF
+</td></tr>
+<tr>
+<td>5C 1B</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Answer：00 06 40 00 00 01 5C 1B
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>Device address</td>
+<td>0x00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>06</td>
+<td>06 Command</td>
+<td>Set baud rate or device address
+</td></tr>
+<tr>
+<td>40 00</td>
+<td>Command register</td>
+<td>0 x 2000: Set baud rate，0 x 4000:Set device address
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>Device address</td>
+<td>Set device address,0 x 0001-0 x 00FF
+</td></tr>
+<tr>
+<td>5C 1B</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of first six bytes.
+</td></tr></tbody></table>
+<p>Example：
+</p><p>[Device with address 0 x 01]
+</p><p>Set device address as 0 x 01 ：00 06 40 00 00 01 5C 1b<br>
+Set device addrss as 0 x 02 ： 00 06 40 00 00 02 1C 1A  <br>
+Set device address as 0 x 03 ：00 06 40 00 00 03 DD DA<br>
+</p>
+<h2><span class="mw-headline" id="Read_device_address">Read device address</span></h2>
+<p>Command：00 03 40 00 00 01 90 1B
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>00</td>
+<td>Device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>03</td>
+<td>03 Command</td>
+<td>Read Device address
+</td></tr>
+<tr>
+<td>40 00</td>
+<td>Command register</td>
+<td>0 x 0200: Read software revision，0 x 0040: Read device address
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>Device address</td>
+<td>Device address
+</td></tr>
+<tr>
+<td>90 1B</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Answer：01 03 02 00 01 79 84
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>03</td>
+<td>03 commands</td>
+<td>Read software revision or device address
+</td></tr>
+<tr>
+<td>02</td>
+<td>Number of bytes</td>
+<td>Number of bytes returned
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>Device address</td>
+<td>Devicess
+</td></tr>
+<tr>
+<td>79 84</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Example:
+</p><p>[Device with address 01]
+</p><p>Command&nbsp;: 00 03 40 00 00 01 90 1B<br>
+Answer&nbsp;:  01 03 02 00 01 79 84  //Device address 0x01<br>
+[Device with address 02]
+</p><p>Command&nbsp;: 00 03 40 00 00 01 90 1B<br>
+Answer&nbsp;:  02 03 02 00 02 7D 85  //Device address 0x02<br>
+[Device with address 03]
+</p><p>Command&nbsp;: 00 03 40 00 00 01 90 1B<br>
+Answer&nbsp;:  03 03 02 00 03 81 85  //Device address 0x03<br>
+</p>
+<h2><span class="mw-headline" id="Read_software_revision">Read software revision</span></h2>
+<p>Command：00 03 80 00 00 01 AC 1B
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>03</td>
+<td>03 Command</td>
+<td>Read software revision or device address
+</td></tr>
+<tr>
+<td>80 00</td>
+<td>Command register</td>
+<td>0 x 8000: Read software revision，0 x 4000: Read device address.
+</td></tr>
+<tr>
+<td>00 01</td>
+<td>number of bytes</td>
+<td>Fixed 0 x 0001
+</td></tr>
+<tr>
+<td>AC 1B</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Answer：01 03 02 00 C8 F0 B8
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Byte</th>
+<th>Meaning</th>
+<th>Description
+</th></tr>
+<tr>
+<td>01</td>
+<td>Device address</td>
+<td>0 x 00 is the boradcast address；0 x 01-0 x FF are device addresses
+</td></tr>
+<tr>
+<td>03</td>
+<td>03 Command</td>
+<td>Read software revision, read device address
+</td></tr>
+<tr>
+<td>02</td>
+<td>Number of bytes</td>
+<td>number of bytes returned
+</td></tr>
+<tr>
+<td>00 C8</td>
+<td>Software revision</td>
+<td>It should be converted to DEC and divided with 100, <br>for example: 0 x 00C8 = 200 = V2.00
+</td></tr>
+<tr>
+<td>F0 B8</td>
+<td>CRC16</td>
+<td>The CRC16 checksum of the first six bytes.
+</td></tr></tbody></table>
+<p>Example：
+</p><p>Command：00 03 80 00 00 01 AC 1B<br>
+Answer： 03 03 02 00 C8 F1 00 //0 x 00C8 = 200 =V2.00
+</p>
+<h1><span class="mw-headline" id="Hardware_Testing">Hardware Testing</span></h1>
+<ul><li>Connect <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="https://www.waveshare.com/usb-to-rs485.htm">USB to 485 moduble</a> to Modbus RTU Relay board by wires. Connect A to A and B to B. Then connect the USB to 485 module to your PC</li></ul>
+<dl><dd><a href="https://www.waveshare.com/wiki/File:Modbus-RTU-Relay_connet.jpg" class="image"><img alt="Modbus-RTU-Relay connet.jpg" src="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay_connet.jpg" decoding="async" loading="lazy" srcset="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay_connet_002.jpg 1.5x, Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay_connet_003.jpg 2x" data-file-width="1319" data-file-height="692" width="700" height="367"></a></dd></dl>
+<ul><li>Download the <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="https://www.waveshare.com/w/upload/7/7a/RM500U-CN-sscom.zip">SSCOM Serial Assistant</a>
+ and Open it in your PC. Select the correct COM port (according to 
+Devices Manager), set baud rate to 9600. Click Extension and send the 
+commands to test</li></ul>
+<dl><dd><a href="https://www.waveshare.com/wiki/File:Modbus-RTU-Relay-2.png" class="image"><img alt="Modbus-RTU-Relay-2.png" src="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay-2.png" decoding="async" loading="lazy" srcset="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay-2_002.png 1.5x" data-file-width="792" data-file-height="600" width="700" height="530"></a></dd></dl>
+<p>If you want to send other commands, please check HEX option and choose ModbusCRC16 parity. Input the commands and send.
+</p>
+<dl><dd><a href="https://www.waveshare.com/wiki/File:Modbus-RTU-Relay-3.png" class="image"><img alt="Modbus-RTU-Relay-3.png" src="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay-3.png" decoding="async" loading="lazy" srcset="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Modbus-RTU-Relay-3_002.png 1.5x" data-file-width="792" data-file-height="600" width="700" height="530"></a></dd></dl>
+<p><font color="red"> For more details of the commands, please refer to <a href="https://www.waveshare.com/wiki/Protocol_Manual_of_Modbus_RTU_Relay" title="Protocol Manual of Modbus RTU Relay">Protocol Manual of Modbus RTU Relay</a></font>
+</p>
+<h2><span class="mw-headline" id="Examples">Examples</span></h2>
+<h3><span class="mw-headline" id="Raspberry_Pi">Raspberry Pi</span></h3>
+<dl><dt>Enable Serial port</dt></dl>
+<ul><li>Open the terminal of Raspberry Pi</li>
+<li>Run the following command to configure</li></ul>
+<pre>sudo raspi-config
+</pre>
+<ul><li>Choose Interfacing Options -&gt; Serial -&gt; No -&gt; Yes</li>
+<li>Then reboot Raspberry Pi</li></ul>
+<pre>sudo reboot
+</pre>
+<dl><dt>Hardware connection</dt></dl>
+<p>You need to connect RS485 devices to Raspberry Pi (the demo codes 
+provided are based on our RS485 CAN HAT), Connect the Modbus RTU Relay 
+module to the RS485 CAN HAT, A to A, and B to B.
+</p>
+<dl><dt>Run example</dt></dl>
+<p>Use the following commands to run the demo codes
+</p>
+<pre>wget https://www.waveshare.com/w/upload/f/f9/Modbus_RTU_Relay_Code.zip
+unzip Modbus_RTU_Relay_Code.zip
+cd Modbus_RTU_Relay_Code/Python3
+sudo python3 main.py
+</pre>
+<h3><span class="mw-headline" id="STM32">STM32</span></h3>
+<p>The Demo codes for STM32 are based on NULCEO-F103RB and RS485 CAN Shield module
+</p><p>Download the demo code and open the STM32 project with Keil software.
+</p><p>Program the codes to the NUCLEO board
+</p><p>The codes will run and toggle the relay in turn.
+</p>
+<h3><span class="mw-headline" id="Arduino">Arduino</span></h3>
+<p>The Arduino demo is based on Waveshare UNO Plus and RS485 CAN Shield
+</p><p>Open the Arduino project and program it to the UNO board.
+</p><p>The codes will run and toggle the relay in turn.
+</p>
+<h1><span class="mw-headline" id="Resources">Resources</span></h1>
+<ul><li><a href="https://www.waveshare.com/wiki/Protocol_Manual_of_Modbus_RTU_Relay" title="Protocol Manual of Modbus RTU Relay">Protocol Manual of Modbus RTU Relay</a></li></ul>
+<h3><span class="mw-headline" id="Demo_codes">Demo codes</span></h3>
+<ul><li><a href="https://www.waveshare.com/wiki/File:Modbus_RTU_Relay_Code.zip" title="File:Modbus RTU Relay Code.zip">Demo codes</a></li></ul>
+<h3><span class="mw-headline" id="Softwares">Softwares</span></h3>
+<ul><li><a href="https://www.waveshare.com/wiki/File:Sscom5.13.1_for_Modbus_RTU_Relay.zip" title="File:Sscom5.13.1 for Modbus RTU Relay.zip">Sscom software for Modbus RTU Relay</a></li>
+<li><a href="https://www.waveshare.com/wiki/File:Sscom5.13.1_for_Modbus_RTU_Relay_V2.zip" title="File:Sscom5.13.1 for Modbus RTU Relay V2.zip">Sscom software for Modbus RTU Relay V2</a></li></ul>
+<h1><span class="mw-headline" id="FAQ">FAQ</span></h1>
+<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#accordion1">
+								<b>Question:</b>It doesn't work on non-windows systems, how can I fix it?
+
+							</a>
+						</h4>
+					</div>
+					<div id="accordion1" class="panel-collapse collapse in">
+						<div class="panel-body">
+<div>&nbsp;<b>Answer:</b></div>
+<div>*Click <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="https://www.ftdichip.cn/Drivers/D2XX.htm">here</a> to install the corresponding drivers.
+</div>
+<div style="display:none;"></div>
+<div style="display:none;"></div>
+<p><font style="display:none;" color="red">{{{5}}}</font>
+</p>
+						</div>
+					</div>
+				</div>
+</div>
+<p><br>
+</p>
+<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#accordion2">
+								<b>Question:</b>Does it support Linux system?
+
+							</a>
+						</h4>
+					</div>
+					<div id="accordion2" class="panel-collapse collapse in">
+						<div class="panel-body">
+<div>&nbsp;<b>Answer:</b></div>
+<div>Yes, it also supports Win7/8/8.1/10/11, Mac, Linux, Android, WinC...
+</div>
+<div style="display:none;"></div>
+<div style="display:none;"></div>
+<p><font style="display:none;" color="red">{{{5}}}</font>
+</p>
+						</div>
+					</div>
+				</div>
+</div>
+<p><br>
+</p>
+<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#accordion3">
+								<b>Question:</b>What about the RS485 proximity communication exception, the received data will be more than 0?
+
+							</a>
+						</h4>
+					</div>
+					<div id="accordion3" class="panel-collapse collapse in">
+						<div class="panel-body">
+<div>&nbsp;<b>Answer:</b></div>
+<div>Remove the 120-ohm termination matching resistor for RS485.
+</div>
+<div style="display:none;"></div>
+<div style="display:none;"></div>
+<p><font style="display:none;" color="red">{{{5}}}</font>
+</p>
+						</div>
+					</div>
+				</div>
+</div>
+<p><br>
+</p>
+<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#accordion4">
+								<b>Question:</b>Support USB to RS232,RS485 and TTL at the same time?
+
+							</a>
+						</h4>
+					</div>
+					<div id="accordion4" class="panel-collapse collapse in">
+						<div class="panel-body">
+<div>&nbsp;<b>Answer:</b></div>
+<div>Not supported, only USB to one of the three, USB to RS232, RS485 or TTL.
+</div>
+<div style="display:none;"></div>
+<div style="display:none;"></div>
+<p><font style="display:none;" color="red">{{{5}}}</font>
+</p>
+						</div>
+					</div>
+				</div>
+</div>
+<p><br>
+</p>
+<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#accordion5">
+								<b>Question:</b>Does it support RS232,RS485 and TTL interchange?
+
+							</a>
+						</h4>
+					</div>
+					<div id="accordion5" class="panel-collapse collapse in">
+						<div class="panel-body">
+<div>&nbsp;<b>Answer:</b></div>
+<div>Not supported, RS232,RS485 and TTL can not be interchangeable, support USB to RS232,RS485 or TTL.
+</div>
+<div style="display:none;"></div>
+<div style="display:none;"></div>
+<p><font style="display:none;" color="red">{{{5}}}</font>
+</p>
+						</div>
+					</div>
+				</div>
+</div>
+<p><br>
+</p>
+<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#accordion6">
+								<b>Question:</b>How can I confirm that the TTL, RS232 or RS485 function is working?
+
+							</a>
+						</h4>
+					</div>
+					<div id="accordion6" class="panel-collapse collapse in">
+						<div class="panel-body">
+<div>&nbsp;<b>Answer:</b></div>
+<div>TTL and RS232 are full-duplex communication, you can short RXD and 
+TXD to test, RS485 is half-duplex communication, you can test with an 
+external USB to RS485 device, the following figure is the loopback test 
+TTL:<br>
+<p><a href="https://www.waveshare.com/wiki/File:Serial_Module_FAQ01.png" class="image"><img alt="Serial Module FAQ01.png" src="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Serial_Module_FAQ01.png" decoding="async" loading="lazy" data-file-width="600" data-file-height="352" width="600" height="352"></a><br>
+<a href="https://www.waveshare.com/wiki/File:Serial_Module_FAQ02.png" class="image"><img alt="Serial Module FAQ02.png" src="Modbus%20RTU%20Relay%20-%20Waveshare%20Wiki_files/Serial_Module_FAQ02.png" decoding="async" loading="lazy" data-file-width="600" data-file-height="343" width="600" height="343"></a>
+</p>
+</div>
+<div style="display:none;"></div>
+<div style="display:none;"></div>
+<p><font style="display:none;" color="red">{{{5}}}</font>
+</p>
+						</div>
+					</div>
+				</div>
+</div>
+<p><br>
+</p>
+<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#accordion7">
+								<b>Question:</b>What is the VCC function?
+
+							</a>
+						</h4>
+					</div>
+					<div id="accordion7" class="panel-collapse collapse in">
+						<div class="panel-body">
+<div>&nbsp;<b>Answer:</b></div>
+<div>VCC is the power supply pin, which can be switched by 5V or 3.3V 
+(50mA) to power the connected device, if the device already has another 
+external power supply, it can be connected without VCC.
+</div>
+<div style="display:none;"></div>
+<div style="display:none;"></div>
+<p><font style="display:none;" color="red">{{{5}}}</font>
+</p>
+						</div>
+					</div>
+				</div>
+</div>
+<p><br>
+</p><p><br>
+</p>
+<h1><span class="mw-headline" id="Support">Support</span></h1>
+<p><font style="color:green; weight:bold;"><big><b>If you require technical support, please go to the <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="https://support.waveshare.com/hc/en-us/requests/new">Support</a> page and open a ticket.</b></big></font>
+</p>
+</div>
+
+<!-- 
+NewPP limit report
+Cached time: 20230622175026
+Cache expiry: 0
+Dynamic content: true
+Complications: []
+CPU time usage: 0.306 seconds
+Real time usage: 0.329 seconds
+Preprocessor visited node count: 795/1000000
+Post‐expand include size: 34575/2097152 bytes
+Template argument size: 2666/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 5740/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   88.531      1 -total
+ 55.75%   49.353      1 Template:Serial_Module_FAQ
+ 50.43%   44.643      7 Template:FAQ
+ 23.89%   21.150      1 Template:Infobox_item
+  8.32%    7.367      1 Template:Modbus_RTU_Relay_Protocol_V2
+  6.78%    6.000      1 Template:Modbus_RTU_Relay_Manual
+  4.73%    4.185      1 Template:Service00
+  4.65%    4.116      2 Template:Amazon_nolink
+-->
+</div></div>								<div class="printfooter">
+				Retrieved from "<a dir="ltr" href="https://www.waveshare.com/w/index.php?title=Modbus_RTU_Relay&amp;oldid=60444">https://www.waveshare.com/w/index.php?title=Modbus_RTU_Relay&amp;oldid=60444</a>"				</div>
+												<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="https://www.waveshare.com/wiki/Category:RS485_interface" title="Category:RS485 interface">RS485 interface</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+			<!-- /bodyContent -->
+		</div>
+						</div>
+				</div>
+			</div>
+			<!-- /content -->
+
+			<!-- sidebar-left -->
+			<div class="sidebar-wrapper sidebar-left-wrapper">
+				<div class="sidebar-container container">
+					<div class="row">
+						<div id="sidebar-left" class="col-md-2 col-md-offset-0">
+							<div id="tweekiTOC"><div class="toctitle" dir="ltr" lang="en"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div><div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading" style="display: table;"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none">
+<ul class="nav">
+<li class="toclevel-1 tocsection-1"><a href="#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-1"><a href="#Development_Protocol_V2"><span class="tocnumber">2</span> <span class="toctext">Development Protocol V2</span></a>
+<ul class="nav">
+<li class="toclevel-2"><a href="#Function_code"><span class="tocnumber">2.1</span> <span class="toctext">Function code</span></a></li>
+<li class="toclevel-2"><a href="#Control_Single_Relay"><span class="tocnumber">2.2</span> <span class="toctext">Control Single Relay</span></a></li>
+<li class="toclevel-2"><a href="#Controll_All_Relays"><span class="tocnumber">2.3</span> <span class="toctext">Controll All Relays</span></a></li>
+<li class="toclevel-2"><a href="#Read_States_of_Relays"><span class="tocnumber">2.4</span> <span class="toctext">Read States of Relays</span></a></li>
+<li class="toclevel-2"><a href="#Write_States_of_Relays"><span class="tocnumber">2.5</span> <span class="toctext">Write States of Relays</span></a></li>
+<li class="toclevel-2"><a href="#Relay_Flash_ON.2FOFF_Command"><span class="tocnumber">2.6</span> <span class="toctext">Relay Flash ON/OFF Command</span></a></li>
+<li class="toclevel-2"><a href="#Set_Baud_Rate_Command"><span class="tocnumber">2.7</span> <span class="toctext">Set Baud Rate Command</span></a></li>
+<li class="toclevel-2"><a href="#Set_Device_Address_Command"><span class="tocnumber">2.8</span> <span class="toctext">Set Device Address Command</span></a></li>
+<li class="toclevel-2"><a href="#Read_Device_Address_Command"><span class="tocnumber">2.9</span> <span class="toctext">Read Device Address Command</span></a></li>
+<li class="toclevel-2"><a href="#Read_Software_Version_Command"><span class="tocnumber">2.10</span> <span class="toctext">Read Software Version Command</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Development_Protocol_V1"><span class="tocnumber">3</span> <span class="toctext">Development Protocol V1</span></a>
+<ul class="nav">
+<li class="toclevel-2"><a href="#Command_format"><span class="tocnumber">3.1</span> <span class="toctext">Command format</span></a></li>
+<li class="toclevel-2"><a href="#Function_code_2"><span class="tocnumber">3.2</span> <span class="toctext">Function code</span></a></li>
+<li class="toclevel-2"><a href="#Control_single_relay_2"><span class="tocnumber">3.3</span> <span class="toctext">Control single relay</span></a></li>
+<li class="toclevel-2"><a href="#Controll_all_Relay"><span class="tocnumber">3.4</span> <span class="toctext">Controll all Relay</span></a></li>
+<li class="toclevel-2"><a href="#Read_states_of_Relays_2"><span class="tocnumber">3.5</span> <span class="toctext">Read states of Relays</span></a></li>
+<li class="toclevel-2"><a href="#Write_Relay"><span class="tocnumber">3.6</span> <span class="toctext">Write Relay</span></a></li>
+<li class="toclevel-2"><a href="#Open.2FClose_Relay_in_certain_time"><span class="tocnumber">3.7</span> <span class="toctext">Open/Close Relay in certain time</span></a></li>
+<li class="toclevel-2"><a href="#Set_baud_rate"><span class="tocnumber">3.8</span> <span class="toctext">Set baud rate</span></a></li>
+<li class="toclevel-2"><a href="#Set_device_address"><span class="tocnumber">3.9</span> <span class="toctext">Set device address</span></a></li>
+<li class="toclevel-2"><a href="#Read_device_address"><span class="tocnumber">3.10</span> <span class="toctext">Read device address</span></a></li>
+<li class="toclevel-2"><a href="#Read_software_revision"><span class="tocnumber">3.11</span> <span class="toctext">Read software revision</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Hardware_Testing"><span class="tocnumber">4</span> <span class="toctext">Hardware Testing</span></a>
+<ul class="nav">
+<li class="toclevel-2"><a href="#Examples"><span class="tocnumber">4.1</span> <span class="toctext">Examples</span></a>
+<ul class="nav">
+<li class="toclevel-3"><a href="#Raspberry_Pi"><span class="tocnumber">4.1.1</span> <span class="toctext">Raspberry Pi</span></a></li>
+<li class="toclevel-3"><a href="#STM32"><span class="tocnumber">4.1.2</span> <span class="toctext">STM32</span></a></li>
+<li class="toclevel-3"><a href="#Arduino"><span class="tocnumber">4.1.3</span> <span class="toctext">Arduino</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-2"><a href="#Resources"><span class="tocnumber">5</span> <span class="toctext">Resources</span></a>
+<ul class="nav">
+<li class="toclevel-2 tocsection-3"><a href="#Demo_codes"><span class="tocnumber">5.1</span> <span class="toctext">Demo codes</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Softwares"><span class="tocnumber">5.2</span> <span class="toctext">Softwares</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#FAQ"><span class="tocnumber">6</span> <span class="toctext">FAQ</span></a></li>
+<li class="toclevel-1"><a href="#Support"><span class="tocnumber">7</span> <span class="toctext">Support</span></a></li>
+</ul>
+<div id="toctotop"><a href="javascript:scrollTo(0,0);">To Top</a></div></div></div>						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /sidebar-left -->
+					<!-- footer -->
+			<div id="footer" role="contentinfo" class="footer container footer-sticky bg-light" style="margin-top: 0px; opacity: 1;">
+			<ul id="footer-custom"><li class="dropup"><a href="https://www.waveshare.com/w/index.php?title=Special:UserLogin&amp;returnto=Modbus+RTU+Relay" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Login / Create Account</a></li></ul><div style="clear:both"></div>			</div>
+			<!-- /footer -->
+		
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.306","walltime":"0.329","ppvisitednodes":{"value":795,"limit":1000000},"postexpandincludesize":{"value":34575,"limit":2097152},"templateargumentsize":{"value":2666,"limit":2097152},"expansiondepth":{"value":8,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":5740,"limit":5000000},"timingprofile":["100.00%   88.531      1 -total"," 55.75%   49.353      1 Template:Serial_Module_FAQ"," 50.43%   44.643      7 Template:FAQ"," 23.89%   21.150      1 Template:Infobox_item","  8.32%    7.367      1 Template:Modbus_RTU_Relay_Protocol_V2","  6.78%    6.000      1 Template:Modbus_RTU_Relay_Manual","  4.73%    4.185      1 Template:Service00","  4.65%    4.116      2 Template:Amazon_nolink"]},"cachereport":{"timestamp":"20230622175026","ttl":0,"transientcontent":true}}});mw.config.set({"wgBackendResponseTime":697});});</script>	
+
+</body></html>
