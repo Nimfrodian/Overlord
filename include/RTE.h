@@ -12,6 +12,10 @@
 
 const int node_id = 1;
 
+// GPIO section
+bool Rte_GpioCtrl_get_gpioSts(uint8_t gpioIndx);
+bool Rte_GpioCtrl_set_gpioDbgSts(bool GpioSts, uint8_t GpioDbgIndx);
+
 // Relay section
 void Rte_RelayControl_init(void);
 void Rte_RelayControl_run_10ms(void);

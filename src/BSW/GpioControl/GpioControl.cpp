@@ -200,16 +200,6 @@ void CtrlGpio_write(void* param)
 {
     while (1)
     {
-        // temp
-        static uint8_t temp = 0;
-        temp++;
-        for (uint8_t gpioOutIndx = 0; gpioOutIndx < NUM_OF_GPIO_OUTPUTS; gpioOutIndx++)
-        {
-            _gpioOutState[gpioOutIndx] = 0 < (temp & (0x01 << gpioOutIndx));
-        }
-
-        // end temp
-
         // set new GPIO values
         for (uint8_t gpioOutIndx = 0; gpioOutIndx < NUM_OF_GPIO_OUTPUTS; gpioOutIndx++)
         {
@@ -221,41 +211,32 @@ void CtrlGpio_write(void* param)
     vTaskDelete( NULL );
 }
 
-/**
- * @brief Function returns the state of the GPIO pin if GpioIndx is in the correct range
- * @param GpioIndx GPIO index for which to get value
- * @return GPIO state
- */
-bool GpioCtrl_get_gpioSts(uint8_t GpioIndx)
+bool CtrlGpio_read_gpioSts(CtrlGpio_inputIndxType GpioIndx)
 {
-    uint8_t indx = 0;
-
-    // check if index is valid
-    if (GpioIndx < NUM_OF_INPUT_INDX)
+    bool gpioSts = 0;
+    if (NUM_OF_INPUT_INDX > GpioIndx)
     {
-        indx = GpioIndx;
+        gpioSts = _gpioState[GpioIndx];
     }
-
-    // return GPIO state based on HW indexing
-    return _gpioState[_sortedGpioIndxs[indx]];
+    else
+    {
+        // TODO: REPORT_ERROR
+    }
+    return gpioSts;
 }
 
-/**
- * @brief Function sets the GPIO debug pin to desired state for debugging purposes
- * @param GpioSts gpio status to be set
- * @param GpioDbgIndx index of the GPIO debug index
- * @return bool success. true if GPIO pin was successfuly set, false if not
- */
-bool GpioCtrl_set_gpioDbgSts(bool GpioSts, uint8_t GpioDbgIndx)
+bool CtrlGpio_write_gpioSts(ctrlGpio_gpioOutIndxType GpioIndx, bool NewSts)
 {
-    // create return variable
     bool success = false;
 
-    // check if input parameters are OK and set GPIO pin if they are
-    if (GPIO_OUT_DEBUG_NUM_OF_INDX > GpioDbgIndx)
+    if (NUM_OF_GPIO_OUTPUTS > GpioIndx)
     {
-        gpio_set_level((gpio_num_t) GpioDbgIndx, GpioSts);
+        _gpioOutState[GpioIndx] = NewSts;
         success = true;
+    }
+    else
+    {
+        // TODO: REPORT_ERROR
     }
 
     return success;

@@ -127,8 +127,7 @@ void CtrlGpio_init(void);
 void CtrlGpio_read(void* param);
 void CtrlGpio_write(void* param);
 
-bool GpioCtrl_get_gpioSts(uint8_t gpioIndx);
-bool GpioCtrl_set_gpioDbgSts(bool GpioSts, uint8_t GpioDbgIndx);
-
+bool CtrlGpio_read_gpioSts(CtrlGpio_inputIndxType GpioIndx);
+bool CtrlGpio_write_gpioSts(ctrlGpio_gpioOutIndxType GpioIndx, bool NewSts);
 
 #endif
