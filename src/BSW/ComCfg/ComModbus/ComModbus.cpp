@@ -1,5 +1,5 @@
 #include "ComModbus.h"
-#include "GpioControl.h"    // used for debug LED
+#include "Dio_Cfg.h"    // used for debug LED
 
 typedef enum
 {

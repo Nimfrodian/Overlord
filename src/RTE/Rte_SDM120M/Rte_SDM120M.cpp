@@ -45,7 +45,7 @@ void Rte_Sdm120m_init(void)
     }
 }
 
-void Rte_Sdm120m_run_10ms(void)
+void Rte_Sdm120m_runnable_10ms(void)
 {
     // send Modbus messages
     {

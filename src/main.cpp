@@ -14,7 +14,7 @@ extern "C" void app_main(void)
 {
     ComModbus_init();   // initialize Modbus
     ComCan_init();      // initialize CAN
-    CtrlGpio_init();    // initialize GPIO control
+    BSW_Dio_init();    // initialize GPIO control
 
     Rte_RelayControl_init();    // initialize Relay control
     Rte_Sdm120m_init();         // initialize SDM120M power meter module control
@@ -39,8 +39,11 @@ extern "C" void app_main(void)
 static void tasks_10ms_callback(TimerHandle_t xTimer)
 {
     // run the SDM120M power meter control
-    Rte_Sdm120m_run_10ms();
+    Rte_Sdm120m_runnable_10ms();
 
     // run the relay module logic
-    Rte_RelayControl_run_10ms();
+    Rte_RelayControl_runnable_10ms();
+
+    // run GPIO control
+    Rte_Dio_runnable_10ms();
 }

@@ -35,7 +35,8 @@ typedef enum
     CAN_MSG_TX_RELAY_STATUS,                // status of all 64 relays (1 - 64)                     0x110
 
     // DI section
-    CAN_MSG_TX_DI_STATUS_0,                 // status of 32 inputs                                  0x150
+    CAN_MSG_TX_DI_STATUS,                   // status of 32 inputs                                  0x150
+    CAN_MSG_RX_DO_REQUEST,                  // request for digital outputs                          0x160
 
     // power monitoring section (via SDM120M). ID of the message determines which SDM120M reports the data. 20 message IDs per message
     CAN_MSG_TX_SDM120M_01_1,                // SDM120M data - VOLTAGE_CURRENT                                                       0x1F5
