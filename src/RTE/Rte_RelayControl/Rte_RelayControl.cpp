@@ -14,7 +14,7 @@ void Rte_RelayControl_init(void)
     RelayControl_init();
 }
 
-void Rte_RelayControl_run_10ms(void)
+void Rte_RelayControl_runnable_10ms(void)
 {
     // send Modbus message command for Waveshare relay module
     {
@@ -34,7 +34,7 @@ void Rte_RelayControl_run_10ms(void)
                 {
                     if ((relIndx < NUM_OF_INPUT_INDX))
                     {
-                        gpioStBitfield = gpioStBitfield | (GpioCtrl_get_gpioSts(relIndx) << relIndx);
+                        gpioStBitfield = gpioStBitfield | (Rte_Dio_get_gpioSt(relIndx) << relIndx);
                     }
                 }
 

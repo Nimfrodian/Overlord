@@ -74,6 +74,11 @@ void ComCan_receive(void* param)
                     ComCan_saveMsg(CAN_MSG_RX_RELAY_CONTROL_WS_0, &_rxFrame);
                 }
                 break;
+                case 0x160:
+                {
+                    ComCan_saveMsg(CAN_MSG_RX_DO_REQUEST, &_rxFrame);
+                }
+                break;
 
                 default:
                 break;

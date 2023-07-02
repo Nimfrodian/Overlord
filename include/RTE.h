@@ -8,16 +8,22 @@
 #include "ComModbus.h"
 #include "ComCan.h"
 #include "SDM120M.h"
-#include "GpioControl.h"
+#include "Dio_Cfg.h"
 
 const int node_id = 1;
 
+// GPIO section
+extern void Rte_Dio_init(void);
+extern bool Rte_Dio_get_gpioSt(uint8_t gpioIndx);
+extern bool Rte_Dio_set_gpioDbgSt(bool GpioSts, uint8_t GpioDbgIndx);
+extern void Rte_Dio_runnable_10ms(void);
+
 // Relay section
-void Rte_RelayControl_init(void);
-void Rte_RelayControl_run_10ms(void);
+extern void Rte_RelayControl_init(void);
+extern void Rte_RelayControl_runnable_10ms(void);
 
 // Power meter section
-void Rte_Sdm120m_init(void);
-void Rte_Sdm120m_run_10ms(void);
+extern void Rte_Sdm120m_init(void);
+extern void Rte_Sdm120m_runnable_10ms(void);
 
 #endif

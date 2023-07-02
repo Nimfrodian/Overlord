@@ -1,10 +1,12 @@
-#include "GpioControl.h"
+#include "Dio_Cfg.h"
 
-static bool _gpioState[NUM_OF_INPUT_INDX] = {0};            // holds end result
-static bool _gpioOutState[NUM_OF_GPIO_OUTPUTS] = {0};       // holds outputs for GPIO out abstraction
-static uint8_t _gpioCntr[NUM_OF_INPUT_INDX] = {0};          // increments or decrements based on GPIO state.
-static uint8_t _debounceTimer_ms[NUM_OF_INPUT_INDX] = {0};  // holds debounce timer. Decrements by task execution period each call, if not 0
-const uint8_t _sortedGpioIndxs[NUM_OF_INPUT_INDX] =         // sorted array indexes. Looping _gpioState using this array as index will result in proper reading from GPIO
+static bool _gpioState[NUM_OF_INPUT_INDX] = {0};                // holds end result
+static uint16_t _gpioOutState[NUM_OF_GPIO_OUTPUTS] = {0};       // holds outputs for GPIO out abstraction
+static ledc_timer_config_t _ledcTimer[NUM_OF_GPIO_OUTPUTS];     // used for PWM on digital outputs
+static ledc_channel_config_t _ledcChnl[NUM_OF_GPIO_OUTPUTS];    // used for PWM on digital outputs
+static uint8_t _gpioCntr[NUM_OF_INPUT_INDX] = {0};              // increments or decrements based on GPIO state.
+static uint8_t _debounceTimer_ms[NUM_OF_INPUT_INDX] = {0};      // holds debounce timer. Decrements by task execution period each call, if not 0
+static const uint8_t _sortedGpioIndxs[NUM_OF_INPUT_INDX] =             // sorted array indexes. Looping _gpioState using this array as index will result in proper reading from GPIO
 {
     INPUT_INDX_00,
     INPUT_INDX_01,
@@ -40,7 +42,8 @@ const uint8_t _sortedGpioIndxs[NUM_OF_INPUT_INDX] =         // sorted array inde
     INPUT_INDX_31,
 };
 
-void CtrlGpio_init(void)
+
+void BSW_Dio_init(void)
 {
     // set all gpio input pins as INPUT
     for (uint8_t gpioInIndx = 0; gpioInIndx < NUM_OF_GPIO_INPUTS; gpioInIndx++)
@@ -59,7 +62,24 @@ void CtrlGpio_init(void)
     for (uint8_t gpioOutIndx = 0; gpioOutIndx < NUM_OF_GPIO_OUTPUTS; gpioOutIndx++)
     {
         gpio_reset_pin(GPIO_OUT[gpioOutIndx]);
-        gpio_set_direction(GPIO_OUT[gpioOutIndx], GPIO_MODE_OUTPUT);
+        // set timer configuration for PWM
+        _ledcTimer[gpioOutIndx].speed_mode = LEDC_MODE;
+        _ledcTimer[gpioOutIndx].timer_num = LEDC_TIMER;
+        _ledcTimer[gpioOutIndx].duty_resolution = LEDC_DUTY_RES;
+        _ledcTimer[gpioOutIndx].freq_hz = LEDC_FREQUENCY;
+        _ledcTimer[gpioOutIndx].clk_cfg = LEDC_AUTO_CLK;
+        ledc_timer_config(&_ledcTimer[gpioOutIndx]);
+
+        // set channel configuration for PWM
+        _ledcChnl[gpioOutIndx].speed_mode = LEDC_MODE;
+        _ledcChnl[gpioOutIndx].channel = (ledc_channel_t) gpioOutIndx;  // out index can be used as led channel if it doesn't surpass 0x07
+        _ledcChnl[gpioOutIndx].timer_sel = LEDC_TIMER;
+        _ledcChnl[gpioOutIndx].intr_type = LEDC_INTR_DISABLE;
+        _ledcChnl[gpioOutIndx].gpio_num = GPIO_OUT[gpioOutIndx];
+        _ledcChnl[gpioOutIndx].duty = 0;
+        _ledcChnl[gpioOutIndx].hpoint = 0;
+        ledc_channel_config(&_ledcChnl[gpioOutIndx]);
+
     }
 
     // reset all debug output pins functions so they can be set as OUTPUT and set them as OUTPUT
@@ -71,21 +91,9 @@ void CtrlGpio_init(void)
 
     // create reading task
     xTaskCreatePinnedToCore(
-    CtrlGpio_read,    // Function that should be called
-    "CtrlGpio_read",   // Name of the task (for debugging)
+    BSW_Dio_read,    // Function that should be called
+    "BSW_Dio_read",   // Name of the task (for debugging)
     8192,            // Stack size (bytes)
-    NULL,            // Parameter to pass
-    1,               // Task priority
-    NULL,            // Task handle
-    0                // run on core 0
-
-    );
-
-    // create writing task
-    xTaskCreatePinnedToCore(
-    CtrlGpio_write,     // Function that should be called
-    "CtrlGpio_write",   // Name of the task (for debugging)
-    1024,            // Stack size (bytes)
     NULL,            // Parameter to pass
     1,               // Task priority
     NULL,            // Task handle
@@ -99,41 +107,41 @@ void CtrlGpio_init(void)
  * @param gpioSt the current state of the input variable as read from GPIO
  * @return (void)
  */
-static void checkInputForChange(CtrlGpio_inputIndxType inputIndx, bool gpioSt)
+static void checkInputForChange(BSW_Dio_inputIndxType InputIndx, bool GpioSt)
 {
     // proceed if this input is not on debounce timer
-    if (0 == _debounceTimer_ms[inputIndx])
+    if (0 == _debounceTimer_ms[InputIndx])
     {
         // delete the appropriate counter. 0x0F bits are "1" counter, 0xF0 bits are "0" counter
-        _gpioCntr[inputIndx] &= (0x0F << (4 * !gpioSt));
+        _gpioCntr[InputIndx] &= (0x0F << (4 * !GpioSt));
 
         // if gpio state is different than saved
-        if (gpioSt != _gpioState[inputIndx])
+        if (GpioSt != _gpioState[InputIndx])
         {
             // if previous state is different and not enough samples are yet taken then increment the appropriate counter
-            if (NUM_OF_SAMPLES_FOR_STATE_CHANGE > (0x0F & (_gpioCntr[inputIndx] >> (4 * !gpioSt))))
+            if (NUM_OF_SAMPLES_FOR_STATE_CHANGE > (0x0F & (_gpioCntr[InputIndx] >> (4 * !GpioSt))))
             {
-                _gpioCntr[inputIndx] += 0x01 << (4 * !gpioSt);
+                _gpioCntr[InputIndx] += 0x01 << (4 * !GpioSt);
             }
 
             // save the new state as enough samples were taken and add the debounce time
-            if (NUM_OF_SAMPLES_FOR_STATE_CHANGE == (0x0F & (_gpioCntr[inputIndx] >> (4 * !gpioSt))))
+            if (NUM_OF_SAMPLES_FOR_STATE_CHANGE == (0x0F & (_gpioCntr[InputIndx] >> (4 * !GpioSt))))
             {
                 // save the new state
-                _gpioState[inputIndx] = gpioSt;
+                _gpioState[InputIndx] = GpioSt;
 
                 // set the debounce timer
-                _debounceTimer_ms[inputIndx] = DEBOUNCE_TIME_MS;
+                _debounceTimer_ms[InputIndx] = DEBOUNCE_TIME_MS;
             }
         }
     }
     else // debounce time is active and decrement the timer by task delay
     {
-        _debounceTimer_ms[inputIndx] -= CTLR_GPIO_TASK_DELAY_TIME_MS;
+        _debounceTimer_ms[InputIndx] -= CTLR_GPIO_TASK_DELAY_TIME_MS;
     }
 }
 
-void CtrlGpio_read(void* param)
+void BSW_Dio_read(void* param)
 {
     while (1)
     {
@@ -155,7 +163,7 @@ void CtrlGpio_read(void* param)
             const uint8_t numOfMuxUnits = NUM_OF_GPIO_INPUTS; // number of multiplexer units
             for (uint8_t gpioInIndx = 0; gpioInIndx < numOfMuxUnits; gpioInIndx++)
             {
-                checkInputForChange((CtrlGpio_inputIndxType) ((selIndx * numOfMuxUnits) + gpioInIndx), currGpioSt[gpioInIndx]);
+                checkInputForChange((BSW_Dio_inputIndxType) ((selIndx * numOfMuxUnits) + gpioInIndx), currGpioSt[gpioInIndx]);
             }
         }
 
@@ -195,68 +203,70 @@ void CtrlGpio_read(void* param)
     vTaskDelete( NULL );
 }
 
-
-void CtrlGpio_write(void* param)
+bool BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx)
 {
-    while (1)
+    bool gpioSt = 0;
+    if (NUM_OF_INPUT_INDX > GpioIndx)
     {
-        // temp
-        static uint8_t temp = 0;
-        temp++;
-        for (uint8_t gpioOutIndx = 0; gpioOutIndx < NUM_OF_GPIO_OUTPUTS; gpioOutIndx++)
-        {
-            _gpioOutState[gpioOutIndx] = 0 < (temp & (0x01 << gpioOutIndx));
-        }
-
-        // end temp
-
-        // set new GPIO values
-        for (uint8_t gpioOutIndx = 0; gpioOutIndx < NUM_OF_GPIO_OUTPUTS; gpioOutIndx++)
-        {
-            gpio_set_level(GPIO_OUT[gpioOutIndx], _gpioOutState[gpioOutIndx]);
-        }
-
-        vTaskDelay(pdMS_TO_TICKS(CTLR_GPIO_TASK_DELAY_TIME_MS));
+        gpioSt = _gpioState[_sortedGpioIndxs[GpioIndx]];
     }
-    vTaskDelete( NULL );
+    else
+    {
+        // TODO: REPORT_ERROR
+    }
+    return gpioSt;
 }
 
 /**
- * @brief Function returns the state of the GPIO pin if GpioIndx is in the correct range
- * @param GpioIndx GPIO index for which to get value
- * @return GPIO state
+ * @brief Function writes new state on output GPIO
+ * @param GpioIndx Gpio index for which the new state should be set
+ * @param NewSts New status to set. 0 - 1023
+ * @return true if operation successful, false if not
  */
-bool GpioCtrl_get_gpioSts(uint8_t GpioIndx)
+bool BSW_Dio_write_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx, uint16_t NewSt)
 {
-    uint8_t indx = 0;
-
-    // check if index is valid
-    if (GpioIndx < NUM_OF_INPUT_INDX)
-    {
-        indx = GpioIndx;
-    }
-
-    // return GPIO state based on HW indexing
-    return _gpioState[_sortedGpioIndxs[indx]];
-}
-
-/**
- * @brief Function sets the GPIO debug pin to desired state for debugging purposes
- * @param GpioSts gpio status to be set
- * @param GpioDbgIndx index of the GPIO debug index
- * @return bool success. true if GPIO pin was successfuly set, false if not
- */
-bool GpioCtrl_set_gpioDbgSts(bool GpioSts, uint8_t GpioDbgIndx)
-{
-    // create return variable
     bool success = false;
 
-    // check if input parameters are OK and set GPIO pin if they are
-    if (GPIO_OUT_DEBUG_NUM_OF_INDX > GpioDbgIndx)
+    if ((NUM_OF_GPIO_OUTPUTS > GpioIndx) && (NewSt < 1024))
     {
-        gpio_set_level((gpio_num_t) GpioDbgIndx, GpioSts);
-        success = true;
+        esp_err_t err = ledc_set_duty(LEDC_MODE, _ledcChnl[GpioIndx].channel, NewSt);
+        err |= ledc_update_duty(LEDC_MODE, _ledcChnl[GpioIndx].channel);
+
+        if (ESP_OK == err)
+        {
+            _gpioOutState[GpioIndx] = NewSt;
+            success = true;
+        }
+        else
+        {
+            // TODO: REPORT_ERROR
+        }
+    }
+    else
+    {
+        // TODO: REPORT_ERROR
     }
 
     return success;
+}
+
+/**
+ * @brief Function reads current state of output GPIO
+ * @param GpioIndx Gpio index for which to read state
+ * @return GPIO state
+ */
+bool BSW_Dio_read_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx)
+{
+    bool gpioSt = 0;
+
+    if (NUM_OF_GPIO_OUTPUTS > GpioIndx)
+    {
+        gpioSt = _gpioOutState[GpioIndx];
+    }
+    else
+    {
+        // TODO: REPORT_ERROR
+    }
+
+    return gpioSt;
 }

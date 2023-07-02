@@ -28,7 +28,7 @@ typedef enum
 } relayCmdType;
 
 void RelayControl_init(void);
-void Rte_RelayControl_run_10ms(void);
+void Rte_RelayControl_runnable_10ms(void);
 
 void RelayControl_parseCanMessage(uint8_t* CanData, uint32_t CanId);
 void RelayControl_composeCanMessage(uint8_t* MsgData, uint32_t* CanId);

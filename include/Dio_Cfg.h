@@ -5,10 +5,17 @@
 #include "freertos/task.h"
 #include "freertos/timers.h"
 #include "driver/gpio.h"
+#include "driver/ledc.h"
 
 static const uint8_t CTLR_GPIO_TASK_DELAY_TIME_MS = 1;  // task delay time
 static const uint8_t DEBOUNCE_TIME_MS = CTLR_GPIO_TASK_DELAY_TIME_MS * 10;  // debounce time in milliseconds
 static const uint8_t NUM_OF_SAMPLES_FOR_STATE_CHANGE = 0x1;   // number of consecutive samples that must be of the same value for a state change to occur. Must be lower than 0xF
+
+#define LEDC_TIMER              LEDC_TIMER_0
+#define LEDC_MODE               LEDC_LOW_SPEED_MODE
+#define LEDC_DUTY_RES           LEDC_TIMER_10_BIT // Set duty resolution to 10 bits
+#define LEDC_DUTY               (512u)  // Set duty to 50%. ((2 ** 10) - 1) * 50% = 512
+#define LEDC_FREQUENCY          (5000u) // Frequency in Hertz. Set frequency at 5 kHz
 
 typedef enum
 {
@@ -21,7 +28,7 @@ typedef enum
     GPIO_IN_INDX_6,
     GPIO_IN_INDX_7,
     NUM_OF_GPIO_INPUTS
-} ctrlGpio_gpioInIndxType;
+} BSW_Dio_gpioInIndxType;
 
 const gpio_num_t GPIO_IN[NUM_OF_GPIO_INPUTS] =
 {
@@ -43,8 +50,8 @@ typedef enum
     GPIO_OUT_INDX_3,
     GPIO_OUT_INDX_4,
     GPIO_OUT_INDX_5,
-    NUM_OF_GPIO_OUTPUTS
-} ctrlGpio_gpioOutIndxType;
+    NUM_OF_GPIO_OUTPUTS // NOTE: do to exceed 8 without code modification
+} BSW_Dio_gpioOutIndxType;
 
 const gpio_num_t GPIO_OUT[NUM_OF_GPIO_OUTPUTS] =
 {
@@ -61,7 +68,7 @@ typedef enum
     GPIO_OUT_DEBUG_INDX_0 = 0,
     GPIO_OUT_DEBUG_INDX_1,
     GPIO_OUT_DEBUG_NUM_OF_INDX,
-} ctrlGpio_gpioOutDbgIndxType;
+} BSW_Dio_gpioOutDbgIndxType;
 
 const gpio_num_t GPIO_OUT_DEBUG[GPIO_OUT_DEBUG_NUM_OF_INDX] =
 {
@@ -74,7 +81,7 @@ typedef enum
     GPIO_IN_SEL_INDX_0,
     GPIO_IN_SEL_INDX_1,
     NUM_OF_GPIO_IN_SEL
-} ctrlGpio_gpioInSelIndxType;
+} BSW_Dio_gpioInSelIndxType;
 
 const gpio_num_t GPIO_IN_SEL[NUM_OF_GPIO_IN_SEL] =
 {
@@ -121,14 +128,13 @@ typedef enum
     INPUT_INDX_12,          ///< 30
     INPUT_INDX_10,          ///< 31
     NUM_OF_INPUT_INDX
-} CtrlGpio_inputIndxType;
+} BSW_Dio_inputIndxType;
 
-void CtrlGpio_init(void);
-void CtrlGpio_read(void* param);
-void CtrlGpio_write(void* param);
+void BSW_Dio_init(void);
+void BSW_Dio_read(void* param);
 
-bool GpioCtrl_get_gpioSts(uint8_t gpioIndx);
-bool GpioCtrl_set_gpioDbgSts(bool GpioSts, uint8_t GpioDbgIndx);
-
+bool BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx);
+bool BSW_Dio_write_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx, uint16_t NewSt);
+bool BSW_Dio_read_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx);
 
 #endif
