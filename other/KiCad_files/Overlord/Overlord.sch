@@ -3939,7 +3939,7 @@ Wire Wire Line
 Wire Wire Line
 	6300 8700 7300 8700
 Text Notes 6400 10950 0    50   ~ 0
-TODO: \n- change resistors for Modbus RJ LEDs as they are not bright enough / add transistors for that to not influence Modbus line too much\n- check if UART1 can be rerouted so that\nUART0 can still be used for normal UART operation\n- change RJ pins so that Modbus is on twisted pairs
+TODO: \n- change resistors for Modbus RJ LEDs as they are not bright enough / add transistors for that to not influence Modbus line too much\n- check if UART1 can be rerouted so that\nUART0 can still be used for normal UART operation\n- change RJ pins so that Modbus is on twisted pairs\n- add capacitors to OUTPUT transistors for better performance
 Wire Wire Line
 	6750 3300 6800 3300
 Wire Wire Line

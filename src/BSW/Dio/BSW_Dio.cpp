@@ -220,7 +220,7 @@ bool BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx)
 /**
  * @brief Function writes new state on output GPIO
  * @param GpioIndx Gpio index for which the new state should be set
- * @param NewSts New status to set. 0 - 1023
+ * @param NewSt New status to set. 0 - 1023
  * @return true if operation successful, false if not
  */
 bool BSW_Dio_write_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx, uint16_t NewSt)
@@ -229,7 +229,12 @@ bool BSW_Dio_write_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx, uint16_t NewSt
 
     if ((NUM_OF_GPIO_OUTPUTS > GpioIndx) && (NewSt < 1024))
     {
-        esp_err_t err = ledc_set_duty(LEDC_MODE, _ledcChnl[GpioIndx].channel, NewSt);
+        uint16_t newSt = NewSt;
+        if (1023 == newSt)
+        {
+            newSt = 1024;   // needs to be 1024 for PWM to be 100% ON
+        }
+        esp_err_t err = ledc_set_duty(LEDC_MODE, _ledcChnl[GpioIndx].channel, newSt);
         err |= ledc_update_duty(LEDC_MODE, _ledcChnl[GpioIndx].channel);
 
         if (ESP_OK == err)

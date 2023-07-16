@@ -88,34 +88,29 @@ void ComModbus_0_transceive(void* param)
             // get message pointer
             ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
 
-            // check if message is ready to be sent
-            if (1 == txMsgPtr->mbRdyForTx)
+            // Prepare for transmit
+            gpio_set_level(DE_RE_PIN_MB0, 1);
+
+            vTaskDelay(pdMS_TO_TICKS(1));
+
+            // write the data to UART line
+            uart_write_bytes(UART_NUM_0, (const char*) txMsgPtr->dataOut, txMsgPtr->dataOutCount);
+
+            vTaskDelay(pdMS_TO_TICKS(1));
+
+            // add 20ms for every 8 bytes of extra data to be sent
+            TickType_t timeoutTime = pdMS_TO_TICKS(100 + 20 * txMsgPtr->dataOutCount / 8);
+            uart_wait_tx_done(UART_NUM_0, timeoutTime);
+            // prepare for receive
+            gpio_set_level(DE_RE_PIN_MB0, 0);
+
+            // erase anything that is stuck in UART 0 RX to prepare for response
+            uart_flush_input(UART_NUM_0);
+
+            // no need for response parse, simply flag as sent
             {
-                // Prepare for transmit
-                gpio_set_level(DE_RE_PIN_MB0, 1);
-
-                vTaskDelay(pdMS_TO_TICKS(1));
-
-                // write the data to UART line
-                uart_write_bytes(UART_NUM_0, (const char*) txMsgPtr->dataOut, txMsgPtr->dataOutCount);
-
-                vTaskDelay(pdMS_TO_TICKS(1));
-
-                // add 20ms for every 8 bytes of extra data to be sent
-                TickType_t timeoutTime = pdMS_TO_TICKS(100 + 20 * txMsgPtr->dataOutCount / 8);
-                uart_wait_tx_done(UART_NUM_0, timeoutTime);
-                // prepare for receive
-                gpio_set_level(DE_RE_PIN_MB0, 0);
-
-                // erase anything that is stuck in UART 0 RX to prepare for response
-                uart_flush_input(UART_NUM_0);
-
-                // no need for response parse, simply flag as sent
-                {
-                    txMsgPtr->mbRdyForTx = 0;
-                    txMsgPtr->mbRdyForParse = 0;
-                }
-                break;
+                txMsgPtr->mbRdyForTx = 0;
+                txMsgPtr->mbRdyForParse = 0;
             }
         }
 
@@ -132,7 +127,6 @@ void ComModbus_0_transceive(void* param)
  * @param MsgIndx Message index for the array of Modbus messages
  * @param ModWriteBuffer Pointer to data which is to be copied
  * @param DataTxSize Size of data to be sent
- * @param DataRxSize Size of data to be received as response
  * @return false if failed (message already prepared and not yet sent), true if successful
  */
 bool ComModbus_0_writeMsg(uint16_t MsgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize)

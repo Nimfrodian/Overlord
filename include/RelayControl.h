@@ -3,8 +3,6 @@
 
 #include "freertos/FreeRTOS.h"  // for basic data types
 
-const uint8_t DEVICE_ID = 0x01;
-
 const uint8_t NUM_OF_RELAYS_PER_WAVESHARE_BOARD = 8;
 
 const uint8_t RELAY_MODULE_MB0_TRANSMIT_MSG_SIZE = 10;
@@ -12,6 +10,9 @@ const uint8_t RELAY_MODULE_MB0_TRANSMIT_MSG_SIZE = 10;
 enum
 {
     RELAY_MODULE_BOARD_INDEX_0 = 0,
+    RELAY_MODULE_BOARD_INDEX_1,
+    RELAY_MODULE_BOARD_INDEX_2,
+    RELAY_MODULE_BOARD_INDEX_3,
     RELAY_MODULE_NUM_OF_RELAY_BOARDS    // max 8 at current implementation
 };
 typedef enum

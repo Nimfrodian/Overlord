@@ -10,7 +10,6 @@ static uint8_t _canReqWaveshareRelayInvert[8];                                  
  */
 void RelayControl_init(void)
 {
-
     // set all current relay statuses to 0
     for (uint8_t modIndx = 0; modIndx < RELAY_MODULE_NUM_OF_RELAY_BOARDS; modIndx++)
     {

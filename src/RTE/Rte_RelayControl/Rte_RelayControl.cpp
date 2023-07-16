@@ -34,7 +34,8 @@ void Rte_RelayControl_runnable_10ms(void)
                 {
                     if ((relIndx < NUM_OF_INPUT_INDX))
                     {
-                        gpioStBitfield = gpioStBitfield | (Rte_Dio_get_gpioSt(relIndx) << relIndx);
+                        uint8_t actRelIndx = relIndx + modIndx * NUM_OF_RELAYS_PER_WAVESHARE_BOARD;
+                        gpioStBitfield = gpioStBitfield | (Rte_Dio_get_gpioSt(actRelIndx) << actRelIndx);
                     }
                 }
 
