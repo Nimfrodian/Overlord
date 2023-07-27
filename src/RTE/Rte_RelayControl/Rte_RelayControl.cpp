@@ -12,6 +12,14 @@ static bool _rlyStChange = 0;   // relay state change flag. CAN message is sent 
 void Rte_RelayControl_init(void)
 {
     RelayControl_init();
+
+    // clear all flags for messages that will be used
+    for (uint16_t mbMsgIndx = MODBUS_0_MSG_SET_ALL_RELAYS_0_7; mbMsgIndx < NUM_OF_MODBUS_0_MSG; mbMsgIndx++)
+    {
+        ComCfg_Modbus0MsgDataType* mbMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
+        mbMsgPtr->mbRdyForTx = 0;
+        mbMsgPtr->mbRdyForParse = 0;
+    }
 }
 
 void Rte_RelayControl_runnable_10ms(void)
@@ -32,7 +40,8 @@ void Rte_RelayControl_runnable_10ms(void)
                 // check all corresponding GPIO statuses for relays
                 for (uint8_t relIndx = 0; relIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; relIndx++)
                 {
-                    if ((relIndx < NUM_OF_INPUT_INDX))
+                    uint8_t actRelIndx = relIndx + modIndx * NUM_OF_RELAYS_PER_WAVESHARE_BOARD;
+                    if ((actRelIndx < NUM_OF_INPUT_INDX))
                     {
                         uint8_t actRelIndx = relIndx + modIndx * NUM_OF_RELAYS_PER_WAVESHARE_BOARD;
                         gpioStBitfield = gpioStBitfield | (Rte_Dio_get_gpioSt(actRelIndx) << actRelIndx);
@@ -46,7 +55,8 @@ void Rte_RelayControl_runnable_10ms(void)
                 // since feedback is not monitored for Waveshare board the message should be sent constantly and as fast as possible
                 {
                     // copy the data to internal Modbus buffer
-                    (void) ComModbus_0_writeMsg((MODBUS_0_MSG_SET_ALL_RELAYS_0_7 + modIndx), mbData, RELAY_MODULE_MB0_TRANSMIT_MSG_SIZE);
+                    uint16_t modMsgIndx = (MODBUS_0_MSG_SET_ALL_RELAYS_0_7 + modIndx);
+                    (void) ComModbus_0_writeMsg(modMsgIndx, mbData, RELAY_MODULE_MB0_TRANSMIT_MSG_SIZE);
                 }
             }
         }

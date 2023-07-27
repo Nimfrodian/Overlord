@@ -46,7 +46,7 @@ bool RelayControl_composeWaveshareModbusMessage(uint8_t ModuleIndx, uint8_t* MbM
 
     // Modbus message structure for relay board
     {
-        MbMsgData[0] = ((char) ModuleIndx) + 0x01;    // ID
+        MbMsgData[0] = ModuleIndx + 0x01;    // ID
         MbMsgData[1] = 0x0F;        // function code
         MbMsgData[2] = 0x00;        // Relay start address
         MbMsgData[3] = 0x00;        // Relay start address

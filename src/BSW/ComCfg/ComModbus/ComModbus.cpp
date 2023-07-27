@@ -12,6 +12,8 @@ static ComModbus_transcieveStType _mb2TrnscieveType = COM_MODBUS_TRANSMITTING;
 void ComModbus_init(void)
 {
     // set DE and RE pins for MAX485 module
+    gpio_reset_pin(DE_RE_PIN_MB0);
+    gpio_reset_pin(DE_RE_PIN_MB2);
     gpio_set_direction(DE_RE_PIN_MB0, GPIO_MODE_OUTPUT);
     gpio_set_direction(DE_RE_PIN_MB2, GPIO_MODE_OUTPUT);
 
@@ -59,11 +61,13 @@ void ComModbus_init(void)
                 .source_clk = UART_SCLK_APB,
         };
         // Configure UART 0 pins
-        uart_set_pin(UART_NUM_0, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+        uart_set_pin(UART_NUM_0, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, DE_RE_PIN_MB0, UART_PIN_NO_CHANGE);
         // Set UART 0 parameters
         uart_param_config(UART_NUM_0, &uart0_config);
         // Install UART 0 driver
-        uart_driver_install(UART_NUM_0, 1024, 1024, 0, NULL, 0);
+        uart_driver_install(UART_NUM_0, 1024, 0, 0, NULL, 0);
+        // Set RS485 half duplex mode
+        uart_set_mode(UART_NUM_0, UART_MODE_RS485_HALF_DUPLEX);
 
         // create transceive task
         xTaskCreatePinnedToCore(
@@ -82,39 +86,39 @@ void ComModbus_0_transceive(void* param)
 {
     while (1)
     {
-        // loop through all of the messages to check if any is ready to be sent
-        for (uint16_t mbMsgIndx = 0; mbMsgIndx < NUM_OF_MODBUS_0_MSG; mbMsgIndx++)
+        static uint16_t mbMsgIndx = 0;
         {
             // get message pointer
             ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
 
-            // Prepare for transmit
-            gpio_set_level(DE_RE_PIN_MB0, 1);
-
-            vTaskDelay(pdMS_TO_TICKS(1));
-
-            // write the data to UART line
-            uart_write_bytes(UART_NUM_0, (const char*) txMsgPtr->dataOut, txMsgPtr->dataOutCount);
-
-            vTaskDelay(pdMS_TO_TICKS(1));
-
-            // add 20ms for every 8 bytes of extra data to be sent
-            TickType_t timeoutTime = pdMS_TO_TICKS(100 + 20 * txMsgPtr->dataOutCount / 8);
-            uart_wait_tx_done(UART_NUM_0, timeoutTime);
-            // prepare for receive
-            gpio_set_level(DE_RE_PIN_MB0, 0);
-
-            // erase anything that is stuck in UART 0 RX to prepare for response
-            uart_flush_input(UART_NUM_0);
-
-            // no need for response parse, simply flag as sent
+            if (1 == txMsgPtr->mbRdyForTx)
             {
-                txMsgPtr->mbRdyForTx = 0;
-                txMsgPtr->mbRdyForParse = 0;
+                // write the data to UART line
+                uart_write_bytes(UART_NUM_0, (const char*) txMsgPtr->dataOut, txMsgPtr->dataOutCount);
+
+                uart_wait_tx_done(UART_NUM_0, pdMS_TO_TICKS(5));
+
+                // erase anything that is stuck in UART 0 RX
+                uart_flush_input(UART_NUM_0);
+
+                // no need for response parse, simply flag as sent
+                {
+                    txMsgPtr->mbRdyForTx = 0;
+                    txMsgPtr->mbRdyForParse = 0;
+                }
             }
         }
 
-        vTaskDelay(pdMS_TO_TICKS(COM_MODBUS_TASK_DELAY_TIME_MS));
+        if (mbMsgIndx <= NUM_OF_MODBUS_0_MSG)
+        {
+            mbMsgIndx++;
+        }
+        else
+        {
+            mbMsgIndx = 0;
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(COM_MODBUS0_TASK_DELAY_TIME_MS));
     }
 
 
@@ -241,7 +245,7 @@ void ComModbus_2_transceive(void* param)
             _mb2TrnscieveType = COM_MODBUS_TRANSMITTING;
         }
 
-        vTaskDelay(pdMS_TO_TICKS(COM_MODBUS_TASK_DELAY_TIME_MS));
+        vTaskDelay(pdMS_TO_TICKS(COM_MODBUS2_TASK_DELAY_TIME_MS));
     }
 
 

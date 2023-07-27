@@ -5,7 +5,8 @@
 #include "driver/uart.h"
 #include "ComCfg.h"
 
-#define COM_MODBUS_TASK_DELAY_TIME_MS  (10u)
+#define COM_MODBUS2_TASK_DELAY_TIME_MS  (10u)
+#define COM_MODBUS0_TASK_DELAY_TIME_MS   (1u)
 
 #define COM_MODBUS_0_BAUDRATE             (256000)
 #define COM_MODBUS_2_BAUDRATE               (9600u)
