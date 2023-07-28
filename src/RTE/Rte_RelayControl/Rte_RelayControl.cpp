@@ -38,13 +38,13 @@ void Rte_RelayControl_runnable_10ms(void)
                 uint32_t gpioStBitfield = 0x00;
 
                 // check all corresponding GPIO statuses for relays
-                for (uint8_t relIndx = 0; relIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; relIndx++)
+                for (uint8_t currRelIndx = 0; currRelIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; currRelIndx++)
                 {
-                    uint8_t actRelIndx = relIndx + modIndx * NUM_OF_RELAYS_PER_WAVESHARE_BOARD;
+                    uint8_t actRelIndx = currRelIndx + modIndx * NUM_OF_RELAYS_PER_WAVESHARE_BOARD; // actual relay index from 0 - 31 (at 4 boards of 8 relays)
                     if ((actRelIndx < NUM_OF_INPUT_INDX))
                     {
-                        uint8_t actRelIndx = relIndx + modIndx * NUM_OF_RELAYS_PER_WAVESHARE_BOARD;
-                        gpioStBitfield = gpioStBitfield | (Rte_Dio_get_gpioSt(actRelIndx) << actRelIndx);
+                        uint8_t actRelIndx = currRelIndx + modIndx * NUM_OF_RELAYS_PER_WAVESHARE_BOARD;
+                        gpioStBitfield = gpioStBitfield | (Rte_Dio_get_gpioSt(actRelIndx) << currRelIndx);
                     }
                 }
 
