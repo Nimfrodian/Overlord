@@ -80,6 +80,22 @@ void Rte_RelayControl_runnable_10ms(void)
                 ComCfg_clear_flagCanMsgForParse((ComCfg_canMsgIndxType) canMsgIndx);
             }
         }
+        for (uint32_t canMsgIndx = CAN_MSG_RX_RELAY_DISABLE_WS_0; canMsgIndx <= CAN_MSG_RX_RELAY_DISABLE_WS_0; canMsgIndx++)
+        {
+            // get message pointer
+            ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(canMsgIndx);
+
+            if (true == msgPtr->canRdyForParse)
+            {
+                // parse CAN message
+                uint8_t* canData = &msgPtr->canMsg.data.u8[0];
+                uint32_t canMsgId = msgPtr->canMsg.MsgID;
+                RelayControl_parseCanMessage(canData, canMsgId);
+
+                // CAN message was parsed, clear the parsing flag
+                ComCfg_clear_flagCanMsgForParse((ComCfg_canMsgIndxType) canMsgIndx);
+            }
+        }
     }
 
     // send CAN message on relay states

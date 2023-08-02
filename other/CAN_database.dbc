@@ -1,7 +1,7 @@
 VERSION ""
 
 
-NS_ : 
+NS_ :
 	NS_DESC_
 	CM_
 	BA_DEF_
@@ -102,7 +102,73 @@ BO_ 256 RelayInvrtReq: 8 Vector__XXX
  SG_ Relay_invert_request_01 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ Relay_invert_request_00 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
 
-BO_ 272 Relay_feedback: 8 Vector__XXX
+BO_ 261 RelayDisbleReq: 8 Vector__XXX
+ SG_ Relay_disable_request_63 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_62 : 62|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_61 : 61|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_60 : 60|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_59 : 59|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_58 : 58|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_57 : 57|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_56 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_55 : 55|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_54 : 54|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_53 : 53|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_52 : 52|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_51 : 51|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_50 : 50|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_49 : 49|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_48 : 48|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_47 : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_46 : 46|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_45 : 45|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_44 : 44|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_43 : 43|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_42 : 42|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_41 : 41|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_40 : 40|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_39 : 39|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_38 : 38|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_37 : 37|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_36 : 36|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_35 : 35|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_34 : 34|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_33 : 33|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_32 : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_31 : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_30 : 30|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_29 : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_28 : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_27 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_26 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_25 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_24 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_23 : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_22 : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_21 : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_20 : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_19 : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_18 : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_17 : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_16 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_15 : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_14 : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_13 : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_12 : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_11 : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_10 : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_09 : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_08 : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_07 : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_06 : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_05 : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_04 : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_03 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_02 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_01 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Relay_disable_request_00 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 272 RelayFeedback: 8 Vector__XXX
  SG_ RelaySts_63 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ RelaySts_62 : 62|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ RelaySts_61 : 61|1@1+ (1,0) [0|1] "" Vector__XXX

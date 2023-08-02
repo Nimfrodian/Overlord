@@ -32,6 +32,7 @@ typedef enum
 {
     // relay control section
     CAN_MSG_RX_RELAY_CONTROL_WS_0,          // invert request for 64 relays of Waveshare board      0x100
+    CAN_MSG_RX_RELAY_DISABLE_WS_0,          // disable DIO control for 64 relays of Waveshare board 0x105
     CAN_MSG_TX_RELAY_STATUS,                // status of all 64 relays (1 - 64)                     0x110
 
     // DI section
