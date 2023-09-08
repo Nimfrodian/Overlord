@@ -6,8 +6,10 @@
 #include "ComModbus.h"
 
 const uint16_t RELAY_STS_UPDATE_INTERVAL_MS = 1000;
+const uint16_t RELAY_MB_MSG_UPDATE_INTERVAL_MS = 2500;
 
 static bool _rlyStChange = 0;   // relay state change flag. CAN message is sent if any relays changed state
+static uint32_t _rlyStChangeTi = 0;
 
 void Rte_RelayControl_init(void)
 {
@@ -18,7 +20,7 @@ void Rte_RelayControl_init(void)
     {
         ComCfg_Modbus0MsgDataType* mbMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
         mbMsgPtr->mbRdyForTx = 0;
-        mbMsgPtr->mbRdyForParse = 0;
+        mbMsgPtr->mbRdyForParse = 1;
     }
 }
 
@@ -31,9 +33,12 @@ void Rte_RelayControl_runnable_10ms(void)
             // get Modbus message pointer
             ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) (MODBUS_0_MSG_SET_ALL_RELAYS_0_7 + modIndx));
 
-            // proceed to sending Modbus message if it is not already being sent or parsed
-            if ((0 == txMsgPtr->mbRdyForTx) && (0 == txMsgPtr->mbRdyForParse))
+            static uint8_t rlyToUpdate = 0;
+
+            // proceed to sending Modbus message if it is not already being sent
+            if ((0 == txMsgPtr->mbRdyForTx) && (1 == txMsgPtr->mbRdyForParse))
             {
+
                 // create bitfield variable for relay states
                 uint32_t gpioStBitfield = 0x00;
 
@@ -50,16 +55,32 @@ void Rte_RelayControl_runnable_10ms(void)
 
                 // create temporary variable for data and compose the Modbus message
                 uint8_t mbData[RELAY_MODULE_MB0_TRANSMIT_MSG_SIZE] = {0};
-                _rlyStChange |= RelayControl_composeWaveshareModbusMessage(modIndx, mbData, gpioStBitfield);
+                bool rlyStChangeLocal = RelayControl_composeWaveshareModbusMessage(modIndx, mbData, gpioStBitfield);
+                _rlyStChange |= rlyStChangeLocal;
+
+                bool rlyTiUpdate = (RELAY_MB_MSG_UPDATE_INTERVAL_MS <= _rlyStChangeTi) && (modIndx == rlyToUpdate);
+                bool rlyUpdate = rlyStChangeLocal || rlyTiUpdate;
 
                 // since feedback is not monitored for Waveshare board the message should be sent constantly and as fast as possible
+                if (rlyUpdate)
                 {
+                    _rlyStChangeTi = 0;
+                    txMsgPtr->mbRdyForParse = 0;
                     // copy the data to internal Modbus buffer
                     uint16_t modMsgIndx = (MODBUS_0_MSG_SET_ALL_RELAYS_0_7 + modIndx);
                     (void) ComModbus_0_writeMsg(modMsgIndx, mbData, RELAY_MODULE_MB0_TRANSMIT_MSG_SIZE);
+
+                    // reset timer
+                    rlyToUpdate++;
+                    if (rlyToUpdate >= RELAY_MODULE_NUM_OF_RELAY_BOARDS)
+                    {
+                        rlyToUpdate = 0;
+                    }
+                    _rlyStChangeTi = 0;
                 }
             }
         }
+        _rlyStChangeTi += 10;
     }
 
     // parse CAN messages

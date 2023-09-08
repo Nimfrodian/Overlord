@@ -168,6 +168,72 @@ BO_ 261 RelayDisbleReq: 8 Vector__XXX
  SG_ Relay_disable_request_01 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ Relay_disable_request_00 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
 
+BO_ 336 GpioSts: 8 Vector__XXX
+ SG_ Gpio_State_63 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_62 : 62|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_61 : 61|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_60 : 60|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_59 : 59|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_58 : 58|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_57 : 57|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_56 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_55 : 55|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_54 : 54|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_53 : 53|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_52 : 52|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_51 : 51|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_50 : 50|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_49 : 49|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_48 : 48|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_47 : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_46 : 46|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_45 : 45|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_44 : 44|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_43 : 43|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_42 : 42|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_41 : 41|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_40 : 40|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_39 : 39|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_38 : 38|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_37 : 37|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_36 : 36|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_35 : 35|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_34 : 34|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_33 : 33|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_32 : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_31 : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_30 : 30|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_29 : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_28 : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_27 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_26 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_25 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_24 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_23 : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_22 : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_21 : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_20 : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_19 : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_18 : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_17 : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_16 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_15 : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_14 : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_13 : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_12 : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_11 : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_10 : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_09 : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_08 : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_07 : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_06 : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_05 : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_04 : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_03 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_02 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_01 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Gpio_State_00 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
 BO_ 272 RelayFeedback: 8 Vector__XXX
  SG_ RelaySts_63 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ RelaySts_62 : 62|1@1+ (1,0) [0|1] "" Vector__XXX

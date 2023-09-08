@@ -31,43 +31,50 @@ bool RelayControl_composeWaveshareModbusMessage(uint8_t ModuleIndx, uint8_t* MbM
     // create return variable
     bool stateChange = false;
 
-    uint8_t invrtSt = 0x00; // invert state
-    for (uint8_t relIndx = 0; relIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; relIndx++)
+    if (ModuleIndx >= RELAY_MODULE_NUM_OF_RELAY_BOARDS)
     {
-        invrtSt |= (_canReqWaveshareRelayInvert[ModuleIndx] & (0x01 << relIndx));  // invert status as received from CAN
+
     }
-    uint8_t dsblSt = 0x00;  // disabled state
-    for (uint8_t relIndx = 0; relIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; relIndx++)
+    else
     {
-        dsblSt |= (_canReqWaveshareRelayDisable[ModuleIndx] & (0x01 << relIndx));  // disable status as received from CAN
-    }
+        uint8_t invrtSt = 0x00; // invert state
+        for (uint8_t relIndx = 0; relIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; relIndx++)
+        {
+            invrtSt |= (_canReqWaveshareRelayInvert[ModuleIndx] & (0x01 << relIndx));  // invert status as received from CAN
+        }
+        uint8_t dsblSt = 0x00;  // disabled state
+        for (uint8_t relIndx = 0; relIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; relIndx++)
+        {
+            dsblSt |= (_canReqWaveshareRelayDisable[ModuleIndx] & (0x01 << relIndx));  // disable status as received from CAN
+        }
 
-    _prevGpioSt[ModuleIndx] = _prevGpioSt[ModuleIndx] & dsblSt;   // keep disabled GPIO information
-    _prevGpioSt[ModuleIndx] |= GpioSt & ~dsblSt;                  // update enabled GPIO information
+        _prevGpioSt[ModuleIndx] = _prevGpioSt[ModuleIndx] & dsblSt;   // keep disabled GPIO information
+        _prevGpioSt[ModuleIndx] |= GpioSt & ~dsblSt;                  // update enabled GPIO information
 
-    // calculate requested relay state
-    uint8_t newRlySt = (_prevGpioSt[ModuleIndx] ^ invrtSt);
+        // calculate requested relay state
+        uint8_t newRlySt = (_prevGpioSt[ModuleIndx] ^ invrtSt);
 
-    // if new relay state is different then what is on board then change it
-    if (_currRlyStsMb0[ModuleIndx] != newRlySt)
-    {
-        stateChange = true;
-    }
+        // if new relay state is different then what is on board then change it
+        if (_currRlyStsMb0[ModuleIndx] != newRlySt)
+        {
+            stateChange = true;
+        }
 
-    // Modbus message structure for relay board
-    {
-        MbMsgData[0] = ModuleIndx + 0x01;    // ID
-        MbMsgData[1] = 0x0F;        // function code
-        MbMsgData[2] = 0x00;        // Relay start address
-        MbMsgData[3] = 0x00;        // Relay start address
-        MbMsgData[4] = 0x00;        // Number of relays
-        MbMsgData[5] = 0x08;        // Number of relays
-        MbMsgData[6] = 0x01;        // following bytes
-        MbMsgData[7] = newRlySt;    // bitmap of new relay statuses
-        MbMsgData[8] = 0x00;        // placeholder for CRC
-        MbMsgData[9] = 0x00;        // placeholder for CRC
+        // Modbus message structure for relay board
+        {
+            MbMsgData[0] = ModuleIndx + 0x01;    // ID
+            MbMsgData[1] = 0x0F;        // function code
+            MbMsgData[2] = 0x00;        // Relay start address
+            MbMsgData[3] = 0x00;        // Relay start address
+            MbMsgData[4] = 0x00;        // Number of relays
+            MbMsgData[5] = 0x08;        // Number of relays
+            MbMsgData[6] = 0x01;        // following bytes
+            MbMsgData[7] = newRlySt;    // bitmap of new relay statuses
+            MbMsgData[8] = 0x00;        // placeholder for CRC
+            MbMsgData[9] = 0x00;        // placeholder for CRC
 
-        _currRlyStsMb0[ModuleIndx] = newRlySt;
+            _currRlyStsMb0[ModuleIndx] = newRlySt;
+        }
     }
 
     return stateChange;

@@ -104,7 +104,7 @@ void ComModbus_0_transceive(void* param)
                 // no need for response parse, simply flag as sent
                 {
                     txMsgPtr->mbRdyForTx = 0;
-                    txMsgPtr->mbRdyForParse = 0;
+                    txMsgPtr->mbRdyForParse = 1;
                 }
             }
         }
