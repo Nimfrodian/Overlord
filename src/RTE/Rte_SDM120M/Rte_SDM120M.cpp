@@ -4,31 +4,69 @@
 #include "freertos/timers.h"
 #include "ComCan.h"
 #include "ComModbus.h"
+#include <limits>
 
 static uint32_t _sdm120m_msgSendIntrvlCntr_ms[SDM120M_NUM_OF_MODULES][SDM120M_NUM_OF_READ] = {0};  // interval counter. Different Modbus message should be sent with different intervals
 static const uint32_t _sdm120m_msgSendIntrvSetpoint_ms[SDM120M_NUM_OF_READ] =  // interaval setpoint. Each message is only sent once the counter for it reaches this predefined value. NOTE: since CAN message is sent once the pair of values is available each pair should have the same counter value
 {
     [SDM120M_READ_VOLTAGE_V] = 1000,
     [SDM120M_READ_CURRENT_A] = 1000,
+
     [SDM120M_ACTIVE_POWER_W] = 1000,
     [SDM120M_APPARENT_POWER_VA] = 1000,
-    [SDM120M_REACTIVE_POWER_VAr] = 5000,
-    [SDM120M_POWER_FACTOR] = 5000,
-    [SDM120M_FREQUENCY] = 5000,
-    [SDM120M_IMPORT_ACTIVE_ENERGY_kWh] = 5000,
-    [SDM120M_EXPORT_ACTIVE_ENERGY_kWh] = 60000,
-    [SDM120M_IMPORT_REACTIVE_ENERGY_kVArh] = 60000,
-    [SDM120M_EXPORT_REACTIVE_ENERGY_kVArh] = 60000,
-    [SDM120M_TOTAL_SYSTEM_POWER_DEMAND_W] = 60000,
-    [SDM120M_MAXIMUM_TOTAL_SYSTEM_POWER_DEMAND_W] = 5000,
-    [SDM120M_IMPORT_SYSTEM_POWER_DEMAND_W] = 5000,
-    [SDM120M_MAXIMUM_IMPORT_SYSTEM_POWER_DEMAND_W] = 60000,
-    [SDM120M_EXPORT_SYSTEM_POWER_DEMAND_W] = 60000,
-    [SDM120M_MAXIMUM_EXPORT_SYSTEM_POWER_DEMAND] = 60000,
-    [SDM120M_CURRENT_DEMAND_A] = 60000,
-    [SDM120M_MAXIMUM_CURRENT_DEMAND_A] = 5000,
-    [SDM120M_TOTAL_ACTIVE_ENERGY_kWh] = 5000,
-    [SDM120M_TOTAL_REACTIVE_ENERGY_kVArh] = 60000,
+
+    [SDM120M_REACTIVE_POWER_VAr] = 50000,
+    [SDM120M_POWER_FACTOR] = 50000,
+
+    [SDM120M_FREQUENCY] = 50000,
+    [SDM120M_IMPORT_ACTIVE_ENERGY_kWh] = 50000,
+
+    [SDM120M_EXPORT_ACTIVE_ENERGY_kWh] = 600000,
+    [SDM120M_IMPORT_REACTIVE_ENERGY_kVArh] = 600000,
+
+    [SDM120M_EXPORT_REACTIVE_ENERGY_kVArh] = 600000,
+    [SDM120M_TOTAL_SYSTEM_POWER_DEMAND_W] = 600000,
+
+    [SDM120M_MAXIMUM_TOTAL_SYSTEM_POWER_DEMAND_W] = 50000,
+    [SDM120M_IMPORT_SYSTEM_POWER_DEMAND_W] = 50000,
+
+    [SDM120M_MAXIMUM_IMPORT_SYSTEM_POWER_DEMAND_W] = 600000,
+    [SDM120M_EXPORT_SYSTEM_POWER_DEMAND_W] = 600000,
+
+    [SDM120M_MAXIMUM_EXPORT_SYSTEM_POWER_DEMAND] = 600000,
+    [SDM120M_CURRENT_DEMAND_A] = 600000,
+
+    [SDM120M_MAXIMUM_CURRENT_DEMAND_A] = 50000,
+    [SDM120M_TOTAL_ACTIVE_ENERGY_kWh] = 1000,
+
+    [SDM120M_TOTAL_REACTIVE_ENERGY_kVArh] = 600000,
+};
+
+#define SDM120M_IGNORE_ABS_DIFF (0.0f)
+#define SDM120M_MAX_FLOAT_VAL (std::numeric_limits<float>::max())
+static const float _sdm120m_minAbsDiffToSend[SDM120M_NUM_OF_READ]
+{
+    [SDM120M_READ_VOLTAGE_V] = 3.0f,
+    [SDM120M_READ_CURRENT_A] = 0.05f,
+    [SDM120M_ACTIVE_POWER_W] = 2.0f,
+    [SDM120M_APPARENT_POWER_VA] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_REACTIVE_POWER_VAr] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_POWER_FACTOR] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_FREQUENCY] = 0.1f,
+    [SDM120M_IMPORT_ACTIVE_ENERGY_kWh] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_EXPORT_ACTIVE_ENERGY_kWh] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_IMPORT_REACTIVE_ENERGY_kVArh] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_EXPORT_REACTIVE_ENERGY_kVArh] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_TOTAL_SYSTEM_POWER_DEMAND_W] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_MAXIMUM_TOTAL_SYSTEM_POWER_DEMAND_W] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_IMPORT_SYSTEM_POWER_DEMAND_W] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_MAXIMUM_IMPORT_SYSTEM_POWER_DEMAND_W] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_EXPORT_SYSTEM_POWER_DEMAND_W] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_MAXIMUM_EXPORT_SYSTEM_POWER_DEMAND] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_CURRENT_DEMAND_A] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_MAXIMUM_CURRENT_DEMAND_A] = SDM120M_MAX_FLOAT_VAL,
+    [SDM120M_TOTAL_ACTIVE_ENERGY_kWh] = 0.1,
+    [SDM120M_TOTAL_REACTIVE_ENERGY_kVArh] = SDM120M_MAX_FLOAT_VAL,
 };
 
 void Rte_Sdm120m_init(void)
@@ -118,6 +156,7 @@ void Rte_Sdm120m_runnable_10ms(void)
 
     // send CAN data
     {
+
         // prepare all module messages to be sent
         for (uint8_t modIndx = 0; modIndx < SDM120M_NUM_OF_MODULES; modIndx++)
         {
@@ -160,20 +199,37 @@ void Rte_Sdm120m_runnable_10ms(void)
                 // if both values for the message are ready to be sent then prepare CAN message
                 if (valRdy1 && valRdy2)
                 {
-                    // determine CAN message pointer index
-                    uint16_t canMsgGlblIndx = CAN_MSG_TX_SDM120M_01_1 + canMsgIndx + (modIndx * SDM120M_CAN_TX_MSG_TYPE_NUM);   // global CAN message index as defined in ComCfg.h
+                    static float prevSentVal[SDM120M_NUM_OF_MODULES][SDM120M_NUM_OF_READ] = {0};
 
-                    // get CAN message pointer
-                    ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(canMsgGlblIndx);
+                    // only send the message if either of the two values changed enough
+                    float val1AbsChange = abs(*((float*) ((void*) &val1)) - prevSentVal[modIndx][msg1Indx]);
+                    float val2AbsChange = abs(*((float*) ((void*) &val2)) - prevSentVal[modIndx][msg2Indx]);
+                    bool val1ChangeGreatEnough = (val1AbsChange >= _sdm120m_minAbsDiffToSend[msg1Indx]);
+                    bool val2ChangeGreatEnough = (val2AbsChange >= _sdm120m_minAbsDiffToSend[msg2Indx]);
 
-                    // compose CAN data
-                    Sdm120m_can_compose(&msgPtr->canMsg.data.u8[0], &msgPtr->canMsg.MsgID, val1, val2, canMsgIndx, modIndx);
+                    if (val1ChangeGreatEnough || val2ChangeGreatEnough)
+                    {
+                        // store to-be sent values
+                        prevSentVal[modIndx][msg1Indx] = *((float*) ((void*) &val1));
+                        prevSentVal[modIndx][msg2Indx] = *((float*) ((void*) &val2));
+
+                        // determine CAN message pointer index
+                        uint16_t canMsgGlblIndx = CAN_MSG_TX_SDM120M_01_1 + canMsgIndx + (modIndx * SDM120M_CAN_TX_MSG_TYPE_NUM);   // global CAN message index as defined in ComCfg.h
+
+                        // get CAN message pointer
+                        ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(canMsgGlblIndx);
+
+                        // compose CAN data
+                        Sdm120m_can_compose(&msgPtr->canMsg.data.u8[0], &msgPtr->canMsg.MsgID, val1, val2, canMsgIndx, modIndx);
+
+                        // flag for transmit
+                        ComCfg_set_flagCanMsgForTx((ComCfg_canMsgIndxType) canMsgGlblIndx);
+
+                    }
 
                     // data was prepared, clear it for new data
                     Sdm120m_clear_dataReadyFlag(modIndx, msg1Indx, msg2Indx);
 
-                    // flag for transmit
-                    ComCfg_set_flagCanMsgForTx((ComCfg_canMsgIndxType) canMsgGlblIndx);
                 }
             }
         }
