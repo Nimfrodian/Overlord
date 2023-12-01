@@ -44,40 +44,6 @@ const gpio_num_t GPIO_IN[NUM_OF_GPIO_INPUTS] =
 
 typedef enum
 {
-    GPIO_OUT_INDX_0,
-    GPIO_OUT_INDX_1,
-    GPIO_OUT_INDX_2,
-    GPIO_OUT_INDX_3,
-    GPIO_OUT_INDX_4,
-    GPIO_OUT_INDX_5,
-    NUM_OF_GPIO_OUTPUTS // NOTE: do to exceed 8 without code modification
-} BSW_Dio_gpioOutIndxType;
-
-const gpio_num_t GPIO_OUT[NUM_OF_GPIO_OUTPUTS] =
-{
-    GPIO_NUM_15,
-    GPIO_NUM_2,
-    GPIO_NUM_0,
-    GPIO_NUM_18,
-    GPIO_NUM_19,
-    GPIO_NUM_21,
-};
-
-typedef enum
-{
-    GPIO_OUT_DEBUG_INDX_0 = 0,
-    GPIO_OUT_DEBUG_INDX_1,
-    GPIO_OUT_DEBUG_NUM_OF_INDX,
-} BSW_Dio_gpioOutDbgIndxType;
-
-const gpio_num_t GPIO_OUT_DEBUG[GPIO_OUT_DEBUG_NUM_OF_INDX] =
-{
-    GPIO_NUM_12,
-    GPIO_NUM_13,
-};
-
-typedef enum
-{
     GPIO_IN_SEL_INDX_0,
     GPIO_IN_SEL_INDX_1,
     NUM_OF_GPIO_IN_SEL
@@ -134,7 +100,5 @@ void BSW_Dio_init(void);
 void BSW_Dio_read(void* param);
 
 bool BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx);
-bool BSW_Dio_write_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx, uint16_t NewSt);
-bool BSW_Dio_read_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx);
 
 #endif

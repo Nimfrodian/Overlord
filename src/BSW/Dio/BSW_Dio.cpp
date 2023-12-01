@@ -1,9 +1,6 @@
 #include "Dio_Cfg.h"
 
 static bool _gpioState[NUM_OF_INPUT_INDX] = {0};                // holds end result
-static uint16_t _gpioOutState[NUM_OF_GPIO_OUTPUTS] = {0};       // holds outputs for GPIO out abstraction
-static ledc_timer_config_t _ledcTimer[NUM_OF_GPIO_OUTPUTS];     // used for PWM on digital outputs
-static ledc_channel_config_t _ledcChnl[NUM_OF_GPIO_OUTPUTS];    // used for PWM on digital outputs
 static uint8_t _gpioCntr[NUM_OF_INPUT_INDX] = {0};              // increments or decrements based on GPIO state.
 static uint8_t _debounceTimer_ms[NUM_OF_INPUT_INDX] = {0};      // holds debounce timer. Decrements by task execution period each call, if not 0
 static const uint8_t _sortedGpioIndxs[NUM_OF_INPUT_INDX] =             // sorted array indexes. Looping _gpioState using this array as index will result in proper reading from GPIO
@@ -56,37 +53,6 @@ void BSW_Dio_init(void)
     {
         gpio_reset_pin(GPIO_IN_SEL[gpioInSelIndx]);
         gpio_set_direction(GPIO_IN_SEL[gpioInSelIndx], GPIO_MODE_OUTPUT);
-    }
-
-    // reset all output pins functions so they can be set as OUTPUT and set them as OUTPUT
-    for (uint8_t gpioOutIndx = 0; gpioOutIndx < NUM_OF_GPIO_OUTPUTS; gpioOutIndx++)
-    {
-        gpio_reset_pin(GPIO_OUT[gpioOutIndx]);
-        // set timer configuration for PWM
-        _ledcTimer[gpioOutIndx].speed_mode = LEDC_MODE;
-        _ledcTimer[gpioOutIndx].timer_num = LEDC_TIMER;
-        _ledcTimer[gpioOutIndx].duty_resolution = LEDC_DUTY_RES;
-        _ledcTimer[gpioOutIndx].freq_hz = LEDC_FREQUENCY;
-        _ledcTimer[gpioOutIndx].clk_cfg = LEDC_AUTO_CLK;
-        ledc_timer_config(&_ledcTimer[gpioOutIndx]);
-
-        // set channel configuration for PWM
-        _ledcChnl[gpioOutIndx].speed_mode = LEDC_MODE;
-        _ledcChnl[gpioOutIndx].channel = (ledc_channel_t) gpioOutIndx;  // out index can be used as led channel if it doesn't surpass 0x07
-        _ledcChnl[gpioOutIndx].timer_sel = LEDC_TIMER;
-        _ledcChnl[gpioOutIndx].intr_type = LEDC_INTR_DISABLE;
-        _ledcChnl[gpioOutIndx].gpio_num = GPIO_OUT[gpioOutIndx];
-        _ledcChnl[gpioOutIndx].duty = 0;
-        _ledcChnl[gpioOutIndx].hpoint = 0;
-        ledc_channel_config(&_ledcChnl[gpioOutIndx]);
-
-    }
-
-    // reset all debug output pins functions so they can be set as OUTPUT and set them as OUTPUT
-    for (uint8_t gpioOutDbgIndx = 0; gpioOutDbgIndx < GPIO_OUT_DEBUG_NUM_OF_INDX; gpioOutDbgIndx++)
-    {
-        gpio_reset_pin(GPIO_OUT_DEBUG[gpioOutDbgIndx]);
-        gpio_set_direction(GPIO_OUT_DEBUG[gpioOutDbgIndx], GPIO_MODE_OUTPUT);
     }
 
     // create reading task
@@ -214,64 +180,5 @@ bool BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx)
     {
         // TODO: REPORT_ERROR
     }
-    return gpioSt;
-}
-
-/**
- * @brief Function writes new state on output GPIO
- * @param GpioIndx Gpio index for which the new state should be set
- * @param NewSt New status to set. 0 - 1023
- * @return true if operation successful, false if not
- */
-bool BSW_Dio_write_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx, uint16_t NewSt)
-{
-    bool success = false;
-
-    if ((NUM_OF_GPIO_OUTPUTS > GpioIndx) && (NewSt < 1024))
-    {
-        uint16_t newSt = NewSt;
-        if (1023 == newSt)
-        {
-            newSt = 1024;   // needs to be 1024 for PWM to be 100% ON
-        }
-        esp_err_t err = ledc_set_duty(LEDC_MODE, _ledcChnl[GpioIndx].channel, newSt);
-        err |= ledc_update_duty(LEDC_MODE, _ledcChnl[GpioIndx].channel);
-
-        if (ESP_OK == err)
-        {
-            _gpioOutState[GpioIndx] = NewSt;
-            success = true;
-        }
-        else
-        {
-            // TODO: REPORT_ERROR
-        }
-    }
-    else
-    {
-        // TODO: REPORT_ERROR
-    }
-
-    return success;
-}
-
-/**
- * @brief Function reads current state of output GPIO
- * @param GpioIndx Gpio index for which to read state
- * @return GPIO state
- */
-bool BSW_Dio_read_outputGpioSt(BSW_Dio_gpioOutIndxType GpioIndx)
-{
-    bool gpioSt = 0;
-
-    if (NUM_OF_GPIO_OUTPUTS > GpioIndx)
-    {
-        gpioSt = _gpioOutState[GpioIndx];
-    }
-    else
-    {
-        // TODO: REPORT_ERROR
-    }
-
     return gpioSt;
 }

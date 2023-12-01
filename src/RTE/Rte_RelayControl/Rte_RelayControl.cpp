@@ -6,7 +6,7 @@
 #include "ComModbus.h"
 
 const uint16_t RELAY_STS_UPDATE_INTERVAL_MS = 1000;
-const uint16_t RELAY_MB_MSG_UPDATE_INTERVAL_MS = 2500;
+const uint16_t RELAY_MB_MSG_UPDATE_INTERVAL_MS = 100;
 
 static bool _rlyStChange = 0;   // relay state change flag. CAN message is sent if any relays changed state
 static uint32_t _rlyStChangeTi = 0;

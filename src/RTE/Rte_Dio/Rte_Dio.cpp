@@ -19,49 +19,8 @@ bool Rte_Dio_get_gpioSt(uint8_t GpioIndx)
     return gpioSt;
 }
 
-/**
- * @brief Function sets the GPIO debug pin to desired state for debugging purposes
- * @param GpioSts gpio status to be set
- * @param GpioDbgIndx index of the GPIO debug index
- * @return bool success. true if GPIO pin was successfuly set, false if not
- */
-bool Rte_Dio_set_gpioDbgSt(bool GpioSts, uint8_t GpioDbgIndx)
-{
-    bool success = false;
-    success = BSW_Dio_write_outputGpioSt((BSW_Dio_gpioOutIndxType) GpioDbgIndx, GpioSts);
-    return success;
-}
-
 void Rte_Dio_runnable_10ms(void)
 {
-    // parse CAN message
-    {
-        // get message pointer
-        ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(CAN_MSG_RX_DO_REQUEST);
-
-        if (true == msgPtr->canRdyForParse)
-        {
-            // parse CAN message
-            uint8_t* canData = &msgPtr->canMsg.data.u8[0];
-            Dio_can_parse(canData);
-
-            // CAN message was parsed, clear the parsing flag
-            ComCfg_clear_flagCanMsgForParse((ComCfg_canMsgIndxType) CAN_MSG_RX_DO_REQUEST);
-        }
-    }
-
-    // write GPIO output statuses based on CAN message
-    {
-        for (uint8_t outIndx = 0; outIndx < NUM_OF_GPIO_OUTPUTS; outIndx++)
-        {
-            // get output PWM request
-            uint16_t outPwm = Dio_read_gpioOutReqSt((BSW_Dio_gpioOutIndxType) outIndx);
-
-            // apply output PWM request
-            BSW_Dio_write_outputGpioSt((BSW_Dio_gpioOutIndxType) outIndx, outPwm);
-        }
-    }
-
     // send CAN message with GPIO state
     {
         static uint32_t cntr_ms = 0;
