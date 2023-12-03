@@ -7,7 +7,7 @@
 #include "driver/gpio.h"
 #include "driver/ledc.h"
 
-static const uint8_t CTLR_GPIO_TASK_DELAY_TIME_MS = 10;  // task delay time
+static const uint8_t CTLR_GPIO_TASK_DELAY_TIME_MS = 2;  // task delay time
 static const uint8_t DEBOUNCE_TIME_MS = CTLR_GPIO_TASK_DELAY_TIME_MS * 3;  // debounce time in milliseconds
 static const uint8_t NUM_OF_SAMPLES_FOR_STATE_CHANGE = 0x2;   // number of consecutive samples that must be of the same value for a state change to occur. Must be lower than 0xF
 

@@ -9,6 +9,7 @@
 #include "ComCan.h"
 #include "SDM120M.h"
 #include "Dio_Cfg.h"
+#include "Cli.h"
 
 const int node_id = 1;
 
@@ -25,5 +26,9 @@ extern void Rte_RelayControl_runnable_10ms(void);
 // Power meter section
 extern void Rte_Sdm120m_init(void);
 extern void Rte_Sdm120m_runnable_10ms(void);
+
+// CLI
+extern void Rte_Cli_init(void);
+extern void Rte_Cli_run(void);
 
 #endif
