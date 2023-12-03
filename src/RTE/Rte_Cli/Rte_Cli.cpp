@@ -5,6 +5,9 @@
 #define UART_NUM UART_NUM_0
 #define BUF_SIZE (1024)
 
+#define UART_WRITE(x) uart_write_bytes(UART_NUM, x, strlen(x+1));
+#define UART_WRITE_NEWLINE(x) uart_write_bytes(UART_NUM, x, strlen(x)); uart_write_bytes(UART_NUM, "\n", 1);
+
 uint8_t _data[BUF_SIZE];
 int _length;
 int numCommands = 0;
@@ -12,18 +15,45 @@ extern cliCmdType commands[];
 
 static void dev_sts(uint32_t argc, char* argv[])
 {
-    uart_write_bytes(UART_NUM, "This is dev_sts\n", 17);
+    uint32_t seconds = (esp_timer_get_time() /1000) / 1000; // Convert milliseconds to seconds
+    uint32_t minutes = seconds / 60;                        // Convert seconds to minutes
+    uint32_t hours = minutes / 60;                          // Convert minutes to hours
+    uint32_t days = hours / 24;                             // Convert hours to days
+    uint32_t months = days / 30;                            // Approximate days to months
+    seconds %= 60;
+    minutes %= 60;
+    hours %= 24;
+    days %= 30;  // Assuming each month as 30 days
 
-    char printable[100] = {0};
-    int length = sprintf(printable, "Num of arguments: %d\n", argc);
-    uart_write_bytes(UART_NUM, printable, length);
+    UART_WRITE_NEWLINE("------- Device status -------")
 
-    for (int i = 0; i < argc; i++)
+    char timePrintable[128] = {0};
+    int length = 0;
+    length += sprintf(timePrintable + sizeof(char) * length, "Uptime ");
+
+    if (months)
     {
-        char printable[100] = {0};
-        int length = sprintf(printable, "\t%s\n", argv[i]);
-        uart_write_bytes(UART_NUM, printable, length);
+        length += sprintf(timePrintable + length, "%d month" , months);
+        if ((1 < months) || (0 == months))
+        {
+            length += sprintf(timePrintable + sizeof(char) * length, "s");
+        }
+        length += sprintf(timePrintable + sizeof(char) * length, ", ");
     }
+    if (days || months)
+    {
+        length += sprintf(timePrintable + length, "%d day" , days);
+        if ((1 < days) || (0 == days))
+        {
+            length += sprintf(timePrintable + sizeof(char) * length, "s");
+        }
+        length += sprintf(timePrintable + sizeof(char) * length, ", ");
+    }
+    {
+        length += sprintf(timePrintable + length, "%dh %dm %ds" , hours, minutes, seconds);
+    }
+    UART_WRITE_NEWLINE(timePrintable)
+
 }
 
 
@@ -59,6 +89,9 @@ cliCmdType commands[]
         .commandDes = "prints out device status",
         .cmdFunc = dev_sts
     },
+    // print DIO status
+    // print RELAY status
+    // print POWER METER status
 };
 
 void Rte_Cli_init(void)
@@ -91,7 +124,11 @@ void Rte_Cli_run(void)
 {
     _length += uart_read_bytes(UART_NUM, &_data[_length], BUF_SIZE, 100 / portTICK_RATE_MS);
     if (_length > 0) {
-        if (_data[_length - 1] == '\n') // if line feed then it is end of command
+        if ((_length == 1) && (_data[_length - 1] == '\n')) // only 'enter' was sent, ignore
+        {
+            _length = 0;
+        }
+        else if (_data[_length - 1] == '\n') // if line feed then it is end of command
         {
             //char printable[100] = {0};
             //int length = sprintf(printable, "length:%d\n", _length);
@@ -175,6 +212,14 @@ void Rte_Cli_run(void)
                     commands[i].cmdFunc(argc, argv);
 
                     break;
+                }
+
+
+                if ((numCommands - 1) == i)
+                {
+                    char printable[1024] = {0};
+                    int length = sprintf(printable, "Command '%s' is not recognized. Send 'help' for a list of commands\n", extractedCmd);
+                    uart_write_bytes(UART_NUM, printable, length);
                 }
             }
 
