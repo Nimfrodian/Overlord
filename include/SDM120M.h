@@ -17,23 +17,23 @@ enum
     SDM120M_MODULE_INDX_01 = 0,
     SDM120M_MODULE_INDX_02,
     SDM120M_MODULE_INDX_03,
-    //SDM120M_MODULE_INDX_04,
-    //SDM120M_MODULE_INDX_05,
-    //SDM120M_MODULE_INDX_06,
-    //SDM120M_MODULE_INDX_07,
-    //SDM120M_MODULE_INDX_08,
-    //SDM120M_MODULE_INDX_09,
-    //SDM120M_MODULE_INDX_10,
-    //SDM120M_MODULE_INDX_11,
-    //SDM120M_MODULE_INDX_12,
-    //SDM120M_MODULE_INDX_13,
-    //SDM120M_MODULE_INDX_14,
-    //SDM120M_MODULE_INDX_15,
-    //SDM120M_MODULE_INDX_16,
-    //SDM120M_MODULE_INDX_17,
-    //SDM120M_MODULE_INDX_18,
-    //SDM120M_MODULE_INDX_19,
-    //SDM120M_MODULE_INDX_20,
+    SDM120M_MODULE_INDX_04,
+    SDM120M_MODULE_INDX_05,
+    SDM120M_MODULE_INDX_06,
+    SDM120M_MODULE_INDX_07,
+    SDM120M_MODULE_INDX_08,
+    SDM120M_MODULE_INDX_09,
+    SDM120M_MODULE_INDX_10,
+    SDM120M_MODULE_INDX_11,
+    SDM120M_MODULE_INDX_12,
+    SDM120M_MODULE_INDX_13,
+    SDM120M_MODULE_INDX_14,
+    SDM120M_MODULE_INDX_15,
+    SDM120M_MODULE_INDX_16,
+    SDM120M_MODULE_INDX_17,
+    SDM120M_MODULE_INDX_18,
+    SDM120M_MODULE_INDX_19,
+    SDM120M_MODULE_INDX_20,
     SDM120M_NUM_OF_MODULES
 };
 
@@ -85,6 +85,23 @@ const uint16_t _sdm120m_mb_module_id[SDM120M_NUM_OF_MODULES] =
     16, // main power meter
     32, // power meter for lights
     33, // power meter for sockets
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
 };
 
 const uint16_t _sdm120m_mb_start_addrs[SDM120M_NUM_OF_READ] =
@@ -119,8 +136,10 @@ void Sdm120m_parseModbusData(uint8_t ModuleIndx, uint8_t VariableIndx, uint8_t* 
 void Sdm120m_modbus_compose(uint8_t* ModMsgData, uint8_t MsgIndx, uint8_t ModuleIndx);
 void Sdm120m_can_compose(uint8_t* CanData, uint32_t* CanId, uint32_t Value1, uint32_t Value2, uint32_t CanMsgIndx, uint8_t ModuleIndx);
 
-bool Sdm120m_get_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx);
-float Sdm120m_get_dataValue(uint8_t ModuleIndx, uint8_t VarIndx);
+bool Sdm120m_read_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx);
+float Sdm120m_read_dataValue(uint8_t ModuleIndx, uint8_t VarIndx);
+uint16_t Sdm120m_read_moduleId(uint8_t ModuleIndx);
+const char* Sdm120m_read_dataName(uint8_t VarIndx);
 void Sdm120m_clear_dataReadyFlag(uint8_t ModuleIndx, uint8_t MsgIndx1, uint8_t MsgIndx2);
 
 

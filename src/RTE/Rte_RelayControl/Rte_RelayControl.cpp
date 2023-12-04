@@ -18,7 +18,7 @@ void Rte_RelayControl_init(void)
     // clear all flags for messages that will be used
     for (uint16_t mbMsgIndx = MODBUS_0_MSG_SET_ALL_RELAYS_0_7; mbMsgIndx < NUM_OF_MODBUS_0_MSG; mbMsgIndx++)
     {
-        ComCfg_Modbus0MsgDataType* mbMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
+        ComCfg_Modbus0MsgDataType* mbMsgPtr = ComCfg_read_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
         mbMsgPtr->mbRdyForTx = 0;
         mbMsgPtr->mbRdyForParse = 1;
     }
@@ -31,7 +31,7 @@ void Rte_RelayControl_runnable_10ms(void)
         for (uint8_t modIndx = 0; modIndx < RELAY_MODULE_NUM_OF_RELAY_BOARDS; modIndx++)
         {
             // get Modbus message pointer
-            ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) (MODBUS_0_MSG_SET_ALL_RELAYS_0_7 + modIndx));
+            ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_read_mb0Config((ComCfg_modbus0MsgIndxType) (MODBUS_0_MSG_SET_ALL_RELAYS_0_7 + modIndx));
 
             static uint8_t rlyToUpdate = 0;
 
@@ -49,7 +49,7 @@ void Rte_RelayControl_runnable_10ms(void)
                     if ((actRelIndx < NUM_OF_INPUT_INDX))
                     {
                         uint8_t actRelIndx = currRelIndx + modIndx * NUM_OF_RELAYS_PER_WAVESHARE_BOARD;
-                        gpioStBitfield = gpioStBitfield | (Rte_Dio_get_gpioSt(actRelIndx) << currRelIndx);
+                        gpioStBitfield = gpioStBitfield | (Rte_Dio_read_gpioSt(actRelIndx) << currRelIndx);
                     }
                 }
 
@@ -88,7 +88,7 @@ void Rte_RelayControl_runnable_10ms(void)
         for (uint32_t canMsgIndx = CAN_MSG_RX_RELAY_CONTROL_WS_0; canMsgIndx <= CAN_MSG_RX_RELAY_CONTROL_WS_0; canMsgIndx++)
         {
             // get message pointer
-            ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(canMsgIndx);
+            ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(canMsgIndx);
 
             if (true == msgPtr->canRdyForParse)
             {
@@ -104,7 +104,7 @@ void Rte_RelayControl_runnable_10ms(void)
         for (uint32_t canMsgIndx = CAN_MSG_RX_RELAY_DISABLE_WS_0; canMsgIndx <= CAN_MSG_RX_RELAY_DISABLE_WS_0; canMsgIndx++)
         {
             // get message pointer
-            ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(canMsgIndx);
+            ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(canMsgIndx);
 
             if (true == msgPtr->canRdyForParse)
             {
@@ -129,7 +129,7 @@ void Rte_RelayControl_runnable_10ms(void)
         {
             {
                 // get message pointer
-                ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(CAN_MSG_TX_RELAY_STATUS);
+                ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(CAN_MSG_TX_RELAY_STATUS);
 
                 // prepare CAN data
                 uint8_t* canDataPtr = &msgPtr->canMsg.data.u8[0];
@@ -137,7 +137,7 @@ void Rte_RelayControl_runnable_10ms(void)
                 RelayControl_composeCanMessage(canDataPtr, canIdPtr);
 
                 // flag for transmission
-                ComCfg_set_flagCanMsgForTx(CAN_MSG_TX_RELAY_STATUS);
+                ComCfg_write_flagCanMsgForTx(CAN_MSG_TX_RELAY_STATUS);
             }
 
             // clear timing counter
@@ -147,4 +147,24 @@ void Rte_RelayControl_runnable_10ms(void)
             _rlyStChange = 0;
         }
     }
+}
+
+bool Rte_Relay_read_relaySt(uint8_t RelayIndx)
+{
+    bool state = false;
+    if (RelayIndx < (RELAY_MODULE_NUM_OF_RELAY_BOARDS * 8))
+    {
+        state = RelayControl_read_relaySt(RelayIndx);
+    }
+    return state;
+}
+
+bool Rte_Relay_write_relaySt(uint8_t RelayIndx, bool State)
+{
+    bool relaySet = false;
+    if (RelayIndx < (RELAY_MODULE_NUM_OF_RELAY_BOARDS * 8))
+    {
+        relaySet = RelayControl_write_relaySt(RelayIndx, State);
+    }
+    return relaySet;
 }

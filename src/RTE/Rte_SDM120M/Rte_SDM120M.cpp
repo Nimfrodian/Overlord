@@ -7,7 +7,7 @@
 #include <limits>
 
 static uint32_t _sdm120m_msgSendIntrvlCntr_ms[SDM120M_NUM_OF_MODULES][SDM120M_NUM_OF_READ] = {0};  // interval counter. Different Modbus message should be sent with different intervals
-static const uint32_t _sdm120m_msgSendIntrvSetpoint_ms[SDM120M_NUM_OF_READ] =  // interaval setpoint. Each message is only sent once the counter for it reaches this predefined value. NOTE: since CAN message is sent once the pair of values is available each pair should have the same counter value
+static const uint32_t _sdm120m_msgSendIntrvSetpoint_ms[SDM120M_NUM_OF_READ] =  // interval setpoint. Each message is only sent once the counter for it reaches this predefined value. NOTE: since CAN message is sent once the pair of values is available each pair should have the same counter value
 {
     [SDM120M_READ_VOLTAGE_V] = 1000,
     [SDM120M_READ_CURRENT_A] = 1000,
@@ -18,8 +18,8 @@ static const uint32_t _sdm120m_msgSendIntrvSetpoint_ms[SDM120M_NUM_OF_READ] =  /
     [SDM120M_REACTIVE_POWER_VAr] = 50000,
     [SDM120M_POWER_FACTOR] = 50000,
 
-    [SDM120M_FREQUENCY] = 50000,
-    [SDM120M_IMPORT_ACTIVE_ENERGY_kWh] = 50000,
+    [SDM120M_FREQUENCY] = 10000,
+    [SDM120M_IMPORT_ACTIVE_ENERGY_kWh] = 10000,
 
     [SDM120M_EXPORT_ACTIVE_ENERGY_kWh] = 60000,
     [SDM120M_IMPORT_REACTIVE_ENERGY_kVArh] = 60000,
@@ -77,7 +77,7 @@ void Rte_Sdm120m_init(void)
     const uint16_t lastMbMsgIndxInit = MODBUS_2_MSG_SDM120M_01_READ_VOLTAGE_V + (SDM120M_NUM_OF_READ * SDM120M_NUM_OF_MODULES) - 1;
     for (uint16_t mbMsgIndx = MODBUS_2_MSG_SDM120M_01_READ_VOLTAGE_V; mbMsgIndx <= lastMbMsgIndxInit; mbMsgIndx++)
     {
-        ComCfg_Modbus2MsgDataType* mbMsgPtr = ComCfg_get_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);
+        ComCfg_Modbus2MsgDataType* mbMsgPtr = ComCfg_read_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);
         mbMsgPtr->mbRdyForTx = 0;
         mbMsgPtr->mbRdyForParse = 0;
     }
@@ -96,7 +96,7 @@ void Rte_Sdm120m_runnable_10ms(void)
                 uint16_t mbMsgIndx = MODBUS_2_MSG_SDM120M_01_READ_VOLTAGE_V + (modIndx * SDM120M_NUM_OF_READ) + (msgIndx);
 
                 // get message pointer
-                ComCfg_Modbus2MsgDataType* msgPtr = ComCfg_get_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);
+                ComCfg_Modbus2MsgDataType* msgPtr = ComCfg_read_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);
 
                 // if message is not already being serviced then check if it needs sending or tracking of time
                 if (false == msgPtr->mbRdyForTx)
@@ -134,7 +134,7 @@ void Rte_Sdm120m_runnable_10ms(void)
         for (uint16_t mbMsgIndx = MODBUS_2_MSG_SDM120M_01_READ_VOLTAGE_V; mbMsgIndx <= MODBUS_2_MSG_SDM120M_20_TOTAL_REACTIVE_ENERGY_kVArh; mbMsgIndx++)
         {
             // get message pointer
-            ComCfg_Modbus2MsgDataType* msgPtr = ComCfg_get_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);
+            ComCfg_Modbus2MsgDataType* msgPtr = ComCfg_read_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);
 
             // determine if message needs parsing
             if (1 == msgPtr->mbRdyForParse)
@@ -175,10 +175,10 @@ void Rte_Sdm120m_runnable_10ms(void)
                 // variable 1 acquisition
                 {
                     // get data ready flag
-                    valRdy1 = Sdm120m_get_dataReadyFlag(modIndx, msg1Indx);
+                    valRdy1 = Sdm120m_read_dataReadyFlag(modIndx, msg1Indx);
 
                     // get the actual value
-                    float tempValue = Sdm120m_get_dataValue(modIndx, msg1Indx);
+                    float tempValue = Sdm120m_read_dataValue(modIndx, msg1Indx);
                     val1 = *((uint32_t*) ((void*) &tempValue));
                 }
 
@@ -188,10 +188,10 @@ void Rte_Sdm120m_runnable_10ms(void)
                     if (SDM120M_NUM_OF_READ != (msg2Indx))
                     {
                         // get data ready flag
-                        valRdy2 = Sdm120m_get_dataReadyFlag(modIndx, msg2Indx);
+                        valRdy2 = Sdm120m_read_dataReadyFlag(modIndx, msg2Indx);
 
                         // get the actual value
-                        float tempValue = Sdm120m_get_dataValue(modIndx, msg2Indx);
+                        float tempValue = Sdm120m_read_dataValue(modIndx, msg2Indx);
                         val2 = *((uint32_t*) ((void*) &tempValue));
                     }
                 }
@@ -217,13 +217,13 @@ void Rte_Sdm120m_runnable_10ms(void)
                         uint16_t canMsgGlblIndx = CAN_MSG_TX_SDM120M_01_1 + canMsgIndx + (modIndx * SDM120M_CAN_TX_MSG_TYPE_NUM);   // global CAN message index as defined in ComCfg.h
 
                         // get CAN message pointer
-                        ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(canMsgGlblIndx);
+                        ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(canMsgGlblIndx);
 
                         // compose CAN data
                         Sdm120m_can_compose(&msgPtr->canMsg.data.u8[0], &msgPtr->canMsg.MsgID, val1, val2, canMsgIndx, modIndx);
 
                         // flag for transmit
-                        ComCfg_set_flagCanMsgForTx((ComCfg_canMsgIndxType) canMsgGlblIndx);
+                        ComCfg_write_flagCanMsgForTx((ComCfg_canMsgIndxType) canMsgGlblIndx);
 
                     }
 
@@ -234,4 +234,14 @@ void Rte_Sdm120m_runnable_10ms(void)
             }
         }
     }
+}
+
+const char* Rte_Sdm120m_read_dataName(uint8_t VarIndx)
+{
+    return Sdm120m_read_dataName(VarIndx);
+}
+
+uint16_t Rte_Sdm120m_read_moduleId(uint8_t ModuleIndx)
+{
+    return Sdm120m_read_moduleId(ModuleIndx);
 }

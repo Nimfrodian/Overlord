@@ -1,4 +1,5 @@
 #include "Cli.h"
+#include "RTE.h"
 
 
 #define UART_BAUD (115200u)
@@ -13,7 +14,7 @@ int _length;
 int numCommands = 0;
 extern cliCmdType commands[];
 
-static void dev_sts(uint32_t argc, char* argv[])
+static void printTime(void)
 {
     uint32_t seconds = (esp_timer_get_time() /1000) / 1000; // Convert milliseconds to seconds
     uint32_t minutes = seconds / 60;                        // Convert seconds to minutes
@@ -24,8 +25,6 @@ static void dev_sts(uint32_t argc, char* argv[])
     minutes %= 60;
     hours %= 24;
     days %= 30;  // Assuming each month as 30 days
-
-    UART_WRITE_NEWLINE("------- Device status -------")
 
     char timePrintable[128] = {0};
     int length = 0;
@@ -53,8 +52,8 @@ static void dev_sts(uint32_t argc, char* argv[])
         length += sprintf(timePrintable + length, "%dh %dm %ds" , hours, minutes, seconds);
     }
     UART_WRITE_NEWLINE(timePrintable)
-
 }
+
 
 
 static void help(uint32_t argc, char* argv[])
@@ -71,10 +70,181 @@ static void help(uint32_t argc, char* argv[])
             printable[length++] = '.';
         }
         printable[length++] = ' ';
-        length += sprintf(printable + sizeof(char) * length, "%s\n", commands[i].commandDes);
+        length += sprintf(printable + length, "%s\n", commands[i].commandDes);
 
         uart_write_bytes(UART_NUM, printable, length);
     }
+}
+
+static void dio_sts(uint32_t argc, char* argv[])
+{
+    UART_WRITE_NEWLINE("--- Input status ---\n")
+    for (int i = 0; i < NUM_OF_INPUT_INDX; i++)
+    {
+        char printable[128] = {0};
+        int length = sprintf(printable, "In%02d:%d", i, Rte_Dio_read_gpioSt(i));
+        if (((i+1) % 8) == 0)
+        {
+            length += sprintf(printable + length, "\n");
+        }
+        else
+        {
+            length += sprintf(printable + length, "   ");
+        }
+
+        uart_write_bytes(UART_NUM, printable, length);
+    }
+    UART_WRITE_NEWLINE("")
+}
+
+static void relay_sts(uint32_t argc, char* argv[])
+{
+    UART_WRITE_NEWLINE("--- Relay status ---\n")
+    for (int i = 0; i < (RELAY_MODULE_NUM_OF_RELAY_BOARDS * 8); i++)
+    {
+        char printable[128] = {0};
+        int length = sprintf(printable, "Rly%02d:%d", i, Rte_Relay_read_relaySt(i));
+        if (((i+1) % 8) == 0)
+        {
+            length += sprintf(printable + length, "\n");
+        }
+        else
+        {
+            length += sprintf(printable + length, "   ");
+        }
+
+        uart_write_bytes(UART_NUM, printable, length);
+    }
+    UART_WRITE_NEWLINE("")
+}
+
+static void set_relay(uint32_t argc, char* argv[])
+{
+    if (2 == argc)
+    {
+        int relayIndx = atoi(argv[0]);
+        int relayState = atoi(argv[1]);
+        bool relaySet = Rte_Relay_write_relaySt(relayIndx, relayState);
+        char printable[128] = {0};
+        int length = 0;
+        if (relaySet)
+        {
+            length = sprintf(printable, "Relay %d was set to %d", relayIndx, relayState);
+        }
+        else
+        {
+            length = sprintf(printable, "Relay %d was not set to %d", relayIndx, relayState);
+        }
+        uart_write_bytes(UART_NUM, printable, length);
+    }
+    else
+    {
+        char printable[128] = {0};
+        int length = sprintf(printable, "Invalid number of arguments, expected 2 but got %d", argc);
+        uart_write_bytes(UART_NUM, printable, length);
+    }
+}
+
+static void power_sts(uint32_t argc, char* argv[])
+{
+    char printable[128] = {0};
+    int length = 0;
+    if (2 == argc)
+    {
+        int meterIndx = atoi(argv[0]);
+        int meterVar = atoi(argv[1]);
+        if (meterIndx >= SDM120M_NUM_OF_MODULES)
+        {
+            length = sprintf(printable, "Power meter index %d out of range, maximum value is %d\n", meterIndx, SDM120M_NUM_OF_MODULES);
+        }
+        else if (meterIndx >= SDM120M_NUM_OF_READ)
+        {
+            length = sprintf(printable, "Variable index %d out of range, maximum value is %d\n", meterVar, SDM120M_NUM_OF_READ);
+        }
+        else
+        {
+            float varValue = Sdm120m_read_dataValue(meterIndx, meterVar);
+            length = sprintf(printable, "%s of module %d is %f\n", Rte_Sdm120m_read_dataName(meterVar), meterIndx, varValue);
+        }
+        uart_write_bytes(UART_NUM, printable, length);
+    }
+    else
+    {
+        length = sprintf(printable, "Invalid number of arguments, expected 2 but got %d", argc);
+        uart_write_bytes(UART_NUM, printable, length);
+    }
+}
+
+static void power_sts_all(uint32_t argc, char* argv[])
+{
+    char printable[256] = {0};
+    int length = 0;
+
+    if (1 == argc)
+    {
+        UART_WRITE_NEWLINE("--- Power meter status ---")
+
+        int dataLevel = atoi(argv[0]);
+        for (int meterIndx = 0; meterIndx < SDM120M_NUM_OF_MODULES; meterIndx++)
+        {
+            length += sprintf(printable + length, "\tMeter ID 0x%.2X\n", Rte_Sdm120m_read_moduleId(meterIndx));
+            for (int meterVar = 0; meterVar < SDM120M_NUM_OF_READ; meterVar++)
+            {
+                if (0 == dataLevel)
+                {
+                    // ignore list
+                    if ((SDM120M_APPARENT_POWER_VA == meterVar) ||
+                         (SDM120M_REACTIVE_POWER_VAr == meterVar) ||
+                         (SDM120M_IMPORT_ACTIVE_ENERGY_kWh == meterVar) ||
+                         (SDM120M_EXPORT_ACTIVE_ENERGY_kWh == meterVar) ||
+                         (SDM120M_IMPORT_REACTIVE_ENERGY_kVArh == meterVar) ||
+                         (SDM120M_EXPORT_REACTIVE_ENERGY_kVArh == meterVar) ||
+                         (SDM120M_TOTAL_SYSTEM_POWER_DEMAND_W == meterVar) ||
+                         (SDM120M_MAXIMUM_TOTAL_SYSTEM_POWER_DEMAND_W == meterVar) ||
+                         (SDM120M_IMPORT_SYSTEM_POWER_DEMAND_W == meterVar) ||
+                         (SDM120M_MAXIMUM_IMPORT_SYSTEM_POWER_DEMAND_W == meterVar) ||
+                         (SDM120M_EXPORT_SYSTEM_POWER_DEMAND_W == meterVar) ||
+                         (SDM120M_MAXIMUM_EXPORT_SYSTEM_POWER_DEMAND == meterVar) ||
+                         (SDM120M_CURRENT_DEMAND_A == meterVar) ||
+                         (SDM120M_MAXIMUM_CURRENT_DEMAND_A == meterVar) ||
+                         (SDM120M_TOTAL_REACTIVE_ENERGY_kVArh == meterVar))
+                        {
+                            continue;
+                        }
+                }
+                float varValue = Sdm120m_read_dataValue(meterIndx, meterVar);
+                int32_t remainingLength = length;
+                length += sprintf(printable + length, "\t\t%s: ", Rte_Sdm120m_read_dataName(meterVar));
+                remainingLength = 30 - (length - remainingLength);
+                if (remainingLength < 3) remainingLength = 3;
+                while (remainingLength--)
+                {
+                    length += sprintf(printable + length, ".");
+                }
+                length += sprintf(printable + length, " %f\n", varValue);
+                uart_write_bytes(UART_NUM, printable, length);
+                length = 0;
+            }
+        }
+    }
+    else
+    {
+        length += sprintf(printable + length, "Invalid number of arguments, expected 1 but got %d", argc);
+        uart_write_bytes(UART_NUM, printable, length);
+    }
+}
+
+static void dev_sts(uint32_t argc, char* argv[])
+{
+    UART_WRITE_NEWLINE("------- Device status --------------")
+    printTime();
+    // print MODBUS status
+    // print CAN status
+    dio_sts(0,NULL);
+    relay_sts(0,NULL);
+    char* argv1[] = {"0"};
+    power_sts_all(1, argv1);
+    UART_WRITE_NEWLINE("------- End of Device status -------")
 }
 
 cliCmdType commands[]
@@ -89,9 +259,31 @@ cliCmdType commands[]
         .commandDes = "prints out device status",
         .cmdFunc = dev_sts
     },
-    // print DIO status
-    // print RELAY status
-    // print POWER METER status
+    {
+        .commandStr = "dio_sts",
+        .commandDes = "prints out DIO status",
+        .cmdFunc = dio_sts
+    },
+    {
+        .commandStr = "relay_sts",
+        .commandDes = "prints out relay status",
+        .cmdFunc = relay_sts
+    },
+    {
+        .commandStr = "set_relay",
+        .commandDes = "relay x,y -> sets [x] relay to [y] state",
+        .cmdFunc = set_relay
+    },
+    {
+        .commandStr = "power_sts",
+        .commandDes = "power_sts x,y -> reads [y] variable from [x] power meter",
+        .cmdFunc = power_sts
+    },
+    {
+        .commandStr = "power_sts_all",
+        .commandDes = "power_sts_all x -> prints all power variables; [x=0] just the basics, [x>0] everything",
+        .cmdFunc = power_sts_all
+    },
 };
 
 void Rte_Cli_init(void)
@@ -207,7 +399,9 @@ void Rte_Cli_run(void)
                 //char printable[1000] = {0};
                 //int length = sprintf(printable, "\t\tComparing:%s to %s\n", commands[i].commandStr, extractedCmd);
                 //uart_write_bytes(UART_NUM, printable, length);
-                if (strncmp(extractedCmd, commands[i].commandStr, strlen(commands[i].commandStr)) == 0) {
+                if ((strlen(commands[i].commandStr) == strlen(extractedCmd)) &&                          // length match
+                (strncmp(extractedCmd, commands[i].commandStr, strlen(commands[i].commandStr)) == 0))   // content match
+                {
                     // Execute the corresponding function
                     commands[i].cmdFunc(argc, argv);
 
@@ -224,6 +418,7 @@ void Rte_Cli_run(void)
             }
 
             // clear variables for new command
+            uart_flush(UART_NUM_1);
             _length = 0;
         }
     }

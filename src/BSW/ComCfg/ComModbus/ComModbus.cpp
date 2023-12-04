@@ -98,7 +98,7 @@ void ComModbus_0_transceive(void* param)
         static uint16_t mbMsgIndx = 0;
         {
             // get message pointer
-            ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
+            ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_read_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
 
             if (1 == txMsgPtr->mbRdyForTx)
             {
@@ -150,7 +150,7 @@ bool ComModbus_0_writeMsg(uint16_t MsgIndx, uint8_t* ModWriteBuffer, uint8_t Dat
 {
     bool success = 0;
     // get message pointer
-    ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_get_mb0Config((ComCfg_modbus0MsgIndxType) MsgIndx);
+    ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_read_mb0Config((ComCfg_modbus0MsgIndxType) MsgIndx);
 
     // if message is not already waiting for TX then copy the data
     if (0 == txMsgPtr->mbRdyForTx)
@@ -189,7 +189,7 @@ void ComModbus_2_transceive(void* param)
             for (uint16_t mbMsgIndx = 0; mbMsgIndx < NUM_OF_MODBUS_2_MSG; mbMsgIndx++)
             {
                 // get message pointer
-                ComCfg_Modbus2MsgDataType* txMsgPtr = ComCfg_get_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);
+                ComCfg_Modbus2MsgDataType* txMsgPtr = ComCfg_read_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);
 
                 // check if message is ready to be sent
                 if (1 == txMsgPtr->mbRdyForTx)
@@ -226,7 +226,7 @@ void ComModbus_2_transceive(void* param)
             static uint8_t timeoutCntr = 0;  // counter of how many times the message has timed out
 
             // get message pointer
-            ComCfg_Modbus2MsgDataType* rxMsgPtr = ComCfg_get_mb2Config(sendingMsg);
+            ComCfg_Modbus2MsgDataType* rxMsgPtr = ComCfg_read_mb2Config(sendingMsg);
 
             // read the data
             uint8_t length = uart_read_bytes(UART_MODBUS_1, rxMsgPtr->dataIn, rxMsgPtr->dataInCount, pdMS_TO_TICKS(100));
@@ -278,7 +278,7 @@ bool ComModbus_2_writeMsg(uint16_t MsgIndx, uint8_t* ModWriteBuffer, uint8_t Dat
 {
     bool success = 0;
     // get message pointer
-    ComCfg_Modbus2MsgDataType* txMsgPtr = ComCfg_get_mb2Config((ComCfg_modbus2MsgIndxType) MsgIndx);
+    ComCfg_Modbus2MsgDataType* txMsgPtr = ComCfg_read_mb2Config((ComCfg_modbus2MsgIndxType) MsgIndx);
 
     // if message is not already waiting for TX then copy the data
     if (0 == txMsgPtr->mbRdyForTx)

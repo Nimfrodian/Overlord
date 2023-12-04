@@ -40,7 +40,7 @@ void ComCan_init()
 static void ComCan_saveMsg(ComCfg_canMsgIndxType msgIndx, CAN_frame_t* sourceMsgPtr)
 {
     // get CAN message pointer to where the data should be saved
-    ComCfg_CanMsgDataType* destMsgPtr = ComCfg_get_canConfig(msgIndx);
+    ComCfg_CanMsgDataType* destMsgPtr = ComCfg_read_canConfig(msgIndx);
 
     // copy the data from source message to destination message
     for (uint8_t i = 0; i < 8; i++)
@@ -100,7 +100,7 @@ void ComCan_transmit(void* param)
         for (uint16_t msgIndx = 0; msgIndx < NUM_OF_CAN_MSG; msgIndx++)
         {
             // get message data pointer
-            ComCfg_CanMsgDataType* canMsgPtr = ComCfg_get_canConfig(msgIndx);
+            ComCfg_CanMsgDataType* canMsgPtr = ComCfg_read_canConfig(msgIndx);
 
             // check if message needs to be sent
             if (1 == canMsgPtr->canRdyForTx)

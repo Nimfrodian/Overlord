@@ -12,7 +12,7 @@ void Rte_Dio_init(void)
  * @param GpioIndx GPIO index for which to get value
  * @return GPIO state
  */
-bool Rte_Dio_get_gpioSt(uint8_t GpioIndx)
+bool Rte_Dio_read_gpioSt(uint8_t GpioIndx)
 {
     bool gpioSt = false;
     gpioSt = BSW_Dio_read_inputGpioSt((BSW_Dio_inputIndxType) GpioIndx);
@@ -32,20 +32,20 @@ void Rte_Dio_runnable_10ms(void)
             uint16_t canMsgIndx = CAN_MSG_TX_DI_STATUS;   // CAN message index as defined in ComCfg.h
 
             // get CAN message pointer
-            ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(canMsgIndx);
+            ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(canMsgIndx);
 
             // create array of GPIO input values
             bool gpioInArr[NUM_OF_INPUT_INDX] = {0};
             for (uint8_t gpioInIndx = 0; gpioInIndx < NUM_OF_INPUT_INDX; gpioInIndx++)
             {
-                gpioInArr[gpioInIndx] = Rte_Dio_get_gpioSt(gpioInIndx);
+                gpioInArr[gpioInIndx] = Rte_Dio_read_gpioSt(gpioInIndx);
             }
 
             // compose CAN data
             Dio_can_compose(&msgPtr->canMsg.data.u8[0], &msgPtr->canMsg.MsgID, &gpioInArr[0]);
 
             // flag for transmit
-            ComCfg_set_flagCanMsgForTx((ComCfg_canMsgIndxType) canMsgIndx);
+            ComCfg_write_flagCanMsgForTx((ComCfg_canMsgIndxType) canMsgIndx);
 
             cntr_ms = 0;
         }

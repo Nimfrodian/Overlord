@@ -855,12 +855,12 @@ const unsigned char _auchCRCLo[256] =
 };
 
 void ComCfg_init(void);
-ComCfg_CanMsgDataType* ComCfg_get_canConfig(uint16_t msgIndx);
-ComCfg_Modbus0MsgDataType* ComCfg_get_mb0Config(ComCfg_modbus0MsgIndxType msgIndx);
-ComCfg_Modbus2MsgDataType* ComCfg_get_mb2Config(ComCfg_modbus2MsgIndxType msgIndx);
+ComCfg_CanMsgDataType* ComCfg_read_canConfig(uint16_t msgIndx);
+ComCfg_Modbus0MsgDataType* ComCfg_read_mb0Config(ComCfg_modbus0MsgIndxType msgIndx);
+ComCfg_Modbus2MsgDataType* ComCfg_read_mb2Config(ComCfg_modbus2MsgIndxType msgIndx);
 uint16_t CRC_16(unsigned char* str, unsigned int usDataLen);
 
-void ComCfg_set_flagCanMsgForTx(ComCfg_canMsgIndxType MsgIndx);
+void ComCfg_write_flagCanMsgForTx(ComCfg_canMsgIndxType MsgIndx);
 void ComCfg_clear_flagCanMsgForParse(ComCfg_canMsgIndxType MsgIndx);
 
 #endif

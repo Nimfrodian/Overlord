@@ -1,7 +1,7 @@
 #include "RelayControl.h"
 
 static uint8_t _currRlyStsMb0[RELAY_MODULE_NUM_OF_RELAY_BOARDS] = {0};  // current relay status as a bitmap for Waveshare relay board
-static uint8_t _canReqWaveshareRelayInvert[8];                          // request for inversion of Waveshare relay statuses. Limited to 8 (64) relays as that is the number of bits a CAN message can have
+static uint8_t _relayInvert[8];                                         // request for inversion of Waveshare relay statuses. Limited to 8 (64) relays as that is the number of bits a CAN message can have
 static uint8_t _canReqWaveshareRelayDisable[8];                         // request for DIO disable of Waveshare relay statuses. Limited to 8 (64) relays as that is the number of bits a CAN message can have
 static uint8_t _prevGpioSt[RELAY_MODULE_NUM_OF_RELAY_BOARDS] = {0};     // previous GPIO states. If GPIO control disabled specific bits won't be updated and thus won't change relay state
 
@@ -40,7 +40,7 @@ bool RelayControl_composeWaveshareModbusMessage(uint8_t ModuleIndx, uint8_t* MbM
         uint8_t invrtSt = 0x00; // invert state
         for (uint8_t relIndx = 0; relIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; relIndx++)
         {
-            invrtSt |= (_canReqWaveshareRelayInvert[ModuleIndx] & (0x01 << relIndx));  // invert status as received from CAN
+            invrtSt |= (_relayInvert[ModuleIndx] & (0x01 << relIndx));  // invert status as received from CAN
         }
         uint8_t dsblSt = 0x00;  // disabled state
         for (uint8_t relIndx = 0; relIndx < NUM_OF_RELAYS_PER_WAVESHARE_BOARD; relIndx++)
@@ -90,14 +90,14 @@ void RelayControl_parseCanMessage(uint8_t* CanData, uint32_t CanId)
 {
     if (0x100 == CanId)
     {
-        _canReqWaveshareRelayInvert[0] = CanData[0];
-        _canReqWaveshareRelayInvert[1] = CanData[1];
-        _canReqWaveshareRelayInvert[2] = CanData[2];
-        _canReqWaveshareRelayInvert[3] = CanData[3];
-        _canReqWaveshareRelayInvert[4] = CanData[4];
-        _canReqWaveshareRelayInvert[5] = CanData[5];
-        _canReqWaveshareRelayInvert[6] = CanData[6];
-        _canReqWaveshareRelayInvert[7] = CanData[7];
+        _relayInvert[0] = CanData[0];
+        _relayInvert[1] = CanData[1];
+        _relayInvert[2] = CanData[2];
+        _relayInvert[3] = CanData[3];
+        _relayInvert[4] = CanData[4];
+        _relayInvert[5] = CanData[5];
+        _relayInvert[6] = CanData[6];
+        _relayInvert[7] = CanData[7];
     }
     else if (0x105 == CanId)
     {
@@ -133,4 +133,27 @@ void RelayControl_composeCanMessage(uint8_t* MsgData, uint32_t* CanId)
 
         // set CAN ID
         *CanId = (uint32_t) 0x110;
+}
+
+bool RelayControl_read_relaySt(uint8_t RelayIndx)
+{
+    return (_currRlyStsMb0[RelayIndx / 8] >> (RelayIndx % 8) & 0x01);
+}
+
+bool RelayControl_write_relaySt(uint8_t RelayIndx, bool state)
+{
+    bool relaySet = false;
+    if (RelayControl_read_relaySt(RelayIndx) != state)
+    {
+        if (1 == state)
+        {
+            _relayInvert[RelayIndx / 8] |= 0x01 << (RelayIndx % 8);
+        }
+        else
+        {
+            _relayInvert[RelayIndx / 8] &= ~(0x01 << (RelayIndx % 8));
+        }
+        relaySet = true;
+    }
+    return relaySet;
 }

@@ -34,7 +34,7 @@ void ComCfg_init(void)
     }
 }
 
-ComCfg_CanMsgDataType* ComCfg_get_canConfig(uint16_t msgIndx)
+ComCfg_CanMsgDataType* ComCfg_read_canConfig(uint16_t msgIndx)
 {
     uint16_t rMsgIndx = 0;
     if (msgIndx < NUM_OF_CAN_MSG)
@@ -49,7 +49,7 @@ ComCfg_CanMsgDataType* ComCfg_get_canConfig(uint16_t msgIndx)
  * @param msgIndx message index for the message config variable. See NUM_OF_MODBUS_2_MSG
  * @return returns pointer to modbus configuration variable ComCfg_Modbus2MsgDataType
  */
-ComCfg_Modbus2MsgDataType* ComCfg_get_mb2Config(ComCfg_modbus2MsgIndxType msgIndx)
+ComCfg_Modbus2MsgDataType* ComCfg_read_mb2Config(ComCfg_modbus2MsgIndxType msgIndx)
 {
     uint16_t rMsgIndx = 0;
     if (msgIndx < NUM_OF_MODBUS_2_MSG)
@@ -64,7 +64,7 @@ ComCfg_Modbus2MsgDataType* ComCfg_get_mb2Config(ComCfg_modbus2MsgIndxType msgInd
  * @param msgIndx message index for the message config variable. See NUM_OF_MODBUS_0_MSG
  * @return returns pointer to modbus configuration variable ComCfg_Modbus0MsgDataType
  */
-ComCfg_Modbus0MsgDataType* ComCfg_get_mb0Config(ComCfg_modbus0MsgIndxType msgIndx)
+ComCfg_Modbus0MsgDataType* ComCfg_read_mb0Config(ComCfg_modbus0MsgIndxType msgIndx)
 {
     uint16_t rMsgIndx = 0;
     if (msgIndx < NUM_OF_MODBUS_0_MSG)
@@ -93,9 +93,9 @@ uint16_t CRC_16(unsigned char* str, unsigned int usDataLen)
  * @param MsgIndx message that should be sent
  * @return (void)
  */
-void ComCfg_set_flagCanMsgForTx(ComCfg_canMsgIndxType MsgIndx)
+void ComCfg_write_flagCanMsgForTx(ComCfg_canMsgIndxType MsgIndx)
 {
-    ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(MsgIndx);
+    ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(MsgIndx);
     msgPtr->canRdyForTx = 1;
 }
 
@@ -106,6 +106,6 @@ void ComCfg_set_flagCanMsgForTx(ComCfg_canMsgIndxType MsgIndx)
  */
 void ComCfg_clear_flagCanMsgForParse(ComCfg_canMsgIndxType MsgIndx)
 {
-    ComCfg_CanMsgDataType* msgPtr = ComCfg_get_canConfig(MsgIndx);
+    ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(MsgIndx);
     msgPtr->canRdyForParse = 0;
 }

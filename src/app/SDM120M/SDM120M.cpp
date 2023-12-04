@@ -1,6 +1,30 @@
 #include "SDM120M.h"
 
 SDM120M_dataType _rxData[SDM120M_NUM_OF_MODULES][SDM120M_NUM_OF_READ]; // parsed values
+static const char* _sdm120mVarNames[] =
+{
+    "VOLTAGE_V",
+    "CURRENT_A",
+    "ACTIVE_POWER_W",
+    "APPARENT_POWER_VA",
+    "REACTIVE_POWER_VAr",
+    "POWER_FACTOR",
+    "FREQUENCY",
+    "IMPORT_ACTIVE_ENERGY_kWh",
+    "EXPORT_ACTIVE_ENERGY_kWh",
+    "IMPORT_REACTIVE_ENERGY_kVArh",
+    "EXPORT_REACTIVE_ENERGY_kVArh",
+    "TOTAL_SYSTEM_POWER_DEMAND_W",
+    "MAXIMUM_TOTAL_SYSTEM_POWER_DEMAND_W",
+    "IMPORT_SYSTEM_POWER_DEMAND_W",
+    "MAXIMUM_IMPORT_SYSTEM_POWER_DEMAND_W",
+    "EXPORT_SYSTEM_POWER_DEMAND_W",
+    "MAXIMUM_EXPORT_SYSTEM_POWER_DEMAND",
+    "CURRENT_DEMAND_A",
+    "MAXIMUM_CURRENT_DEMAND_A",
+    "TOTAL_ACTIVE_ENERGY_kWh",
+    "TOTAL_REACTIVE_ENERGY_kVArh",
+};
 
 /**
  * @brief Function initialises internal data
@@ -54,7 +78,7 @@ void Sdm120m_parseModbusData(uint8_t ModuleIndx, uint8_t VariableIndx, uint8_t* 
 void Sdm120m_modbus_compose(uint8_t* ModMsgData, uint8_t MsgIndx, uint8_t ModuleIndx)
 {
     // fill modbus message data
-    ModMsgData[0] = _sdm120m_mb_module_id[ModuleIndx];      // ID
+    ModMsgData[0] = Sdm120m_read_moduleId(ModuleIndx);      // ID
     ModMsgData[1] = 0x04;                                   // Function code
     ModMsgData[2] = (_sdm120m_mb_start_addrs[MsgIndx] >> 8) & 0xFF;   // Data Reg High HI
     ModMsgData[3] = (_sdm120m_mb_start_addrs[MsgIndx] >> 0) & 0xFF;   // Data Reg High LO
@@ -98,7 +122,7 @@ void Sdm120m_can_compose(uint8_t* CanData, uint32_t* CanId, uint32_t Value1, uin
  * @param VarIndx Variable index as per SDM120M_NUM_OF_READ. Each variable has a data ready flag.
  * @return true if data is ready
  */
-bool Sdm120m_get_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx)
+bool Sdm120m_read_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx)
 {
     return _rxData[ModuleIndx][VarIndx].dataReadyFlg;
 }
@@ -109,7 +133,7 @@ bool Sdm120m_get_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx)
  * @param VarIndx Variable index as per SDM120M_NUM_OF_READ.
  * @return
  */
-float Sdm120m_get_dataValue(uint8_t ModuleIndx, uint8_t VarIndx)
+float Sdm120m_read_dataValue(uint8_t ModuleIndx, uint8_t VarIndx)
 {
     return _rxData[ModuleIndx][VarIndx].val;
 }
@@ -129,4 +153,24 @@ void Sdm120m_clear_dataReadyFlag(uint8_t ModuleIndx, uint8_t MsgIndx1, uint8_t M
     {
         _rxData[ModuleIndx][MsgIndx2].dataReadyFlg = 0;
     }
+}
+
+const char* Sdm120m_read_dataName(uint8_t VarIndx)
+{
+    const char* returnName = _sdm120mVarNames[0];
+    if (VarIndx < SDM120M_NUM_OF_READ)
+    {
+        returnName = _sdm120mVarNames[VarIndx];
+    }
+    return returnName;
+}
+
+uint16_t Sdm120m_read_moduleId(uint8_t ModuleIndx)
+{
+    uint16_t moduleId = 0;
+    if (ModuleIndx < SDM120M_NUM_OF_MODULES)
+    {
+        moduleId = _sdm120m_mb_module_id[ModuleIndx];
+    }
+    return moduleId;
 }

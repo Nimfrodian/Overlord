@@ -36,4 +36,7 @@ void RelayControl_composeCanMessage(uint8_t* MsgData, uint32_t* CanId);
 
 bool RelayControl_composeWaveshareModbusMessage(uint8_t ModuleIndx, uint8_t* MbMsgData, uint8_t GpioSt);
 
+bool RelayControl_read_relaySt(uint8_t RelayIndx);
+bool RelayControl_write_relaySt(uint8_t RelayIndx, bool state);
+
 #endif
