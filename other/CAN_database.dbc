@@ -300,90 +300,6 @@ BO_ 272 RelayFeedback: 8 Vector__XXX
  SG_ RelaySts_01 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ RelaySts_00 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
 
-BO_ 533 RC_SDM120M_3_10: 8 Vector__XXX
- SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
-
-BO_ 532 RC_SDM120M_3_9: 8 Vector__XXX
- SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
- SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
-
-BO_ 531 RC_SDM120M_3_8: 8 Vector__XXX
- SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
- SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
-
-BO_ 530 RC_SDM120M_3_7: 8 Vector__XXX
- SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
- SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
-
-BO_ 529 RC_SDM120M_3_6: 8 Vector__XXX
- SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
- SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
-
-BO_ 528 RC_SDM120M_3_5: 8 Vector__XXX
- SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
- SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
-
-BO_ 527 RC_SDM120M_3_4: 8 Vector__XXX
- SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
- SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
-
-BO_ 526 RC_SDM120M_3_3: 8 Vector__XXX
- SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
- SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
-
-BO_ 525 RC_SDM120M_3_2: 8 Vector__XXX
- SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
- SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
-
-BO_ 524 RC_SDM120M_3_1: 8 Vector__XXX
- SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
-
-BO_ 523 RC_SDM120M_3_0: 8 RoomController
- SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
- SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
-
-BO_ 522 RC_SDM120M_2_10: 8 Vector__XXX
- SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
-
-BO_ 521 RC_SDM120M_2_9: 8 Vector__XXX
- SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
- SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
-
-BO_ 520 RC_SDM120M_2_8: 8 Vector__XXX
- SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
- SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
-
-BO_ 519 RC_SDM120M_2_7: 8 Vector__XXX
- SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
- SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
-
-BO_ 518 RC_SDM120M_2_6: 8 Vector__XXX
- SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
- SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
-
-BO_ 517 RC_SDM120M_2_5: 8 Vector__XXX
- SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
- SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
-
-BO_ 516 RC_SDM120M_2_4: 8 Vector__XXX
- SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
- SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
-
-BO_ 515 RC_SDM120M_2_3: 8 Vector__XXX
- SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
- SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
-
-BO_ 514 RC_SDM120M_2_2: 8 Vector__XXX
- SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
- SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
-
-BO_ 513 RC_SDM120M_2_1: 8 Vector__XXX
- SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
-
-BO_ 512 RC_SDM120M_2_0: 8 RoomController
- SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
- SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
-
 BO_ 511 RC_SDM120M_1_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -425,6 +341,785 @@ BO_ 502 RC_SDM120M_1_1: 8 Vector__XXX
 BO_ 501 RC_SDM120M_1_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 522 RC_SDM120M_2_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 521 RC_SDM120M_2_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 520 RC_SDM120M_2_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 519 RC_SDM120M_2_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 518 RC_SDM120M_2_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 517 RC_SDM120M_2_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 516 RC_SDM120M_2_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 515 RC_SDM120M_2_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 514 RC_SDM120M_2_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 513 RC_SDM120M_2_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 512 RC_SDM120M_2_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 533 RC_SDM120M_3_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 532 RC_SDM120M_3_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 531 RC_SDM120M_3_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 530 RC_SDM120M_3_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 529 RC_SDM120M_3_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 528 RC_SDM120M_3_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 527 RC_SDM120M_3_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 526 RC_SDM120M_3_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 525 RC_SDM120M_3_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 524 RC_SDM120M_3_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 523 RC_SDM120M_3_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 544 RC_SDM120M_4_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 543 RC_SDM120M_4_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 542 RC_SDM120M_4_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 541 RC_SDM120M_4_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 540 RC_SDM120M_4_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 539 RC_SDM120M_4_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 538 RC_SDM120M_4_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 537 RC_SDM120M_4_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 536 RC_SDM120M_4_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 535 RC_SDM120M_4_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 534 RC_SDM120M_4_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 555 RC_SDM120M_5_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 554 RC_SDM120M_5_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 553 RC_SDM120M_5_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 552 RC_SDM120M_5_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 551 RC_SDM120M_5_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 550 RC_SDM120M_5_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 549 RC_SDM120M_5_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 548 RC_SDM120M_5_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 547 RC_SDM120M_5_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 546 RC_SDM120M_5_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 545 RC_SDM120M_5_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 566 RC_SDM120M_6_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 565 RC_SDM120M_6_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 564 RC_SDM120M_6_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 563 RC_SDM120M_6_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 562 RC_SDM120M_6_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 561 RC_SDM120M_6_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 560 RC_SDM120M_6_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 559 RC_SDM120M_6_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 558 RC_SDM120M_6_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 557 RC_SDM120M_6_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 556 RC_SDM120M_6_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 577 RC_SDM120M_7_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 576 RC_SDM120M_7_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 575 RC_SDM120M_7_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 574 RC_SDM120M_7_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 573 RC_SDM120M_7_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 572 RC_SDM120M_7_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 571 RC_SDM120M_7_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 570 RC_SDM120M_7_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 569 RC_SDM120M_7_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 568 RC_SDM120M_7_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 567 RC_SDM120M_7_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 588 RC_SDM120M_8_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 587 RC_SDM120M_8_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 586 RC_SDM120M_8_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 585 RC_SDM120M_8_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 584 RC_SDM120M_8_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 583 RC_SDM120M_8_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 582 RC_SDM120M_8_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 581 RC_SDM120M_8_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 580 RC_SDM120M_8_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 579 RC_SDM120M_8_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 578 RC_SDM120M_8_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 599 RC_SDM120M_9_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 598 RC_SDM120M_9_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 597 RC_SDM120M_9_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 596 RC_SDM120M_9_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 595 RC_SDM120M_9_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 594 RC_SDM120M_9_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 593 RC_SDM120M_9_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 592 RC_SDM120M_9_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 591 RC_SDM120M_9_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 590 RC_SDM120M_9_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 589 RC_SDM120M_9_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 610 RC_SDM120M_10_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 609 RC_SDM120M_10_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 608 RC_SDM120M_10_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 607 RC_SDM120M_10_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 606 RC_SDM120M_10_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 605 RC_SDM120M_10_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 604 RC_SDM120M_10_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 603 RC_SDM120M_10_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 602 RC_SDM120M_10_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 601 RC_SDM120M_10_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 600 RC_SDM120M_10_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 621 RC_SDM120M_11_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 620 RC_SDM120M_11_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 619 RC_SDM120M_11_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 618 RC_SDM120M_11_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 617 RC_SDM120M_11_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 616 RC_SDM120M_11_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 615 RC_SDM120M_11_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 614 RC_SDM120M_11_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 613 RC_SDM120M_11_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 612 RC_SDM120M_11_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 611 RC_SDM120M_11_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 632 RC_SDM120M_12_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 631 RC_SDM120M_12_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 630 RC_SDM120M_12_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 629 RC_SDM120M_12_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 628 RC_SDM120M_12_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 627 RC_SDM120M_12_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 626 RC_SDM120M_12_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 625 RC_SDM120M_12_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 624 RC_SDM120M_12_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 623 RC_SDM120M_12_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 622 RC_SDM120M_12_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 643 RC_SDM120M_13_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 642 RC_SDM120M_13_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 641 RC_SDM120M_13_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 640 RC_SDM120M_13_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 639 RC_SDM120M_13_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 638 RC_SDM120M_13_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 637 RC_SDM120M_13_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 636 RC_SDM120M_13_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 635 RC_SDM120M_13_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 634 RC_SDM120M_13_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 633 RC_SDM120M_13_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 654 RC_SDM120M_14_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 653 RC_SDM120M_14_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 652 RC_SDM120M_14_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 651 RC_SDM120M_14_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 650 RC_SDM120M_14_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 649 RC_SDM120M_14_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 648 RC_SDM120M_14_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 647 RC_SDM120M_14_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 646 RC_SDM120M_14_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 645 RC_SDM120M_14_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 644 RC_SDM120M_14_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 665 RC_SDM120M_15_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 664 RC_SDM120M_15_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 663 RC_SDM120M_15_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 662 RC_SDM120M_15_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 661 RC_SDM120M_15_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 660 RC_SDM120M_15_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 659 RC_SDM120M_15_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 658 RC_SDM120M_15_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 657 RC_SDM120M_15_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 656 RC_SDM120M_15_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 655 RC_SDM120M_15_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 676 RC_SDM120M_16_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 675 RC_SDM120M_16_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 674 RC_SDM120M_16_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 673 RC_SDM120M_16_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 672 RC_SDM120M_16_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 671 RC_SDM120M_16_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 670 RC_SDM120M_16_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 669 RC_SDM120M_16_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 668 RC_SDM120M_16_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 667 RC_SDM120M_16_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 666 RC_SDM120M_16_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 687 RC_SDM120M_17_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 686 RC_SDM120M_17_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 685 RC_SDM120M_17_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 684 RC_SDM120M_17_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 683 RC_SDM120M_17_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 682 RC_SDM120M_17_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 681 RC_SDM120M_17_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 680 RC_SDM120M_17_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 679 RC_SDM120M_17_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 678 RC_SDM120M_17_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 677 RC_SDM120M_17_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 698 RC_SDM120M_18_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 697 RC_SDM120M_18_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 696 RC_SDM120M_18_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 695 RC_SDM120M_18_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 694 RC_SDM120M_18_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 693 RC_SDM120M_18_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 692 RC_SDM120M_18_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 691 RC_SDM120M_18_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 690 RC_SDM120M_18_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 689 RC_SDM120M_18_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 688 RC_SDM120M_18_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 709 RC_SDM120M_19_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 708 RC_SDM120M_19_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 707 RC_SDM120M_19_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 706 RC_SDM120M_19_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 705 RC_SDM120M_19_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 704 RC_SDM120M_19_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 703 RC_SDM120M_19_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 702 RC_SDM120M_19_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 701 RC_SDM120M_19_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 700 RC_SDM120M_19_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 699 RC_SDM120M_19_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+BO_ 720 RC_SDM120M_20_10: 8 Vector__XXX
+ SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 719 RC_SDM120M_20_9: 8 Vector__XXX
+ SG_ TotalActvEnergy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ MaxCurrDmnd_A : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+
+BO_ 718 RC_SDM120M_20_8: 8 Vector__XXX
+ SG_ CurrDmnd_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ MaxExportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 717 RC_SDM120M_20_7: 8 Vector__XXX
+ SG_ ExportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxImportSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 716 RC_SDM120M_20_6: 8 Vector__XXX
+ SG_ ImportSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ MaxTotalSysPwrDmnd_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 715 RC_SDM120M_20_5: 8 Vector__XXX
+ SG_ TotalSysPwrDmnd_W : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+ SG_ ExportReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+
+BO_ 714 RC_SDM120M_20_4: 8 Vector__XXX
+ SG_ ImportReactEnrgy_kVArh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
+ SG_ ExportActEnrgy_kWh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+
+BO_ 713 RC_SDM120M_20_3: 8 Vector__XXX
+ SG_ ImportActEnrgy_kWh : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "kWh" Vector__XXX
+ SG_ Frequency_Hz : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "Hz" Vector__XXX
+
+BO_ 712 RC_SDM120M_20_2: 8 Vector__XXX
+ SG_ PwrFctr : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
+ SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
+
+BO_ 711 RC_SDM120M_20_1: 8 Vector__XXX
+ SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
+
+BO_ 710 RC_SDM120M_20_0: 8 RoomController
+ SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
+ SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
 
 
 
@@ -452,46 +1147,6 @@ BA_DEF_DEF_  "CANoeStartDelay" 0;
 BA_DEF_DEF_  "VFrameFormat" "StandardCAN";
 BA_ "BusType" "CAN FD";
 BA_ "DBName" "CAN_database";
-SIG_VALTYPE_ 533 TotalReactEnrgy_kVArh : 1;
-SIG_VALTYPE_ 532 TotalActvEnergy_kWh : 1;
-SIG_VALTYPE_ 532 MaxCurrDmnd_A : 1;
-SIG_VALTYPE_ 531 CurrDmnd_A : 1;
-SIG_VALTYPE_ 531 MaxExportSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 530 ExportSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 530 MaxImportSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 529 ImportSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 529 MaxTotalSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 528 TotalSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 528 ExportReactEnrgy_kVArh : 1;
-SIG_VALTYPE_ 527 ImportReactEnrgy_kVArh : 1;
-SIG_VALTYPE_ 527 ExportActEnrgy_kWh : 1;
-SIG_VALTYPE_ 526 ImportActEnrgy_kWh : 1;
-SIG_VALTYPE_ 526 Frequency_Hz : 1;
-SIG_VALTYPE_ 525 PwrFctr : 1;
-SIG_VALTYPE_ 525 ReactPwr_VAr : 1;
-SIG_VALTYPE_ 524 ActivePwr_W : 1;
-SIG_VALTYPE_ 523 Current_A : 1;
-SIG_VALTYPE_ 523 Voltage_V : 1;
-SIG_VALTYPE_ 522 TotalReactEnrgy_kVArh : 1;
-SIG_VALTYPE_ 521 TotalActvEnergy_kWh : 1;
-SIG_VALTYPE_ 521 MaxCurrDmnd_A : 1;
-SIG_VALTYPE_ 520 CurrDmnd_A : 1;
-SIG_VALTYPE_ 520 MaxExportSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 519 ExportSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 519 MaxImportSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 518 ImportSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 518 MaxTotalSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 517 TotalSysPwrDmnd_W : 1;
-SIG_VALTYPE_ 517 ExportReactEnrgy_kVArh : 1;
-SIG_VALTYPE_ 516 ImportReactEnrgy_kVArh : 1;
-SIG_VALTYPE_ 516 ExportActEnrgy_kWh : 1;
-SIG_VALTYPE_ 515 ImportActEnrgy_kWh : 1;
-SIG_VALTYPE_ 515 Frequency_Hz : 1;
-SIG_VALTYPE_ 514 PwrFctr : 1;
-SIG_VALTYPE_ 514 ReactPwr_VAr : 1;
-SIG_VALTYPE_ 513 ActivePwr_W : 1;
-SIG_VALTYPE_ 512 Current_A : 1;
-SIG_VALTYPE_ 512 Voltage_V : 1;
 SIG_VALTYPE_ 511 TotalReactEnrgy_kVArh : 1;
 SIG_VALTYPE_ 510 TotalActvEnergy_kWh : 1;
 SIG_VALTYPE_ 510 MaxCurrDmnd_A : 1;
@@ -512,4 +1167,384 @@ SIG_VALTYPE_ 503 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 502 ActivePwr_W : 1;
 SIG_VALTYPE_ 501 Current_A : 1;
 SIG_VALTYPE_ 501 Voltage_V : 1;
+SIG_VALTYPE_ 522 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 521 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 521 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 520 CurrDmnd_A : 1;
+SIG_VALTYPE_ 520 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 519 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 519 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 518 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 518 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 517 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 517 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 516 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 516 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 515 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 515 Frequency_Hz : 1;
+SIG_VALTYPE_ 514 PwrFctr : 1;
+SIG_VALTYPE_ 514 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 513 ActivePwr_W : 1;
+SIG_VALTYPE_ 512 Current_A : 1;
+SIG_VALTYPE_ 512 Voltage_V : 1;
+SIG_VALTYPE_ 533 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 532 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 532 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 531 CurrDmnd_A : 1;
+SIG_VALTYPE_ 531 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 530 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 530 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 529 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 529 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 528 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 528 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 527 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 527 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 526 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 526 Frequency_Hz : 1;
+SIG_VALTYPE_ 525 PwrFctr : 1;
+SIG_VALTYPE_ 525 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 524 ActivePwr_W : 1;
+SIG_VALTYPE_ 523 Current_A : 1;
+SIG_VALTYPE_ 523 Voltage_V : 1;
+SIG_VALTYPE_ 544 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 543 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 543 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 542 CurrDmnd_A : 1;
+SIG_VALTYPE_ 542 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 541 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 541 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 540 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 540 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 539 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 539 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 538 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 538 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 537 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 537 Frequency_Hz : 1;
+SIG_VALTYPE_ 536 PwrFctr : 1;
+SIG_VALTYPE_ 536 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 535 ActivePwr_W : 1;
+SIG_VALTYPE_ 534 Current_A : 1;
+SIG_VALTYPE_ 534 Voltage_V : 1;
+SIG_VALTYPE_ 555 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 554 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 554 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 553 CurrDmnd_A : 1;
+SIG_VALTYPE_ 553 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 552 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 552 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 551 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 551 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 550 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 550 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 549 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 549 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 548 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 548 Frequency_Hz : 1;
+SIG_VALTYPE_ 547 PwrFctr : 1;
+SIG_VALTYPE_ 547 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 546 ActivePwr_W : 1;
+SIG_VALTYPE_ 545 Current_A : 1;
+SIG_VALTYPE_ 545 Voltage_V : 1;
+SIG_VALTYPE_ 566 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 565 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 565 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 564 CurrDmnd_A : 1;
+SIG_VALTYPE_ 564 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 563 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 563 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 562 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 562 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 561 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 561 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 560 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 560 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 559 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 559 Frequency_Hz : 1;
+SIG_VALTYPE_ 558 PwrFctr : 1;
+SIG_VALTYPE_ 558 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 557 ActivePwr_W : 1;
+SIG_VALTYPE_ 556 Current_A : 1;
+SIG_VALTYPE_ 556 Voltage_V : 1;
+SIG_VALTYPE_ 577 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 576 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 576 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 575 CurrDmnd_A : 1;
+SIG_VALTYPE_ 575 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 574 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 574 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 573 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 573 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 572 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 572 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 571 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 571 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 570 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 570 Frequency_Hz : 1;
+SIG_VALTYPE_ 569 PwrFctr : 1;
+SIG_VALTYPE_ 569 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 568 ActivePwr_W : 1;
+SIG_VALTYPE_ 567 Current_A : 1;
+SIG_VALTYPE_ 567 Voltage_V : 1;
+SIG_VALTYPE_ 588 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 587 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 587 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 586 CurrDmnd_A : 1;
+SIG_VALTYPE_ 586 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 585 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 585 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 584 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 584 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 583 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 583 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 582 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 582 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 581 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 581 Frequency_Hz : 1;
+SIG_VALTYPE_ 580 PwrFctr : 1;
+SIG_VALTYPE_ 580 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 579 ActivePwr_W : 1;
+SIG_VALTYPE_ 578 Current_A : 1;
+SIG_VALTYPE_ 578 Voltage_V : 1;
+SIG_VALTYPE_ 599 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 598 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 598 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 597 CurrDmnd_A : 1;
+SIG_VALTYPE_ 597 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 596 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 596 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 595 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 595 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 594 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 594 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 593 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 593 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 592 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 592 Frequency_Hz : 1;
+SIG_VALTYPE_ 591 PwrFctr : 1;
+SIG_VALTYPE_ 591 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 590 ActivePwr_W : 1;
+SIG_VALTYPE_ 589 Current_A : 1;
+SIG_VALTYPE_ 589 Voltage_V : 1;
+SIG_VALTYPE_ 610 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 609 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 609 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 608 CurrDmnd_A : 1;
+SIG_VALTYPE_ 608 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 607 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 607 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 606 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 606 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 605 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 605 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 604 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 604 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 603 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 603 Frequency_Hz : 1;
+SIG_VALTYPE_ 602 PwrFctr : 1;
+SIG_VALTYPE_ 602 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 601 ActivePwr_W : 1;
+SIG_VALTYPE_ 600 Current_A : 1;
+SIG_VALTYPE_ 600 Voltage_V : 1;
+SIG_VALTYPE_ 621 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 620 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 620 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 619 CurrDmnd_A : 1;
+SIG_VALTYPE_ 619 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 618 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 618 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 617 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 617 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 616 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 616 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 615 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 615 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 614 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 614 Frequency_Hz : 1;
+SIG_VALTYPE_ 613 PwrFctr : 1;
+SIG_VALTYPE_ 613 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 612 ActivePwr_W : 1;
+SIG_VALTYPE_ 611 Current_A : 1;
+SIG_VALTYPE_ 611 Voltage_V : 1;
+SIG_VALTYPE_ 632 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 631 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 631 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 630 CurrDmnd_A : 1;
+SIG_VALTYPE_ 630 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 629 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 629 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 628 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 628 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 627 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 627 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 626 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 626 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 625 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 625 Frequency_Hz : 1;
+SIG_VALTYPE_ 624 PwrFctr : 1;
+SIG_VALTYPE_ 624 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 623 ActivePwr_W : 1;
+SIG_VALTYPE_ 622 Current_A : 1;
+SIG_VALTYPE_ 622 Voltage_V : 1;
+SIG_VALTYPE_ 643 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 642 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 642 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 641 CurrDmnd_A : 1;
+SIG_VALTYPE_ 641 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 640 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 640 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 639 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 639 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 638 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 638 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 637 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 637 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 636 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 636 Frequency_Hz : 1;
+SIG_VALTYPE_ 635 PwrFctr : 1;
+SIG_VALTYPE_ 635 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 634 ActivePwr_W : 1;
+SIG_VALTYPE_ 633 Current_A : 1;
+SIG_VALTYPE_ 633 Voltage_V : 1;
+SIG_VALTYPE_ 654 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 653 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 653 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 652 CurrDmnd_A : 1;
+SIG_VALTYPE_ 652 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 651 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 651 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 650 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 650 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 649 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 649 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 648 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 648 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 647 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 647 Frequency_Hz : 1;
+SIG_VALTYPE_ 646 PwrFctr : 1;
+SIG_VALTYPE_ 646 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 645 ActivePwr_W : 1;
+SIG_VALTYPE_ 644 Current_A : 1;
+SIG_VALTYPE_ 644 Voltage_V : 1;
+SIG_VALTYPE_ 665 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 664 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 664 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 663 CurrDmnd_A : 1;
+SIG_VALTYPE_ 663 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 662 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 662 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 661 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 661 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 660 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 660 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 659 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 659 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 658 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 658 Frequency_Hz : 1;
+SIG_VALTYPE_ 657 PwrFctr : 1;
+SIG_VALTYPE_ 657 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 656 ActivePwr_W : 1;
+SIG_VALTYPE_ 655 Current_A : 1;
+SIG_VALTYPE_ 655 Voltage_V : 1;
+SIG_VALTYPE_ 676 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 675 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 675 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 674 CurrDmnd_A : 1;
+SIG_VALTYPE_ 674 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 673 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 673 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 672 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 672 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 671 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 671 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 670 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 670 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 669 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 669 Frequency_Hz : 1;
+SIG_VALTYPE_ 668 PwrFctr : 1;
+SIG_VALTYPE_ 668 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 667 ActivePwr_W : 1;
+SIG_VALTYPE_ 666 Current_A : 1;
+SIG_VALTYPE_ 666 Voltage_V : 1;
+SIG_VALTYPE_ 687 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 686 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 686 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 685 CurrDmnd_A : 1;
+SIG_VALTYPE_ 685 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 684 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 684 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 683 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 683 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 682 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 682 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 681 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 681 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 680 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 680 Frequency_Hz : 1;
+SIG_VALTYPE_ 679 PwrFctr : 1;
+SIG_VALTYPE_ 679 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 678 ActivePwr_W : 1;
+SIG_VALTYPE_ 677 Current_A : 1;
+SIG_VALTYPE_ 677 Voltage_V : 1;
+SIG_VALTYPE_ 698 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 697 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 697 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 696 CurrDmnd_A : 1;
+SIG_VALTYPE_ 696 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 695 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 695 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 694 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 694 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 693 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 693 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 692 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 692 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 691 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 691 Frequency_Hz : 1;
+SIG_VALTYPE_ 690 PwrFctr : 1;
+SIG_VALTYPE_ 690 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 689 ActivePwr_W : 1;
+SIG_VALTYPE_ 688 Current_A : 1;
+SIG_VALTYPE_ 688 Voltage_V : 1;
+SIG_VALTYPE_ 709 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 708 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 708 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 707 CurrDmnd_A : 1;
+SIG_VALTYPE_ 707 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 706 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 706 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 705 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 705 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 704 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 704 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 703 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 703 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 702 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 702 Frequency_Hz : 1;
+SIG_VALTYPE_ 701 PwrFctr : 1;
+SIG_VALTYPE_ 701 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 700 ActivePwr_W : 1;
+SIG_VALTYPE_ 699 Current_A : 1;
+SIG_VALTYPE_ 699 Voltage_V : 1;
+SIG_VALTYPE_ 720 TotalReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 719 TotalActvEnergy_kWh : 1;
+SIG_VALTYPE_ 719 MaxCurrDmnd_A : 1;
+SIG_VALTYPE_ 718 CurrDmnd_A : 1;
+SIG_VALTYPE_ 718 MaxExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 717 ExportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 717 MaxImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 716 ImportSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 716 MaxTotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 715 TotalSysPwrDmnd_W : 1;
+SIG_VALTYPE_ 715 ExportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 714 ImportReactEnrgy_kVArh : 1;
+SIG_VALTYPE_ 714 ExportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 713 ImportActEnrgy_kWh : 1;
+SIG_VALTYPE_ 713 Frequency_Hz : 1;
+SIG_VALTYPE_ 712 PwrFctr : 1;
+SIG_VALTYPE_ 712 ReactPwr_VAr : 1;
+SIG_VALTYPE_ 711 ActivePwr_W : 1;
+SIG_VALTYPE_ 710 Current_A : 1;
+SIG_VALTYPE_ 710 Voltage_V : 1;
 

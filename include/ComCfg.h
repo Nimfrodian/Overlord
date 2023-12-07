@@ -26,7 +26,7 @@ typedef struct
     uint8_t dataOutCount;       // number of data to be sent
     bool mbRdyForTx;            // message ready for transmission flag
     bool mbRdyForParse;         // message ready to be parsed
-} ComCfg_Modbus0MsgDataType;
+} ComCfg_Modbus1MsgDataType;
 
 typedef enum
 {
@@ -802,16 +802,16 @@ typedef enum
 
 typedef enum
 {
-    MODBUS_0_MSG_SET_ALL_RELAYS_0_7,
-    MODBUS_0_MSG_SET_ALL_RELAYS_8_15,
-    MODBUS_0_MSG_SET_ALL_RELAYS_16_23,
-    MODBUS_0_MSG_SET_ALL_RELAYS_24_31,
+    MODBUS_1_MSG_SET_ALL_RELAYS_0_7,
+    MODBUS_1_MSG_SET_ALL_RELAYS_8_15,
+    MODBUS_1_MSG_SET_ALL_RELAYS_16_23,
+    MODBUS_1_MSG_SET_ALL_RELAYS_24_31,
     //MODBUS_0_MSG_SET_ALL_RELAYS_32_39,
     //MODBUS_0_MSG_SET_ALL_RELAYS_40_47,
     //MODBUS_0_MSG_SET_ALL_RELAYS_48_55,
     //MODBUS_0_MSG_SET_ALL_RELAYS_56_63,
 
-    NUM_OF_MODBUS_0_MSG
+    NUM_OF_MODBUS_1_MSG
 } ComCfg_modbus0MsgIndxType;
 
 // Modbus CRC tables
@@ -856,7 +856,7 @@ const unsigned char _auchCRCLo[256] =
 
 void ComCfg_init(void);
 ComCfg_CanMsgDataType* ComCfg_read_canConfig(uint16_t msgIndx);
-ComCfg_Modbus0MsgDataType* ComCfg_read_mb0Config(ComCfg_modbus0MsgIndxType msgIndx);
+ComCfg_Modbus1MsgDataType* ComCfg_read_mb1Config(ComCfg_modbus0MsgIndxType msgIndx);
 ComCfg_Modbus2MsgDataType* ComCfg_read_mb2Config(ComCfg_modbus2MsgIndxType msgIndx);
 uint16_t CRC_16(unsigned char* str, unsigned int usDataLen);
 

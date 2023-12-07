@@ -2,7 +2,7 @@
 #include "RTE.h"
 
 
-#define UART_BAUD (115200u)
+#define UART_BAUD (921600u)
 #define UART_NUM UART_NUM_0
 #define BUF_SIZE (1024)
 
@@ -11,7 +11,7 @@
 
 uint8_t _data[BUF_SIZE];
 int _length;
-int numCommands = 0;
+int numCommands = 0;    // number of commands in commands[]
 extern cliCmdType commands[];
 
 static void printTime(void)
@@ -59,20 +59,54 @@ static void printTime(void)
 static void help(uint32_t argc, char* argv[])
 {
     uart_write_bytes(UART_NUM, "HELP:\n", 7);
-    uart_write_bytes(UART_NUM, "Available commands;\n", 21);
-    for (int i = 0; i < numCommands; i++)
+    if (0 == argc)
     {
-        char printable[1024] = {0};
-        int length = sprintf(printable, "\t%s", commands[i].commandStr);
-        printable[length++] = ' ';
-        while (length < 15)
+        uart_write_bytes(UART_NUM, "Available commands;\n", 21);
+        for (int i = 0; i < numCommands; i++)
         {
-            printable[length++] = '.';
-        }
-        printable[length++] = ' ';
-        length += sprintf(printable + length, "%s\n", commands[i].commandDes);
+            char printable[1024] = {0};
+            int length = sprintf(printable, "\t%s", commands[i].commandStr);
+            printable[length++] = ' ';
+            while (length < 15)
+            {
+                printable[length++] = '.';
+            }
+            printable[length++] = ' ';
+            length += sprintf(printable + length, "%s\n", commands[i].commandDes);
 
-        uart_write_bytes(UART_NUM, printable, length);
+            uart_write_bytes(UART_NUM, printable, length);
+        }
+    }
+    else if (1 == argc)
+    {
+        bool cmdFound = false;
+        for (int i = 0; i < numCommands; i++)
+        {
+            if ((strlen(commands[i].commandStr) == strlen(argv[0])) &&                          // length match
+                (strncmp(argv[0], commands[i].commandStr, strlen(commands[i].commandStr)) == 0))   // content match
+                {
+                    cmdFound = true;
+                    if (commands[i].detailedDesc != NULL)
+                    {
+                        uart_write_bytes(UART_NUM, commands[i].detailedDesc, strlen(commands[i].detailedDesc));
+                    }
+                    else
+                    {
+                        uart_write_bytes(UART_NUM, "No further details. See 'help' for a basic description", 56);
+                    }
+                    break;
+                }
+        }
+        if (false == cmdFound)
+        {
+            char printable[128] = {0};
+            int length = sprintf(printable, "Command %s was not found, see 'help' for available commands", argv[0]);
+            uart_write_bytes(UART_NUM, printable, length);
+        }
+    }
+    else
+    {
+        uart_write_bytes(UART_NUM, "Wrong number of arguments. Try 'help' for list of command names, or 'help [command name]' for more on that particular command.\n", 7);
     }
 }
 
@@ -252,36 +286,65 @@ cliCmdType commands[]
     {
         .commandStr = "help",
         .commandDes = "prints out available commands",
+        .detailedDesc = "use 'help' or 'help [command name]' for a detailed description of what the command does",
         .cmdFunc = help
     },
     {
         .commandStr = "dev_sts",
         .commandDes = "prints out device status",
+        .detailedDesc = NULL,
         .cmdFunc = dev_sts
     },
     {
         .commandStr = "dio_sts",
         .commandDes = "prints out DIO status",
+        .detailedDesc = NULL,
         .cmdFunc = dio_sts
     },
     {
         .commandStr = "relay_sts",
         .commandDes = "prints out relay status",
+        .detailedDesc = NULL,
         .cmdFunc = relay_sts
     },
     {
         .commandStr = "set_relay",
         .commandDes = "relay x,y -> sets [x] relay to [y] state",
+        .detailedDesc = NULL,
         .cmdFunc = set_relay
     },
     {
         .commandStr = "power_sts",
         .commandDes = "power_sts x,y -> reads [y] variable from [x] power meter",
+        .detailedDesc = "available y indexes are:\n"\
+                            "\t 0 READ_VOLTAGE_V,\n"\
+                            "\t 1 READ_CURRENT_A,\n"\
+                            "\t 2 ACTIVE_POWER_W,\n"\
+                            "\t 3 APPARENT_POWER_VA,\n"\
+                            "\t 4 REACTIVE_POWER_VAr,\n"\
+                            "\t 5 POWER_FACTOR,\n"\
+                            "\t 6 FREQUENCY,\n"\
+                            "\t 7 IMPORT_ACTIVE_ENERGY_kWh,\n"\
+                            "\t 8 EXPORT_ACTIVE_ENERGY_kWh,\n"\
+                            "\t 9 IMPORT_REACTIVE_ENERGY_kVArh,\n"\
+                            "\t10 EXPORT_REACTIVE_ENERGY_kVArh,\n"\
+                            "\t11 TOTAL_SYSTEM_POWER_DEMAND_W,\n"\
+                            "\t12 MAXIMUM_TOTAL_SYSTEM_POWER_DEMAND_W,\n"\
+                            "\t13 IMPORT_SYSTEM_POWER_DEMAND_W,\n"\
+                            "\t14 MAXIMUM_IMPORT_SYSTEM_POWER_DEMAND_W,\n"\
+                            "\t15 EXPORT_SYSTEM_POWER_DEMAND_W,\n"\
+                            "\t16 MAXIMUM_EXPORT_SYSTEM_POWER_DEMAND,\n"\
+                            "\t17 CURRENT_DEMAND_A,\n"\
+                            "\t18 MAXIMUM_CURRENT_DEMAND_A,\n"\
+                            "\t19 TOTAL_ACTIVE_ENERGY_kWh,\n"\
+                            "\t20 TOTAL_REACTIVE_ENERGY_kVArh\n"\
+                        "available x indexes are from 0 up to 20",
         .cmdFunc = power_sts
     },
     {
         .commandStr = "power_sts_all",
         .commandDes = "power_sts_all x -> prints all power variables; [x=0] just the basics, [x>0] everything",
+        .detailedDesc = NULL,
         .cmdFunc = power_sts_all
     },
 };
@@ -307,6 +370,8 @@ void Rte_Cli_init(void)
         uart_driver_install(UART_NUM, 1024, 0, 0, NULL, 0);
         // Set RS485 half duplex mode
         uart_set_mode(UART_NUM, UART_MODE_RS485_HALF_DUPLEX);
+
+        uart_flush(UART_NUM);
     }
 
     numCommands = sizeof(commands) / sizeof(commands[0]);
@@ -356,7 +421,7 @@ void Rte_Cli_run(void)
                     // extract arguments
                     // dev_sts 10,32,100 -> 3, [10,32,100]
                     int argPos = 0;         // temp var to keep track of position within actual arguments
-                    for (int i = endOfCmdPos; i < _length; i++)
+                    for (int i = endOfCmdPos + 1; i < _length; i++)
                     {
                         if (10 <= argc)
                         {

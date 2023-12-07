@@ -16,9 +16,9 @@ void Rte_RelayControl_init(void)
     RelayControl_init();
 
     // clear all flags for messages that will be used
-    for (uint16_t mbMsgIndx = MODBUS_0_MSG_SET_ALL_RELAYS_0_7; mbMsgIndx < NUM_OF_MODBUS_0_MSG; mbMsgIndx++)
+    for (uint16_t mbMsgIndx = MODBUS_1_MSG_SET_ALL_RELAYS_0_7; mbMsgIndx < NUM_OF_MODBUS_1_MSG; mbMsgIndx++)
     {
-        ComCfg_Modbus0MsgDataType* mbMsgPtr = ComCfg_read_mb0Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
+        ComCfg_Modbus1MsgDataType* mbMsgPtr = ComCfg_read_mb1Config((ComCfg_modbus0MsgIndxType) mbMsgIndx);
         mbMsgPtr->mbRdyForTx = 0;
         mbMsgPtr->mbRdyForParse = 1;
     }
@@ -31,7 +31,7 @@ void Rte_RelayControl_runnable_10ms(void)
         for (uint8_t modIndx = 0; modIndx < RELAY_MODULE_NUM_OF_RELAY_BOARDS; modIndx++)
         {
             // get Modbus message pointer
-            ComCfg_Modbus0MsgDataType* txMsgPtr = ComCfg_read_mb0Config((ComCfg_modbus0MsgIndxType) (MODBUS_0_MSG_SET_ALL_RELAYS_0_7 + modIndx));
+            ComCfg_Modbus1MsgDataType* txMsgPtr = ComCfg_read_mb1Config((ComCfg_modbus0MsgIndxType) (MODBUS_1_MSG_SET_ALL_RELAYS_0_7 + modIndx));
 
             static uint8_t rlyToUpdate = 0;
 
@@ -67,8 +67,8 @@ void Rte_RelayControl_runnable_10ms(void)
                     _rlyStChangeTi = 0;
                     txMsgPtr->mbRdyForParse = 0;
                     // copy the data to internal Modbus buffer
-                    uint16_t modMsgIndx = (MODBUS_0_MSG_SET_ALL_RELAYS_0_7 + modIndx);
-                    (void) ComModbus_0_writeMsg(modMsgIndx, mbData, RELAY_MODULE_MB0_TRANSMIT_MSG_SIZE);
+                    uint16_t modMsgIndx = (MODBUS_1_MSG_SET_ALL_RELAYS_0_7 + modIndx);
+                    (void) ComModbus_1_writeMsg(modMsgIndx, mbData, RELAY_MODULE_MB0_TRANSMIT_MSG_SIZE);
 
                     // reset timer
                     rlyToUpdate++;

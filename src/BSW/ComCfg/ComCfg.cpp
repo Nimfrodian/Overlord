@@ -1,7 +1,7 @@
 #include "ComCfg.h"
 
 ComCfg_CanMsgDataType _canMsgs[NUM_OF_CAN_MSG];
-ComCfg_Modbus0MsgDataType _modbus0Msgs[NUM_OF_MODBUS_0_MSG];
+ComCfg_Modbus1MsgDataType _modbus1Msgs[NUM_OF_MODBUS_1_MSG];
 ComCfg_Modbus2MsgDataType _modbus2Msgs[NUM_OF_MODBUS_2_MSG];
 
 void ComCfg_init(void)
@@ -60,18 +60,18 @@ ComCfg_Modbus2MsgDataType* ComCfg_read_mb2Config(ComCfg_modbus2MsgIndxType msgIn
 }
 
 /**
- * @brief Function returns pointer to Modbus 0 (UART0) configuration variable
- * @param msgIndx message index for the message config variable. See NUM_OF_MODBUS_0_MSG
- * @return returns pointer to modbus configuration variable ComCfg_Modbus0MsgDataType
+ * @brief Function returns pointer to Modbus 1 (UART0) configuration variable
+ * @param msgIndx message index for the message config variable. See NUM_OF_MODBUS_1_MSG
+ * @return returns pointer to modbus configuration variable ComCfg_Modbus1MsgDataType
  */
-ComCfg_Modbus0MsgDataType* ComCfg_read_mb0Config(ComCfg_modbus0MsgIndxType msgIndx)
+ComCfg_Modbus1MsgDataType* ComCfg_read_mb1Config(ComCfg_modbus0MsgIndxType msgIndx)
 {
     uint16_t rMsgIndx = 0;
-    if (msgIndx < NUM_OF_MODBUS_0_MSG)
+    if (msgIndx < NUM_OF_MODBUS_1_MSG)
     {
         rMsgIndx = msgIndx;
     }
-    return &_modbus0Msgs[rMsgIndx];
+    return &_modbus1Msgs[rMsgIndx];
 }
 
 uint16_t CRC_16(unsigned char* str, unsigned int usDataLen)
