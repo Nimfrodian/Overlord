@@ -131,7 +131,7 @@ void ComModbus_1_transceive(void* param)
         uint8_t length = uart_read_bytes(UART_MODBUS_1, buffer, 100, pdMS_TO_TICKS(100));
         uart_write_bytes(UART_MODBUS_1, (const char*) buffer, length);
 
-        vTaskDelay(pdMS_TO_TICKS(COM_MODBUS0_TASK_DELAY_TIME_MS));
+        vTaskDelay(pdMS_TO_TICKS(COM_MODBUS1_TASK_DELAY_TIME_MS));
     }
 
 

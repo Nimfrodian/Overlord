@@ -1,7 +1,7 @@
 VERSION ""
 
 
-NS_ :
+NS_ : 
 	NS_DESC_
 	CM_
 	BA_DEF_
@@ -35,6 +35,25 @@ BS_:
 
 BU_: RoomController HomeAssistantESP
 
+
+BO_ 151 DimmerResponseMsg2: 8 Vector__XXX
+ SG_ TriggerChannel9_duty : 40|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggerChannel8_duty : 30|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggerChannel7_duty : 20|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggerChannel6_duty : 10|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggerChannel5_duty : 0|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+
+BO_ 150 DimmerResponseMsg1: 8 Vector__XXX
+ SG_ TriggerChannel4_duty : 40|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggerChannel3_duty : 30|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggerChannel2_duty : 20|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggerChannel1_duty : 10|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggerChannel0_duty : 0|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+
+BO_ 149 DimmerControlMsg: 8 Vector__XXX
+ SG_ EndDutyCycle : 24|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
+ SG_ TriggeringTime_10ms : 0|24@1+ (1,0) [0|16777215] "10ms" Vector__XXX
+ SG_ TriggeringIndex : 40|24@1+ (1,0) [0|16777215] "" Vector__XXX
 
 BO_ 256 RelayInvrtReq: 8 Vector__XXX
  SG_ Relay_invert_request_63 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
@@ -341,6 +360,7 @@ BO_ 502 RC_SDM120M_1_1: 8 Vector__XXX
 BO_ 501 RC_SDM120M_1_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 522 RC_SDM120M_2_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -382,6 +402,7 @@ BO_ 513 RC_SDM120M_2_1: 8 Vector__XXX
 BO_ 512 RC_SDM120M_2_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 533 RC_SDM120M_3_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -423,6 +444,7 @@ BO_ 524 RC_SDM120M_3_1: 8 Vector__XXX
 BO_ 523 RC_SDM120M_3_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 544 RC_SDM120M_4_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -464,6 +486,7 @@ BO_ 535 RC_SDM120M_4_1: 8 Vector__XXX
 BO_ 534 RC_SDM120M_4_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 555 RC_SDM120M_5_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -505,6 +528,7 @@ BO_ 546 RC_SDM120M_5_1: 8 Vector__XXX
 BO_ 545 RC_SDM120M_5_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 566 RC_SDM120M_6_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -546,6 +570,7 @@ BO_ 557 RC_SDM120M_6_1: 8 Vector__XXX
 BO_ 556 RC_SDM120M_6_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 577 RC_SDM120M_7_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -587,6 +612,7 @@ BO_ 568 RC_SDM120M_7_1: 8 Vector__XXX
 BO_ 567 RC_SDM120M_7_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 588 RC_SDM120M_8_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -628,6 +654,7 @@ BO_ 579 RC_SDM120M_8_1: 8 Vector__XXX
 BO_ 578 RC_SDM120M_8_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 599 RC_SDM120M_9_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -669,6 +696,7 @@ BO_ 590 RC_SDM120M_9_1: 8 Vector__XXX
 BO_ 589 RC_SDM120M_9_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 610 RC_SDM120M_10_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -710,6 +738,7 @@ BO_ 601 RC_SDM120M_10_1: 8 Vector__XXX
 BO_ 600 RC_SDM120M_10_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 621 RC_SDM120M_11_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -751,6 +780,7 @@ BO_ 612 RC_SDM120M_11_1: 8 Vector__XXX
 BO_ 611 RC_SDM120M_11_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 632 RC_SDM120M_12_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -792,6 +822,7 @@ BO_ 623 RC_SDM120M_12_1: 8 Vector__XXX
 BO_ 622 RC_SDM120M_12_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 643 RC_SDM120M_13_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -833,6 +864,7 @@ BO_ 634 RC_SDM120M_13_1: 8 Vector__XXX
 BO_ 633 RC_SDM120M_13_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 654 RC_SDM120M_14_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -874,6 +906,7 @@ BO_ 645 RC_SDM120M_14_1: 8 Vector__XXX
 BO_ 644 RC_SDM120M_14_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 665 RC_SDM120M_15_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -915,6 +948,7 @@ BO_ 656 RC_SDM120M_15_1: 8 Vector__XXX
 BO_ 655 RC_SDM120M_15_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 676 RC_SDM120M_16_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -956,6 +990,7 @@ BO_ 667 RC_SDM120M_16_1: 8 Vector__XXX
 BO_ 666 RC_SDM120M_16_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 687 RC_SDM120M_17_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -997,6 +1032,7 @@ BO_ 678 RC_SDM120M_17_1: 8 Vector__XXX
 BO_ 677 RC_SDM120M_17_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 698 RC_SDM120M_18_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -1038,6 +1074,7 @@ BO_ 689 RC_SDM120M_18_1: 8 Vector__XXX
 BO_ 688 RC_SDM120M_18_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 709 RC_SDM120M_19_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
@@ -1079,6 +1116,7 @@ BO_ 700 RC_SDM120M_19_1: 8 Vector__XXX
 BO_ 699 RC_SDM120M_19_0: 8 RoomController
  SG_ Current_A : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "A" Vector__XXX
  SG_ Voltage_V : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "V" Vector__XXX
+
 BO_ 720 RC_SDM120M_20_10: 8 Vector__XXX
  SG_ TotalReactEnrgy_kVArh : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "kVArh" Vector__XXX
 
