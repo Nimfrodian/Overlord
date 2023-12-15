@@ -31,9 +31,21 @@ extern "C" void app_main(void)
     // Start the timer
     xTimerStart(tasks_10ms_timer, 0);
 
+
+    gpio_reset_pin(GPIO_NUM_15);
+    gpio_reset_pin(GPIO_NUM_0);
+    gpio_reset_pin(GPIO_NUM_2);
+    gpio_set_direction(GPIO_NUM_15, GPIO_MODE_OUTPUT);
+    gpio_set_direction(GPIO_NUM_0, GPIO_MODE_OUTPUT);
+    gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);
+    uint8_t counter = 0;
     while (1)
     {
-        vTaskSuspend(NULL);
+        gpio_set_level(GPIO_NUM_15, counter & 0x01);
+        gpio_set_level(GPIO_NUM_0, counter & 0x02);
+        gpio_set_level(GPIO_NUM_2, counter & 0x04);
+        counter++;
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 

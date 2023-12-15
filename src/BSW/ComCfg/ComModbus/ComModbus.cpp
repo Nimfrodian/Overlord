@@ -15,9 +15,9 @@ static ComModbus_transcieveStType _mb2TrnscieveType = COM_MODBUS_TRANSMITTING;
 void ComModbus_init(void)
 {
     // set DE and RE pins for MAX485 module
-    gpio_reset_pin(DE_RE_PIN_MB0);
+    gpio_reset_pin(DE_RE_PIN_MB1);
     gpio_reset_pin(DE_RE_PIN_MB2);
-    gpio_set_direction(DE_RE_PIN_MB0, GPIO_MODE_OUTPUT);
+    gpio_set_direction(DE_RE_PIN_MB1, GPIO_MODE_OUTPUT);
     gpio_set_direction(DE_RE_PIN_MB2, GPIO_MODE_OUTPUT);
 
     ComCfg_init();
@@ -70,7 +70,7 @@ void ComModbus_init(void)
             gpio_reset_pin(GPIO_NUM_19);
             gpio_set_direction(GPIO_NUM_19, GPIO_MODE_INPUT);
         }
-        uart_set_pin(UART_MODBUS_1, GPIO_NUM_18, GPIO_NUM_19, DE_RE_PIN_MB0, UART_PIN_NO_CHANGE);
+        uart_set_pin(UART_MODBUS_1, GPIO_NUM_18, GPIO_NUM_19, DE_RE_PIN_MB1, UART_PIN_NO_CHANGE);
         // Set MODBUS 1 parameters
         uart_param_config(UART_MODBUS_1, &uart1_config);
         // Install MODBUS 1 driver

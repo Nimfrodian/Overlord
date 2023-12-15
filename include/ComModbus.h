@@ -13,8 +13,8 @@
 
 const uint8_t MODBUS_TIMEOUT_COUNTER_MAX_VAL = 1;   // number of times a modbus message is re-sent if no response is received
 
+const gpio_num_t DE_RE_PIN_MB1 = GPIO_NUM_22;  // Modbus 1 DE/RE pin (Modbus on UART1 channel)
 const gpio_num_t DE_RE_PIN_MB2 = GPIO_NUM_23;  // Modbus 2 DE/RE pin (Modbus on UART2 channel)
-const gpio_num_t DE_RE_PIN_MB0 = GPIO_NUM_22;  // Modbus 0 DE/RE pin (Modbus on UART0 channel)
 
 void ComModbus_init(void);
 void ComModbus_1_transceive(void* param);
