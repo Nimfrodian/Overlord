@@ -42,7 +42,7 @@ void Rte_Dio_runnable_10ms(void)
             }
 
             // compose CAN data
-            Dio_can_compose(&msgPtr->canMsg.data.u8[0], &msgPtr->canMsg.MsgID, &gpioInArr[0]);
+            Dio_can_compose(&msgPtr->canMsg.data[0], &msgPtr->canMsg.identifier, &gpioInArr[0]);
 
             // flag for transmit
             ComCfg_write_flagCanMsgForTx((ComCfg_canMsgIndxType) canMsgIndx);

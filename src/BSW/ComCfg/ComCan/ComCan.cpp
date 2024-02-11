@@ -1,18 +1,36 @@
 #include "ComCan.h"
 
-CAN_device_t CAN_cfg;
+const twai_general_config_t g_genConfig =
+{
+    .mode = TWAI_MODE_NORMAL,
+    .tx_io = GPIO_NUM_5,
+    .rx_io = GPIO_NUM_4,
+    .clkout_io = (gpio_num_t) -1,
+    .bus_off_io = (gpio_num_t) -1,
+    .tx_queue_len = 16,
+    .rx_queue_len = 16,
+    .alerts_enabled = 0,    // TODO(Nimfrodian) check documentation for alerts
+    .clkout_divider = 0,
+    .intr_flags = 0,    // TODO(Nimfrodian) check if this is needed
+};
+
+const twai_timing_config_t g_timingConfig = TWAI_TIMING_CONFIG_250KBITS();
+
+const twai_filter_config_t g_filerConfig =
+{
+    .acceptance_code = 0,
+    .acceptance_mask = 0,
+    .single_filter = true,
+};
 
 void ComCan_init()
 {
-    CAN_cfg.speed = CAN_SPEED_250KBPS;
-    CAN_cfg.tx_pin_id = GPIO_NUM_5;
-    CAN_cfg.rx_pin_id = GPIO_NUM_4;
-    /* create a queue for CAN receiving */
-    CAN_cfg.rx_queue = xQueueCreate(10,sizeof(CAN_frame_t));
-    //initialize CAN Module
-    ESP32Can.CANInit();
+    // initialize CAN Module
+    twai_driver_install(&g_genConfig, &g_timingConfig, &g_filerConfig);
 
     ComCfg_init();
+
+    twai_start();
 
     // create receive task
     xTaskCreatePinnedToCore(
@@ -22,8 +40,7 @@ void ComCan_init()
     NULL,            // Parameter to pass
     1,               // Task priority
     NULL,            // Task handle
-    1                // run on core 1
-    );
+    1);              // run on core 1
 
     // create transmit task
     xTaskCreatePinnedToCore(
@@ -33,23 +50,22 @@ void ComCan_init()
     NULL,                   // Parameter to pass
     1,                      // Task priority
     NULL,            // Task handle
-    1                // run on core 1
-    );
+    1);              // run on core 1
 }
 
-static void ComCan_saveMsg(ComCfg_canMsgIndxType msgIndx, CAN_frame_t* sourceMsgPtr)
+static void ComCan_saveMsg(ComCfg_canMsgIndxType msgIndx, twai_message_t* sourceMsgPtr)
 {
     // get CAN message pointer to where the data should be saved
     ComCfg_CanMsgDataType* destMsgPtr = ComCfg_read_canConfig(msgIndx);
 
     // copy the data from source message to destination message
-    for (uint8_t i = 0; i < 8; i++)
+    for (uint8_t i = 0; i < sourceMsgPtr->data_length_code; i++)
     {
-        destMsgPtr->canMsg.data.u8[i] = sourceMsgPtr->data.u8[i];
+        destMsgPtr->canMsg.data[i] = sourceMsgPtr->data[i];
     }
 
     // save message ID
-    destMsgPtr->canMsg.MsgID = sourceMsgPtr->MsgID;
+    destMsgPtr->canMsg.identifier = sourceMsgPtr->identifier;
 
     // flag that message is ready to be parsed
     destMsgPtr->canRdyForParse = 1;
@@ -63,20 +79,20 @@ void ComCan_receive(void* param)
 {
     while (1)
     {
-        CAN_frame_t _rxFrame;
-        if (pdTRUE == xQueueReceive(CAN_cfg.rx_queue, &_rxFrame, 3*portTICK_PERIOD_MS))
+        twai_message_t rxMessage;
+        while (ESP_OK == twai_receive(&rxMessage, 0))  // TODO(Nimfrodian): Check if 0 for time is valid
         {
-            uint32_t rxId = _rxFrame.MsgID;
+            uint32_t rxId = rxMessage.identifier;
             switch (rxId)
             {
-                case 0x100: // message CAN_MSG_RX_RELAY_CONTROL_WS_0
+                case 0x100:  // message CAN_MSG_RX_RELAY_CONTROL_WS_0
                 {
-                    ComCan_saveMsg(CAN_MSG_RX_RELAY_CONTROL_WS_0, &_rxFrame);
+                    ComCan_saveMsg(CAN_MSG_RX_RELAY_CONTROL_WS_0, &rxMessage);
                 }
                 break;
-                case 0x105: // message CAN_MSG_RX_RELAY_DISABLE_WS_0
+                case 0x105:  // message CAN_MSG_RX_RELAY_DISABLE_WS_0
                 {
-                    ComCan_saveMsg(CAN_MSG_RX_RELAY_DISABLE_WS_0, &_rxFrame);
+                    ComCan_saveMsg(CAN_MSG_RX_RELAY_DISABLE_WS_0, &rxMessage);
                 }
                 break;
                 break;
@@ -89,7 +105,7 @@ void ComCan_receive(void* param)
     }
 
     // delete task if illegal state was reached
-    vTaskDelete( NULL );
+    vTaskDelete(NULL);
 }
 
 void ComCan_transmit(void* param)
@@ -106,7 +122,7 @@ void ComCan_transmit(void* param)
             if (1 == canMsgPtr->canRdyForTx)
             {
                 // try to copy the message into hardware transmit buffer
-                if (0 == ESP32Can.CANWriteFrame(&canMsgPtr->canMsg))
+                if (ESP_OK == twai_transmit(&canMsgPtr->canMsg, 10))
                 {
                     // clear "send" flag if copy was successful
                     canMsgPtr->canRdyForTx = 0;
@@ -118,5 +134,5 @@ void ComCan_transmit(void* param)
     }
 
     // delete task if illegal state was reached
-    vTaskDelete( NULL );
+    vTaskDelete(NULL);
 }

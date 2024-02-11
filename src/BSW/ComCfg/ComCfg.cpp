@@ -12,21 +12,25 @@ void ComCfg_init(void)
     {
         for (uint16_t i = 0; i < NUM_OF_CAN_MSG; i++)
         {
-            _canMsgs[i].canRdyForTx = 0;                    // set transmit flag to 0 on init
-            _canMsgs[i].canMsg.FIR.B.DLC = 8;               // all messages are DLC 8
-            _canMsgs[i].canMsg.FIR.B.FF = CAN_frame_std;    // all messages are standard format
-            _canMsgs[i].canMsg.data.u8[0] = 0;              // clear the data location
-            _canMsgs[i].canMsg.data.u8[1] = 0;
-            _canMsgs[i].canMsg.data.u8[2] = 0;
-            _canMsgs[i].canMsg.data.u8[3] = 0;
-            _canMsgs[i].canMsg.data.u8[4] = 0;
-            _canMsgs[i].canMsg.data.u8[5] = 0;
-            _canMsgs[i].canMsg.data.u8[6] = 0;
-            _canMsgs[i].canMsg.data.u8[7] = 0;
+            _canMsgs[i].canMsg.extd = 0,
+            _canMsgs[i].canMsg.rtr = 0,
+            _canMsgs[i].canMsg.ss = 0,
+            _canMsgs[i].canMsg.self = 0,
+            _canMsgs[i].canMsg.dlc_non_comp = 0,
+            _canMsgs[i].canMsg.reserved = 0,
+            _canMsgs[i].canRdyForTx = 0;                // set transmit flag to 0 on init
+            _canMsgs[i].canMsg.data_length_code = 8;    // all messages are DLC 8
+            _canMsgs[i].canMsg.data[0] = 0;             // clear the data location
+            _canMsgs[i].canMsg.data[1] = 0;
+            _canMsgs[i].canMsg.data[2] = 0;
+            _canMsgs[i].canMsg.data[3] = 0;
+            _canMsgs[i].canMsg.data[4] = 0;
+            _canMsgs[i].canMsg.data[5] = 0;
+            _canMsgs[i].canMsg.data[6] = 0;
+            _canMsgs[i].canMsg.data[7] = 0;
         }
 
-        for (uint16_t i = 0; i < NUM_OF_CAN_MSG; i++)
-        {
+        for (uint16_t i = 0; i < NUM_OF_CAN_MSG; i++) {
             _modbus2Msgs[i].mbRdyForTx = 0;                  // set transmit flag to 0 on init
         }
 
@@ -79,9 +83,9 @@ uint16_t CRC_16(unsigned char* str, unsigned int usDataLen)
     uint8_t uchCRCHi = 0xFF;    // high byte of CRC initialized
     uint8_t uchCRCLo = 0xFF;    // low byte of CRC initialized
     uint16_t uIndex;    // will index into CRC lookup table
-    while(usDataLen--)
+    while (usDataLen--)
     {
-        uIndex = uchCRCHi ^ *str++; // calculate the CRC
+        uIndex = uchCRCHi ^ *str++;  // calculate the CRC
         uchCRCHi = uchCRCLo ^ _auchCRCHi[uIndex];
         uchCRCLo = _auchCRCLo[uIndex];
     }

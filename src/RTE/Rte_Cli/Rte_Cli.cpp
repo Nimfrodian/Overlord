@@ -1,5 +1,6 @@
 #include "Cli.h"
 #include "RTE.h"
+#include "esp_timer.h"
 
 
 #define UART_BAUD (921600u)
@@ -32,7 +33,7 @@ static void printTime(void)
 
     if (months)
     {
-        length += sprintf(timePrintable + length, "%d month" , months);
+        length += sprintf(timePrintable + length, "%ld month" , months);
         if ((1 < months) || (0 == months))
         {
             length += sprintf(timePrintable + sizeof(char) * length, "s");
@@ -41,7 +42,7 @@ static void printTime(void)
     }
     if (days || months)
     {
-        length += sprintf(timePrintable + length, "%d day" , days);
+        length += sprintf(timePrintable + length, "%ld day" , days);
         if ((1 < days) || (0 == days))
         {
             length += sprintf(timePrintable + sizeof(char) * length, "s");
@@ -49,7 +50,7 @@ static void printTime(void)
         length += sprintf(timePrintable + sizeof(char) * length, ", ");
     }
     {
-        length += sprintf(timePrintable + length, "%dh %dm %ds" , hours, minutes, seconds);
+        length += sprintf(timePrintable + length, "%ldh %ldm %lds" , hours, minutes, seconds);
     }
     UART_WRITE_NEWLINE(timePrintable)
 }
@@ -174,7 +175,7 @@ static void set_relay(uint32_t argc, char* argv[])
     else
     {
         char printable[128] = {0};
-        int length = sprintf(printable, "Invalid number of arguments, expected 2 but got %d", argc);
+        int length = sprintf(printable, "Invalid number of arguments, expected 2 but got %lu", argc);
         uart_write_bytes(UART_NUM, printable, length);
     }
 }
@@ -204,7 +205,7 @@ static void power_sts(uint32_t argc, char* argv[])
     }
     else
     {
-        length = sprintf(printable, "Invalid number of arguments, expected 2 but got %d", argc);
+        length = sprintf(printable, "Invalid number of arguments, expected 2 but got %lu", argc);
         uart_write_bytes(UART_NUM, printable, length);
     }
 }
@@ -263,7 +264,7 @@ static void power_sts_all(uint32_t argc, char* argv[])
     }
     else
     {
-        length += sprintf(printable + length, "Invalid number of arguments, expected 1 but got %d", argc);
+        length += sprintf(printable + length, "Invalid number of arguments, expected 1 but got %lu", argc);
         uart_write_bytes(UART_NUM, printable, length);
     }
 }
@@ -379,7 +380,7 @@ void Rte_Cli_init(void)
 
 void Rte_Cli_run(void)
 {
-    _length += uart_read_bytes(UART_NUM, &_data[_length], BUF_SIZE, 100 / portTICK_RATE_MS);
+    _length += uart_read_bytes(UART_NUM, &_data[_length], BUF_SIZE, 100 / portTICK_PERIOD_MS);
     if (_length > 0) {
         if ((_length == 1) && (_data[_length - 1] == '\n')) // only 'enter' was sent, ignore
         {
