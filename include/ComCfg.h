@@ -1,11 +1,11 @@
 #ifndef COM_CFG_H
 #define COM_CFG_H
 
-#include <ESP32CAN.h>
+#include <driver/twai.h>    // CAN protocol library, a.k.a. twin wire automotive interface
 
 typedef struct
 {
-    CAN_frame_t canMsg;     // CAN message structure
+    twai_message_t canMsg;     // CAN message structure
     bool canRdyForTx;       // message ready for transmission flag
     bool canRdyForParse;    // message ready to be parsed. Only applicable for RX messages
 } ComCfg_CanMsgDataType;
@@ -38,20 +38,21 @@ typedef enum
     // DI section
     CAN_MSG_TX_DI_STATUS,                   // status of 32 inputs                                  0x150
 
-    // power monitoring section (via SDM120M). ID of the message determines which SDM120M reports the data. 20 message IDs per message
-    CAN_MSG_TX_SDM120M_01_1,                // SDM120M data - VOLTAGE_CURRENT                                                       0x1F5
-    CAN_MSG_TX_SDM120M_01_2,                // SDM120M data - ACTIVE_POWER_APPARENT_POWER                                           0x1F6
-    CAN_MSG_TX_SDM120M_01_3,                // SDM120M data - REACTIVE_POWER_POWER_FACTOR                                           0x1F7
-    CAN_MSG_TX_SDM120M_01_4,                // SDM120M data - FREQUENCY_IMPORT_ACTIVE_ENERGY                                        0x1F8
-    CAN_MSG_TX_SDM120M_01_5,                // SDM120M data - EXPORT_ACTIVE_ENERGY_IMPORT_REACTIVE_ENERGY                           0x1F9
-    CAN_MSG_TX_SDM120M_01_6,                // SDM120M data - EXPORT_REACTIVE_ENERGY_TOTAL_SYSTEM_POWER_DEMAND                      0x1FA
-    CAN_MSG_TX_SDM120M_01_7,                // SDM120M data - MAXIMUM_TOTAL_SYSTEM_POWER_DEMAND_IMPORT_SYSTEM_POWER_DEMAND          0x1FB
-    CAN_MSG_TX_SDM120M_01_8,                // SDM120M data - MAXIMUM_IMPORT_SYSTEM_POWER_DEMAND_EXPORT_SYSTEM_POWER_DEMAND         0x1FC
-    CAN_MSG_TX_SDM120M_01_9,                // SDM120M data - MAXIMUM_EXPORT_SYSTEM_POWER_DEMAND_CURRENT_DEMAND_A                   0x1FD
-    CAN_MSG_TX_SDM120M_01_10,               // SDM120M data - MAXIMUM_CURRENT_DEMAND_TOTAL_ACTIVE_ENERGY                            0x1FE
-    CAN_MSG_TX_SDM120M_01_11,               // SDM120M data - TOTAL_REACTIVE_ENERGY_kVArh                                           0x1FF
+    // power monitoring section (via SDM120M).
+    // ID of the message determines which SDM120M reports the data. 20 message IDs per message
+    CAN_MSG_TX_SDM120M_01_1,    // SDM120M data - VOLTAGE_CURRENT                                                0x1F5
+    CAN_MSG_TX_SDM120M_01_2,    // SDM120M data - ACTIVE_POWER_APPARENT_POWER                                    0x1F6
+    CAN_MSG_TX_SDM120M_01_3,    // SDM120M data - REACTIVE_POWER_POWER_FACTOR                                    0x1F7
+    CAN_MSG_TX_SDM120M_01_4,    // SDM120M data - FREQUENCY_IMPORT_ACTIVE_ENERGY                                 0x1F8
+    CAN_MSG_TX_SDM120M_01_5,    // SDM120M data - EXPORT_ACTIVE_ENERGY_IMPORT_REACTIVE_ENERGY                    0x1F9
+    CAN_MSG_TX_SDM120M_01_6,    // SDM120M data - EXPORT_REACTIVE_ENERGY_TOTAL_SYSTEM_POWER_DEMAND               0x1FA
+    CAN_MSG_TX_SDM120M_01_7,    // SDM120M data - MAXIMUM_TOTAL_SYSTEM_POWER_DEMAND_IMPORT_SYSTEM_POWER_DEMAND   0x1FB
+    CAN_MSG_TX_SDM120M_01_8,    // SDM120M data - MAXIMUM_IMPORT_SYSTEM_POWER_DEMAND_EXPORT_SYSTEM_POWER_DEMAND  0x1FC
+    CAN_MSG_TX_SDM120M_01_9,    // SDM120M data - MAXIMUM_EXPORT_SYSTEM_POWER_DEMAND_CURRENT_DEMAND_A            0x1FD
+    CAN_MSG_TX_SDM120M_01_10,   // SDM120M data - MAXIMUM_CURRENT_DEMAND_TOTAL_ACTIVE_ENERGY                     0x1FE
+    CAN_MSG_TX_SDM120M_01_11,   // SDM120M data - TOTAL_REACTIVE_ENERGY_kVArh                                    0x1FF
 
-    CAN_MSG_TX_SDM120M_02_1,                // SDM120M data - VOLTAGE_CURRENT                                                       0x200
+    CAN_MSG_TX_SDM120M_02_1,    // SDM120M data - VOLTAGE_CURRENT                                                0x200
     CAN_MSG_TX_SDM120M_02_2,
     CAN_MSG_TX_SDM120M_02_3,
     CAN_MSG_TX_SDM120M_02_4,
@@ -806,10 +807,10 @@ typedef enum
     MODBUS_1_MSG_SET_ALL_RELAYS_8_15,
     MODBUS_1_MSG_SET_ALL_RELAYS_16_23,
     MODBUS_1_MSG_SET_ALL_RELAYS_24_31,
-    //MODBUS_0_MSG_SET_ALL_RELAYS_32_39,
-    //MODBUS_0_MSG_SET_ALL_RELAYS_40_47,
-    //MODBUS_0_MSG_SET_ALL_RELAYS_48_55,
-    //MODBUS_0_MSG_SET_ALL_RELAYS_56_63,
+    // MODBUS_0_MSG_SET_ALL_RELAYS_32_39,
+    // MODBUS_0_MSG_SET_ALL_RELAYS_40_47,
+    // MODBUS_0_MSG_SET_ALL_RELAYS_48_55,
+    // MODBUS_0_MSG_SET_ALL_RELAYS_56_63,
 
     NUM_OF_MODBUS_1_MSG
 } ComCfg_modbus0MsgIndxType;
@@ -836,7 +837,7 @@ const unsigned char _auchCRCHi[256] =
 };
 const unsigned char _auchCRCLo[256] =
 {
-  0x00, 0xC0, 0xC1, 0x01, 0xC3, 0x03, 0x02, 0xC2, 0xC6, 0x06, 0x07, 0xC7, 0x05, 0xC5, 0xC4,0x04,
+  0x00, 0xC0, 0xC1, 0x01, 0xC3, 0x03, 0x02, 0xC2, 0xC6, 0x06, 0x07, 0xC7, 0x05, 0xC5, 0xC4, 0x04,
   0xCC, 0x0C, 0x0D, 0xCD, 0x0F, 0xCF, 0xCE, 0x0E, 0x0A, 0xCA, 0xCB, 0x0B, 0xC9, 0x09, 0x08, 0xC8,
   0xD8, 0x18, 0x19, 0xD9, 0x1B, 0xDB, 0xDA, 0x1A, 0x1E, 0xDE, 0xDF, 0x1F, 0xDD, 0x1D, 0x1C, 0xDC,
   0x14, 0xD4, 0xD5, 0x15, 0xD7, 0x17, 0x16, 0xD6, 0xD2, 0x12, 0x13, 0xD3, 0x11, 0xD1, 0xD0, 0x10,
@@ -851,7 +852,7 @@ const unsigned char _auchCRCLo[256] =
   0x50, 0x90, 0x91, 0x51, 0x93, 0x53, 0x52, 0x92, 0x96, 0x56, 0x57, 0x97, 0x55, 0x95, 0x94, 0x54,
   0x9C, 0x5C, 0x5D, 0x9D, 0x5F, 0x9F, 0x9E, 0x5E, 0x5A, 0x9A, 0x9B, 0x5B, 0x99, 0x59, 0x58, 0x98,
   0x88, 0x48, 0x49, 0x89, 0x4B, 0x8B, 0x8A, 0x4A, 0x4E, 0x8E, 0x8F, 0x4F, 0x8D, 0x4D, 0x4C, 0x8C,
-  0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86, 0x82, 0x42, 0x43, 0x83, 0x41, 0x81, 0x80,0x40
+  0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86, 0x82, 0x42, 0x43, 0x83, 0x41, 0x81, 0x80, 0x40
 };
 
 void ComCfg_init(void);
@@ -863,4 +864,4 @@ uint16_t CRC_16(unsigned char* str, unsigned int usDataLen);
 void ComCfg_write_flagCanMsgForTx(ComCfg_canMsgIndxType MsgIndx);
 void ComCfg_clear_flagCanMsgForParse(ComCfg_canMsgIndxType MsgIndx);
 
-#endif
+#endif  // INCLUDE_COMCFG_H_

@@ -85,7 +85,8 @@ void Rte_RelayControl_runnable_10ms(void)
 
     // parse CAN messages
     {
-        for (uint32_t canMsgIndx = CAN_MSG_RX_RELAY_CONTROL_WS_0; canMsgIndx <= CAN_MSG_RX_RELAY_CONTROL_WS_0; canMsgIndx++)
+        for (uint32_t canMsgIndx = CAN_MSG_RX_RELAY_CONTROL_WS_0;
+             canMsgIndx <= CAN_MSG_RX_RELAY_CONTROL_WS_0; canMsgIndx++)
         {
             // get message pointer
             ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(canMsgIndx);
@@ -93,15 +94,16 @@ void Rte_RelayControl_runnable_10ms(void)
             if (true == msgPtr->canRdyForParse)
             {
                 // parse CAN message
-                uint8_t* canData = &msgPtr->canMsg.data.u8[0];
-                uint32_t canMsgId = msgPtr->canMsg.MsgID;
+                uint8_t* canData = &msgPtr->canMsg.data[0];
+                uint32_t canMsgId = msgPtr->canMsg.identifier;
                 RelayControl_parseCanMessage(canData, canMsgId);
 
                 // CAN message was parsed, clear the parsing flag
                 ComCfg_clear_flagCanMsgForParse((ComCfg_canMsgIndxType) canMsgIndx);
             }
         }
-        for (uint32_t canMsgIndx = CAN_MSG_RX_RELAY_DISABLE_WS_0; canMsgIndx <= CAN_MSG_RX_RELAY_DISABLE_WS_0; canMsgIndx++)
+        for (uint32_t canMsgIndx = CAN_MSG_RX_RELAY_DISABLE_WS_0;
+             canMsgIndx <= CAN_MSG_RX_RELAY_DISABLE_WS_0; canMsgIndx++)
         {
             // get message pointer
             ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(canMsgIndx);
@@ -109,8 +111,8 @@ void Rte_RelayControl_runnable_10ms(void)
             if (true == msgPtr->canRdyForParse)
             {
                 // parse CAN message
-                uint8_t* canData = &msgPtr->canMsg.data.u8[0];
-                uint32_t canMsgId = msgPtr->canMsg.MsgID;
+                uint8_t* canData = &msgPtr->canMsg.data[0];
+                uint32_t canMsgId = msgPtr->canMsg.identifier;
                 RelayControl_parseCanMessage(canData, canMsgId);
 
                 // CAN message was parsed, clear the parsing flag
@@ -132,8 +134,8 @@ void Rte_RelayControl_runnable_10ms(void)
                 ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(CAN_MSG_TX_RELAY_STATUS);
 
                 // prepare CAN data
-                uint8_t* canDataPtr = &msgPtr->canMsg.data.u8[0];
-                uint32_t* canIdPtr = &msgPtr->canMsg.MsgID;
+                uint8_t* canDataPtr = &msgPtr->canMsg.data[0];
+                uint32_t* canIdPtr = &msgPtr->canMsg.identifier;
                 RelayControl_composeCanMessage(canDataPtr, canIdPtr);
 
                 // flag for transmission

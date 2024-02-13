@@ -220,7 +220,7 @@ void Rte_Sdm120m_runnable_10ms(void)
                         ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(canMsgGlblIndx);
 
                         // compose CAN data
-                        Sdm120m_can_compose(&msgPtr->canMsg.data.u8[0], &msgPtr->canMsg.MsgID, val1, val2, canMsgIndx, modIndx);
+                        Sdm120m_can_compose(&msgPtr->canMsg.data[0], &msgPtr->canMsg.identifier, val1, val2, canMsgIndx, modIndx);
 
                         // flag for transmit
                         ComCfg_write_flagCanMsgForTx((ComCfg_canMsgIndxType) canMsgGlblIndx);

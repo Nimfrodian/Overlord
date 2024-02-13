@@ -2,7 +2,7 @@
 #define RTE_H
 
 #include "driver/gpio.h"
-#include <ESP32CAN.h>
+#include "driver/twai.h"
 
 #include "RelayControl.h"
 #include "ComModbus.h"
