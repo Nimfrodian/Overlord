@@ -1,6 +1,7 @@
 #ifndef CLI_H
 #define CLI_H
 
+#include <inttypes.h>
 #include "driver/uart.h"
 #include "string.h"
 

@@ -17,11 +17,11 @@ extern cliCmdType commands[];
 
 static void printTime(void)
 {
-    uint32_t seconds = (esp_timer_get_time() /1000) / 1000; // Convert milliseconds to seconds
-    uint32_t minutes = seconds / 60;                        // Convert seconds to minutes
-    uint32_t hours = minutes / 60;                          // Convert minutes to hours
-    uint32_t days = hours / 24;                             // Convert hours to days
-    uint32_t months = days / 30;                            // Approximate days to months
+    uint32_t seconds = (esp_timer_get_time() /1000) / 1000;  // Convert milliseconds to seconds
+    uint32_t minutes = seconds / 60;                         // Convert seconds to minutes
+    uint32_t hours = minutes / 60;                           // Convert minutes to hours
+    uint32_t days = hours / 24;                              // Convert hours to days
+    uint32_t months = days / 30;                             // Approximate days to months
     seconds %= 60;
     minutes %= 60;
     hours %= 24;
@@ -33,7 +33,7 @@ static void printTime(void)
 
     if (months)
     {
-        length += sprintf(timePrintable + length, "%ld month" , months);
+        length += snprintf(timePrintable + sizeof(char) * length, sizeof(timePrintable) - length, "%" PRIu32 " month" , months);
         if ((1 < months) || (0 == months))
         {
             length += sprintf(timePrintable + sizeof(char) * length, "s");
@@ -42,7 +42,7 @@ static void printTime(void)
     }
     if (days || months)
     {
-        length += sprintf(timePrintable + length, "%ld day" , days);
+        length += snprintf(timePrintable + sizeof(char) * length, sizeof(timePrintable) - length, "%" PRIu32 " day" , days);
         if ((1 < days) || (0 == days))
         {
             length += sprintf(timePrintable + sizeof(char) * length, "s");
@@ -50,7 +50,7 @@ static void printTime(void)
         length += sprintf(timePrintable + sizeof(char) * length, ", ");
     }
     {
-        length += sprintf(timePrintable + length, "%ldh %ldm %lds" , hours, minutes, seconds);
+        length += snprintf(timePrintable + sizeof(char) * length, sizeof(timePrintable) - length, "%" PRIu32 "h %" PRIu32 "m %" PRIu32 "s" , hours, minutes, seconds);
     }
     UART_WRITE_NEWLINE(timePrintable)
 }
@@ -66,14 +66,15 @@ static void help(uint32_t argc, const char* argv[])
         for (int i = 0; i < numCommands; i++)
         {
             char printable[1024] = {0};
-            int length = sprintf(printable, "\t%s", commands[i].commandStr);
+            int length = 0;
+            length += snprintf(printable + length, sizeof(printable) - length, "\t%s", commands[i].commandStr);
             printable[length++] = ' ';
             while (length < 15)
             {
                 printable[length++] = '.';
             }
             printable[length++] = ' ';
-            length += sprintf(printable + length, "%s\n", commands[i].commandDes);
+            length += snprintf(printable + length, sizeof(printable) - length, "%s\n", commands[i].commandDes);
 
             uart_write_bytes(UART_NUM, printable, length);
         }
@@ -101,13 +102,17 @@ static void help(uint32_t argc, const char* argv[])
         if (false == cmdFound)
         {
             char printable[128] = {0};
-            int length = sprintf(printable, "Command %s was not found, see 'help' for available commands", argv[0]);
+            int length = 0;
+            length += snprintf(printable + length, sizeof(printable) - length,
+                                "Command %s was not found, see 'help' for available commands", argv[0]);
             uart_write_bytes(UART_NUM, printable, length);
         }
     }
     else
     {
-        uart_write_bytes(UART_NUM, "Wrong number of arguments. Try 'help' for list of command names, or 'help [command name]' for more on that particular command.\n", 7);
+        const char* argMsgArr = "Wrong number of arguments. Try 'help' for list of command names" \
+                                    ", or 'help [command name]' for more on that particular command.\n";
+        uart_write_bytes(UART_NUM, argMsgArr, sizeof(argMsgArr));
     }
 }
 
@@ -117,14 +122,15 @@ static void dio_sts(uint32_t argc, const char* argv[])
     for (int i = 0; i < NUM_OF_INPUT_INDX; i++)
     {
         char printable[128] = {0};
-        int length = sprintf(printable, "In%02d:%d", i, Rte_Dio_read_gpioSt(i));
+        int length = 0;
+            length += snprintf(printable + length, sizeof(printable) - length, "In%02d:%d", i, Rte_Dio_read_gpioSt(i));
         if (((i+1) % 8) == 0)
         {
-            length += sprintf(printable + length, "\n");
+            length += snprintf(printable + length, sizeof(printable) - length, "\n");
         }
         else
         {
-            length += sprintf(printable + length, "   ");
+            length += snprintf(printable + length, sizeof(printable) - length, "   ");
         }
 
         uart_write_bytes(UART_NUM, printable, length);
@@ -138,14 +144,15 @@ static void relay_sts(uint32_t argc, const char* argv[])
     for (int i = 0; i < (RELAY_MODULE_NUM_OF_RELAY_BOARDS * 8); i++)
     {
         char printable[128] = {0};
-        int length = sprintf(printable, "Rly%02d:%d", i, Rte_Relay_read_relaySt(i));
+        int length = 0;
+            length += snprintf(printable + length, sizeof(printable) - length, "Rly%02d:%d", i, Rte_Relay_read_relaySt(i));
         if (((i+1) % 8) == 0)
         {
-            length += sprintf(printable + length, "\n");
+            length += snprintf(printable + length, sizeof(printable) - length, "\n");
         }
         else
         {
-            length += sprintf(printable + length, "   ");
+            length += snprintf(printable + length, sizeof(printable) - length, "   ");
         }
 
         uart_write_bytes(UART_NUM, printable, length);
@@ -164,18 +171,19 @@ static void set_relay(uint32_t argc, const char* argv[])
         int length = 0;
         if (relaySet)
         {
-            length = sprintf(printable, "Relay %d was set to %d", relayIndx, relayState);
+            length = snprintf(printable + length, sizeof(printable) - length, "Relay %d was set to %d", relayIndx, relayState);
         }
         else
         {
-            length = sprintf(printable, "Relay %d was not set to %d", relayIndx, relayState);
+            length = snprintf(printable + length, sizeof(printable) - length, "Relay %d was not set to %d", relayIndx, relayState);
         }
         uart_write_bytes(UART_NUM, printable, length);
     }
     else
     {
         char printable[128] = {0};
-        int length = sprintf(printable, "Invalid number of arguments, expected 2 but got %lu", argc);
+        int length = 0;
+            length += snprintf(printable + length, sizeof(printable) - length, "Invalid number of arguments, expected 2 but got %" PRIu32 , argc);
         uart_write_bytes(UART_NUM, printable, length);
     }
 }
@@ -190,22 +198,22 @@ static void power_sts(uint32_t argc, const char* argv[])
         int meterVar = atoi(argv[1]);
         if (meterIndx >= SDM120M_NUM_OF_MODULES)
         {
-            length = sprintf(printable, "Power meter index %d out of range, maximum value is %d\n", meterIndx, SDM120M_NUM_OF_MODULES);
+            length = snprintf(printable + length, sizeof(printable) - length, "Power meter index %d out of range, maximum value is %d\n", meterIndx, SDM120M_NUM_OF_MODULES);
         }
         else if (meterIndx >= SDM120M_NUM_OF_READ)
         {
-            length = sprintf(printable, "Variable index %d out of range, maximum value is %d\n", meterVar, SDM120M_NUM_OF_READ);
+            length = snprintf(printable + length, sizeof(printable) - length, "Variable index %d out of range, maximum value is %d\n", meterVar, SDM120M_NUM_OF_READ);
         }
         else
         {
             float varValue = Sdm120m_read_dataValue(meterIndx, meterVar);
-            length = sprintf(printable, "%s of module %d is %f\n", Rte_Sdm120m_read_dataName(meterVar), meterIndx, varValue);
+            length = snprintf(printable + length, sizeof(printable) - length, "%s of module %d is %f\n", Rte_Sdm120m_read_dataName(meterVar), meterIndx, varValue);
         }
         uart_write_bytes(UART_NUM, printable, length);
     }
     else
     {
-        length = sprintf(printable, "Invalid number of arguments, expected 2 but got %lu", argc);
+        length = snprintf(printable + length, sizeof(printable) - length, "Invalid number of arguments, expected 2 but got %" PRIu32 , argc);
         uart_write_bytes(UART_NUM, printable, length);
     }
 }
@@ -222,7 +230,7 @@ static void power_sts_all(uint32_t argc, const char* argv[])
         int dataLevel = atoi(argv[0]);
         for (int meterIndx = 0; meterIndx < SDM120M_NUM_OF_MODULES; meterIndx++)
         {
-            length += sprintf(printable + length, "\tMeter ID 0x%.2X\n", Rte_Sdm120m_read_moduleId(meterIndx));
+            length += snprintf(printable + length, sizeof(printable) - length, "\tMeter ID 0x%.2X\n", Rte_Sdm120m_read_moduleId(meterIndx));
             for (int meterVar = 0; meterVar < SDM120M_NUM_OF_READ; meterVar++)
             {
                 if (0 == dataLevel)
@@ -249,14 +257,14 @@ static void power_sts_all(uint32_t argc, const char* argv[])
                 }
                 float varValue = Sdm120m_read_dataValue(meterIndx, meterVar);
                 int32_t remainingLength = length;
-                length += sprintf(printable + length, "\t\t%s: ", Rte_Sdm120m_read_dataName(meterVar));
+                length += snprintf(printable + length, sizeof(printable) - length, "\t\t%s: ", Rte_Sdm120m_read_dataName(meterVar));
                 remainingLength = 30 - (length - remainingLength);
                 if (remainingLength < 3) remainingLength = 3;
                 while (remainingLength--)
                 {
-                    length += sprintf(printable + length, ".");
+                    length += snprintf(printable + length, sizeof(printable) - length, ".");
                 }
-                length += sprintf(printable + length, " %f\n", varValue);
+                length += snprintf(printable + length, sizeof(printable) - length, " %f\n", varValue);
                 uart_write_bytes(UART_NUM, printable, length);
                 length = 0;
             }
@@ -264,7 +272,7 @@ static void power_sts_all(uint32_t argc, const char* argv[])
     }
     else
     {
-        length += sprintf(printable + length, "Invalid number of arguments, expected 1 but got %lu", argc);
+        length += snprintf(printable + length, sizeof(printable) - length, "Invalid number of arguments, expected 1 but got %" PRIu32 , argc);
         uart_write_bytes(UART_NUM, printable, length);
     }
 }
@@ -388,10 +396,6 @@ void Rte_Cli_run(void)
         }
         else if (_data[_length - 1] == '\n') // if line feed then it is end of command
         {
-            //char printable[100] = {0};
-            //int length = sprintf(printable, "length:%d\n", _length);
-            //uart_write_bytes(UART_NUM, printable, length);
-
             // Null-terminate the data
             _data[_length] = '\0';
 
@@ -415,10 +419,6 @@ void Rte_Cli_run(void)
                 }
                 else if (' ' == _data[i])
                 {
-                    //char printable[1000] = {0};
-                    //int length = sprintf(printable, "Command name:%s, ended at %d\n", extractedCmd, endOfCmdPos);
-                    //uart_write_bytes(UART_NUM, printable, length);
-
                     // extract arguments
                     // dev_sts 10,32,100 -> 3, [10,32,100]
                     int argPos = 0;         // temp var to keep track of position within actual arguments
@@ -434,9 +434,6 @@ void Rte_Cli_run(void)
                         }
                         else if ((',' == _data[i]) || ('\n' == _data[i]))
                         {
-                            //char printable[100] = {0};
-                            //int length = sprintf(printable, "\tExtracted:%s\n", argv[argc]);
-                            //uart_write_bytes(UART_NUM, printable, length);
                             *(argv[argc] + sizeof(char) * argPos) = '\0';   // terminate the argument
                             argc++;
                             argv[argc] = argv[argc - 1] + (argPos + 1) * sizeof(char);
@@ -462,9 +459,6 @@ void Rte_Cli_run(void)
             // Check each command and add arguments
             for (int i = 0; i < numCommands; i++)
             {
-                // char printable[1000] = {0};
-                // int length = sprintf(printable, "\t\tComparing:%s to %s\n", commands[i].commandStr, extractedCmd);
-                // uart_write_bytes(UART_NUM, printable, length);
                 if ((strlen(commands[i].commandStr) == strlen(extractedCmd)) &&                          // length match
                 (strncmp(extractedCmd, commands[i].commandStr, strlen(commands[i].commandStr)) == 0))   // content match
                 {
@@ -478,7 +472,8 @@ void Rte_Cli_run(void)
                 if ((numCommands - 1) == i)
                 {
                     char printable[1024] = {0};
-                    int length = sprintf(printable, "Command '%s' is not recognized. Send 'help' for a list of commands\n", extractedCmd);
+                    int length = 0;
+                    length += snprintf(printable + length, sizeof(printable) - length, "Command '%s' is not recognized. Send 'help' for a list of commands\n", extractedCmd);
                     uart_write_bytes(UART_NUM, printable, length);
                 }
             }
