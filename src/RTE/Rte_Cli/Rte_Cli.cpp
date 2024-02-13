@@ -57,7 +57,7 @@ static void printTime(void)
 
 
 
-static void help(uint32_t argc, char* argv[])
+static void help(uint32_t argc, const char* argv[])
 {
     uart_write_bytes(UART_NUM, "HELP:\n", 7);
     if (0 == argc)
@@ -111,7 +111,7 @@ static void help(uint32_t argc, char* argv[])
     }
 }
 
-static void dio_sts(uint32_t argc, char* argv[])
+static void dio_sts(uint32_t argc, const char* argv[])
 {
     UART_WRITE_NEWLINE("--- Input status ---\n")
     for (int i = 0; i < NUM_OF_INPUT_INDX; i++)
@@ -132,7 +132,7 @@ static void dio_sts(uint32_t argc, char* argv[])
     UART_WRITE_NEWLINE("")
 }
 
-static void relay_sts(uint32_t argc, char* argv[])
+static void relay_sts(uint32_t argc, const char* argv[])
 {
     UART_WRITE_NEWLINE("--- Relay status ---\n")
     for (int i = 0; i < (RELAY_MODULE_NUM_OF_RELAY_BOARDS * 8); i++)
@@ -153,7 +153,7 @@ static void relay_sts(uint32_t argc, char* argv[])
     UART_WRITE_NEWLINE("")
 }
 
-static void set_relay(uint32_t argc, char* argv[])
+static void set_relay(uint32_t argc, const char* argv[])
 {
     if (2 == argc)
     {
@@ -180,7 +180,7 @@ static void set_relay(uint32_t argc, char* argv[])
     }
 }
 
-static void power_sts(uint32_t argc, char* argv[])
+static void power_sts(uint32_t argc, const char* argv[])
 {
     char printable[128] = {0};
     int length = 0;
@@ -210,7 +210,7 @@ static void power_sts(uint32_t argc, char* argv[])
     }
 }
 
-static void power_sts_all(uint32_t argc, char* argv[])
+static void power_sts_all(uint32_t argc, const char* argv[])
 {
     char printable[256] = {0};
     int length = 0;
@@ -269,15 +269,15 @@ static void power_sts_all(uint32_t argc, char* argv[])
     }
 }
 
-static void dev_sts(uint32_t argc, char* argv[])
+static void dev_sts(uint32_t argc, const char* argv[])
 {
     UART_WRITE_NEWLINE("------- Device status --------------")
     printTime();
     // print MODBUS status
     // print CAN status
-    dio_sts(0,NULL);
-    relay_sts(0,NULL);
-    char* argv1[] = {"0"};
+    dio_sts(0, NULL);
+    relay_sts(0, NULL);
+    const char* argv1[] = {"0"};
     power_sts_all(1, argv1);
     UART_WRITE_NEWLINE("------- End of Device status -------")
 }
@@ -462,14 +462,14 @@ void Rte_Cli_run(void)
             // Check each command and add arguments
             for (int i = 0; i < numCommands; i++)
             {
-                //char printable[1000] = {0};
-                //int length = sprintf(printable, "\t\tComparing:%s to %s\n", commands[i].commandStr, extractedCmd);
-                //uart_write_bytes(UART_NUM, printable, length);
+                // char printable[1000] = {0};
+                // int length = sprintf(printable, "\t\tComparing:%s to %s\n", commands[i].commandStr, extractedCmd);
+                // uart_write_bytes(UART_NUM, printable, length);
                 if ((strlen(commands[i].commandStr) == strlen(extractedCmd)) &&                          // length match
                 (strncmp(extractedCmd, commands[i].commandStr, strlen(commands[i].commandStr)) == 0))   // content match
                 {
                     // Execute the corresponding function
-                    commands[i].cmdFunc(argc, argv);
+                    commands[i].cmdFunc(argc, const_cast<const char**>(argv));
 
                     break;
                 }

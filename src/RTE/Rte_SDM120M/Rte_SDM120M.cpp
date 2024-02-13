@@ -74,7 +74,10 @@ void Rte_Sdm120m_init(void)
     Sdm120m_init();
 
     // clear all flags for messages that will be used
-    const uint16_t lastMbMsgIndxInit = MODBUS_2_MSG_SDM120M_01_READ_VOLTAGE_V + (SDM120M_NUM_OF_READ * SDM120M_NUM_OF_MODULES) - 1;
+    uint16_t numOfRead_E = (uint16_t) SDM120M_NUM_OF_READ;
+    uint16_t numOfModule_E = (uint16_t) SDM120M_NUM_OF_MODULES;
+
+    const uint16_t lastMbMsgIndxInit = MODBUS_2_MSG_SDM120M_01_READ_VOLTAGE_V + (numOfRead_E * numOfModule_E) - 1;
     for (uint16_t mbMsgIndx = MODBUS_2_MSG_SDM120M_01_READ_VOLTAGE_V; mbMsgIndx <= lastMbMsgIndxInit; mbMsgIndx++)
     {
         ComCfg_Modbus2MsgDataType* mbMsgPtr = ComCfg_read_mb2Config((ComCfg_modbus2MsgIndxType) mbMsgIndx);

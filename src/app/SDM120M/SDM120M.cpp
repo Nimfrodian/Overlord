@@ -1,6 +1,6 @@
 #include "SDM120M.h"
 
-SDM120M_dataType _rxData[SDM120M_NUM_OF_MODULES][SDM120M_NUM_OF_READ] = {0}; // parsed values
+SDM120M_dataType _rxData[SDM120M_NUM_OF_MODULES][SDM120M_NUM_OF_READ];  // parsed values
 static const char* _sdm120mVarNames[] =
 {
     "VOLTAGE_V",

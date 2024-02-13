@@ -1,8 +1,8 @@
+#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/uart.h"
 #include "freertos/timers.h"
-#include <stdio.h>
 #include "RTE.h"
 
 // Firmware version 1.00.00
@@ -26,8 +26,8 @@ extern "C" void app_main(void)
             pdMS_TO_TICKS(10),              // Timer period (in ticks)
             pdTRUE,                         // Auto-reload timer
             NULL,                           // Timer ID
-            tasks_10ms_callback             // Timer callback function
-    );
+            tasks_10ms_callback);           // Timer callback function
+
     // Start the timer
     xTimerStart(tasks_10ms_timer, 0);
 

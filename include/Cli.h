@@ -6,10 +6,10 @@
 
 typedef struct
 {
-    char* commandStr;                               // Command name
-    char* commandDes;                               // Command description
-    char* detailedDesc;
-    void (*cmdFunc)(uint32_t argc, char* argv[]);   // function to execute when command string is received
+    const char* commandStr;                               // Command name
+    const char* commandDes;                               // Command description
+    const char* detailedDesc;
+    void (*cmdFunc)(uint32_t argc, const char* argv[]);   // function to execute when command string is received
 } cliCmdType;
 
 extern cliCmdType commands[];
