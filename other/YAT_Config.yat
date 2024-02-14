@@ -5,8 +5,8 @@
   <ProductVersion>2.6.1</ProductVersion>
   <Warning>Modifying structure and/or content may cause undefined behavior!</Warning>
   <Mark>
-    <TimeStamp>2023-12-07T19:04:01.3425516+01:00</TimeStamp>
-    <UserName>Nimfrodian</UserName>
+    <TimeStamp>2024-02-13T19:25:39.3849641+01:00</TimeStamp>
+    <UserName>Laptop-3070</UserName>
   </Mark>
   <AutoSaved>false</AutoSaved>
   <Explicit>
@@ -18,7 +18,7 @@
         <IOType>SerialPort</IOType>
         <SerialPort>
           <PortId>
-            <Name>COM5</Name>
+            <Name>COM3</Name>
           </PortId>
           <Communication>
             <BaudRate>921600</BaudRate>
@@ -504,10 +504,43 @@
         <IsDefined>true</IsDefined>
         <Description />
         <DefaultRadix>String</DefaultRadix>
-        <CommandLines>power_sts 3,0</CommandLines>
+        <CommandLines>dev_sts</CommandLines>
         <IsFilePath>false</IsFilePath>
         <FilePath />
       </Command>
+      <RecentCommands>
+        <Item>
+          <IsDefined>true</IsDefined>
+          <Description />
+          <DefaultRadix>String</DefaultRadix>
+          <CommandLines>set_relay 0,1</CommandLines>
+          <IsFilePath>false</IsFilePath>
+          <FilePath />
+        </Item>
+        <TimeStamp>2024-02-13T19:25:32.1160181+01:00</TimeStamp>
+      </RecentCommands>
+      <RecentCommands>
+        <Item>
+          <IsDefined>true</IsDefined>
+          <Description />
+          <DefaultRadix>String</DefaultRadix>
+          <CommandLines>power_sts 0,0</CommandLines>
+          <IsFilePath>false</IsFilePath>
+          <FilePath />
+        </Item>
+        <TimeStamp>2024-02-13T19:25:24.9438057+01:00</TimeStamp>
+      </RecentCommands>
+      <RecentCommands>
+        <Item>
+          <IsDefined>true</IsDefined>
+          <Description />
+          <DefaultRadix>String</DefaultRadix>
+          <CommandLines>power_sts_all 0</CommandLines>
+          <IsFilePath>false</IsFilePath>
+          <FilePath />
+        </Item>
+        <TimeStamp>2024-02-13T19:25:22.9524676+01:00</TimeStamp>
+      </RecentCommands>
       <RecentCommands>
         <Item>
           <IsDefined>true</IsDefined>
@@ -517,7 +550,18 @@
           <IsFilePath>false</IsFilePath>
           <FilePath />
         </Item>
-        <TimeStamp>2023-12-07T19:00:26.1195563+01:00</TimeStamp>
+        <TimeStamp>2024-02-13T18:53:12.0587084+01:00</TimeStamp>
+      </RecentCommands>
+      <RecentCommands>
+        <Item>
+          <IsDefined>true</IsDefined>
+          <Description />
+          <DefaultRadix>String</DefaultRadix>
+          <CommandLines>help</CommandLines>
+          <IsFilePath>false</IsFilePath>
+          <FilePath />
+        </Item>
+        <TimeStamp>2024-02-13T18:53:02.4751152+01:00</TimeStamp>
       </RecentCommands>
       <RecentCommands>
         <Item>
@@ -579,17 +623,6 @@
           <IsDefined>true</IsDefined>
           <Description />
           <DefaultRadix>String</DefaultRadix>
-          <CommandLines>set_relay 0,1</CommandLines>
-          <IsFilePath>false</IsFilePath>
-          <FilePath />
-        </Item>
-        <TimeStamp>2023-12-07T14:06:54.9360491+01:00</TimeStamp>
-      </RecentCommands>
-      <RecentCommands>
-        <Item>
-          <IsDefined>true</IsDefined>
-          <Description />
-          <DefaultRadix>String</DefaultRadix>
           <CommandLines>set_relay 31,0</CommandLines>
           <IsFilePath>false</IsFilePath>
           <FilePath />
@@ -639,17 +672,6 @@
           <FilePath />
         </Item>
         <TimeStamp>2023-12-07T14:06:27.0200643+01:00</TimeStamp>
-      </RecentCommands>
-      <RecentCommands>
-        <Item>
-          <IsDefined>true</IsDefined>
-          <Description />
-          <DefaultRadix>String</DefaultRadix>
-          <CommandLines>help</CommandLines>
-          <IsFilePath>false</IsFilePath>
-          <FilePath />
-        </Item>
-        <TimeStamp>2023-12-07T14:06:21.0800588+01:00</TimeStamp>
       </RecentCommands>
       <RecentCommands>
         <Item>
@@ -749,28 +771,6 @@
           <FilePath />
         </Item>
         <TimeStamp>2023-12-05T15:45:10.6125831+01:00</TimeStamp>
-      </RecentCommands>
-      <RecentCommands>
-        <Item>
-          <IsDefined>true</IsDefined>
-          <Description />
-          <DefaultRadix>String</DefaultRadix>
-          <CommandLines>power_sts 0,0</CommandLines>
-          <IsFilePath>false</IsFilePath>
-          <FilePath />
-        </Item>
-        <TimeStamp>2023-12-05T15:45:00.3151213+01:00</TimeStamp>
-      </RecentCommands>
-      <RecentCommands>
-        <Item>
-          <IsDefined>true</IsDefined>
-          <Description />
-          <DefaultRadix>String</DefaultRadix>
-          <CommandLines>power_sts_all</CommandLines>
-          <IsFilePath>false</IsFilePath>
-          <FilePath />
-        </Item>
-        <TimeStamp>2023-12-04T21:54:24.2610218+01:00</TimeStamp>
       </RecentCommands>
     </SendText>
     <SendFile>

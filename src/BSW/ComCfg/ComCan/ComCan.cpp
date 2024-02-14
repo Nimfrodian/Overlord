@@ -95,7 +95,6 @@ void ComCan_receive(void* param)
                     ComCan_saveMsg(CAN_MSG_RX_RELAY_DISABLE_WS_0, &rxMessage);
                 }
                 break;
-                break;
 
                 default:
                 break;
@@ -122,7 +121,7 @@ void ComCan_transmit(void* param)
             if (1 == canMsgPtr->canRdyForTx)
             {
                 // try to copy the message into hardware transmit buffer
-                if (ESP_OK == twai_transmit(&canMsgPtr->canMsg, 10))
+                if (ESP_OK == twai_transmit(&canMsgPtr->canMsg, 0))
                 {
                     // clear "send" flag if copy was successful
                     canMsgPtr->canRdyForTx = 0;
