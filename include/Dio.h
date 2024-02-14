@@ -1,7 +1,7 @@
 #ifndef DIO_H
 #define DIO_H
 
-#include "freertos/FreeRTOS.h"  // for basic data types
+#include <stdint.h>  // for basic data types
 #include "Dio_Cfg.h"
 
 void Dio_init(void);

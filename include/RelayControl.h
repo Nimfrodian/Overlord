@@ -1,7 +1,7 @@
 #ifndef RELAY_MODULE_H
 #define RELAY_MODULE_H
 
-#include "freertos/FreeRTOS.h"  // for basic data types
+#include <stdint.h>  // for basic data types
 
 const uint8_t NUM_OF_RELAYS_PER_WAVESHARE_BOARD = 8;
 

@@ -15,9 +15,10 @@
 **/
 
 #include <unity.h>
+#include "RelayControl.h"
 
 void setUp(void) {
-    // set stuff up here
+    RelayControl_init();
 }
 
 void tearDown(void) {

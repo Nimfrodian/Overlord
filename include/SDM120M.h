@@ -1,7 +1,7 @@
 #ifndef SDM120M_h
 #define SDM120M_h
 
-#include "freertos/FreeRTOS.h"  // for basic data types
+#include <stdint.h>  // for basic data types
 
 const uint8_t SDM120M_MODBUS_TX_DATA_SIZE = 8;
 const uint8_t SDM120M_MODBUS_RX_DATA_SIZE = 9;
