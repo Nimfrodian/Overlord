@@ -11,11 +11,14 @@ static void tasks_10ms_callback(TimerHandle_t xTimer);
 
 extern "C" void app_main(void)
 {
+    CLI_INFO_0NL("Starting app_main()");
+
+    Rte_Cli_init();
+
     ComModbus_init();   // initialize Modbus
     ComCan_init();      // initialize CAN
     BSW_Dio_init();    // initialize GPIO control
 
-    Rte_Cli_init();
     Rte_RelayControl_init();    // initialize Relay control
     Rte_Sdm120m_init();         // initialize SDM120M power meter module control
 
@@ -62,4 +65,12 @@ static void tasks_10ms_callback(TimerHandle_t xTimer)
 
     // run CLI runnable
     Rte_Cli_run();
+
+    static uint8_t cntr = 0;
+    if (cntr == 0)
+    {
+        CLI_INFO_0NL("Counter rolled over");
+    }
+    cntr++;
+
 }

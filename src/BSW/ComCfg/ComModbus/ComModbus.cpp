@@ -1,5 +1,6 @@
 #include "ComModbus.h"
 #include "Dio_Cfg.h"    // used for debug LED
+#include "Cli.h"
 
 #define UART_MODBUS_1   UART_NUM_1
 #define UART_MODBUS_2   UART_NUM_2
@@ -14,16 +15,21 @@ static ComModbus_transcieveStType _mb2TrnscieveType = COM_MODBUS_TRANSMITTING;
 
 void ComModbus_init(void)
 {
+    CLI_INFO_0NL("Starting ComModbus_init()");
+
     // set DE and RE pins for MAX485 module
     gpio_reset_pin(DE_RE_PIN_MB1);
     gpio_reset_pin(DE_RE_PIN_MB2);
-    gpio_set_direction(DE_RE_PIN_MB1, GPIO_MODE_OUTPUT);
-    gpio_set_direction(DE_RE_PIN_MB2, GPIO_MODE_OUTPUT);
+    CLI_INFO_1("Setting DE-RE for MB1 ... ");
+    (ESP_OK == gpio_set_direction(DE_RE_PIN_MB1, GPIO_MODE_OUTPUT)) ? CLI_INFO_0NL("OK") : CLI_INFO_0NL("FAIL");
+    CLI_INFO_1("Setting DE-RE for MB2 ... ");
+    (ESP_OK == gpio_set_direction(DE_RE_PIN_MB2, GPIO_MODE_OUTPUT)) ? CLI_INFO_0NL("OK") : CLI_INFO_0NL("FAIL");
 
     ComCfg_init();
 
-    // Configure MODBUS 1
+    // Configure MODBUS 2
     {
+        CLI_INFO_0NL("Configuring Modbus 2");
         uart_config_t uart2_config = {
                 .baud_rate = COM_MODBUS_2_BAUDRATE,
                 .data_bits = UART_DATA_8_BITS,
@@ -34,12 +40,16 @@ void ComModbus_init(void)
                 .source_clk = UART_SCLK_APB,
         };
         // Configure MODBUS 2 pins
-        uart_set_pin(UART_MODBUS_2, GPIO_NUM_17, GPIO_NUM_16, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+        (ESP_OK == uart_set_pin(UART_MODBUS_2, GPIO_NUM_17, GPIO_NUM_16, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE))?
+            CLI_INFO_1NL("uart_set_pin success") : CLI_INFO_1NL("uart_set_pin fail");
         // Set MODBUS 2 parameters
-        uart_param_config(UART_MODBUS_2, &uart2_config);
+        (ESP_OK == uart_param_config(UART_MODBUS_2, &uart2_config))?
+            CLI_INFO_1NL("uart_param_config success") : CLI_INFO_1NL("uart_param_config fail");
         // Install MODBUS 2 driver
-        uart_driver_install(UART_MODBUS_2, 1024, 1024, 0, NULL, 0);
+        (ESP_OK == uart_driver_install(UART_MODBUS_2, 1024, 1024, 0, NULL, 0))?
+            CLI_INFO_1NL("uart_driver_install success") : CLI_INFO_1NL("uart_driver_install fail");
 
+        CLI_INFO_1NL("Creating Modbus 2 transcieve task ...");
         // create transceive task
         xTaskCreatePinnedToCore(
         ComModbus_2_transceive,    // Function that should be called
@@ -50,10 +60,12 @@ void ComModbus_init(void)
         NULL,            // Task handle
         1                // run on core 1
         );
+        CLI_INFO_1NL("Modbus 2 config DONE");
     }
 
     // Configure MODBUS 1
     {
+        CLI_INFO_0NL("Configuring Modbus 1");
         uart_config_t uart1_config = {
                 .baud_rate = COM_MODBUS_1_BAUDRATE,
                 .data_bits = UART_DATA_8_BITS,
@@ -70,14 +82,19 @@ void ComModbus_init(void)
             gpio_reset_pin(GPIO_NUM_19);
             gpio_set_direction(GPIO_NUM_19, GPIO_MODE_INPUT);
         }
-        uart_set_pin(UART_MODBUS_1, GPIO_NUM_18, GPIO_NUM_19, DE_RE_PIN_MB1, UART_PIN_NO_CHANGE);
+        (ESP_OK == uart_set_pin(UART_MODBUS_1, GPIO_NUM_18, GPIO_NUM_19, DE_RE_PIN_MB1, UART_PIN_NO_CHANGE))?
+            CLI_INFO_1NL("uart_set_pin success") : CLI_INFO_1NL("uart_set_pin fail");
         // Set MODBUS 1 parameters
-        uart_param_config(UART_MODBUS_1, &uart1_config);
+        (ESP_OK == uart_param_config(UART_MODBUS_1, &uart1_config))?
+            CLI_INFO_1NL("uart_param_config success") : CLI_INFO_1NL("uart_param_config fail");
         // Install MODBUS 1 driver
-        uart_driver_install(UART_MODBUS_1, 1024, 1024, 0, NULL, 0);
+        (ESP_OK == uart_driver_install(UART_MODBUS_1, 1024, 1024, 0, NULL, 0))?
+            CLI_INFO_1NL("uart_driver_install success") : CLI_INFO_1NL("uart_driver_install fail");
         // Set RS485 half duplex mode
-        uart_set_mode(UART_MODBUS_1, UART_MODE_RS485_HALF_DUPLEX);
+        (ESP_OK == uart_set_mode(UART_MODBUS_1, UART_MODE_RS485_HALF_DUPLEX))?
+            CLI_INFO_1NL("uart_set_mode success") : CLI_INFO_1NL("uart_set_mode fail");
 
+        CLI_INFO_1NL("Creating Modbus 1 transcieve task ...");
         // create transceive task
         xTaskCreatePinnedToCore(
         ComModbus_1_transceive,    // Function that should be called
@@ -88,6 +105,7 @@ void ComModbus_init(void)
         NULL,            // Task handle
         1                // run on core 1
         );
+        CLI_INFO_1NL("Modbus 1 config DONE");
     }
 }
 

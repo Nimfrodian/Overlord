@@ -1,6 +1,7 @@
 #include "Cli.h"
 #include "RTE.h"
 #include "esp_timer.h"
+#include "driver/uart.h"
 
 
 #define UART_BAUD (921600u)
@@ -360,6 +361,8 @@ cliCmdType commands[]
 
 void Rte_Cli_init(void)
 {
+    Cli_init();
+
     // Configure UART 0
     {
         uart_config_t uart0_config = {
@@ -481,6 +484,22 @@ void Rte_Cli_run(void)
             // clear variables for new command
             uart_flush(UART_NUM_1);
             _length = 0;
+        }
+    }
+
+    // Print system messages
+    {
+        cliSysNotifType* textsPtr = Cli_Read_SysNotifArr();
+        uint8_t numOfTexts = Cli_Read_NumOfSysNotif();
+        for (int i = 0; i < numOfTexts; i++)
+        {
+            if (NULL != textsPtr->textPtr)
+            {
+                // If text is not a NULL pointer then print the content
+                uart_write_bytes(UART_NUM, textsPtr->textPtr, textsPtr->textSize);
+                textsPtr->textPtr = NULL;
+            }
+            textsPtr++;
         }
     }
 }
