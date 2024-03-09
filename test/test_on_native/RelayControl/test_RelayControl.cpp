@@ -25,28 +25,21 @@ void tearDown(void) {
     // clean stuff up here
 }
 
-void test_calculator_addition(void) {
-    TEST_ASSERT_EQUAL(32, (25 + 7));
-}
+void test_RelayControl_composeCanMsg(void)
+{
+    uint8_t msgData[8] = {0xA5, 0xA5, 0xA5, 0xA5, 0xA5, 0xA5, 0xA5, 0xA5};
+    uint32_t canId = 0xA5;
 
-void test_calculator_subtraction(void) {
-    TEST_ASSERT_EQUAL(20, (23- 3));
-}
+    RelayControl_composeCanMessage(msgData, &canId);
 
-void test_calculator_multiplication(void) {
-    TEST_ASSERT_EQUAL(50, (25 * 2));
-}
-
-void test_calculator_division(void) {
-    TEST_ASSERT_EQUAL(33, (100 / 3));
+    TEST_ASSERT_EQUAL(0x110, canId);
+    uint8_t expected[8] = {0};
+    TEST_ASSERT_EQUAL_INT8_ARRAY(expected, msgData, 8);
 }
 
 int main(int argc, char **argv) {
     UNITY_BEGIN();
-    RUN_TEST(test_calculator_addition);
-    RUN_TEST(test_calculator_subtraction);
-    RUN_TEST(test_calculator_multiplication);
-    RUN_TEST(test_calculator_division);
+    RUN_TEST(test_RelayControl_composeCanMsg);
     UNITY_END();
 
     return 0;
