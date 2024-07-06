@@ -1,0 +1,7 @@
+"#","Reference","Qty","Value","Footprint","DNP"
+"1","D1","1","LED_B","LED_THT:LED_D3.0mm",""
+"2","D2","1","LED_G","LED_THT:LED_D3.0mm",""
+"3","D3","1","LED_R","LED_THT:LED_D3.0mm",""
+"4","J1","1","Conn_01x12_Female","Connector_Molex:Molex_CLIK-Mate_502386-1270_1x12-1MP_P1.25mm_Horizontal",""
+"5","J2","1","DE9_Receptacle_MountingHoles_CAN","Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles",""
+"6","J3, J4, J5","3","DE9_Receptacle_MountingHoles_UART","Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles",""
