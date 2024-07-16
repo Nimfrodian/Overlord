@@ -6,7 +6,7 @@ ComCfg_Modbus2MsgDataType _modbus2Msgs[NUM_OF_MODBUS_2_MSG];
 
 void ComCfg_init(void)
 {
-    static bool init = false;
+    static uint8_t init = false;
 
     if (false == init)
     {

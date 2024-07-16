@@ -170,8 +170,8 @@ void Rte_Sdm120m_runnable_10ms(void)
                 uint8_t msg2Indx = canMsgIndx * 2 + 1;
 
                 // check if both values of the message are ready to be sent
-                bool valRdy1 = 1;   // value 1 ready to be sent flag
-                bool valRdy2 = 1;   // value 2 ready to be sent flag
+                uint8_t valRdy1 = 1;   // value 1 ready to be sent flag
+                uint8_t valRdy2 = 1;   // value 2 ready to be sent flag
                 uint32_t val1 = 0;  // actual value 1 to be sent (raw data)
                 uint32_t val2 = 0;  // actual value 2 to be sent (raw data)
 
@@ -207,8 +207,8 @@ void Rte_Sdm120m_runnable_10ms(void)
                     // only send the message if either of the two values changed enough
                     float val1AbsChange = abs(*((float*) ((void*) &val1)) - prevSentVal[modIndx][msg1Indx]);
                     float val2AbsChange = abs(*((float*) ((void*) &val2)) - prevSentVal[modIndx][msg2Indx]);
-                    bool val1ChangeGreatEnough = (val1AbsChange >= _sdm120m_minAbsDiffToSend[msg1Indx]);
-                    bool val2ChangeGreatEnough = (val2AbsChange >= _sdm120m_minAbsDiffToSend[msg2Indx]);
+                    uint8_t val1ChangeGreatEnough = (val1AbsChange >= _sdm120m_minAbsDiffToSend[msg1Indx]);
+                    uint8_t val2ChangeGreatEnough = (val2AbsChange >= _sdm120m_minAbsDiffToSend[msg2Indx]);
 
                     if (val1ChangeGreatEnough || val2ChangeGreatEnough)
                     {

@@ -20,8 +20,8 @@ void ComModbus_init(void);
 void ComModbus_1_transceive(void* param);
 void ComModbus_2_transceive(void* param);
 
-bool ComModbus_1_writeMsg(uint16_t msgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize);
-bool ComModbus_2_writeMsg(uint16_t msgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize, uint8_t DataRxSize);
+uint8_t ComModbus_1_writeMsg(uint16_t msgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize);
+uint8_t ComModbus_2_writeMsg(uint16_t msgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize, uint8_t DataRxSize);
 
 
 #endif

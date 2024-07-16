@@ -5,7 +5,7 @@
   <ProductVersion>2.6.1</ProductVersion>
   <Warning>Modifying structure and/or content may cause undefined behavior!</Warning>
   <Mark>
-    <TimeStamp>2024-04-11T19:44:03.9126306+02:00</TimeStamp>
+    <TimeStamp>2024-07-06T18:37:42.8091216+02:00</TimeStamp>
     <UserName>Laptop-3070</UserName>
   </Mark>
   <AutoSaved>false</AutoSaved>
@@ -504,7 +504,7 @@
         <IsDefined>true</IsDefined>
         <Description />
         <DefaultRadix>String</DefaultRadix>
-        <CommandLines />
+        <CommandLines>help</CommandLines>
         <IsFilePath>false</IsFilePath>
         <FilePath />
       </Command>
@@ -790,12 +790,12 @@
     <Window>
       <State>Maximized</State>
       <Location>
-        <X>32</X>
-        <Y>32</Y>
+        <X>0</X>
+        <Y>0</Y>
       </Location>
       <Size>
-        <Width>1197</Width>
-        <Height>739</Height>
+        <Width>854</Width>
+        <Height>600</Height>
       </Size>
     </Window>
     <Layout>

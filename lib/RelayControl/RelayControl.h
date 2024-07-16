@@ -34,9 +34,9 @@ void Rte_RelayControl_runnable_10ms(void);
 void RelayControl_parseCanMessage(uint8_t* CanData, uint32_t CanId);
 void RelayControl_composeCanMessage(uint8_t* MsgData, uint32_t* CanId);
 
-bool RelayControl_composeWaveshareModbusMessage(uint8_t ModuleIndx, uint8_t* MbMsgData, uint8_t GpioSt);
+uint8_t RelayControl_composeWaveshareModbusMessage(uint8_t ModuleIndx, uint8_t* MbMsgData, uint8_t GpioSt);
 
-bool RelayControl_read_relaySt(uint8_t RelayIndx);
-bool RelayControl_write_relaySt(uint8_t RelayIndx, bool state);
+uint8_t RelayControl_read_relaySt(uint8_t RelayIndx);
+uint8_t RelayControl_write_relaySt(uint8_t RelayIndx, uint8_t state);
 
 #endif

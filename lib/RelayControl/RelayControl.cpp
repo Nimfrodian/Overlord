@@ -26,10 +26,10 @@ void RelayControl_init(void)
  * @param GpioSt Current GPIO status bitmap of the corresponding GPIO input. On GPIO state change the relay is also changed
  * @return true if message was state change occured, false if not
  */
-bool RelayControl_composeWaveshareModbusMessage(uint8_t ModuleIndx, uint8_t* MbMsgData, uint8_t GpioSt)
+uint8_t RelayControl_composeWaveshareModbusMessage(uint8_t ModuleIndx, uint8_t* MbMsgData, uint8_t GpioSt)
 {
     // create return variable
-    bool stateChange = false;
+    uint8_t stateChange = false;
 
     if (ModuleIndx >= RELAY_MODULE_NUM_OF_RELAY_BOARDS)
     {
@@ -135,14 +135,14 @@ void RelayControl_composeCanMessage(uint8_t* MsgData, uint32_t* CanId)
         *CanId = (uint32_t) 0x110;
 }
 
-bool RelayControl_read_relaySt(uint8_t RelayIndx)
+uint8_t RelayControl_read_relaySt(uint8_t RelayIndx)
 {
     return (_currRlyStsMb0[RelayIndx / 8] >> (RelayIndx % 8) & 0x01);
 }
 
-bool RelayControl_write_relaySt(uint8_t RelayIndx, bool state)
+uint8_t RelayControl_write_relaySt(uint8_t RelayIndx, uint8_t state)
 {
-    bool relaySet = false;
+    uint8_t relaySet = false;
     if (RelayControl_read_relaySt(RelayIndx) != state)
     {
         if (1 == state)

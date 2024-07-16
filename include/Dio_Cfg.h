@@ -99,6 +99,6 @@ typedef enum
 void BSW_Dio_init(void);
 void BSW_Dio_read(void* param);
 
-bool BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx);
+uint8_t BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx);
 
 #endif

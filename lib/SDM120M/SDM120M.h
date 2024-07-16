@@ -9,7 +9,7 @@ const uint8_t SDM120M_MODBUS_RX_DATA_SIZE = 9;
 typedef struct
 {
     float val;   // read value
-    bool dataReadyFlg;   // set to true when value is read. Set to false when value is sent through CAN
+    uint8_t dataReadyFlg;   // set to true when value is read. Set to false when value is sent through CAN
 } SDM120M_dataType;
 
 enum
@@ -136,7 +136,7 @@ void Sdm120m_parseModbusData(uint8_t ModuleIndx, uint8_t VariableIndx, uint8_t* 
 void Sdm120m_modbus_compose(uint8_t* ModMsgData, uint8_t MsgIndx, uint8_t ModuleIndx);
 void Sdm120m_can_compose(uint8_t* CanData, uint32_t* CanId, uint32_t Value1, uint32_t Value2, uint32_t CanMsgIndx, uint8_t ModuleIndx);
 
-bool Sdm120m_read_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx);
+uint8_t Sdm120m_read_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx);
 float Sdm120m_read_dataValue(uint8_t ModuleIndx, uint8_t VarIndx);
 uint16_t Sdm120m_read_moduleId(uint8_t ModuleIndx);
 const char* Sdm120m_read_dataName(uint8_t VarIndx);

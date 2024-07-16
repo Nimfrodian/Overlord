@@ -1,6 +1,6 @@
 #include "Dio_Cfg.h"
 
-static bool _gpioState[NUM_OF_INPUT_INDX] = {0};                // holds end result
+static uint8_t _gpioState[NUM_OF_INPUT_INDX] = {0};                // holds end result
 static uint8_t _gpioCntr[NUM_OF_INPUT_INDX] = {0};              // increments or decrements based on GPIO state.
 static uint8_t _debounceTimer_ms[NUM_OF_INPUT_INDX] = {0};      // holds debounce timer. Decrements by task execution period each call, if not 0
 static const uint8_t _sortedGpioIndxs[NUM_OF_INPUT_INDX] =             // sorted array indexes. Looping _gpioState using this array as index will result in proper reading from GPIO
@@ -73,7 +73,7 @@ void BSW_Dio_init(void)
  * @param gpioSt the current state of the input variable as read from GPIO
  * @return (void)
  */
-static void checkInputForChange(BSW_Dio_inputIndxType InputIndx, bool GpioSt)
+static void checkInputForChange(BSW_Dio_inputIndxType InputIndx, uint8_t GpioSt)
 {
     // proceed if this input is not on debounce timer
     if (0 == _debounceTimer_ms[InputIndx])
@@ -118,7 +118,7 @@ void BSW_Dio_read(void* param)
         static uint8_t sampleCntr = 0;
 
         // read all gpio inputs
-        bool currGpioSt[NUM_OF_GPIO_INPUTS] = {0};  // holds current GPIO status
+        uint8_t currGpioSt[NUM_OF_GPIO_INPUTS] = {0};  // holds current GPIO status
         for (uint8_t gpioInIndx = 0; gpioInIndx < NUM_OF_GPIO_INPUTS; gpioInIndx++)
         {
             currGpioSt[gpioInIndx] = gpio_get_level(GPIO_IN[gpioInIndx]);   // read the current value
@@ -169,9 +169,9 @@ void BSW_Dio_read(void* param)
     vTaskDelete( NULL );
 }
 
-bool BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx)
+uint8_t BSW_Dio_read_inputGpioSt(BSW_Dio_inputIndxType GpioIndx)
 {
-    bool gpioSt = 0;
+    uint8_t gpioSt = 0;
     if (NUM_OF_INPUT_INDX > GpioIndx)
     {
         gpioSt = _gpioState[_sortedGpioIndxs[GpioIndx]];

@@ -6,8 +6,8 @@
 typedef struct
 {
     twai_message_t canMsg;     // CAN message structure
-    bool canRdyForTx;       // message ready for transmission flag
-    bool canRdyForParse;    // message ready to be parsed. Only applicable for RX messages
+    uint8_t canRdyForTx;       // message ready for transmission flag
+    uint8_t canRdyForParse;    // message ready to be parsed. Only applicable for RX messages
 } ComCfg_CanMsgDataType;
 
 typedef struct
@@ -16,16 +16,16 @@ typedef struct
     uint8_t dataIn[9];          // buffer for data to be received
     uint8_t dataOutCount;       // number of data to be sent
     uint8_t dataInCount;        // number of data to be received
-    bool mbRdyForTx;            // message ready for transmission flag
-    bool mbRdyForParse;         // message ready to be parsed
+    uint8_t mbRdyForTx;            // message ready for transmission flag
+    uint8_t mbRdyForParse;         // message ready to be parsed
 } ComCfg_Modbus2MsgDataType;
 
 typedef struct
 {
     uint8_t dataOut[10];         // buffer for data to be sent
     uint8_t dataOutCount;       // number of data to be sent
-    bool mbRdyForTx;            // message ready for transmission flag
-    bool mbRdyForParse;         // message ready to be parsed
+    uint8_t mbRdyForTx;            // message ready for transmission flag
+    uint8_t mbRdyForParse;         // message ready to be parsed
 } ComCfg_Modbus1MsgDataType;
 
 typedef enum

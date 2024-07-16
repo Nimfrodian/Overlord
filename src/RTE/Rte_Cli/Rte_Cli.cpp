@@ -82,7 +82,7 @@ static void help(uint32_t argc, const char* argv[])
     }
     else if (1 == argc)
     {
-        bool cmdFound = false;
+        uint8_t cmdFound = false;
         for (int i = 0; i < numCommands; i++)
         {
             if ((strlen(commands[i].commandStr) == strlen(argv[0])) &&                          // length match
@@ -167,7 +167,7 @@ static void set_relay(uint32_t argc, const char* argv[])
     {
         int relayIndx = atoi(argv[0]);
         int relayState = atoi(argv[1]);
-        bool relaySet = Rte_Relay_write_relaySt(relayIndx, relayState);
+        uint8_t relaySet = Rte_Relay_write_relaySt(relayIndx, relayState);
         char printable[128] = {0};
         int length = 0;
         if (relaySet)

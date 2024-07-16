@@ -164,9 +164,9 @@ void ComModbus_1_transceive(void* param)
  * @param DataTxSize Size of data to be sent
  * @return false if failed (message already prepared and not yet sent), true if successful
  */
-bool ComModbus_1_writeMsg(uint16_t MsgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize)
+uint8_t ComModbus_1_writeMsg(uint16_t MsgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize)
 {
-    bool success = 0;
+    uint8_t success = 0;
     // get message pointer
     ComCfg_Modbus1MsgDataType* txMsgPtr = ComCfg_read_mb1Config((ComCfg_modbus0MsgIndxType) MsgIndx);
 
@@ -292,9 +292,9 @@ void ComModbus_2_transceive(void* param)
  * @param DataRxSize Size of data to be received as response
  * @return false if failed (message already prepared and not yet sent), true if successful
  */
-bool ComModbus_2_writeMsg(uint16_t MsgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize, uint8_t DataRxSize)
+uint8_t ComModbus_2_writeMsg(uint16_t MsgIndx, uint8_t* ModWriteBuffer, uint8_t DataTxSize, uint8_t DataRxSize)
 {
-    bool success = 0;
+    uint8_t success = 0;
     // get message pointer
     ComCfg_Modbus2MsgDataType* txMsgPtr = ComCfg_read_mb2Config((ComCfg_modbus2MsgIndxType) MsgIndx);
 

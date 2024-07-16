@@ -15,14 +15,14 @@ const int node_id = 1;
 
 // GPIO section
 extern void Rte_Dio_init(void);
-extern bool Rte_Dio_read_gpioSt(uint8_t gpioIndx);
+extern uint8_t Rte_Dio_read_gpioSt(uint8_t gpioIndx);
 extern void Rte_Dio_runnable_10ms(void);
 
 // Relay section
 extern void Rte_RelayControl_init(void);
 extern void Rte_RelayControl_runnable_10ms(void);
-extern bool Rte_Relay_read_relaySt(uint8_t RelayIndx);
-extern bool Rte_Relay_write_relaySt(uint8_t RelayIndx, bool state);
+extern uint8_t Rte_Relay_read_relaySt(uint8_t RelayIndx);
+extern uint8_t Rte_Relay_write_relaySt(uint8_t RelayIndx, uint8_t state);
 
 // Power meter section
 extern void Rte_Sdm120m_init(void);

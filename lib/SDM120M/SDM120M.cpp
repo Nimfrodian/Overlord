@@ -123,7 +123,7 @@ void Sdm120m_can_compose(uint8_t* CanData, uint32_t* CanId, uint32_t Value1, uin
  * @param VarIndx Variable index as per SDM120M_NUM_OF_READ. Each variable has a data ready flag.
  * @return true if data is ready
  */
-bool Sdm120m_read_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx)
+uint8_t Sdm120m_read_dataReadyFlag(uint8_t ModuleIndx, uint8_t VarIndx)
 {
     return _rxData[ModuleIndx][VarIndx].dataReadyFlg;
 }

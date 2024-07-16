@@ -12,9 +12,9 @@ void Rte_Dio_init(void)
  * @param GpioIndx GPIO index for which to get value
  * @return GPIO state
  */
-bool Rte_Dio_read_gpioSt(uint8_t GpioIndx)
+uint8_t Rte_Dio_read_gpioSt(uint8_t GpioIndx)
 {
-    bool gpioSt = false;
+    uint8_t gpioSt = false;
     gpioSt = BSW_Dio_read_inputGpioSt((BSW_Dio_inputIndxType) GpioIndx);
     return gpioSt;
 }
@@ -35,7 +35,7 @@ void Rte_Dio_runnable_10ms(void)
             ComCfg_CanMsgDataType* msgPtr = ComCfg_read_canConfig(canMsgIndx);
 
             // create array of GPIO input values
-            bool gpioInArr[NUM_OF_INPUT_INDX] = {0};
+            uint8_t gpioInArr[NUM_OF_INPUT_INDX] = {0};
             for (uint8_t gpioInIndx = 0; gpioInIndx < NUM_OF_INPUT_INDX; gpioInIndx++)
             {
                 gpioInArr[gpioInIndx] = Rte_Dio_read_gpioSt(gpioInIndx);
