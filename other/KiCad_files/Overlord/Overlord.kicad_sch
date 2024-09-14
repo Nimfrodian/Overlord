@@ -6956,7 +6956,7 @@
     (property "Value" "4.7uH" (at 60.96 245.1354 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Inductor_SMD:L_Bourns-SRU8028_8.0x8.0mm" (at 60.96 247.65 0)
+    (property "Footprint" "" (at 60.96 247.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 60.96 247.65 0)

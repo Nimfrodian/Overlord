@@ -5,7 +5,7 @@
   <ProductVersion>2.6.1</ProductVersion>
   <Warning>Modifying structure and/or content may cause undefined behavior!</Warning>
   <Mark>
-    <TimeStamp>2024-07-06T18:37:42.8091216+02:00</TimeStamp>
+    <TimeStamp>2024-09-14T11:04:39.0705063+02:00</TimeStamp>
     <UserName>Laptop-3070</UserName>
   </Mark>
   <AutoSaved>false</AutoSaved>
@@ -788,14 +788,14 @@
       <HideUndefinedCommands>false</HideUndefinedCommands>
     </Predefined>
     <Window>
-      <State>Maximized</State>
+      <State>Normal</State>
       <Location>
-        <X>0</X>
-        <Y>0</Y>
+        <X>26</X>
+        <Y>26</Y>
       </Location>
       <Size>
-        <Width>854</Width>
-        <Height>600</Height>
+        <Width>900</Width>
+        <Height>601</Height>
       </Size>
     </Window>
     <Layout>

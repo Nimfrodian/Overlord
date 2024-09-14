@@ -19,7 +19,7 @@ const twai_timing_config_t g_timingConfig = TWAI_TIMING_CONFIG_250KBITS();
 const twai_filter_config_t g_filerConfig =
 {
     .acceptance_code = 0,
-    .acceptance_mask = 0,
+    .acceptance_mask = 0xFFFFFFFF,
     .single_filter = true,
 };
 

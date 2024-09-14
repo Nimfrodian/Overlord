@@ -36,6 +36,21 @@ BS_:
 BU_: RoomController HomeAssistantESP
 
 
+BO_ 83 Dimmer_errh_msg3: 8 Vector__XXX
+ SG_ errh_errLvl : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ errh_count : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 82 Dimmer_errh_msg2: 8 Vector__XXX
+ SG_ errh_timestamp : 0|64@1- (1,0) [-9.22337203685478E+018|9.22337203685478E+018] "us" Vector__XXX
+
+BO_ 81 Dimmer_errh_msg1: 8 Vector__XXX
+ SG_ errh_errId : 32|32@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ errh_apiId : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+
+BO_ 80 Dimmer_errh_msg0: 8 Vector__XXX
+ SG_ errh_moduleId : 0|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+ SG_ errh_instanceId : 32|32@1+ (1,0) [0|4294967295] "" Vector__XXX
+
 BO_ 151 DimmerResponseMsg2: 8 Vector__XXX
  SG_ TriggerChannel9_duty : 40|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
  SG_ TriggerChannel8_duty : 30|10@1+ (1,0) [0|1000] "0.1%" Vector__XXX
