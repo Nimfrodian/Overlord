@@ -1,0 +1,3 @@
+[submodule "rtdb_generator"]
+	path = rtdb_generator
+	url = https://github.com/Nimfrodian/OverlordRTDB
