@@ -6,7 +6,7 @@
   [1] Definitions of TCAN, TCANFD, TLIN, TFlexRay can be found in this header
   [2] channel index is always starting from 0
   [3] for error codes of API, please see bottem area of this file
-  [4] F3 for fast locating: _TTSApp _TTSCOM _TTSTest
+  [4] F3 for fast locating: TCAN TCANFD TLIN TFlexRay TEthernetHeader _TTSApp _TTSCOM _TTSTest
 */
 
 #include <stdio.h>
@@ -44,6 +44,8 @@
 #define CH31 30
 #define CH32 31
 
+#define GENERIC_STRING_MAX_LENGTH 32
+
 typedef enum {lvlError = 1, lvlWarning = 2, lvlOK = 3, lvlHint = 4, lvlInfo = 5, lvlVerbose = 6} TLogLevel;
 
 // basic var type definition
@@ -68,6 +70,7 @@ typedef signed __int64* ps64;
 typedef float* pfloat;
 typedef double* pdouble;
 typedef char* pchar;
+typedef bool* pbool;
 
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #define MAX(a,b) (((a)>(b))?(a):(b))
@@ -105,6 +108,15 @@ typedef char* pchar;
     typedef t property__tmp_type_##n
 #define GET(n) property__tmp_type_##n property__get_##n() 
 #define SET(n) void property__set_##n(const property__tmp_type_##n& value)   
+// C++ array property definitino
+#define ARRAY_PROPERTY(t,n,s) __declspec( property ( put = property__set_##n, get = property__get_##n ) ) t n[s];\
+    typedef t property__tmp_type_##n
+#define READONLY_ARRAY_PROPERTY(t,n,s) __declspec( property (get = property__get_##n) ) t n[s];\
+    typedef t property__tmp_type_##n
+#define WRITEONLY_ARRAY_PROPERTY(t,n,s) __declspec( property (put = property__set_##n) ) t n[s];\
+    typedef t property__tmp_type_##n
+#define ARRAY_GET(n) property__tmp_type_##n property__get_##n(int index)
+#define ARRAY_SET(n) void property__set_##n(int index, const property__tmp_type_##n& value)
 
 const u8 DLC_DATA_BYTE_CNT[16] = {
     0, 1, 2, 3, 4, 5, 6, 7,
@@ -171,9 +183,9 @@ typedef struct _TCAN{
     SET(is_err)
     {
         if (value) {
-            FProperties = FProperties & (~MASK_CANProp_ERROR);
-        } else {
             FProperties = FProperties | MASK_CANProp_ERROR;
+        } else {
+            FProperties = FProperties & (~MASK_CANProp_ERROR);
         }
     }
     // load data bytes -------------------------------------------
@@ -280,9 +292,9 @@ typedef struct _TCANFD{
     SET(is_err)
     {
         if (value) {
-            FProperties = FProperties & (~MASK_CANProp_ERROR);
-        } else {
             FProperties = FProperties | MASK_CANProp_ERROR;
+        } else {
+            FProperties = FProperties & (~MASK_CANProp_ERROR);
         }
     }
     // is_edl ----------------------------------------------------
@@ -421,19 +433,19 @@ typedef struct _LIN {
 
 // FlexRay Frame Type ============================================
 typedef struct _TFlexRay {
-	u8  FIdxChn;               // channel index starting from 0
-	u8  FChannelMask;          // 0: reserved, 1: A, 2: B, 3: AB
-	u8  FDir;                  // 0: Rx, 1: Tx, 2: Tx Request
-	u8  FPayloadLength;        // payload length in bytes
-	u8  FActualPayloadLength;  // actual data bytes
-	u8  FCycleNumber;          // cycle number: 0~63
-	u8  FCCType;               // 0 = Architecture independent, 1 = Invalid CC type, 2 = Cyclone I, 3 = BUSDOCTOR, 4 = Cyclone II, 5 = Vector VN interface, 6 = VN - Sync - Pulse(only in Status Event, for debugging purposes only)
-	u8  FFrameType;            // 0 = raw flexray frame, 1 = error event, 2 = status, 3 = start cycle
-	u16 FHeaderCRCA;           // header crc A
-	u16 FHeaderCRCB;           // header crc B
-	u16 FFrameStateInfo;       // bit 0~15, error flags
-	u16 FSlotId;               // static seg: 0~1023
-	u32 FFrameFlags;           // bit 0~22
+    u8  FIdxChn;               // channel index starting from 0
+    u8  FChannelMask;          // 0: reserved, 1: A, 2: B, 3: AB
+    u8  FDir;                  // 0: Rx, 1: Tx, 2: Tx Request
+    u8  FPayloadLength;        // payload length in bytes
+    u8  FActualPayloadLength;  // actual data bytes
+    u8  FCycleNumber;          // cycle number: 0~63
+    u8  FCCType;               // 0 = Architecture independent, 1 = Invalid CC type, 2 = Cyclone I, 3 = BUSDOCTOR, 4 = Cyclone II, 5 = Vector VN interface, 6 = VN - Sync - Pulse(only in Status Event, for debugging purposes only)
+    u8  FFrameType;            // 0 = raw flexray frame, 1 = error event, 2 = status, 3 = start cycle
+    u16 FHeaderCRCA;           // header crc A
+    u16 FHeaderCRCB;           // header crc B
+    u16 FFrameStateInfo;       // bit 0~15, error flags
+    u16 FSlotId;               // static seg: 0~1023
+    u32 FFrameFlags;           // bit 0~22
                                // 0 1 = Null frame.
                                // 1 1 = Data segment contains valid data
                                // 2 1 = Sync bit
@@ -447,14 +459,14 @@ typedef struct _TFlexRay {
                                // 17 Valid for PDUs only.The bit is set if the PDU is valid(either if the PDU has no update bit, or the update bit for the PDU was set in the received frame).
                                // 18 Reserved
                                // 19 1 = Raw frame(only valid if PDUs are used in the configuration).A raw frame may contain PDUs in its payload
-                               // 20 1 = Dynamic segment	0 = Static segment
-                               // 21 This flag is only valid for frames and not for PDUs.	1 = The PDUs in the payload of this frame are logged in separate logging entries. 0 = The PDUs in the payload of this frame must be extracted out of this frame.The logging file does not contain separate  // PDU - entries.
+                               // 20 1 = Dynamic segment    0 = Static segment
+                               // 21 This flag is only valid for frames and not for PDUs.    1 = The PDUs in the payload of this frame are logged in separate logging entries. 0 = The PDUs in the payload of this frame must be extracted out of this frame.The logging file does not contain separate  // PDU - entries.
                                // 22 Valid for PDUs only.The bit is set if the PDU has an update bit
-	u32 FFrameCRC;             // frame crc
-	u64 FReserved1;            // 8 reserved bytes
-	u64 FReserved2;            // 8 reserved bytes
-	u64 FTimeUs;               // timestamp in us
-	u8  FData[254];            // 254 data bytes
+    u32 FFrameCRC;             // frame crc
+    u64 FReserved1;            // 8 reserved bytes
+    u64 FReserved2;            // 8 reserved bytes
+    u64 FTimeUs;               // timestamp in us
+    u8  FData[254];            // 254 data bytes
     // is_tx -----------------------------------------------------
     PROPERTY(bool, is_tx);
     GET(is_tx){
@@ -581,6 +593,187 @@ typedef struct _TFlexRay {
         }
     }
 } TFlexRay, *PFlexRay;
+
+// Ethernet Frame Type
+typedef struct _TEthernetHeader{ // size = 24 B
+    u8  FIdxChn;                 // Application channel index starting from 0 = Network index
+    u8  FIdxSwitch;              // Network's switch index
+    u8  FIdxPort;                // Network's switch's port index, 0~127: measurement port, 128~255: virtual port
+    u8  FConfig;                 // 0-1: 0 = Rx, 1 = Tx, 2 = TxRq
+                                 // 2: crc status, for tx, 0: crc is include in data, 1: crc is not include in data
+                                 //                for rx, 0: crc is ok, 1: crc is not ok
+                                 // 3: tx done type, 0: only report timestamp, 1: report full info(header+frame)
+    u16 FEthernetPayloadLength;  // Length of Ethernet payload data in bytes. Max 1582 (1600 packet length - 18 header) data bytes per frame
+    u16 FReserved;               // reserved for padding
+    u64 FTimeUs;                 // timestamp in us
+    pu8 FEthernetDataAddr;       // Ethernet data (with Ethernet header)
+#ifdef WIN32
+    u32 FPadding;                // to be compatible with x64
+#endif
+    ARRAY_PROPERTY(u8, Payloads, 1500);
+    ARRAY_GET(Payloads) {
+        return *(ethernet_payload_addr() + index);
+    }
+    ARRAY_SET(Payloads) {
+        *(ethernet_payload_addr() + index) = value;
+    }
+    inline bool get_tx() {
+        return (FConfig & 0x1) != 0;
+    }
+    inline void set_tx(bool a) {
+        if (a) {
+            FConfig |= 1;
+        } else {
+            FConfig &= 0xFC;
+        }
+    }
+    void init(const u16 APayloadLength){
+        FIdxChn = 0;
+        FIdxSwitch = 0;
+        FIdxPort = 0;
+        FConfig = 0;
+        FEthernetPayloadLength = APayloadLength;
+        FReserved = 0;
+        FTimeUs = 0;
+        FEthernetDataAddr = actual_data_pointer();
+#ifdef WIN32
+        FPadding = 0;
+#endif
+        s32 i;
+        pu8 p = FEthernetDataAddr;
+        s32 n = MIN(1612 - 14, APayloadLength);
+        n += 14;
+        for (i=0; i<n; i++){
+            *p++ = 0;
+        }
+        *(pu16)(ethernet_type_addr()) = 0x00; // IPV4 = swap(0x0800)
+        p = destination_mac_addr();
+        for (i=0; i<6; i++){
+            *p++ = 0xFF;
+        }
+    }
+    bool is_virtual(){
+        return FIdxPort >= 128;
+    }
+    pu8 actual_data_pointer() {
+        return &FIdxChn + sizeof(_TEthernetHeader);
+    }
+    s32 total_ethernet_packet_length() {
+        return sizeof(_TEthernetHeader) + 6 + 6 + 2 + FEthernetPayloadLength;
+    }
+    pu8 ethernet_payload_addr() {
+        return FEthernetDataAddr + 6 + 6 + 2;
+    }
+    pu8 destination_mac_addr() {
+        return FEthernetDataAddr;
+    }
+    pu8 source_mac_addr() {
+        return FEthernetDataAddr + 6;
+    }
+    pu16 ethernet_type_addr() {
+        pu8 p = FEthernetDataAddr + 6 + 6;
+        return (pu16)(p);
+    }
+    u16 ethernet_type() {
+        pu8 p = FEthernetDataAddr + 6 + 6;
+        return *(pu16)(p);
+    }
+} TEthernetHeader, *PEthernetHeader;
+typedef struct _TEthernetMAX {
+    TEthernetHeader FHeader;
+    u8 FBytes[1612];
+} TEthernetMAX, *PEthernetMAX;
+
+// FlexRay Cluster Parameters (size = 440)
+typedef struct _TFlexRayClusterParameters {
+    // general parameters
+    char FShortName[GENERIC_STRING_MAX_LENGTH];
+    char FLongName[GENERIC_STRING_MAX_LENGTH];
+    char FDescription[GENERIC_STRING_MAX_LENGTH];
+    char FSpeed[GENERIC_STRING_MAX_LENGTH];
+    char FChannels[GENERIC_STRING_MAX_LENGTH];
+    char FBitCountingPolicy[GENERIC_STRING_MAX_LENGTH];
+    char FProtocol[GENERIC_STRING_MAX_LENGTH];
+    char FProtocolVersion[GENERIC_STRING_MAX_LENGTH];
+    char FMedium[GENERIC_STRING_MAX_LENGTH];
+    int FIsHighLowBitOrder;
+    int FMaxFrameLengthByte;
+    int FNumberOfCycles;
+    // cycle parameters
+    int FCycle_us;
+    double FBit_us;
+    double FSampleClockPeriod_us;
+    double FMacrotick_us;
+    int FMacroPerCycle;
+    int FNumberOfStaticSlots;
+    int FStaticSlot_MT;
+    int FActionPointOffset_MT;
+    int FTSSTransmitter_gdBit;
+    int FPayloadLengthStatic_WORD;
+    int FNumberOfMiniSlots;
+    int FMiniSlot_MT;
+    int FMiniSlotActionPointOffset_MT;
+    int FDynamicSlotIdlePhase_MiniSlots;
+    int FSymbolWindow_MT;
+    int FNIT_MT;
+    int FSyncNodeMax;
+    int FNetworkManagementVectorLength;
+    // Wakeup and startup parameters
+    int FListenNoise;
+    int FColdStartAttempts;
+    int FCASRxLowMax_gdBit;
+    int FWakeupSymbolRxIdle_gdBit;
+    int FWakeupSymbolRxLow_gdBit;
+    int FWakeupSymbolRxWindow_gdBit;
+    int FWakeupSymbolTxIdle_gdBit;
+    int FWakeupSymbolTxLow_gdBit;
+    double FMaxInitializationError_us;
+    // clock correction parameters
+    int FClusterDriftDamping_uT;
+    int FOffsetCorrectionStart_MT;
+    int FMaxWithoutClockCorrectionFatal;
+    int FMaxWithoutClockCorrectionPassive;
+} TFlexRayClusterParameters, *PFlexRayClusterParameters;
+
+// FlexRay Controller Parameters (size = 212)
+typedef struct _TFlexRayControllerParameters {
+    // general parameters
+    char FShortName[GENERIC_STRING_MAX_LENGTH];
+    char FConnectedChannels[GENERIC_STRING_MAX_LENGTH];
+    // cycle parameters
+    int FMicroPerCycle_uT;
+    int FMicroPerMacroNom_uT;
+    double FMicroTick_us;
+    int FSamplesPerMicrotick;
+    // wakeup & startup parameters
+    int FWakeupChannelA;
+    int FWakeupChannelB;
+    int FMaxDrift_uT;
+    int FWakeupPattern;
+    int FListenTimeout_uT;
+    int FAcceptedStartupRange_uT;
+    int FMacroInitialOffsetA_MT;
+    int FMacroInitialOffsetB_MT;
+    int FMicroInitialOffsetA_uT;
+    int FMicroInitialOffsetB_uT;
+    // clock correction parameters
+    char FKeySlotUsage[GENERIC_STRING_MAX_LENGTH];
+    int FKeySlotID;
+    int FSingleSlotEnabled;
+    int FClusterDriftDamping_uT;
+    int FDocodingCorrection_uT;
+    int FDelayCompensationA_uT;
+    int FDelayCompensationB_uT;
+    int FOffsetCorrectionOut_uT;
+    int FExternRateCorrection_uT;
+    int FRateCorrectionOut_uT;
+    int FExternOffsetCorrection_uT;
+    int FAllowHaltDueToClock;
+    int FAllowPassivToActive;
+    // latesttx
+    int FLatestTx;
+    int FMaxDynamicPayloadLength;
+} TFlexRayControllerParameters, *PFlexRayControllerParameters;
 
 // Generic definitions ===========================================
 typedef void (__stdcall* TProcedure)(const void* AObj);
@@ -790,6 +983,8 @@ typedef struct _TFlexRaySignal{
     s32    FLength;
     double FFactor;
     double FOffset;
+    s32    FActualStartBit;
+    s32    FActualUpdateBit;
 } TFlexRaySignal, *PFlexRaySignal;
 #define CANMsgDecl(typ, name, chn, prop, dlc, id) const typ name = {{chn, prop, dlc, 0, id, 0, {0}}};
 #define CANFDMsgDecl(typ, name, chn, prop, dlc, id) const typ name = {{chn, prop, dlc, 1, id, 0, {0}}};
@@ -797,15 +992,15 @@ typedef struct _TFlexRaySignal{
 #define LINMsgDecl(typ, name, chn, prop, dlc, id) const typ name = {{chn, 0, prop, dlc, id, 0, 0, 0, {0}}};
 #define CANSgnDecl(name, typ, isIntel, startBit, len, factor, offset) const TCANSignal name = {typ, isIntel, startBit, len, factor, offset};
 #define LINSgnDecl(name, typ, isIntel, startBit, len, factor, offset) const TLINSignal name = {typ, isIntel, startBit, len, factor, offset};
-#define FlexRaySgnDecl(name, typ, isIntel, compuMethod, startBit, updateBit, len, factor, offset) const TFlexRaySignal name = {typ, compuMethod, 0, isIntel, startBit, updateBit, len, factor, offset};
+#define FlexRaySgnDecl(name, typ, isIntel, compuMethod, startBit, updateBit, len, factor, offset, actualStartBit, actualUpdateBit) const TFlexRaySignal name = {typ, compuMethod, 0, isIntel, startBit, updateBit, len, factor, offset, actualStartBit, actualUpdateBit};
 typedef enum _TSignalType {stCANSignal, stLINSignal, stSystemVar, stFlexRay, stEthernet} TSignalType;
 typedef enum _TSignalCheckKind {sckAlways, sckAppear, sckStatistics, sckRisingEdge, sckFallingEdge, sckMonotonyRising, sckMonotonyFalling, sckFollow, sckJump, sckNoChange} TSignalCheckKind;
-typedef enum _TSignalStatisticsKind {sskMin, sskMax, sskAverage} TSignalStatisticsKind;
+typedef enum _TSignalStatisticsKind {sskMin, sskMax, sskAverage, sskStdDeviation} TSignalStatisticsKind;
 typedef enum _TLIBRBSInitValueOptions{rivUseDB = 0, rivUseLast, rivUse0} TLIBRBSInitValueOptions;
 typedef enum _TSymbolMappingDirection{smdBiDirection = 0, smdSgnToSysVar, smdSysVarToSgn} TSymbolMappingDirection;
 typedef void(__stdcall* TProgressCallback)(const void* AObj, const double AProgress100);
 typedef bool(__stdcall* TCheckResultCallback)(void);
-// TDBProperties for database properties, size = 1048
+// TDBProperties for database properties, size = 1056
 typedef struct _TDBProperties {
     s32 FDBIndex;
     s32 FSignalCount;
@@ -814,6 +1009,7 @@ typedef struct _TDBProperties {
     u64 FSupportedChannelMask;
     char FName[DATABASE_STR_LEN];
     char FComment[DATABASE_STR_LEN];
+    u64  FFlags;
 } TDBProperties, *PDBProperties;
 // TDBECUProperties for database ECU properties, size = 1040
 typedef struct _TDBECUProperties {
@@ -878,15 +1074,21 @@ typedef struct _TDBSignalProperties {
 } TDBSignalProperties, *PDBSignalProperties;
 // Realtime comment
 typedef struct _realtime_comment_t {
-	s64 FTimeUs;
-	s32 FEventType;
-	u32 FCapacity;
-	char* FComment;
+    s64 FTimeUs;
+    s32 FEventType;
+    u32 FCapacity;
+    char* FComment;
 } Trealtime_comment_t, *Prealtime_comment_t;
+// Sys Var
+typedef void(__stdcall* TOnSysVarChange)(const char* ACompleteName);
 // IP
 typedef void(__stdcall* TOnIoIPData)(const pu8 APointer, const s32 ASize);
+typedef void(__stdcall* TOnIoIPConnection)(const char* AIPAddress, const s32 APort);
 // Automation Module - Graphic Program
 typedef enum _TAutomationModuleRunningState {amrsNotRun, amrsPrepareRun, amrsRunning, amrsPaused, amrsStepping, amrsFinished} TAutomationModuleRunningState, *PAutomationModuleRunningState;
+typedef enum _TLIBAutomationSignalType {lastCANSignal, lastLINSignal, lastSysVar, lastLocalVar, lastConst, lastFlexRaySignal, lastImmediateValue} TLIBAutomationSignalType, *PLIBAutomationSignalType;
+typedef enum _TLIBMPFuncSource {lmfsSystemFunc, lmfsMPLib, lmfsInternal} TLIBMPFuncSource;
+typedef enum _TLIBSimVarType {lvtInteger, lvtDouble, lvtString, lvtCANMsg, lvtCANFDMsg, lvtLINMsg} TLIBSimVarType;
 // stim
 typedef enum _TSTIMSignalStatus {sssStopped, sssRunning, sssPaused} TSTIMSignalStatus, *PSTIMSignalStatus;
 
@@ -951,12 +1153,12 @@ typedef s32 (__stdcall* TTSAppGetSystemVarInt32)(const char* ACompleteName, s32*
 typedef s32 (__stdcall* TTSAppGetSystemVarUInt32)(const char* ACompleteName, u32* AValue);
 typedef s32 (__stdcall* TTSAppGetSystemVarInt64)(const char* ACompleteName, s64* AValue);
 typedef s32 (__stdcall* TTSAppGetSystemVarUInt64)(const char* ACompleteName, u64* AValue);
-typedef s32 (__stdcall* TTSAppGetSystemVarUInt8Array)(const char* ACompleteName, const s32 ACapacity, s32* AVarCount, u8* AValue);
-typedef s32 (__stdcall* TTSAppGetSystemVarInt32Array)(const char* ACompleteName, const s32 ACapacity, s32* AVarCount, s32* AValue);
-typedef s32 (__stdcall* TTSAppGetSystemVarInt64Array)(const char* ACompleteName, const s32 ACapacity, s32* AVarCount, s64* AValue);
-typedef s32 (__stdcall* TTSAppGetSystemVarDoubleArray)(const char* ACompleteName, const s32 ACapacity, s32* AVarCount, double* AValue);
-typedef s32 (__stdcall* TTSAppGetSystemVarString)(const char* ACompleteName, const s32 ACapacity, char* AString);
-typedef s32 (__stdcall* TTSAppGetSystemVarGerneric)(const char* ACompleteName, const s32 ACapacity, char* AValue);
+typedef s32 (__stdcall* TTSAppGetSystemVarUInt8Array)(const char* ACompleteName, const s32 AValueCapacity, s32* AVarCount, u8* AValue);
+typedef s32 (__stdcall* TTSAppGetSystemVarInt32Array)(const char* ACompleteName, const s32 AValueCapacity, s32* AVarCount, s32* AValue);
+typedef s32 (__stdcall* TTSAppGetSystemVarInt64Array)(const char* ACompleteName, const s32 AValueCapacity, s32* AVarCount, s64* AValue);
+typedef s32 (__stdcall* TTSAppGetSystemVarDoubleArray)(const char* ACompleteName, const s32 AValueCapacity, s32* AVarCount, double* AValue);
+typedef s32 (__stdcall* TTSAppGetSystemVarString)(const char* ACompleteName, const s32 AValueCapacity, char* AString);
+typedef s32 (__stdcall* TTSAppGetSystemVarGerneric)(const char* ACompleteName, const s32 AValueCapacity, char* AValue);
 typedef s32 (__stdcall* TTSWaitSystemVariable)(const char* ACompleteName, const char* AValue, const s32 ATimeoutMs);
 // system var sync set
 typedef s32 (__stdcall* TTSAppSetSystemVarDouble)(const char* ACompleteName, double AValue);
@@ -964,10 +1166,10 @@ typedef s32 (__stdcall* TTSAppSetSystemVarInt32)(const char* ACompleteName, s32 
 typedef s32 (__stdcall* TTSAppSetSystemVarUInt32)(const char* ACompleteName, u32 AValue);
 typedef s32 (__stdcall* TTSAppSetSystemVarInt64)(const char* ACompleteName, s64 AValue);
 typedef s32 (__stdcall* TTSAppSetSystemVarUInt64)(const char* ACompleteName, u64 AValue);
-typedef s32 (__stdcall* TTSAppSetSystemVarUInt8Array)(const char* ACompleteName, const s32 ACapacity, u8* AValue);
-typedef s32 (__stdcall* TTSAppSetSystemVarInt32Array)(const char* ACompleteName, const s32 ACapacity, s32* AValue);
-typedef s32 (__stdcall* TTSAppSetSystemVarInt64Array)(const char* ACompleteName, const s32 ACapacity, s64* AValue);
-typedef s32 (__stdcall* TTSAppSetSystemVarDoubleArray)(const char* ACompleteName, const s32 ACapacity, double* AValue);
+typedef s32 (__stdcall* TTSAppSetSystemVarUInt8Array)(const char* ACompleteName, const s32 ACount, u8* AValue);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt32Array)(const char* ACompleteName, const s32 ACount, s32* AValue);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt64Array)(const char* ACompleteName, const s32 ACount, s64* AValue);
+typedef s32 (__stdcall* TTSAppSetSystemVarDoubleArray)(const char* ACompleteName, const s32 ACount, double* AValue);
 typedef s32 (__stdcall* TTSAppSetSystemVarString)(const char* ACompleteName, char* AString);
 typedef s32 (__stdcall* TTSAppSetSystemVarGeneric)(const char* ACompleteName, char* AValue);
 // system var async set
@@ -976,10 +1178,10 @@ typedef s32 (__stdcall* TTSAppSetSystemVarInt32Async)(const char* ACompleteName,
 typedef s32 (__stdcall* TTSAppSetSystemVarUInt32Async)(const char* ACompleteName, u32 AValue);
 typedef s32 (__stdcall* TTSAppSetSystemVarInt64Async)(const char* ACompleteName, s64 AValue);
 typedef s32 (__stdcall* TTSAppSetSystemVarUInt64Async)(const char* ACompleteName, u64 AValue);
-typedef s32 (__stdcall* TTSAppSetSystemVarUInt8ArrayAsync)(const char* ACompleteName, const s32 ACapacity, u8* AValue);
-typedef s32 (__stdcall* TTSAppSetSystemVarInt32ArrayAsync)(const char* ACompleteName, const s32 ACapacity, s32* AValue);
-typedef s32 (__stdcall* TTSAppSetSystemVarInt64ArrayAsync)(const char* ACompleteName, const s32 ACapacity, s64* AValue);
-typedef s32 (__stdcall* TTSAppSetSystemVarDoubleArrayAsync)(const char* ACompleteName, const s32 ACapacity, double* AValue);
+typedef s32 (__stdcall* TTSAppSetSystemVarUInt8ArrayAsync)(const char* ACompleteName, const s32 ACount, u8* AValue);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt32ArrayAsync)(const char* ACompleteName, const s32 ACount, s32* AValue);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt64ArrayAsync)(const char* ACompleteName, const s32 ACount, s64* AValue);
+typedef s32 (__stdcall* TTSAppSetSystemVarDoubleArrayAsync)(const char* ACompleteName, const s32 ACount, double* AValue);
 typedef s32 (__stdcall* TTSAppSetSystemVarStringAsync)(const char* ACompleteName, char* AString);
 typedef s32 (__stdcall* TTSAppSetSystemVarGenericAsync)(const char* ACompleteName, char* AValue);
 // system var utils
@@ -1006,7 +1208,7 @@ typedef s32 (__stdcall* TWriteTextFileLineWithStringArray)(const s32 AHandle, co
 typedef s32 (__stdcall* TWriteTextFileEnd)(const s32 AHandle);
 // text file read
 typedef s32 (__stdcall* TReadTextFileStart)(const char* AFileName, s32* AHandle);
-typedef s32 (__stdcall* TReadTextFileLine)(const s32 AHandle, const s32 ACapacity, ps32 AReadCharCount, char* ALine);
+typedef s32 (__stdcall* TReadTextFileLine)(const s32 AHandle, const s32 ALineCapacity, ps32 AReadCharCount, char* ALine);
 typedef s32 (__stdcall* TReadTextFileEnd)(const s32 AHandle);
 // mat file
 typedef s32 (__stdcall* TWriteMatFileStart)(const char* AFileName, s32* AHandle);
@@ -1016,7 +1218,7 @@ typedef s32 (__stdcall* TWriteMatFileVariableDoubleArray)(const s32 AHandle, con
 typedef s32 (__stdcall* TWriteMatFileEnd)(const s32 AHandle);
 typedef s32 (__stdcall* TReadMatFileStart)(const char* AFileName, s32* AHandle);
 typedef s32 (__stdcall* TReadMatFileVariableCount)(const s32 AHandle, const char* AVarName, ps32 ACount);
-typedef s32 (__stdcall* TReadMatFileVariableString)(const s32 AHandle, const char* AVarName, char* AValue, const s32 ACapacity);
+typedef s32 (__stdcall* TReadMatFileVariableString)(const s32 AHandle, const char* AVarName, char* AValue, const s32 AValueCapacity);
 typedef s32 (__stdcall* TReadMatFileVariableDouble)(const s32 AHandle, const char* AVarName, const double* AValue, const s32 AStartIdx, const s32 ACount);
 typedef s32 (__stdcall* TReadMatFileEnd)(const s32 AHandle);
 // ini file
@@ -1030,7 +1232,7 @@ typedef s32 (__stdcall* TIniReadInt32)(const s32 AHandle, const char* ASection, 
 typedef s32 (__stdcall* TIniReadInt64)(const s32 AHandle, const char* ASection, const char* AKey, const s64* AValue, const s64 ADefault);
 typedef s32 (__stdcall* TIniReadBool)(const s32 AHandle, const char* ASection, const char* AKey, const bool* AValue, const bool ADefault);
 typedef s32 (__stdcall* TIniReadFloat)(const s32 AHandle, const char* ASection, const char* AKey, const double* AValue, const double ADefault);
-typedef s32 (__stdcall* TIniReadString)(const s32 AHandle, const char* ASection, const char* AKey, const char* AValue, s32* ACapacity, const char* ADefault);
+typedef s32 (__stdcall* TIniReadString)(const s32 AHandle, const char* ASection, const char* AKey, const char* AValue, s32* AValueCapacity, const char* ADefault);
 typedef s32 (__stdcall* TIniSectionExists)(const s32 AHandle, const char* ASection);
 typedef s32 (__stdcall* TIniKeyExists)(const s32 AHandle, const char* ASection, const char* AKey);
 typedef s32 (__stdcall* TIniDeleteKey)(const s32 AHandle, const char* ASection, const char* AKey);
@@ -1142,7 +1344,7 @@ typedef s32 (__stdcall* TTSAppDirectoryExists)(const char* ADir);
 typedef s32 (__stdcall* TTSAppOpenDirectoryAndSelectFile)(const char* AFileName);
 typedef s32 (__stdcall* TTSMiniDelayCPU)(void);
 typedef s32 (__stdcall* TPromptUserInputValue)(const char* APrompt, double* AValue);
-typedef s32 (__stdcall* TPromptUserInputString)(const char* APrompt, char* AValue, const s32 ACapacity);
+typedef s32 (__stdcall* TPromptUserInputString)(const char* APrompt, char* AValue, const s32 AValueCapacity);
 typedef s32 (__stdcall* TTSAppGetDocPath)(char** AFilePath);
 typedef s32 (__stdcall* TTSAppGetHWIDString)(char** AIDString);
 typedef s32 (__stdcall* TTSAppGetHWIDArray)(pu8 AArray8B);
@@ -1157,6 +1359,88 @@ typedef s32 (__cdecl* TRunPythonFunction)(const void* AObj, const char* AModuleN
 typedef char* (__stdcall* TGetCurrentMpName)(const void* AObj);
 typedef s32 (__stdcall* TGetSystemConstantCount)(const s32 AIdxType, ps32 ACount);
 typedef s32 (__stdcall* TGetSystemConstantValueByIndex)(const s32 AIdxType, const s32 AIdxValue, char** AName, pdouble AValue, char** ADescription);
+typedef s32 (__stdcall* TAddSystemConstant)(const char* AName, const double AValue, const char* ADescription);
+typedef s32 (__stdcall* TDeleteSystemConstant)(const char* AName);
+typedef s32 (__stdcall* TDBGetFlexRayClusterParameters)(const s32 AIdxChn, const pchar AClusterName, PFlexRayClusterParameters AValue);
+typedef s32 (__stdcall* TDBGetFlexRayControllerParameters)(const s32 AIdxChn,  pchar AClusterName, const pchar AECUName, PFlexRayControllerParameters AValue);
+typedef s32 (__stdcall* TSetSystemVarEventSupport)(const pchar ACompleteName, const bool ASupport);
+typedef s32 (__stdcall* TGetSystemVarEventSupport)(const pchar ACompleteName, pbool ASupport);
+typedef s32 (__stdcall* TGetDateTime)(ps32 AYear, ps32 AMonth, ps32 ADay, ps32 AHour, ps32 AMinute, ps32 ASecond, ps32 AMilliseconds);
+typedef s32 (__stdcall* TGPGDeleteAllModules)(void);
+typedef s32 (__stdcall* TGPGCreateModule)(const pchar AProgramName, const pchar ADisplayName, ps64 AModuleId, ps64 AEntryPointId);
+typedef s32 (__stdcall* TGPGDeleteModule)(const s64 AModuleId);
+typedef s32 (__stdcall* TGPGDeployModule)(const s64 AModuleId, const pchar AGraphicProgramWindowTitle);
+typedef s32 (__stdcall* TGPGAddActionDown)(const s64 AModuleId, const s64 AUpperActionId, const pchar ADisplayName, const pchar AComment, ps64 AActionId);
+typedef s32 (__stdcall* TGPGAddActionRight)(const s64 AModuleId, const s64 ALeftActionId, const pchar ADisplayName, const pchar AComment, ps64 AActionId);
+typedef s32 (__stdcall* TGPGAddGoToDown)(const s64 AModuleId, const s64 AUpperActionId, const pchar ADisplayName, const pchar AComment, const pchar AJumpLabel, ps64 AActionId);
+typedef s32 (__stdcall* TGPGAddGoToRight)(const s64 AModuleId, const s64 ALeftActionId, const pchar ADisplayName, const pchar AComment, const pchar AJumpLabel, ps64 AActionId);
+typedef s32 (__stdcall* TGPGAddFromDown)(const s64 AModuleId, const s64 AUpperActionId, const pchar ADisplayName, const pchar AComment, const pchar AJumpLabel, ps64 AActionId);
+typedef s32 (__stdcall* TGPGAddGroupDown)(const s64 AModuleId, const s64 AUpperActionId, const pchar ADisplayName, const pchar AComment, ps64 AGroupId, ps64 AEntryPointId);
+typedef s32 (__stdcall* TGPGAddGroupRight)(const s64 AModuleId, const s64 ALeftActionId, const pchar ADisplayName, const pchar AComment, ps64 AGroupId, ps64 AEntryPointId);
+typedef s32 (__stdcall* TGPGDeleteAction)(const s64 AModuleId, const s64 AActionId);
+typedef s32 (__stdcall* TGPGSetActionNOP)(const s64 AModuleId, const s64 AActionId);
+typedef s32 (__stdcall* TGPGSetActionSignalReadWrite)(const s64 AModuleId, const s64 AActionId);
+typedef s32 (__stdcall* TGPGSetActionAPICall)(const s64 AModuleId, const s64 AActionId);
+typedef s32 (__stdcall* TGPGSetActionExpression)(const s64 AModuleId, const s64 AActionId);
+typedef s32 (__stdcall* TGPGConfigureActionBasic)(const s64 AModuleId, const s64 AActionId, const pchar ADisplayName, const pchar AComment, const s32 ATimeoutMs);
+typedef s32 (__stdcall* TGPGConfigureGoTo)(const s64 AModuleId, const s64 AActionId, const pchar ADisplayName, const pchar AComment, const pchar AJumpLabel);
+typedef s32 (__stdcall* TGPGConfigureFrom)(const s64 AModuleId, const s64 AActionId, const pchar ADisplayName, const pchar AComment, const pchar AJumpLabel);
+typedef s32 (__stdcall* TGPGConfigureNOP)(const s64 AModuleId, const s64 AActionId, const bool ANextDirectionIsDown, const bool AResultOK, const bool AJumpBackIfEnded);
+typedef s32 (__stdcall* TGPGConfigureGroup)(const s64 AModuleId, const s64 AActionId, const TLIBAutomationSignalType ARepeatCountType, const pchar ARepeatCountRepr);
+typedef s32 (__stdcall* TGPGConfigureSignalReadWriteListClear)(const s64 AModuleId, const s64 AActionId);
+typedef s32 (__stdcall* TGPGConfigureSignalWriteListAppend)(const s64 AModuleId, const s64 AActionId, const TLIBAutomationSignalType ADestSignalType, const TLIBAutomationSignalType ASrcSignalType, const pchar ADestSignalExpr, const pchar ASrcSignalExpr, ps32 AItemIndex);
+typedef s32 (__stdcall* TGPGConfigureSignalReadListAppend)(const s64 AModuleId, const s64 AActionId, const bool AIsConditionAND, const TLIBAutomationSignalType ADestSignalType, const TLIBAutomationSignalType AMinSignalType, const TLIBAutomationSignalType AMaxSignalType, const pchar ADestSignalExpr, const pchar AMinSignalExpr, const pchar AMaxSignalExpr, ps32 AItemIndex);
+typedef s32 (__stdcall* TGPGConfigureAPICallArguments)(const s64 AModuleId, const s64 AActionId, const TLIBMPFuncSource AAPIType, const pchar AAPIName, const PLIBAutomationSignalType AAPIArgTypes, char** AAPIArgNames, char** AAPIArgExprs, const s32 AArraySize);
+typedef s32 (__stdcall* TGPGConfigureAPICallResult)(const s64 AModuleId, const s64 AActionId, const bool AIgnoreResult, const TLIBAutomationSignalType ASignalType, const pchar ASignalExpr);
+typedef s32 (__stdcall* TGPGConfigureExpression)(const s64 AModuleId, const s64 AActionId, const s32 AxCount, const pchar AExpression, const PLIBAutomationSignalType AArgumentTypes, char** AArgumentExprs, const TLIBAutomationSignalType AResultType, const pchar AResultExpr);
+typedef s32 (__stdcall* TGPGAddLocalVar)(const s64 AModuleId, const TLIBSimVarType AType, const pchar AName, const pchar AInitValue, const pchar AComment, ps32 AItemIndex);
+typedef s32 (__stdcall* TGPGDeleteLocalVar)(const s64 AModuleId, const s32 AItemIndex);
+typedef s32 (__stdcall* TGPGDeleteAllLoalVars)(const s64 AModuleId);
+typedef s32 (__stdcall* TGPGDeleteGroupItems)(const s64 AModuleId, const s64 AGroupId);
+typedef s32 (__stdcall* TGPGConfigureSignalReadWriteListDelete)(const s64 AModuleId, const s64 AActionId, const s32 AItemIndex);
+typedef s32 (__stdcall* TGPGConfigureModule)(const s64 AModuleId, const pchar AProgramName, const pchar ADisplayName, const s32 ARepeatCount, const bool ASelected);
+typedef s32 (__stdcall* TUIShowWindow)(const pchar AWindowTitle, const bool AIsShow);
+typedef s32 (__stdcall* TUIGraphicsLoadConfiguration)(const pchar AWindowTitle, const pchar AConfigurationName);
+typedef s32 (__stdcall* TUIWatchdogEnable)(const bool AEnable);
+typedef s32 (__stdcall* TUIWatchdogFeed)(void);
+typedef s32 (__stdcall* TAddPathToEnvironment)(const char* APath);
+typedef s32 (__stdcall* TDeletePathFromEnvironment)(const char* APath);
+typedef s32 (__stdcall* TTSAppSetSystemVarDoubleWTime)(const char* ACompleteName, const double AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt32WTime)(const char* ACompleteName, const s32 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarUInt32WTime)(const char* ACompleteName, const u32 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt64WTime)(const char* ACompleteName, const s64 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarUInt64WTime)(const char* ACompleteName, const u64 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarUInt8ArrayWTime)(const char* ACompleteName, const s32 ACount, const pu8 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt32ArrayWTime)(const char* ACompleteName, const s32 ACount, const ps32 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarDoubleArrayWTime)(const char* ACompleteName, const s32 ACount, const double* AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarStringWTime)(const char* ACompleteName, const char* AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarGenericWTime)(const char* ACompleteName, const char* AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarDoubleAsyncWTime)(const char* ACompleteName, const double AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt32AsyncWTime)(const char* ACompleteName, const s32 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarUInt32AsyncWTime)(const char* ACompleteName, const u32 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt64AsyncWTime)(const char* ACompleteName, const s64 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarUInt64AsyncWTime)(const char* ACompleteName, const u64 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarUInt8ArrayAsyncWTime)(const char* ACompleteName, const s32 ACount, const pu8 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt32ArrayAsyncWTime)(const char* ACompleteName, const s32 ACount, const ps32 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarInt64ArrayAsyncWTime)(const char* ACompleteName, const s32 ACount, const ps64 AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarDoubleArrayAsyncWTime)(const char* ACompleteName, const s32 ACount, const double* AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarStringAsyncWTime)(const char* ACompleteName, const char* AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TTSAppSetSystemVarGenericAsyncWTime)(const char* ACompleteName, const char* AValue, const s64 ATimeUs);
+typedef s32 (__stdcall* TDBGetSignalStartBitByPDUOffset)(const s32 ASignalStartBitInPDU, const s32 ASignalBitLength, const bool AIsSignalIntel, const bool AIsPDUIntel, const s32 APDUStartBit, const s32 APDUBitLength, ps32 AActualStartBit);
+typedef s32 (__stdcall* TUIShowSaveFileDialog)(const char* ATitle, const char* AFileTypeDesc, const char* AFilter, const char* ASuggestFileName, char** ADestinationFileName);
+typedef s32 (__stdcall* TUIShowOpenFileDialog)(const char* ATitle, const char* AFileTypeDesc, const char* AFilter, const char* ASuggestFileName, char** ADestinationFileName);
+typedef s32 (__stdcall* TUIShowSelectDirectoryDialog)(char** ADestinationDirectory);
+typedef s32 (__stdcall* TSetEthernetChannelCount)(const s32 ACount);
+typedef s32 (__stdcall* TGetEthernetChannelCount)(ps32 ACount);
+typedef s32 (__stdcall* TDBGetCANDBIndexById)(const s32 AId, ps32 AIndex);
+typedef s32 (__stdcall* TDBGetLINDBIndexById)(const s32 AId, ps32 AIndex);
+typedef s32 (__stdcall* TDBGetFlexRayDBIndexById)(const s32 AId, ps32 AIndex);
+typedef s32 (__stdcall* TRegisterSystemVarChangeEvent)(const void* AObj, const char* ACompleteName, const TOnSysVarChange AEvent);
+typedef s32 (__stdcall* TUnRegisterSystemVarChangeEvent)(const void* AObj, const char* ACompleteName, const TOnSysVarChange AEvent);
+typedef s32 (__stdcall* TUnRegisterSystemVarChangeEvents)(const void* AObj, const TOnSysVarChange AEvent);
+typedef s32 (__stdcall* TCallSystemAPI)(const char* AAPIName, const s32 AArgCount, const s32 AArgCapacity, char** AArgs);
+typedef s32 (__stdcall* TCallLibraryAPI)(const char* AAPIName, const s32 AArgCount, const s32 AArgCapacity, char** AArgs);
+// >>> mp app prototype end <<<
 
 typedef struct _TTSApp {
     void*                                          FObj;
@@ -1409,9 +1693,88 @@ typedef struct _TTSApp {
     TDBGetCANDBSignalPropertiesByFrameIndex        db_get_can_signal_properties_by_frame_index;
     TDBGetLINDBSignalPropertiesByFrameIndex        db_get_lin_signal_properties_by_frame_index;
     TDBGetFlexRayDBSignalPropertiesByFrameIndex    db_get_flexray_signal_properties_by_frame_index;
-    // >>> mp app end <<<
-    // place holder
-    s32                                       FDummy[805];
+    TAddSystemConstant                             add_system_constant;
+    TDeleteSystemConstant                          delete_system_constant;
+    TDBGetFlexRayClusterParameters                 db_get_flexray_cluster_parameters;
+    TDBGetFlexRayControllerParameters              db_get_flexray_controller_parameters;
+    TSetSystemVarEventSupport                      set_system_var_event_support;
+    TGetSystemVarEventSupport                      get_system_var_event_support;
+    TGetDateTime                                   get_date_time;    
+    TGPGDeleteAllModules gpg_delete_all_modules;
+    TGPGCreateModule gpg_create_module;
+    TGPGDeleteModule gpg_delete_module;
+    TGPGDeployModule gpg_deploy_module;
+    TGPGAddActionDown gpg_add_action_down;
+    TGPGAddActionRight gpg_add_action_right;
+    TGPGAddGoToDown gpg_add_goto_down;
+    TGPGAddGoToRight gpg_add_goto_right;
+    TGPGAddFromDown gpg_add_from_down;
+    TGPGAddGroupDown gpg_add_group_down;
+    TGPGAddGroupRight gpg_add_group_right;
+    TGPGDeleteAction gpg_delete_action;
+    TGPGSetActionNOP gpg_set_action_nop;
+    TGPGSetActionSignalReadWrite gpg_set_action_signal_read_write;
+    TGPGSetActionAPICall gpg_set_action_api_call;
+    TGPGSetActionExpression gpg_set_action_expression;
+    TGPGConfigureActionBasic gpg_configure_action_basic;
+    TGPGConfigureGoTo gpg_configure_goto;
+    TGPGConfigureFrom gpg_configure_from;
+    TGPGConfigureNOP gpg_configure_nop;
+    TGPGConfigureGroup gpg_configure_group;
+    TGPGConfigureSignalReadWriteListClear gpg_configure_signal_read_write_list_clear;
+    TGPGConfigureSignalWriteListAppend gpg_configure_signal_write_list_append;
+    TGPGConfigureSignalReadListAppend gpg_configure_signal_read_list_append;
+    TGPGConfigureAPICallArguments gpg_configure_api_call_arguments;
+    TGPGConfigureAPICallResult gpg_configure_api_call_result;
+    TGPGConfigureExpression gpg_configure_expression;
+    TGPGAddLocalVar gpg_add_local_var;
+    TGPGDeleteLocalVar gpg_delete_local_var;
+    TGPGDeleteAllLoalVars gpg_delete_all_local_vars;
+    TGPGDeleteGroupItems gpg_delete_group_items;
+    TGPGConfigureSignalReadWriteListDelete gpg_configure_signal_read_write_list_delete;
+    TGPGConfigureModule gpg_configure_module;
+    TUIShowWindow ui_show_window;
+    TUIGraphicsLoadConfiguration ui_graphics_load_configuration;
+    TUIWatchdogEnable ui_watchdog_enable;
+    TUIWatchdogFeed ui_watchdog_feed;
+    TAddPathToEnvironment add_path_to_environment;
+    TDeletePathFromEnvironment delete_path_from_environment;
+    TTSAppSetSystemVarDoubleWTime set_system_var_double_w_time;
+    TTSAppSetSystemVarInt32WTime set_system_var_int32_w_time;
+    TTSAppSetSystemVarUInt32WTime set_system_var_uint32_w_time;
+    TTSAppSetSystemVarInt64WTime set_system_var_int64_w_time;
+    TTSAppSetSystemVarUInt64WTime set_system_var_uint64_w_time;
+    TTSAppSetSystemVarUInt8ArrayWTime set_system_var_uint8_array_w_time;
+    TTSAppSetSystemVarInt32ArrayWTime set_system_var_int32_array_w_time;
+    TTSAppSetSystemVarDoubleArrayWTime set_system_var_double_array_w_time;
+    TTSAppSetSystemVarStringWTime set_system_var_string_w_time;
+    TTSAppSetSystemVarGenericWTime set_system_var_generic_w_time;
+    TTSAppSetSystemVarDoubleAsyncWTime set_system_var_double_async_w_time;
+    TTSAppSetSystemVarInt32AsyncWTime set_system_var_int32_async_w_time;
+    TTSAppSetSystemVarUInt32AsyncWTime set_system_var_uint32_async_w_time;
+    TTSAppSetSystemVarInt64AsyncWTime set_system_var_int64_async_w_time;
+    TTSAppSetSystemVarUInt64AsyncWTime set_system_var_uint64_async_w_time;
+    TTSAppSetSystemVarUInt8ArrayAsyncWTime set_system_var_uint8_array_async_w_time;
+    TTSAppSetSystemVarInt32ArrayAsyncWTime set_system_var_int32_array_async_w_time;
+    TTSAppSetSystemVarInt64ArrayAsyncWTime set_system_var_int64_array_async_w_time;
+    TTSAppSetSystemVarDoubleArrayAsyncWTime set_system_var_double_array_async_w_time;
+    TTSAppSetSystemVarStringAsyncWTime set_system_var_string_async_w_time;
+    TTSAppSetSystemVarGenericAsyncWTime set_system_var_generic_async_w_time;
+    TDBGetSignalStartBitByPDUOffset db_get_signal_startbit_by_pdu_offset;
+    TUIShowSaveFileDialog ui_show_save_file_dialog;
+    TUIShowOpenFileDialog ui_show_open_file_dialog;
+    TUIShowSelectDirectoryDialog ui_show_select_directory_dialog;
+    TSetEthernetChannelCount set_ethernet_channel_count;
+    TGetEthernetChannelCount get_ethernet_channel_count;
+    TDBGetCANDBIndexById db_get_can_db_index_by_id;
+    TDBGetLINDBIndexById db_get_lin_db_index_by_id;
+    TDBGetFlexRayDBIndexById db_get_flexray_db_index_by_id;
+    TRegisterSystemVarChangeEvent internal_register_system_var_change_event;
+    TUnRegisterSystemVarChangeEvent internal_unregister_system_var_change_event;
+    TUnRegisterSystemVarChangeEvents internal_unregister_system_var_change_events;
+    TCallSystemAPI call_system_api;
+    TCallLibraryAPI call_library_api;
+    s32 FDummy[724]; // >>> mp app end <<<
     void terminate_application(void){
         internal_terminate_application(FObj);
     }
@@ -1451,6 +1814,15 @@ typedef struct _TTSApp {
     char* get_current_mp_name(void){
         return internal_get_current_mp_name(FObj);
     }
+    s32 register_system_var_change_event(const char* ACompleteName, const TOnSysVarChange AEvent){
+        return internal_register_system_var_change_event(FObj, ACompleteName, AEvent);
+    }
+    s32 unregister_system_var_change_event(const char* ACompleteName, const TOnSysVarChange AEvent){
+        return internal_unregister_system_var_change_event(FObj, ACompleteName, AEvent);
+    }
+    s32 unregister_system_var_change_events(const TOnSysVarChange AEvent){
+        return internal_unregister_system_var_change_events(FObj, AEvent); 
+    }
 }TTSApp, * PTSApp;
 
 // =========================== COM ===========================
@@ -1472,6 +1844,7 @@ typedef void (__stdcall* TCANEvent)(const ps32 AObj, const PCAN ACAN);
 typedef void (__stdcall* TCANFDEvent)(const ps32 AObj, const PCANFD ACANFD);
 typedef void (__stdcall* TLINEvent)(const ps32 AObj, const PLIN ALIN);
 typedef void (__stdcall* TFlexRayEvent)(const ps32 AObj, const PFlexRay AFlexRay);
+typedef void (__stdcall* TEthernetEvent)(const ps32 AObj, const PEthernetHeader AEthernet);
 typedef s32 (__stdcall* TRegisterCANEvent)(const ps32 AObj, const TCANEvent AEvent);
 typedef s32 (__stdcall* TUnregisterCANEvent)(const ps32 AObj, const TCANEvent AEvent);
 typedef s32 (__stdcall* TRegisterCANFDEvent)(const ps32 AObj, const TCANFDEvent AEvent);
@@ -1480,10 +1853,13 @@ typedef s32 (__stdcall* TRegisterLINEvent)(const ps32 AObj, const TLINEvent AEve
 typedef s32 (__stdcall* TUnregisterLINEvent)(const ps32 AObj, const TLINEvent AEvent);
 typedef s32 (__stdcall* TRegisterFlexRayEvent)(const ps32 AObj, const TFlexRayEvent AEvent);
 typedef s32 (__stdcall* TUnregisterFlexRayEvent)(const ps32 AObj, const TFlexRayEvent AEvent);
+typedef s32 (__stdcall* TRegisterEthernetEvent)(const ps32 AObj, const TEthernetEvent AEvent);
+typedef s32 (__stdcall* TUnregisterEthernetEvent)(const ps32 AObj, const TEthernetEvent AEvent);
 typedef s32 (__stdcall* TUnregisterCANEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TUnregisterLINEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TUnregisterCANFDEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TUnregisterFlexRayEvents)(const ps32 AObj);
+typedef s32 (__stdcall* TUnregisterEthernetEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TUnregisterALLEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TRegisterPreTxCANEvent)(const ps32 AObj, const TCANEvent AEvent);
 typedef s32 (__stdcall* TUnregisterPreTxCANEvent)(const ps32 AObj, const TCANEvent AEvent);
@@ -1493,10 +1869,13 @@ typedef s32 (__stdcall* TRegisterPreTxLINEvent)(const ps32 AObj, const TLINEvent
 typedef s32 (__stdcall* TUnregisterPreTxLINEvent)(const ps32 AObj, const TLINEvent AEvent);
 typedef s32 (__stdcall* TRegisterPreTxFlexRayEvent)(const ps32 AObj, const TFlexRayEvent AEvent);
 typedef s32 (__stdcall* TUnregisterPreTxFlexRayEvent)(const ps32 AObj, const TFlexRayEvent AEvent);
+typedef s32 (__stdcall* TRegisterPreTxEthernetEvent)(const ps32 AObj, const TEthernetEvent AEvent);
+typedef s32 (__stdcall* TUnregisterPreTxEthernetEvent)(const ps32 AObj, const TEthernetEvent AEvent);
 typedef s32 (__stdcall* TUnregisterPreTxCANEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TUnregisterPreTxLINEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TUnregisterPreTxCANFDEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TUnregisterPreTxFlexRayEvents)(const ps32 AObj);
+typedef s32 (__stdcall* TUnregisterPreTxEthernetEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TUnregisterPreTxALLEvents)(const ps32 AObj);
 typedef s32 (__stdcall* TEnableBusStatistics)(const bool AEnable);
 typedef s32 (__stdcall* TClearBusStatistics)(void);
@@ -1657,6 +2036,48 @@ typedef s32 (__stdcall* TJ1939TransmitPDUAsync)(const u8 AIdxChn, const s32 APGN
 typedef s32 (__stdcall* TJ1939TransmitPDUSync)(const u8 AIdxChn, const s32 APGN, const u8 APriority, const u8 ASource, const u8 ADestination, const pu8 APDUData, const s32 APDUSize, const s32 ATimeoutMs);
 typedef s32 (__stdcall* TJ1939TransmitPDUAsStringAsync)(const u8 AIdxChn, const s32 APGN, const u8 APriority, const u8 ASource, const u8 ADestination, const char* APDUData);
 typedef s32 (__stdcall* TJ1939TransmitPDUAsStringSync)(const u8 AIdxChn, const s32 APGN, const u8 APriority, const u8 ASource, const u8 ADestination, const char* APDUData, const s32 ATimeoutMs);
+typedef s32 (__stdcall* TDisableOnlineReplayFilter)(const s32 AIndex);
+typedef s32 (__stdcall* TSetOnlineReplayFilter)(const s32 AIndex, const bool AIsPassFilter, const s32 ACount, const ps32 AIdxChannels, const ps32 AIdentifiers);
+typedef s32 (__stdcall* TSetCANSignalRawValue)(const PCANSignal ACANSignal, const pu8 AData, const u64 AValue);
+typedef u64 (__stdcall* TGetCANSignalRawValue)(const PCANSignal ACANSignal, const pu8 AData);
+typedef s32 (__stdcall* TSetLINSignalRawValue)(const PLINSignal ALINSignal, const pu8 AData, const u64 AValue);
+typedef u64 (__stdcall* TGetLINSignalRawValue)(const PLINSignal ALINSignal, const pu8 AData);
+typedef s32 (__stdcall* TSetFlexRaySignalRawValue)(const PFlexRaySignal AFlexRaySignal, const pu8 AData, const u64 AValue);
+typedef u64 (__stdcall* TGetFlexRaySignalRawValue)(const PFlexRaySignal AFlexRaySignal, const pu8 AData);
+typedef s32 (__stdcall* TFlexRayRBSUpdateFrameByHeader)(const TFlexRay* AFlexRay);
+// LIN rbs functions
+typedef s32 (__stdcall* TLINRBSStart)(void);
+typedef s32 (__stdcall* TLINRBSStop)(void);
+typedef s32 (__stdcall* TLINRBSIsRunning)(bool* AIsRunning);
+typedef s32 (__stdcall* TLINRBSConfigure)(const bool AAutoStart, const bool AAutoSendOnModification, const bool AActivateNodeSimulation, const TLIBRBSInitValueOptions AInitValueOptions);
+typedef s32 (__stdcall* TLINRBSEnable)(const bool AEnable);
+typedef s32 (__stdcall* TLINRBSActivateAllNetworks)(const bool AEnable, const bool AIncludingChildren);
+typedef s32 (__stdcall* TLINRBSActivateNetworkByName)(const s32 AIdxChn, const bool AEnable, const char* ANetworkName, const bool AIncludingChildren);
+typedef s32 (__stdcall* TLINRBSActivateNodeByName)(const s32 AIdxChn, const bool AEnable, const char* ANetworkName, const char* ANodeName, const bool AIncludingChildren);
+typedef s32 (__stdcall* TLINRBSActivateMessageByName)(const s32 AIdxChn, const bool AEnable, const char* ANetworkName, const char* ANodeName, const char* AMsgName);
+typedef s32 (__stdcall* TLINBSSetMessageDelayTimeByName)(const s32 AIdxChn, const s32 AIntervalMs, const char* ANetworkName, const char* ANodeName, const char* AMsgName);
+typedef s32 (__stdcall* TLINRBSGetSignalValueByElement)(const s32 AIdxChn, const char* ANetworkName, const char* ANodeName, const char* AMsgName, const char* ASignalName, double* AValue);
+typedef s32 (__stdcall* TLINRBSGetSignalValueByAddress)(const char* ASymbolAddress, double* AValue);
+typedef s32 (__stdcall* TLINRBSSetSignalValueByElement)(const s32 AIdxChn, const char* ANetworkName, const char* ANodeName, const char* AMsgName, const char* ASignalName, const double AValue);
+typedef s32 (__stdcall* TLINRBSSetSignalValueByAddress)(const char* ASymbolAddress, const double AValue);
+typedef s32 (__stdcall* TLINRBSBatchSetStart)(void);
+typedef s32 (__stdcall* TLINRBSBatchSetEnd)(void);
+typedef s32 (__stdcall* TLINRBSBatchSetSignal)(const char* ASymbolAddress, const double AValue);
+typedef s32 (__stdcall* TTransmitEthernetASync)(const PEthernetHeader AEthernetHeader);
+typedef s32 (__stdcall* TTransmitEthernetSync)(const PEthernetHeader AEthernetHeader, const s32 ATimeoutMs);
+typedef s32 (__stdcall* TInjectEthernetFrame)(const PEthernetHeader AEthernetHeader);
+typedef s32 (__stdcall* TTSLogBlfWriteEthernet)(const s32 AHandle, const PEthernetHeader AEthernetHeader);
+
+typedef s32 (__stdcall* TTransmitEthernetAsyncWoPretx)(const PEthernetHeader AEthernetHeader);
+typedef s32 (__stdcall* TIoIpSetOnConnectionCallback)(const void* AObj, const s32 AHandle, const TOnIoIPConnection AConnectedCallback, const TOnIoIPConnection ADisconnectedCallback);
+typedef s32 (__stdcall* TEthBuildIPv4UDPPacket)(const PEthernetHeader AHeader, const pu8 ASrcIp, const pu8 ADstIp, const u16 ASrcPort, const u16 ADstPort, const pu8 APayload, const u16 APayloadLength, ps32 AIdentification, ps32 AFragmentIndex);
+typedef s32 (__stdcall* TBlockCurrentPreTx)(const void* AObj);
+typedef s32 (__stdcall* TEthernetIsUDPPacket)(const PEthernetHeader AHeader, pu16 AIdentification, pu16 AUDPPacketLength, pu16 AUDPDataOffset, pbool AIsPacketEnded);
+typedef s32 (__stdcall* TEthernetIPCalcHeaderChecksum)(const PEthernetHeader AHeader, const bool AOverwriteChecksum, pu16 AChecksum);
+typedef s32 (__stdcall* TEthernetUDPCalcChecksum)(const PEthernetHeader AHeader, const pu8 AUDPPayloadAddr, const u16 AUDPPayloadLength, const bool AOverwriteChecksum, pu16 AChecksum);
+typedef s32 (__stdcall* TEthernetUDPCalcChecksumOnFrame)(const PEthernetHeader AHeader, const bool AOverwriteChecksum, pu16 AChecksum);
+typedef s32 (__stdcall* TEthLogEthernetFrameData)(const PEthernetHeader AHeader);
+// >>> mp com prototype end <<<
 
 typedef struct _TTSCOM {
     void*                                   FObj;
@@ -1856,10 +2277,57 @@ typedef struct _TTSCOM {
     TTransmitCANFDAsync                     transmit_canfd_async_wo_pretx;
     TTransmitLINAsync                       transmit_lin_async_wo_pretx;
     TTransmitFlexRayASync                   transmit_flexray_async_wo_pretx;
-    // >>> mp com end <<<
-    // place holder
-    s32                                     FDummy[836];
+    TDisableOnlineReplayFilter              tslog_disable_online_replay_filter;
+    TSetOnlineReplayFilter                  tslog_set_online_replay_filter;    
+    TSetCANSignalRawValue set_can_signal_raw_value;
+    TGetCANSignalRawValue get_can_signal_raw_value;
+    TSetLINSignalRawValue set_lin_signal_raw_value;
+    TGetLINSignalRawValue get_lin_signal_raw_value;
+    TSetFlexRaySignalRawValue set_flexray_signal_raw_value;
+    TGetFlexRaySignalRawValue get_flexray_signal_raw_value;
+    TFlexRayRBSUpdateFrameByHeader flexray_rbs_update_frame_by_header;
+    /*LIN RBS*/
+    TLINRBSStart                            lin_rbs_start;
+    TLINRBSStop                             lin_rbs_stop;
+    TLINRBSIsRunning                        lin_rbs_is_running;
+    TLINRBSConfigure                        lin_rbs_configure;
+    TLINRBSActivateAllNetworks              lin_rbs_activate_all_networks;
+    TLINRBSActivateNetworkByName            lin_rbs_activate_network_by_name;
+    TLINRBSActivateNodeByName               lin_rbs_activate_node_by_name;
+    TLINRBSActivateMessageByName            lin_rbs_activate_message_by_name;
+    TLINBSSetMessageDelayTimeByName         lin_rbs_set_message_delay_time_by_name;
+    TLINRBSGetSignalValueByElement          lin_rbs_get_signal_value_by_element;
+    TLINRBSGetSignalValueByAddress          lin_rbs_get_signal_value_by_address;
+    TLINRBSSetSignalValueByElement          lin_rbs_set_signal_value_by_element;
+    TLINRBSSetSignalValueByAddress          lin_rbs_set_signal_value_by_address;
+    TLINRBSEnable                           lin_rbs_enable;
+    TLINRBSBatchSetStart                    lin_rbs_batch_set_start;
+    TLINRBSBatchSetEnd                      lin_rbs_batch_set_end;
+    TLINRBSBatchSetSignal                   lin_rbs_batch_set_signal;
+    TTransmitEthernetASync transmit_ethernet_async;
+    TTransmitEthernetSync transmit_ethernet_sync;
+    TInjectEthernetFrame inject_ethernet_frame;
+    TTSLogBlfWriteEthernet tslog_blf_write_ethernet;
+    TRegisterEthernetEvent internal_register_event_ethernet;
+    TUnregisterEthernetEvent internal_unregister_event_ethernet;
+    TUnregisterEthernetEvents internal_unregister_events_ethernet;
+    TRegisterPreTxEthernetEvent internal_register_pretx_event_ethernet;
+    TUnregisterPreTxEthernetEvent internal_unregister_pretx_event_ethernet;  
+    TUnregisterPreTxEthernetEvents internal_unregister_pretx_events_ethernet;
+    TTransmitEthernetAsyncWoPretx transmit_ethernet_async_wo_pretx;
+    TIoIpSetOnConnectionCallback internal_ioip_set_tcp_server_connection_callback;
+    TEthBuildIPv4UDPPacket eth_build_ipv4_udp_packet;
+    TBlockCurrentPreTx internal_block_current_pretx;
+    TEthernetIsUDPPacket eth_is_udp_packet;
+    TEthernetIPCalcHeaderChecksum eth_ip_calc_header_checksum;
+    TEthernetUDPCalcChecksum eth_udp_calc_checksum;
+    TEthernetUDPCalcChecksumOnFrame eth_udp_calc_checksum_on_frame;
+    TEthLogEthernetFrameData eth_log_ethernet_frame_data;
+    s32 FDummy[791]; // >>> mp com end <<<
     // internal functions
+    s32 block_current_pretx(){
+        return internal_block_current_pretx(FObj);
+    }
     s32 wait_can_message(const PCAN ATxCAN, const PCAN ARxCAN, const s32 ATimeoutMS) {
         return internal_wait_can_message(FObj, ATxCAN, ARxCAN, ATimeoutMS);
     }
@@ -1943,7 +2411,25 @@ typedef struct _TTSCOM {
     }
     s32 unregister_pretx_events_flexray(const ps32 AObj){
         return internal_unregister_pretx_events_flexray(AObj);
-    } 
+    }
+    s32 register_event_ethernet(const ps32 AObj, const TEthernetEvent AEvent){
+        return internal_register_event_ethernet(AObj, AEvent);
+    }
+    s32 unregister_event_ethernet(const ps32 AObj, const TEthernetEvent AEvent){
+        return internal_unregister_event_ethernet(AObj, AEvent);
+    }
+    s32 unregister_events_ethernet(const ps32 AObj){
+        return internal_unregister_events_ethernet(AObj);
+    }
+    s32 register_pretx_event_ethernet(const ps32 AObj, const TEthernetEvent AEvent){
+        return internal_register_pretx_event_ethernet(AObj, AEvent);
+    }
+    s32 unregister_pretx_event_ethernet(const ps32 AObj, const TEthernetEvent AEvent){
+        return internal_unregister_pretx_event_ethernet(AObj, AEvent);
+    }
+    s32 unregister_pretx_events_ethernet(const ps32 AObj){
+        return internal_unregister_pretx_events_ethernet(AObj);
+    }
     // IP functions
     s32 ioip_create(const u16 APortTCP, const u16 APortUDP, const TOnIoIPData AOnTCPDataEvent, const TOnIoIPData AOnUDPEvent, s32* AHandle){
         return internal_ioip_create(FObj, APortTCP, APortUDP, AOnTCPDataEvent, AOnUDPEvent, AHandle);
@@ -1990,6 +2476,9 @@ typedef struct _TTSCOM {
     s32 ioip_send_udp_server_response(const s32 AHandle, const pu8 ABufferToWriteFrom, const s32 ASize){
         return internal_ioip_send_udp_server_response(FObj, AHandle, ABufferToWriteFrom, ASize);
     }
+    s32 ioip_set_tcp_server_connection_callback(const s32 AHandle, const TOnIoIPConnection AConnectedCallback, const TOnIoIPConnection ADisconnectedCallback){
+        return internal_ioip_set_tcp_server_connection_callback(FObj, AHandle, AConnectedCallback, ADisconnectedCallback);
+    }
 }TTSCOM, * PTSCOM;
 
 // =========================== Test ===========================
@@ -2030,6 +2519,18 @@ typedef s32 (__stdcall* TTestSignalCheckerAddJumpWithTrigger)(const TSignalType 
 typedef s32 (__stdcall* TTestSignalCheckerAddUnChangeWithTime)(const TSignalType ASgnType, const char* ASgnName, const double ATimeStartS, const double ATimeEndS, ps32 ACheckId);
 typedef s32 (__stdcall* TTestSignalCheckerAddUnChangeWithTrigger)(const TSignalType ASgnType, const char* ASgnName, const TSignalType ATriggerType, const char* ATriggerName, const double ATriggerMin, const double ATriggerMax, ps32 ACheckId);
 typedef s32 (__stdcall* TTestSignalCheckerCheckStatistics)(const void* AObj, const s32 ACheckId, const double AMin, const double AMax, bool* APass, pdouble AResult, char** AResultRepr);
+typedef s32 (__stdcall* TSignalTesterClearAll)(void);
+typedef s32 (__stdcall* TSignalTesterLoadConfiguration)(const char* AFilePath);
+typedef s32 (__stdcall* TSignalTesterSaveConfiguration)(const char* AFilePath);
+typedef s32 (__stdcall* TSignalTesterRunItemByName)(const char* AName);
+typedef s32 (__stdcall* TSignalTesterStopItemByName)(const char* AName);
+typedef s32 (__stdcall* TSignalTesterRunItemByIndex)(const s32 AIndex);
+typedef s32 (__stdcall* TSignalTesterStopItemByIndex)(const s32 AIndex);
+typedef s32 (__stdcall* TSignalTesterGetItemVerdictByIndex)(const s32 AIndex, pbool AIsPass);
+typedef s32 (__stdcall* TSignalTesterGetItemResultByName)(const char* AName, pbool AIsPass, ps64 AEventTimeUs, char** ADescription);
+typedef s32 (__stdcall* TSignalTesterGetItemResultByIndex)(const s32 AIndex, pbool AIsPass, ps64 AEventTimeUs, char** ADescription);
+typedef s32 (__stdcall* TSignalTesterGetItemVerdictByName)(const char* AName, pbool AIsPass);
+// >>> mp test prototype end <<<
 
 typedef struct _TTSTest {
     void* FObj;
@@ -2071,9 +2572,18 @@ typedef struct _TTSTest {
     TTestSignalCheckerCheckStatistics                internal_signal_checker_check_statistics;
     TTestLogValue                                    internal_log_value;
     TTestLogString                                   internal_log_string;
-    // >>> mp test end <<<
-    // place holder
-    s32                    FDummy[969];
+    TSignalTesterClearAll signal_tester_clear_all;
+    TSignalTesterLoadConfiguration signal_tester_load_configuration;
+    TSignalTesterSaveConfiguration signal_tester_save_configuration;
+    TSignalTesterRunItemByName signal_tester_run_item_by_name;
+    TSignalTesterStopItemByName signal_tester_stop_item_by_name;
+    TSignalTesterRunItemByIndex signal_tester_run_item_by_index;
+    TSignalTesterStopItemByIndex signal_tester_stop_item_by_index;
+    TSignalTesterGetItemVerdictByIndex signal_tester_get_item_verdict_by_index;
+    TSignalTesterGetItemResultByName signal_tester_get_item_result_by_name;
+    TSignalTesterGetItemResultByIndex signal_tester_get_item_result_by_index;
+    TSignalTesterGetItemVerdictByName signal_tester_get_item_verdict_by_name;
+    s32 FDummy[958]; // >>> mp test end <<<
     void set_verdict_ok(const char* AStr) {
         internal_set_verdict_ok(FObj, AStr);
     }
@@ -2409,6 +2919,41 @@ extern void test_logCAN(const char* ADesc, PCAN ACAN, const TLogLevel ALevel);
 #define IDX_ETH_DIAG_REQ_RES                               249  /* DOIP Reqeust And Response */
 #define IDX_ETH_RESERVED0                                  250  /* Reserved0 for Ethernet */
 #define IDX_ETH_RESERVED1                                  251  /* Reserved1 for Ethernet */
+#define IDX_GP_MODULE_NOT_FOUND                            252  /* Graphic program module not found */
+#define IDX_GP_ACTION_NOT_FOUND                            253  /* Graphic program action not found */
+#define IDX_GP_CANNOT_INSERT_GOTO_BETWEEN_ACTIONS          254  /* Graphic program Cannot insert goto between actions */
+#define IDX_GP_CANNOT_DELETE_ACTION_WITH_BOTH_DIR          255  /* Graphic program Cannot delete action with both directions */
+#define IDX_GP_ENTRY_POINT_CANNOT_BE_DELETED               256  /* Graphic program entry point cannot be deleted */
+#define IDX_GP_KIND_CANNOT_BE_CHANGED                      257  /* Graphic program action type cannot be changed */
+#define IDX_GP_INCORRECT_ACTION_TYPE                       258  /* Graphic program incorrect action type being edited */
+#define IDX_GP_INCORRECT_EXECUTION_KIND                    259  /* Graphic program incorrect execution kind being edited */
+#define IDX_GP_ACTION_GROUP_REQUIRED                       260  /* Graphic program action group required */
+#define IDX_GP_CANNOT_ADD_DOWNWARD_ACTION                  261  /* Graphic program cannot add downward action */
+#define IDX_GP_CANNOT_ADD_RIGHTWARD_ACTION                 262  /* Graphic program cannot add rightward action */
+#define IDX_RBS_NODE_SIMULATION_IS_NOT_ACTIVE              263  /* RBS node simulation is not active */
+#define IDX_RBS_FRAME_INFO_NOT_FOUND                       264  /* RBS frame info not found */
+#define IDX_RBS_IS_NOT_ENABLED                             265  /* RBS engine is not enabled */
+#define IDX_GPG_EXCEL_FORMAT_INVALID                       266  /* Graphic program generator excel format invalid */
+#define IDX_GPG_EXCEL_UNKNOWN_OBJ                          267  /* Graphic program generator excel unknown object*/
+#define IDX_GPG_EXCEL_OBJ_NOT_FOUND                        268  /* Graphic program generator excel object not found */
+#define IDX_GPG_EXCEL_OBJ_NOT_DEFINED                      269  /* Graphic program generator excel object not defined */
+#define IDX_ERR_MP_CODE_CRASH                              270  /* Mini program code crash */
+#define IDX_ERR_USER_ABORTED_OPERATION                     271  /* User aborted operation */
+#define IDX_ERR_INVALID_MEMORY_ADDRESS                     272  /* Invalid memory address */
+#define IDX_ERR_IP_FRAGMENTATION_NEED                      273  /* Fragmentation is needed when building IPv4 packet */
+#define IDX_ERR_IP_IPV4_ID_REQUIRED                        274  /* IPv4 Id is required */
+#define IDX_ERR_SYS_VAR_NOT_EXISTS                         275  /* System variable not exists */
+#define IDX_ERR_WRITE_DEVICE_INT_CONFIG_FAILED             276  /* Write internal configuration of Device(such as TC1011 Etc) Failed */
+#define IDX_ERR_READ_DEVICE_INT_CONFIG_FAILED              277  /* Read internal configuration of Device(such as TC1011 Etc) Failed */
+#define IDX_ERR_ARGUMENT_COUNT_DIFFER                      278  /* API caller argument count differ */
+#define IDX_ERR_API_CALLER_CALL_FAILED                     279  /* API caller call API failed */
+#define IDX_ERR_ETH_FRAME_IS_NOT_IP                        280  /* Current ethernet frame is not IP frame */
+#define IDX_ERR_ETH_FRAME_IS_NOT_TCP                       281  /* Current ethernet frame is not TCP frame */
+#define IDX_ERR_ETH_FRAME_IS_NOT_UDP                       282  /* Current ethernet frame is not UDP frame */
+#define IDX_ERR_ETH_FRAME_DOES_NOT_CONTAIN_CRC             283  /* Current ethernet frame does not contain CRC */
+#define IDX_ERR_ETH_API_REQUIRES_SINGLE_FRAME              284  /* This API requires single frame, not fragment frame */
+#define IDX_ERR_ITEM_NOT_ENABLED                           285  /* This item is not enabled in configuration */
+#define IDX_ERR_ITEM_CONFIGURATION_NOT_VALID               286  /* This item configuration is not valid */
 
 // Software Constants
 #define CONST_LOG_ERROR                                    1    /* error message will be displayed with red color */
@@ -2458,15 +3003,16 @@ extern void test_logCAN(const char* ADesc, PCAN ACAN, const TLogLevel ALevel);
 #define CONST_ZLG_USB_DEVICE                               6    /* device type - ZLG USB Device */ 
 #define CONST_ICS_USB_DEVICE                               7    /* device type - ICS USB Device */ 
 #define CONST_TS_TC1005_DEVICE                             8    /* device type - TS TC1005 Device */ 
+#define CONST_CANABLE_DEVICE                               9    /* device type - CANable Device */
 #define CONST_STIM_STOPPED                                 0    /* STIM Signal - Stopped State */ 
 #define CONST_STIM_RUNNING                                 1    /* STIM Signal - Running State */ 
 #define CONST_STIM_PAUSED                                  2    /* STIM Signal - Paused State */ 
-#define CONST_AM_NOT_RUN                                   0    /* Graphic Program - not running state */
-#define CONST_AM_PREPARE_RUN                               1    /* Graphic Program - Prepare running state */
-#define CONST_AM_RUNNING                                   2    /* Graphic Program - Running state */
-#define CONST_AM_PAUSED                                    3    /* Graphic Program - Paused state */
-#define CONST_AM_STEPPING                                  4    /* Graphic Program - Stepping state */
-#define CONST_AM_FINISHED                                  5    /* Graphic Program - Finished state */
+#define CONST_AM_NOT_RUN                                   0    /* Graphic Program (Automation Module) Running State - not running state */
+#define CONST_AM_PREPARE_RUN                               1    /* Graphic Program (Automation Module) Running State - Prepare running state */
+#define CONST_AM_RUNNING                                   2    /* Graphic Program (Automation Module) Running State - Running state */
+#define CONST_AM_PAUSED                                    3    /* Graphic Program (Automation Module) Running State - Paused state */
+#define CONST_AM_STEPPING                                  4    /* Graphic Program (Automation Module) Running State - Stepping state */
+#define CONST_AM_FINISHED                                  5    /* Graphic Program (Automation Module) Running State - Finished state */
 #define CONST_SIGNAL_TYPE_CAN                              0    /* Signal Checker - TSignalType.stCANSignal */
 #define CONST_SIGNAL_TYPE_LIN                              1    /* Signal Checker - TSignalType.stLINSignal */
 #define CONST_SIGNAL_TYPE_SYSTEM_VAR                       2    /* Signal Checker - TSignalType.stSystemVar */
@@ -2480,11 +3026,67 @@ extern void test_logCAN(const char* ADesc, PCAN ACAN, const TLogLevel ALevel);
 #define CONST_SIGNAL_CHECK_MONOTONY_RISING                 5    /* Signal Checker - TSignalCheckKind.sckMonotonyRising */
 #define CONST_SIGNAL_CHECK_MONOTONY_FALLING                6    /* Signal Checker - TSignalCheckKind.sckMonotonyFalling */
 #define CONST_SIGNAL_CHECK_FOLLOW                          7    /* Signal Checker - TSignalCheckKind.sckFollow */
+#define CONST_SIGNAL_CHECK_JUMP                            8    /* Signal Checker - TSignalCheckKind.sckJump */
+#define CONST_SIGNAL_CHECK_NO_CHANGE                       9    /* Signal Checker - TSignalCheckKind.sckNoChange */
 #define CONST_STATISTICS_MIN                               0    /* Signal Checker - TSignalStatisticsKind.sskMin */
 #define CONST_STATISTICS_MAX                               1    /* Signal Checker - TSignalStatisticsKind.sskMax */
 #define CONST_STATISTICS_AVERAGE                           2    /* Signal Checker - TSignalStatisticsKind.sskAverage */
+#define CONST_STATISTICS_STANDARD_DEVIATION                3    /* Signal Checker - TSignalStatisticsKind.sskStdDeviation */
 #define CONST_SYMBOL_MAPPING_DIR_BIDIRECTION               0    /* Symbol mapping direction - bidirection */
 #define CONST_SYMBOL_MAPPING_DIR_SGN_TO_SYSVAR             1    /* Symbol mapping direction - from signal to sys var */
 #define CONST_SYMBOL_MAPPING_DIR_SYSVAR_TO_SGN             2    /* Symbol mapping direction - from sys var to signal */
+#define CONST_SYSTEM_VAR_TYPE_INT32                        0    /* System Var Type - svtInt32 */
+#define CONST_SYSTEM_VAR_TYPE_UINT32                       1    /* System Var Type - svtUInt32 */
+#define CONST_SYSTEM_VAR_TYPE_INT64                        2    /* System Var Type - svtInt64 */
+#define CONST_SYSTEM_VAR_TYPE_UINT64                       3    /* System Var Type - svtUInt64 */
+#define CONST_SYSTEM_VAR_TYPE_UINT8ARRAY                   4    /* System Var Type - svtUInt8Array */
+#define CONST_SYSTEM_VAR_TYPE_INT32ARRAY                   5    /* System Var Type - svtInt32Array */
+#define CONST_SYSTEM_VAR_TYPE_INT64ARRAY                   6    /* System Var Type - svtInt64Array */
+#define CONST_SYSTEM_VAR_TYPE_DOUBLE                       7    /* System Var Type - svtDouble */
+#define CONST_SYSTEM_VAR_TYPE_DOUBLEARRAY                  8    /* System Var Type - svtDoubleArray */
+#define CONST_SYSTEM_VAR_TYPE_STRING                       9    /* System Var Type - svtString */
+#define CONST_CANFD_CONTROLLER_TYPE_CAN                    0    /* CAN FD Controller Type - fdtCAN */
+#define CONST_CANFD_CONTROLLER_TYPE_ISOCANFD               1    /* CAN FD Controller Type - fdtISOCANFD */
+#define CONST_CANFD_CONTROLLER_TYPE_NonISOCANFD            2    /* CAN FD Controller Type - fdtNonISOCANFD */
+#define CONST_CANFD_CONTROLLER_MODE_NORMAL                 0    /* CAN FD Controller Mode - fdmNormal */
+#define CONST_CANFD_CONTROLLER_MODE_ACKOFF                 1    /* CAN FD Controller Mode - fdmACKOff */
+#define CONST_CANFD_CONTROLLER_MODE_RESTRICTED             2    /* CAN FD Controller Mode - fdmRestricted */
+#define CONST_ONLINE_REPLAY_TIMEING_IMMEDIATELY            0    /* Online replay timing mode - ortImmediately */
+#define CONST_ONLINE_REPLAY_TIMEING_ASLOG                  1    /* Online replay timing mode - ortAsLog */
+#define CONST_ONLINE_REPLAY_TIMEING_DELAYED                2    /* Online replay timing mode - ortDelayed */
+#define CONST_ONLINE_REPLAY_STATUS_NOTSTARTED              0    /* Online replay status - orsNotStarted */
+#define CONST_ONLINE_REPLAY_STATUS_RUNNING                 1    /* Online replay status - orsRunning */
+#define CONST_ONLINE_REPLAY_STATUS_PAUSED                  2    /* Online replay status - orsPaused */
+#define CONST_ONLINE_REPLAY_STATUS_COMPLETED               3    /* Online replay status - orsCompleted */
+#define CONST_ONLINE_REPLAY_STATUS_TERMINATED              4    /* Online replay status - orsTerminated */
+#define CONST_BLF_OBJECT_CAN                               0    /* BLF Object Type - sotCAN */
+#define CONST_BLF_OBJECT_LIN                               1    /* BLF Object Type - sotLIN */
+#define CONST_BLF_OBJECT_CANFD                             2    /* BLF Object Type - sotCANFD */
+#define CONST_BLF_OBJECT_REALTIMECOMMENT                   3    /* BLF Object Type - sotRealtimeComment */
+#define CONST_BLF_OBJECT_SYSTEMVAR                         4    /* BLF Object Type - sotSystemVar */
+#define CONST_BLF_OBJECT_FLEXRAY                           5    /* BLF Object Type - sotFlexRay */
+#define CONST_BLF_OBJECT_ETHERNET                          6    /* BLF Object Type - sotEthernet */
+#define CONST_RBS_INIT_VALUE_OPTIONS_USEDB                 0    /* RBS Init Value Options - rivUseDB */
+#define CONST_RBS_INIT_VALUE_OPTIONS_USELAST               1    /* RBS Init Value Options - rivUseLast */
+#define CONST_RBS_INIT_VALUE_OPTIONS_USE0                  2    /* RBS Init Value Options - rivUse0 */
+#define CONST_AM_SIGNAL_TYPE_CANSIGNAL                     0    /* Graphic Program (Automation Module) Signal Type - lastCANSignal */
+#define CONST_AM_SIGNAL_TYPE_LINSIGNAL                     1    /* Graphic Program (Automation Module) Signal Type - lastLINSignal */
+#define CONST_AM_SIGNAL_TYPE_SYSVAR                        2    /* Graphic Program (Automation Module) Signal Type - lastSysVar */
+#define CONST_AM_SIGNAL_TYPE_LOCALVAR                      3    /* Graphic Program (Automation Module) Signal Type - lastLocalVar */
+#define CONST_AM_SIGNAL_TYPE_CONST                         4    /* Graphic Program (Automation Module) Signal Type - lastConst */
+#define CONST_AM_SIGNAL_TYPE_FLEXRAYSIGNAL                 5    /* Graphic Program (Automation Module) Signal Type - lastFlexRaySignal */
+#define CONST_AM_SIGNAL_TYPE_IMMEDIATEVALUE                6    /* Graphic Program (Automation Module) Signal Type - lastImmediateValue */
+#define CONST_MP_FUNCTION_SOURCE_SYSTEMFUNC                0    /* Mini Program Function Source - lmfsSystemFunc */
+#define CONST_MP_FUNCTION_SOURCE_MPLIB                     1    /* Mini Program Function Source - lmfsMPLib */
+#define CONST_MP_FUNCTION_SOURCE_INTERNAL                  2    /* Mini Program Function Source - lmfsInternal */
+#define CONST_MP_VAR_TYPE_INTEGER                          0    /* Mini Program Variable Type - lvtInteger */
+#define CONST_MP_VAR_TYPE_DOUBLE                           1    /* Mini Program Variable Type - lvtDouble */
+#define CONST_MP_VAR_TYPE_STRING                           2    /* Mini Program Variable Type - lvtString */
+#define CONST_MP_VAR_TYPE_CANMSG                           3    /* Mini Program Variable Type - lvtCANMsg */
+#define CONST_MP_VAR_TYPE_CANFDMSG                         4    /* Mini Program Variable Type - lvtCANFDMsg */
+#define CONST_MP_VAR_TYPE_LINMSG                           5    /* Mini Program Variable Type - lvtLINMsg */
+#define CONST_STIM_SIGNAL_STATUS_STOPPED                   0    /* STIM Signal Status - sssStopped */
+#define CONST_STIM_SIGNAL_STATUS_RUNNING                   1    /* STIM Signal Status - sssRunning */
+#define CONST_STIM_SIGNAL_STATUS_PAUSED                    2    /* STIM Signal Status - sssPaused */
 
 #endif

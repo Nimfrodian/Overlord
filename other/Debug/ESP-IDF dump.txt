@@ -1,0 +1,817 @@
+Setting PYTHONNOUSERSITE, was not set
+Using Python in C:\Espressif\python_env\idf5.4_py3.11_env\Scripts\
+Python 3.11.2
+Using Git in C:\Espressif\tools\idf-git\2.44.0\cmd\
+git version 2.44.0.windows.1
+Activating ESP-IDF 5.4
+* Checking python version ... 3.11.2
+* Checking python dependencies ... OK
+* Deactivating the current ESP-IDF environment (if any) ... OK
+* Establishing a new ESP-IDF environment ... OK
+* Identifying shell ... cmd.exe
+* Detecting outdated tools in system ... Found tools that are not used by active ESP-IDF version.
+For removing old versions of idf-driver use command 'python.exe C:\Espressif\frameworks\esp-idf-v5.4\tools\idf_tools.py uninstall'
+To free up even more space, remove installation packages of those tools.
+Use option python.exe C:\Espressif\frameworks\esp-idf-v5.4\tools\idf_tools.py uninstall --remove-archives.
+
+Done! You can now compile ESP-IDF projects.
+Go to the project directory and run:
+
+  idf.py build
+
+
+C:\Espressif\frameworks\esp-idf-v5.4>idf.py --version
+ESP-IDF v5.4
+
+C:\Espressif\frameworks\esp-idf-v5.4>espefuse.py --port /dev/ttyUSB0 summary
+espefuse.py v4.8.1
+
+A fatal error occurred: Could not open /dev/ttyUSB0, the port is busy or doesn't exist.
+(could not open port '/dev/ttyUSB0': FileNotFoundError(2, 'The system cannot find the path specified.', None, 3))
+
+Hint: Check if the port is correct and ESP connected
+
+Please make sure that you have specified the right port with the --port argument
+
+C:\Espressif\frameworks\esp-idf-v5.4>espefuse.py --port COM16 summary
+espefuse.py v4.8.1
+Connecting...
+Detecting chip type... ESP32-S3
+
+=== Run "summary" command ===
+EFUSE_NAME (Block) Description  = [Meaningful Value] [Readable/Writeable] (Hex Value)
+----------------------------------------------------------------------------------------
+Calibration fuses:
+K_RTC_LDO (BLOCK1)                                 BLOCK1 K_RTC_LDO                                   = -80 R/W (0b1010100)
+K_DIG_LDO (BLOCK1)                                 BLOCK1 K_DIG_LDO                                   = 8 R/W (0b0000010)
+V_RTC_DBIAS20 (BLOCK1)                             BLOCK1 voltage of rtc dbias20                      = -96 R/W (0x98)
+V_DIG_DBIAS20 (BLOCK1)                             BLOCK1 voltage of digital dbias20                  = 32 R/W (0x08)
+DIG_DBIAS_HVT (BLOCK1)                             BLOCK1 digital dbias when hvt                      = -32 R/W (0b11000)
+ADC2_CAL_VOL_ATTEN3 (BLOCK1)                       ADC2 calibration voltage at atten3                 = 124 R/W (0b011111)
+TEMP_CALIB (BLOCK2)                                Temperature calibration data                       = -13.100000000000001 R/W (0b110000011)
+OCODE (BLOCK2)                                     ADC OCode                                          = 101 R/W (0x65)
+ADC1_INIT_CODE_ATTEN0 (BLOCK2)                     ADC1 init code at atten0                           = 420 R/W (0x69)
+ADC1_INIT_CODE_ATTEN1 (BLOCK2)                     ADC1 init code at atten1                           = -24 R/W (0b100110)
+ADC1_INIT_CODE_ATTEN2 (BLOCK2)                     ADC1 init code at atten2                           = -4 R/W (0b100001)
+ADC1_INIT_CODE_ATTEN3 (BLOCK2)                     ADC1 init code at atten3                           = 0 R/W (0b100000)
+ADC2_INIT_CODE_ATTEN0 (BLOCK2)                     ADC2 init code at atten0                           = 456 R/W (0x72)
+ADC2_INIT_CODE_ATTEN1 (BLOCK2)                     ADC2 init code at atten1                           = -56 R/W (0b101110)
+ADC2_INIT_CODE_ATTEN2 (BLOCK2)                     ADC2 init code at atten2                           = 72 R/W (0b010010)
+ADC2_INIT_CODE_ATTEN3 (BLOCK2)                     ADC2 init code at atten3                           = 0 R/W (0b100000)
+ADC1_CAL_VOL_ATTEN0 (BLOCK2)                       ADC1 calibration voltage at atten0                 = 388 R/W (0x61)
+ADC1_CAL_VOL_ATTEN1 (BLOCK2)                       ADC1 calibration voltage at atten1                 = 404 R/W (0x65)
+ADC1_CAL_VOL_ATTEN2 (BLOCK2)                       ADC1 calibration voltage at atten2                 = 352 R/W (0x58)
+ADC1_CAL_VOL_ATTEN3 (BLOCK2)                       ADC1 calibration voltage at atten3                 = 404 R/W (0x65)
+ADC2_CAL_VOL_ATTEN0 (BLOCK2)                       ADC2 calibration voltage at atten0                 = 500 R/W (0x7d)
+ADC2_CAL_VOL_ATTEN1 (BLOCK2)                       ADC2 calibration voltage at atten1                 = 244 R/W (0b0111101)
+ADC2_CAL_VOL_ATTEN2 (BLOCK2)                       ADC2 calibration voltage at atten2                 = -4 R/W (0b1000001)
+
+Config fuses:
+WR_DIS (BLOCK0)                                    Disable programming of individual eFuses           = 0 R/W (0x00000000)
+RD_DIS (BLOCK0)                                    Disable reading from BlOCK4-10                     = 0 R/W (0b0000000)
+DIS_ICACHE (BLOCK0)                                Set this bit to disable Icache                     = False R/W (0b0)
+DIS_DCACHE (BLOCK0)                                Set this bit to disable Dcache                     = False R/W (0b0)
+DIS_TWAI (BLOCK0)                                  Set this bit to disable CAN function               = False R/W (0b0)
+DIS_APP_CPU (BLOCK0)                               Disable app cpu                                    = False R/W (0b0)
+DIS_DIRECT_BOOT (BLOCK0)                           Disable direct boot mode                           = False R/W (0b0)
+UART_PRINT_CONTROL (BLOCK0)                        Set the default UART boot message output mode      = Enable R/W (0b00)
+PIN_POWER_SELECTION (BLOCK0)                       Set default power supply for GPIO33-GPIO37; set wh = VDD_SPI R/W (0b1)
+                                                   en SPI flash is initialized
+PSRAM_CAP (BLOCK1)                                 PSRAM capacity                                     = 8M R/W (0b01)
+PSRAM_TEMP (BLOCK1)                                PSRAM temperature                                  = 85C R/W (0b10)
+PSRAM_VENDOR (BLOCK1)                              PSRAM vendor                                       = AP_3v3 R/W (0b01)
+BLOCK_USR_DATA (BLOCK3)                            User data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_SYS_DATA2 (BLOCK10)                          System data part 2 (reserved)
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+
+Flash fuses:
+FLASH_TPUW (BLOCK0)                                Configures flash waiting time after power-up; in u = 0 R/W (0x0)
+                                                   nit of ms. If the value is less than 15; the waiti
+                                                   ng time is the configurable value.  Otherwise; the
+                                                    waiting time is twice the configurable value
+FLASH_ECC_MODE (BLOCK0)                            Flash ECC mode in ROM                              = 16to18 byte R/W (0b0)
+FLASH_TYPE (BLOCK0)                                SPI flash type                                     = 4 data lines R/W (0b0)
+FLASH_PAGE_SIZE (BLOCK0)                           Set Flash page size                                = 0 R/W (0b00)
+FLASH_ECC_EN (BLOCK0)                              Set 1 to enable ECC for flash boot                 = False R/W (0b0)
+FORCE_SEND_RESUME (BLOCK0)                         Set this bit to force ROM code to send a resume co = False R/W (0b0)
+                                                   mmand during SPI boot
+FLASH_CAP (BLOCK1)                                 Flash capacity                                     = None R/W (0b000)
+FLASH_TEMP (BLOCK1)                                Flash temperature                                  = None R/W (0b00)
+FLASH_VENDOR (BLOCK1)                              Flash vendor                                       = None R/W (0b000)
+
+Identity fuses:
+DISABLE_WAFER_VERSION_MAJOR (BLOCK0)               Disables check of wafer version major              = False R/W (0b0)
+DISABLE_BLK_VERSION_MAJOR (BLOCK0)                 Disables check of blk version major                = False R/W (0b0)
+WAFER_VERSION_MINOR_LO (BLOCK1)                    WAFER_VERSION_MINOR least significant bits         = 2 R/W (0b010)
+PKG_VERSION (BLOCK1)                               Package version                                    = 0 R/W (0b000)
+BLK_VERSION_MINOR (BLOCK1)                         BLK_VERSION_MINOR                                  = 3 R/W (0b011)
+WAFER_VERSION_MINOR_HI (BLOCK1)                    WAFER_VERSION_MINOR most significant bit           = False R/W (0b0)
+WAFER_VERSION_MAJOR (BLOCK1)                       WAFER_VERSION_MAJOR                                = 0 R/W (0b00)
+OPTIONAL_UNIQUE_ID (BLOCK2)                        Optional unique 128-bit ID
+   = fb dc 46 1c 33 73 20 90 ff e1 79 4c cd f5 6f d2 R/W
+BLK_VERSION_MAJOR (BLOCK2)                         BLK_VERSION_MAJOR of BLOCK2                        = ADC calib V1 R/W (0b01)
+WAFER_VERSION_MINOR (BLOCK0)                       calc WAFER VERSION MINOR = WAFER_VERSION_MINOR_HI  = 2 R/W (0x2)
+                                                   << 3 + WAFER_VERSION_MINOR_LO (read only)
+
+Jtag fuses:
+SOFT_DIS_JTAG (BLOCK0)                             Set these bits to disable JTAG in the soft way (od = 0 R/W (0b000)
+                                                   d number 1 means disable ). JTAG can be enabled in
+                                                    HMAC module
+DIS_PAD_JTAG (BLOCK0)                              Set this bit to disable JTAG in the hard way. JTAG = False R/W (0b0)
+                                                    is disabled permanently
+STRAP_JTAG_SEL (BLOCK0)                            Set this bit to enable selection between usb_to_jt = False R/W (0b0)
+                                                   ag and pad_to_jtag through strapping gpio10 when b
+                                                   oth reg_dis_usb_jtag and reg_dis_pad_jtag are equa
+                                                   l to 0
+
+Mac fuses:
+MAC (BLOCK1)                                       MAC address
+   = f0:9e:9e:16:4d:74 (OK) R/W
+CUSTOM_MAC (BLOCK3)                                Custom MAC
+   = 00:00:00:00:00:00 (OK) R/W
+
+Security fuses:
+DIS_DOWNLOAD_ICACHE (BLOCK0)                       Set this bit to disable Icache in download mode (b = False R/W (0b0)
+                                                   oot_mode[3:0] is 0; 1; 2; 3; 6; 7)
+DIS_DOWNLOAD_DCACHE (BLOCK0)                       Set this bit to disable Dcache in download mode (  = False R/W (0b0)
+                                                   boot_mode[3:0] is 0; 1; 2; 3; 6; 7)
+DIS_FORCE_DOWNLOAD (BLOCK0)                        Set this bit to disable the function that forces c = False R/W (0b0)
+                                                   hip into download mode
+DIS_DOWNLOAD_MANUAL_ENCRYPT (BLOCK0)               Set this bit to disable flash encryption when in d = False R/W (0b0)
+                                                   ownload boot modes
+SPI_BOOT_CRYPT_CNT (BLOCK0)                        Enables flash encryption when 1 or 3 bits are set  = Disable R/W (0b000)
+                                                   and disabled otherwise
+SECURE_BOOT_KEY_REVOKE0 (BLOCK0)                   Revoke 1st secure boot key                         = False R/W (0b0)
+SECURE_BOOT_KEY_REVOKE1 (BLOCK0)                   Revoke 2nd secure boot key                         = False R/W (0b0)
+SECURE_BOOT_KEY_REVOKE2 (BLOCK0)                   Revoke 3rd secure boot key                         = False R/W (0b0)
+KEY_PURPOSE_0 (BLOCK0)                             Purpose of Key0                                    = USER R/W (0x0)
+KEY_PURPOSE_1 (BLOCK0)                             Purpose of Key1                                    = USER R/W (0x0)
+KEY_PURPOSE_2 (BLOCK0)                             Purpose of Key2                                    = USER R/W (0x0)
+KEY_PURPOSE_3 (BLOCK0)                             Purpose of Key3                                    = USER R/W (0x0)
+KEY_PURPOSE_4 (BLOCK0)                             Purpose of Key4                                    = USER R/W (0x0)
+KEY_PURPOSE_5 (BLOCK0)                             Purpose of Key5                                    = USER R/W (0x0)
+SECURE_BOOT_EN (BLOCK0)                            Set this bit to enable secure boot                 = False R/W (0b0)
+SECURE_BOOT_AGGRESSIVE_REVOKE (BLOCK0)             Set this bit to enable revoking aggressive secure  = False R/W (0b0)
+                                                   boot
+DIS_DOWNLOAD_MODE (BLOCK0)                         Set this bit to disable download mode (boot_mode[3 = False R/W (0b0)
+                                                   :0] = 0; 1; 2; 3; 6; 7)
+ENABLE_SECURITY_DOWNLOAD (BLOCK0)                  Set this bit to enable secure UART download mode   = False R/W (0b0)
+SECURE_VERSION (BLOCK0)                            Secure version (used by ESP-IDF anti-rollback feat = 0 R/W (0x0000)
+                                                   ure)
+BLOCK_KEY0 (BLOCK4)
+  Purpose: USER
+               Key0 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY1 (BLOCK5)
+  Purpose: USER
+               Key1 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY2 (BLOCK6)
+  Purpose: USER
+               Key2 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY3 (BLOCK7)
+  Purpose: USER
+               Key3 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY4 (BLOCK8)
+  Purpose: USER
+               Key4 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY5 (BLOCK9)
+  Purpose: USER
+               Key5 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+
+Spi Pad fuses:
+SPI_PAD_CONFIG_CLK (BLOCK1)                        SPI_PAD_configure CLK                              = 0 R/W (0b000000)
+SPI_PAD_CONFIG_Q (BLOCK1)                          SPI_PAD_configure Q(D1)                            = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D (BLOCK1)                          SPI_PAD_configure D(D0)                            = 0 R/W (0b000000)
+SPI_PAD_CONFIG_CS (BLOCK1)                         SPI_PAD_configure CS                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_HD (BLOCK1)                         SPI_PAD_configure HD(D3)                           = 0 R/W (0b000000)
+SPI_PAD_CONFIG_WP (BLOCK1)                         SPI_PAD_configure WP(D2)                           = 0 R/W (0b000000)
+SPI_PAD_CONFIG_DQS (BLOCK1)                        SPI_PAD_configure DQS                              = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D4 (BLOCK1)                         SPI_PAD_configure D4                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D5 (BLOCK1)                         SPI_PAD_configure D5                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D6 (BLOCK1)                         SPI_PAD_configure D6                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D7 (BLOCK1)                         SPI_PAD_configure D7                               = 0 R/W (0b000000)
+
+Usb fuses:
+DIS_USB_OTG (BLOCK0)                               Set this bit to disable USB function               = False R/W (0b0)
+USB_EXCHG_PINS (BLOCK0)                            Set this bit to exchange USB D+ and D- pins        = False R/W (0b0)
+USB_EXT_PHY_ENABLE (BLOCK0)                        Set this bit to enable external PHY                = False R/W (0b0)
+DIS_USB_JTAG (BLOCK0)                              Set this bit to disable function of usb switch to  = False R/W (0b0)
+                                                   jtag in module of usb device
+DIS_USB_SERIAL_JTAG (BLOCK0)                       Set this bit to disable usb device                 = False R/W (0b0)
+USB_PHY_SEL (BLOCK0)                               This bit is used to switch internal PHY and extern
+   = internal PHY is assigned to USB Device while external PHY is assigned to USB OTG R/W (0b0)
+                                                   al PHY for USB OTG and USB Device
+DIS_USB_SERIAL_JTAG_ROM_PRINT (BLOCK0)             USB printing                                       = Enable R/W (0b0)
+DIS_USB_SERIAL_JTAG_DOWNLOAD_MODE (BLOCK0)         Set this bit to disable UART download mode through = False R/W (0b0)
+                                                    USB
+DIS_USB_OTG_DOWNLOAD_MODE (BLOCK0)                 Set this bit to disable download through USB-OTG   = False R/W (0b0)
+
+Vdd fuses:
+VDD_SPI_XPD (BLOCK0)                               SPI regulator power up signal                      = True R/W (0b1)
+VDD_SPI_TIEH (BLOCK0)                              If VDD_SPI_FORCE is 1; determines VDD_SPI voltage
+   = VDD_SPI connects to VDD3P3_RTC_IO R/W (0b1)
+VDD_SPI_FORCE (BLOCK0)                             Set this bit and force to use the configuration of = True R/W (0b1)
+                                                    eFuse to configure VDD_SPI
+
+Wdt fuses:
+WDT_DELAY_SEL (BLOCK0)                             RTC watchdog timeout threshold; in unit of slow cl = 40000 R/W (0b00)
+                                                   ock cycle
+
+Flash voltage (VDD_SPI) set to 3.3V by efuse.
+
+C:\Espressif\frameworks\esp-idf-v5.4>idf.py -h
+Usage: idf.py [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...
+Try 'idf.py --help' for help.
+
+Error: No such option: -h
+
+C:\Espressif\frameworks\esp-idf-v5.4>idf.py -help
+Usage: idf.py [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...
+Try 'idf.py --help' for help.
+
+Error: No such option: -h
+
+C:\Espressif\frameworks\esp-idf-v5.4>idf.py --help
+Usage: idf.py [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...
+
+  ESP-IDF CLI build management tool. For commands that are not known to idf.py an attempt to execute it as a build system target will be
+  made. Selected target: None
+
+Options:
+  --version                       Show IDF version and exit.
+  --list-targets                  Print list of supported targets and exit.
+  -C, --project-dir PATH          Project directory.
+  -B, --build-dir PATH            Build directory.
+  -w, --cmake-warn-uninitialized / -n, --no-warnings
+                                  Enable CMake uninitialized variable warnings for CMake files inside the project directory. (--no-
+                                  warnings is now the default, and doesn't need to be specified.) The default value can be set with the
+                                  IDF_CMAKE_WARN_UNINITIALIZED environment variable.
+  -v, --verbose                   Verbose build output.
+  --preview                       Enable IDF features that are still in preview.
+  --ccache / --no-ccache          Use ccache in build. Disabled by default. The default value can be set with the IDF_CCACHE_ENABLE
+                                  environment variable.
+  -G, --generator [Ninja]         CMake generator.
+  --no-hints                      Disable hints on how to resolve errors and logging.
+  -D, --define-cache-entry TEXT   Create a cmake cache entry. This option can be used at most once either globally, or for one subcommand.
+  -p, --port PATH                 Serial port. The default value can be set with the ESPPORT environment variable. This option can be used
+                                  at most once either globally, or for one subcommand.
+  -b, --baud INTEGER              Global baud rate for all idf.py subcommands if they don't overwrite it locally.It can imply monitor baud
+                                  rate as well if it hasn't been defined locally. The default value can be set with the ESPBAUD
+                                  environment variable. This option can be used at most once either globally, or for one subcommand.
+  --help                          Show this message and exit.
+
+Commands:
+  add-dependency                  Add dependency to the manifest file.
+  all                             Aliases: build. Build the project.
+  app                             Build only the app.
+  app-flash                       Flash the app only.
+  bootloader                      Build only bootloader.
+  bootloader-flash                Flash bootloader only.
+  build-system-targets            Print list of build system targets.
+  clang-check                     run clang-tidy check under current folder, write the output into "warnings.txt"
+  clang-html-report               generate html report to "html_report" folder by reading "warnings.txt" (may take a few minutes). This
+                                  feature requires extra dependency "codereport". Please install this by running "pip install codereport"
+  clean                           Delete build output files from the build directory.
+  confserver                      Run JSON configuration server.
+  coredump-debug                  Create core dump ELF file and run GDB debug session with this file.
+  coredump-info                   Print crashed task’s registers, callstack, list of available tasks in the system, memory regions and
+                                  contents of memory stored in core dump (TCBs and stacks)
+  create-component                Create a new component.
+  create-manifest                 Create manifest for specified component.
+  create-project                  Create a new project.
+  create-project-from-example     Create a project from an example in the ESP Component Registry.
+  docs                            Open web browser with documentation for ESP-IDF
+  efuse-burn                      Burn the eFuse with the specified name.
+  efuse-burn-key                  Burn a 256-bit key to EFUSE: BLOCK1, flash_encryption, BLOCK2, secure_boot_v1, secure_boot_v2, BLOCK3.
+  efuse-common-table              Generate C-source for IDF's eFuse fields.
+  efuse-custom-table              Generate C-source for user's eFuse fields.
+  efuse-dump                      Dump raw hex values of all eFuses.
+  efuse-read-protect              Disable writing to the eFuse with the specified name.
+  efuse-summary                   Get the summary of the eFuses.
+  efuse-write-protect             Disable writing to the eFuse with the specified name.
+  encrypted-app-flash             Flash the encrypted app only.
+  encrypted-flash                 Flash the encrypted project.
+  erase-flash                     Erase entire flash chip.
+  erase-otadata                   Erase otadata partition.
+  flash                           Flash the project.
+  fullclean                       Delete the entire build directory contents.
+  gdb                             Run the GDB.
+  gdbgui                          GDB UI in default browser.
+  gdbtui                          GDB TUI mode.
+  menuconfig                      Run "menuconfig" project configuration tool.
+  merge-bin
+  monitor                         Display serial output.
+  openocd                         Run openocd from current path
+  partition-table                 Build only partition table.
+  partition-table-flash           Flash partition table only.
+  post-debug                      Utility target to read the output of async debug action and stop them.
+  python-clean                    Delete generated Python byte code from the IDF directory
+  qemu                            Run QEMU.
+  read-otadata                    Read otadata partition.
+  reconfigure                     Re-run CMake.
+  save-defconfig                  Generate a sdkconfig.defaults with options different from the default ones
+  secure-decrypt-flash-data
+  secure-digest-secure-bootloader
+                                  Take a bootloader binary image and a secure boot key, and output a combineddigest+binary suitable for
+                                  flashing along with the precalculated secure boot key.
+  secure-encrypt-flash-data       Encrypt some data suitable for encrypted flash (using known key).
+  secure-generate-flash-encryption-key
+  secure-generate-signing-key     Generate a private key for signing secure boot images as per the secure boot version. Key file is
+                                  generated in PEMformat, Secure Boot V1 - ECDSA NIST256p private key. Secure Boot V2 - RSA 3072, ECDSA
+                                  NIST256p, ECDSA NIST192pprivate key.
+  secure-sign-data                Sign a data file for use with secure boot. Signing algorithm is deterministic ECDSA w/ SHA-512 (V1) or
+                                  either RSA-PSS or ECDSA w/ SHA-256 (V2).
+  secure-verify-signature         Verify a previously signed binary image, using the ECDSA (V1) or either RSA or ECDSA (V2) public key.
+  set-target                      Set the chip target to build.
+  show-efuse-table                Print eFuse table.
+  size                            Print basic size information about the app.
+  size-components                 Print per-component size information.
+  size-files                      Print per-source-file size information.
+  uf2                             Generate the UF2 binary with all the binaries included
+  uf2-app                         Generate an UF2 binary for the application only
+  update-dependencies             Update dependencies of the project
+
+C:\Espressif\frameworks\esp-idf-v5.4>idf.py efuse-summary
+Executing action: efuse-summary
+Running cmake in directory C:\Espressif\frameworks\esp-idf-v5.4\build
+Executing "cmake -G Ninja -DPYTHON_DEPS_CHECKED=1 -DPYTHON=C:\Espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe -DESP_PLATFORM=1 -DCCACHE_ENABLE=1 C:\Espressif\frameworks\esp-idf-v5.4"...
+-- The C compiler identification is Clang 18.1.2
+-- The CXX compiler identification is Clang 18.1.2
+-- The ASM compiler identification is Clang with GNU-like command-line
+-- Found assembler: C:/Espressif/tools/esp-clang/esp-18.1.2_20240912/esp-clang/bin/clang.exe
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: C:/Espressif/tools/esp-clang/esp-18.1.2_20240912/esp-clang/bin/clang.exe
+-- Check for working C compiler: C:/Espressif/tools/esp-clang/esp-18.1.2_20240912/esp-clang/bin/clang.exe - broken
+CMake Error at C:/Espressif/tools/cmake/3.30.2/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:67 (message):
+  The C compiler
+
+    "C:/Espressif/tools/esp-clang/esp-18.1.2_20240912/esp-clang/bin/clang.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: 'C:/Espressif/frameworks/esp-idf-v5.4/build/CMakeFiles/CMakeScratch/TryCompile-nvxn18'
+
+    Run Build Command(s): C:/Espressif/tools/ninja/1.12.1/ninja.exe -v cmTC_7d32c
+    [1/2] C:\Espressif\tools\esp-clang\esp-18.1.2_20240912\esp-clang\bin\clang.exe    -MD -MT CMakeFiles/cmTC_7d32c.dir/testCCompiler.c.obj -MF CMakeFiles\cmTC_7d32c.dir\testCCompiler.c.obj.d -o CMakeFiles/cmTC_7d32c.dir/testCCompiler.c.obj -c C:/Espressif/frameworks/esp-idf-v5.4/build/CMakeFiles/CMakeScratch/TryCompile-nvxn18/testCCompiler.c
+    [2/2] C:\Windows\system32\cmd.exe /C "cd . && C:\Espressif\tools\esp-clang\esp-18.1.2_20240912\esp-clang\bin\clang.exe   CMakeFiles/cmTC_7d32c.dir/testCCompiler.c.obj -o cmTC_7d32c.exe -Wl,--out-implib,libcmTC_7d32c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+    FAILED: cmTC_7d32c.exe
+    C:\Windows\system32\cmd.exe /C "cd . && C:\Espressif\tools\esp-clang\esp-18.1.2_20240912\esp-clang\bin\clang.exe   CMakeFiles/cmTC_7d32c.dir/testCCompiler.c.obj -o cmTC_7d32c.exe -Wl,--out-implib,libcmTC_7d32c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+    ld.lld: error: unknown argument '--major-image-version'
+    ld.lld: error: unknown argument '--minor-image-version'
+    ld.lld: error: cannot open 0: No such file or directory
+    ld.lld: error: cannot open 0: No such file or directory
+    ld.lld: error: unable to find library -lkernel32
+    ld.lld: error: unable to find library -luser32
+    ld.lld: error: unable to find library -lgdi32
+    ld.lld: error: unable to find library -lwinspool
+    ld.lld: error: unable to find library -lshell32
+    ld.lld: error: unable to find library -lole32
+    ld.lld: error: unable to find library -loleaut32
+    ld.lld: error: unable to find library -luuid
+    ld.lld: error: unable to find library -lcomdlg32
+    ld.lld: error: unable to find library -ladvapi32
+    clang: error: ld command failed with exit code 1 (use -v to see invocation)
+    ninja: build stopped: subcommand failed.
+
+
+
+
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+cmake failed with exit code 1, output of the command is in the C:\Espressif\frameworks\esp-idf-v5.4\build\log\idf_py_stderr_output_4524 and C:\Espressif\frameworks\esp-idf-v5.4\build\log\idf_py_stdout_output_4524
+
+C:\Espressif\frameworks\esp-idf-v5.4>idf.py efuse-summary -v
+Usage: idf.py efuse-summary [OPTIONS] [EFUSE_NAME]
+Try 'idf.py efuse-summary --help' for help.
+
+Error: No such option: -v
+
+C:\Espressif\frameworks\esp-idf-v5.4>espefuse.py -p COM16 summary
+espefuse.py v4.8.1
+Connecting...
+Detecting chip type... ESP32-S3
+
+=== Run "summary" command ===
+EFUSE_NAME (Block) Description  = [Meaningful Value] [Readable/Writeable] (Hex Value)
+----------------------------------------------------------------------------------------
+Calibration fuses:
+K_RTC_LDO (BLOCK1)                                 BLOCK1 K_RTC_LDO                                   = -80 R/W (0b1010100)
+K_DIG_LDO (BLOCK1)                                 BLOCK1 K_DIG_LDO                                   = 8 R/W (0b0000010)
+V_RTC_DBIAS20 (BLOCK1)                             BLOCK1 voltage of rtc dbias20                      = -96 R/W (0x98)
+V_DIG_DBIAS20 (BLOCK1)                             BLOCK1 voltage of digital dbias20                  = 32 R/W (0x08)
+DIG_DBIAS_HVT (BLOCK1)                             BLOCK1 digital dbias when hvt                      = -32 R/W (0b11000)
+ADC2_CAL_VOL_ATTEN3 (BLOCK1)                       ADC2 calibration voltage at atten3                 = 124 R/W (0b011111)
+TEMP_CALIB (BLOCK2)                                Temperature calibration data                       = -13.100000000000001 R/W (0b110000011)
+OCODE (BLOCK2)                                     ADC OCode                                          = 101 R/W (0x65)
+ADC1_INIT_CODE_ATTEN0 (BLOCK2)                     ADC1 init code at atten0                           = 420 R/W (0x69)
+ADC1_INIT_CODE_ATTEN1 (BLOCK2)                     ADC1 init code at atten1                           = -24 R/W (0b100110)
+ADC1_INIT_CODE_ATTEN2 (BLOCK2)                     ADC1 init code at atten2                           = -4 R/W (0b100001)
+ADC1_INIT_CODE_ATTEN3 (BLOCK2)                     ADC1 init code at atten3                           = 0 R/W (0b100000)
+ADC2_INIT_CODE_ATTEN0 (BLOCK2)                     ADC2 init code at atten0                           = 456 R/W (0x72)
+ADC2_INIT_CODE_ATTEN1 (BLOCK2)                     ADC2 init code at atten1                           = -56 R/W (0b101110)
+ADC2_INIT_CODE_ATTEN2 (BLOCK2)                     ADC2 init code at atten2                           = 72 R/W (0b010010)
+ADC2_INIT_CODE_ATTEN3 (BLOCK2)                     ADC2 init code at atten3                           = 0 R/W (0b100000)
+ADC1_CAL_VOL_ATTEN0 (BLOCK2)                       ADC1 calibration voltage at atten0                 = 388 R/W (0x61)
+ADC1_CAL_VOL_ATTEN1 (BLOCK2)                       ADC1 calibration voltage at atten1                 = 404 R/W (0x65)
+ADC1_CAL_VOL_ATTEN2 (BLOCK2)                       ADC1 calibration voltage at atten2                 = 352 R/W (0x58)
+ADC1_CAL_VOL_ATTEN3 (BLOCK2)                       ADC1 calibration voltage at atten3                 = 404 R/W (0x65)
+ADC2_CAL_VOL_ATTEN0 (BLOCK2)                       ADC2 calibration voltage at atten0                 = 500 R/W (0x7d)
+ADC2_CAL_VOL_ATTEN1 (BLOCK2)                       ADC2 calibration voltage at atten1                 = 244 R/W (0b0111101)
+ADC2_CAL_VOL_ATTEN2 (BLOCK2)                       ADC2 calibration voltage at atten2                 = -4 R/W (0b1000001)
+
+Config fuses:
+WR_DIS (BLOCK0)                                    Disable programming of individual eFuses           = 0 R/W (0x00000000)
+RD_DIS (BLOCK0)                                    Disable reading from BlOCK4-10                     = 0 R/W (0b0000000)
+DIS_ICACHE (BLOCK0)                                Set this bit to disable Icache                     = False R/W (0b0)
+DIS_DCACHE (BLOCK0)                                Set this bit to disable Dcache                     = False R/W (0b0)
+DIS_TWAI (BLOCK0)                                  Set this bit to disable CAN function               = False R/W (0b0)
+DIS_APP_CPU (BLOCK0)                               Disable app cpu                                    = False R/W (0b0)
+DIS_DIRECT_BOOT (BLOCK0)                           Disable direct boot mode                           = False R/W (0b0)
+UART_PRINT_CONTROL (BLOCK0)                        Set the default UART boot message output mode      = Enable R/W (0b00)
+PIN_POWER_SELECTION (BLOCK0)                       Set default power supply for GPIO33-GPIO37; set wh = VDD_SPI R/W (0b1)
+                                                   en SPI flash is initialized
+PSRAM_CAP (BLOCK1)                                 PSRAM capacity                                     = 8M R/W (0b01)
+PSRAM_TEMP (BLOCK1)                                PSRAM temperature                                  = 85C R/W (0b10)
+PSRAM_VENDOR (BLOCK1)                              PSRAM vendor                                       = AP_3v3 R/W (0b01)
+BLOCK_USR_DATA (BLOCK3)                            User data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_SYS_DATA2 (BLOCK10)                          System data part 2 (reserved)
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+
+Flash fuses:
+FLASH_TPUW (BLOCK0)                                Configures flash waiting time after power-up; in u = 0 R/W (0x0)
+                                                   nit of ms. If the value is less than 15; the waiti
+                                                   ng time is the configurable value.  Otherwise; the
+                                                    waiting time is twice the configurable value
+FLASH_ECC_MODE (BLOCK0)                            Flash ECC mode in ROM                              = 16to18 byte R/W (0b0)
+FLASH_TYPE (BLOCK0)                                SPI flash type                                     = 4 data lines R/W (0b0)
+FLASH_PAGE_SIZE (BLOCK0)                           Set Flash page size                                = 0 R/W (0b00)
+FLASH_ECC_EN (BLOCK0)                              Set 1 to enable ECC for flash boot                 = False R/W (0b0)
+FORCE_SEND_RESUME (BLOCK0)                         Set this bit to force ROM code to send a resume co = False R/W (0b0)
+                                                   mmand during SPI boot
+FLASH_CAP (BLOCK1)                                 Flash capacity                                     = None R/W (0b000)
+FLASH_TEMP (BLOCK1)                                Flash temperature                                  = None R/W (0b00)
+FLASH_VENDOR (BLOCK1)                              Flash vendor                                       = None R/W (0b000)
+
+Identity fuses:
+DISABLE_WAFER_VERSION_MAJOR (BLOCK0)               Disables check of wafer version major              = False R/W (0b0)
+DISABLE_BLK_VERSION_MAJOR (BLOCK0)                 Disables check of blk version major                = False R/W (0b0)
+WAFER_VERSION_MINOR_LO (BLOCK1)                    WAFER_VERSION_MINOR least significant bits         = 2 R/W (0b010)
+PKG_VERSION (BLOCK1)                               Package version                                    = 0 R/W (0b000)
+BLK_VERSION_MINOR (BLOCK1)                         BLK_VERSION_MINOR                                  = 3 R/W (0b011)
+WAFER_VERSION_MINOR_HI (BLOCK1)                    WAFER_VERSION_MINOR most significant bit           = False R/W (0b0)
+WAFER_VERSION_MAJOR (BLOCK1)                       WAFER_VERSION_MAJOR                                = 0 R/W (0b00)
+OPTIONAL_UNIQUE_ID (BLOCK2)                        Optional unique 128-bit ID
+   = fb dc 46 1c 33 73 20 90 ff e1 79 4c cd f5 6f d2 R/W
+BLK_VERSION_MAJOR (BLOCK2)                         BLK_VERSION_MAJOR of BLOCK2                        = ADC calib V1 R/W (0b01)
+WAFER_VERSION_MINOR (BLOCK0)                       calc WAFER VERSION MINOR = WAFER_VERSION_MINOR_HI  = 2 R/W (0x2)
+                                                   << 3 + WAFER_VERSION_MINOR_LO (read only)
+
+Jtag fuses:
+SOFT_DIS_JTAG (BLOCK0)                             Set these bits to disable JTAG in the soft way (od = 0 R/W (0b000)
+                                                   d number 1 means disable ). JTAG can be enabled in
+                                                    HMAC module
+DIS_PAD_JTAG (BLOCK0)                              Set this bit to disable JTAG in the hard way. JTAG = False R/W (0b0)
+                                                    is disabled permanently
+STRAP_JTAG_SEL (BLOCK0)                            Set this bit to enable selection between usb_to_jt = False R/W (0b0)
+                                                   ag and pad_to_jtag through strapping gpio10 when b
+                                                   oth reg_dis_usb_jtag and reg_dis_pad_jtag are equa
+                                                   l to 0
+
+Mac fuses:
+MAC (BLOCK1)                                       MAC address
+   = f0:9e:9e:16:4d:74 (OK) R/W
+CUSTOM_MAC (BLOCK3)                                Custom MAC
+   = 00:00:00:00:00:00 (OK) R/W
+
+Security fuses:
+DIS_DOWNLOAD_ICACHE (BLOCK0)                       Set this bit to disable Icache in download mode (b = False R/W (0b0)
+                                                   oot_mode[3:0] is 0; 1; 2; 3; 6; 7)
+DIS_DOWNLOAD_DCACHE (BLOCK0)                       Set this bit to disable Dcache in download mode (  = False R/W (0b0)
+                                                   boot_mode[3:0] is 0; 1; 2; 3; 6; 7)
+DIS_FORCE_DOWNLOAD (BLOCK0)                        Set this bit to disable the function that forces c = False R/W (0b0)
+                                                   hip into download mode
+DIS_DOWNLOAD_MANUAL_ENCRYPT (BLOCK0)               Set this bit to disable flash encryption when in d = False R/W (0b0)
+                                                   ownload boot modes
+SPI_BOOT_CRYPT_CNT (BLOCK0)                        Enables flash encryption when 1 or 3 bits are set  = Disable R/W (0b000)
+                                                   and disabled otherwise
+SECURE_BOOT_KEY_REVOKE0 (BLOCK0)                   Revoke 1st secure boot key                         = False R/W (0b0)
+SECURE_BOOT_KEY_REVOKE1 (BLOCK0)                   Revoke 2nd secure boot key                         = False R/W (0b0)
+SECURE_BOOT_KEY_REVOKE2 (BLOCK0)                   Revoke 3rd secure boot key                         = False R/W (0b0)
+KEY_PURPOSE_0 (BLOCK0)                             Purpose of Key0                                    = USER R/W (0x0)
+KEY_PURPOSE_1 (BLOCK0)                             Purpose of Key1                                    = USER R/W (0x0)
+KEY_PURPOSE_2 (BLOCK0)                             Purpose of Key2                                    = USER R/W (0x0)
+KEY_PURPOSE_3 (BLOCK0)                             Purpose of Key3                                    = USER R/W (0x0)
+KEY_PURPOSE_4 (BLOCK0)                             Purpose of Key4                                    = USER R/W (0x0)
+KEY_PURPOSE_5 (BLOCK0)                             Purpose of Key5                                    = USER R/W (0x0)
+SECURE_BOOT_EN (BLOCK0)                            Set this bit to enable secure boot                 = False R/W (0b0)
+SECURE_BOOT_AGGRESSIVE_REVOKE (BLOCK0)             Set this bit to enable revoking aggressive secure  = False R/W (0b0)
+                                                   boot
+DIS_DOWNLOAD_MODE (BLOCK0)                         Set this bit to disable download mode (boot_mode[3 = False R/W (0b0)
+                                                   :0] = 0; 1; 2; 3; 6; 7)
+ENABLE_SECURITY_DOWNLOAD (BLOCK0)                  Set this bit to enable secure UART download mode   = False R/W (0b0)
+SECURE_VERSION (BLOCK0)                            Secure version (used by ESP-IDF anti-rollback feat = 0 R/W (0x0000)
+                                                   ure)
+BLOCK_KEY0 (BLOCK4)
+  Purpose: USER
+               Key0 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY1 (BLOCK5)
+  Purpose: USER
+               Key1 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY2 (BLOCK6)
+  Purpose: USER
+               Key2 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY3 (BLOCK7)
+  Purpose: USER
+               Key3 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY4 (BLOCK8)
+  Purpose: USER
+               Key4 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY5 (BLOCK9)
+  Purpose: USER
+               Key5 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+
+Spi Pad fuses:
+SPI_PAD_CONFIG_CLK (BLOCK1)                        SPI_PAD_configure CLK                              = 0 R/W (0b000000)
+SPI_PAD_CONFIG_Q (BLOCK1)                          SPI_PAD_configure Q(D1)                            = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D (BLOCK1)                          SPI_PAD_configure D(D0)                            = 0 R/W (0b000000)
+SPI_PAD_CONFIG_CS (BLOCK1)                         SPI_PAD_configure CS                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_HD (BLOCK1)                         SPI_PAD_configure HD(D3)                           = 0 R/W (0b000000)
+SPI_PAD_CONFIG_WP (BLOCK1)                         SPI_PAD_configure WP(D2)                           = 0 R/W (0b000000)
+SPI_PAD_CONFIG_DQS (BLOCK1)                        SPI_PAD_configure DQS                              = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D4 (BLOCK1)                         SPI_PAD_configure D4                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D5 (BLOCK1)                         SPI_PAD_configure D5                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D6 (BLOCK1)                         SPI_PAD_configure D6                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D7 (BLOCK1)                         SPI_PAD_configure D7                               = 0 R/W (0b000000)
+
+Usb fuses:
+DIS_USB_OTG (BLOCK0)                               Set this bit to disable USB function               = False R/W (0b0)
+USB_EXCHG_PINS (BLOCK0)                            Set this bit to exchange USB D+ and D- pins        = False R/W (0b0)
+USB_EXT_PHY_ENABLE (BLOCK0)                        Set this bit to enable external PHY                = False R/W (0b0)
+DIS_USB_JTAG (BLOCK0)                              Set this bit to disable function of usb switch to  = False R/W (0b0)
+                                                   jtag in module of usb device
+DIS_USB_SERIAL_JTAG (BLOCK0)                       Set this bit to disable usb device                 = False R/W (0b0)
+USB_PHY_SEL (BLOCK0)                               This bit is used to switch internal PHY and extern
+   = internal PHY is assigned to USB Device while external PHY is assigned to USB OTG R/W (0b0)
+                                                   al PHY for USB OTG and USB Device
+DIS_USB_SERIAL_JTAG_ROM_PRINT (BLOCK0)             USB printing                                       = Enable R/W (0b0)
+DIS_USB_SERIAL_JTAG_DOWNLOAD_MODE (BLOCK0)         Set this bit to disable UART download mode through = False R/W (0b0)
+                                                    USB
+DIS_USB_OTG_DOWNLOAD_MODE (BLOCK0)                 Set this bit to disable download through USB-OTG   = False R/W (0b0)
+
+Vdd fuses:
+VDD_SPI_XPD (BLOCK0)                               SPI regulator power up signal                      = True R/W (0b1)
+VDD_SPI_TIEH (BLOCK0)                              If VDD_SPI_FORCE is 1; determines VDD_SPI voltage
+   = VDD_SPI connects to VDD3P3_RTC_IO R/W (0b1)
+VDD_SPI_FORCE (BLOCK0)                             Set this bit and force to use the configuration of = True R/W (0b1)
+                                                    eFuse to configure VDD_SPI
+
+Wdt fuses:
+WDT_DELAY_SEL (BLOCK0)                             RTC watchdog timeout threshold; in unit of slow cl = 40000 R/W (0b00)
+                                                   ock cycle
+
+Flash voltage (VDD_SPI) set to 3.3V by efuse.
+
+C:\Espressif\frameworks\esp-idf-v5.4>espefuse.py -p COM16 burn_efuse DIS_USB_JTAG
+espefuse.py v4.8.1
+Connecting...
+Detecting chip type... ESP32-S3
+
+=== Run "burn_efuse" command ===
+The efuses to burn:
+  from BLOCK0
+     - DIS_USB_JTAG
+
+Burning efuses:
+
+    - 'DIS_USB_JTAG' (Set this bit to disable function of usb switch to jtag in module of usb device) 0b0 -> 0b1
+
+
+Check all blocks for burn...
+idx, BLOCK_NAME,          Conclusion
+[00] BLOCK0               is not empty
+        (written ): 0x0000000000000100000000000000d1f50000000000000000
+        (to write): 0x000000000000000000400000000000000000000000000000
+        (coding scheme = NONE)
+.
+This is an irreversible operation!
+Type 'BURN' (all capitals) to continue.
+BURN
+BURN BLOCK0  - OK (all write block bits are set)
+Reading updated efuses...
+Checking efuses...
+Successful
+
+C:\Espressif\frameworks\esp-idf-v5.4>espefuse.py -p COM16 summary
+espefuse.py v4.8.1
+Connecting...
+Detecting chip type... ESP32-S3
+
+=== Run "summary" command ===
+EFUSE_NAME (Block) Description  = [Meaningful Value] [Readable/Writeable] (Hex Value)
+----------------------------------------------------------------------------------------
+Calibration fuses:
+K_RTC_LDO (BLOCK1)                                 BLOCK1 K_RTC_LDO                                   = -80 R/W (0b1010100)
+K_DIG_LDO (BLOCK1)                                 BLOCK1 K_DIG_LDO                                   = 8 R/W (0b0000010)
+V_RTC_DBIAS20 (BLOCK1)                             BLOCK1 voltage of rtc dbias20                      = -96 R/W (0x98)
+V_DIG_DBIAS20 (BLOCK1)                             BLOCK1 voltage of digital dbias20                  = 32 R/W (0x08)
+DIG_DBIAS_HVT (BLOCK1)                             BLOCK1 digital dbias when hvt                      = -32 R/W (0b11000)
+ADC2_CAL_VOL_ATTEN3 (BLOCK1)                       ADC2 calibration voltage at atten3                 = 124 R/W (0b011111)
+TEMP_CALIB (BLOCK2)                                Temperature calibration data                       = -13.100000000000001 R/W (0b110000011)
+OCODE (BLOCK2)                                     ADC OCode                                          = 101 R/W (0x65)
+ADC1_INIT_CODE_ATTEN0 (BLOCK2)                     ADC1 init code at atten0                           = 420 R/W (0x69)
+ADC1_INIT_CODE_ATTEN1 (BLOCK2)                     ADC1 init code at atten1                           = -24 R/W (0b100110)
+ADC1_INIT_CODE_ATTEN2 (BLOCK2)                     ADC1 init code at atten2                           = -4 R/W (0b100001)
+ADC1_INIT_CODE_ATTEN3 (BLOCK2)                     ADC1 init code at atten3                           = 0 R/W (0b100000)
+ADC2_INIT_CODE_ATTEN0 (BLOCK2)                     ADC2 init code at atten0                           = 456 R/W (0x72)
+ADC2_INIT_CODE_ATTEN1 (BLOCK2)                     ADC2 init code at atten1                           = -56 R/W (0b101110)
+ADC2_INIT_CODE_ATTEN2 (BLOCK2)                     ADC2 init code at atten2                           = 72 R/W (0b010010)
+ADC2_INIT_CODE_ATTEN3 (BLOCK2)                     ADC2 init code at atten3                           = 0 R/W (0b100000)
+ADC1_CAL_VOL_ATTEN0 (BLOCK2)                       ADC1 calibration voltage at atten0                 = 388 R/W (0x61)
+ADC1_CAL_VOL_ATTEN1 (BLOCK2)                       ADC1 calibration voltage at atten1                 = 404 R/W (0x65)
+ADC1_CAL_VOL_ATTEN2 (BLOCK2)                       ADC1 calibration voltage at atten2                 = 352 R/W (0x58)
+ADC1_CAL_VOL_ATTEN3 (BLOCK2)                       ADC1 calibration voltage at atten3                 = 404 R/W (0x65)
+ADC2_CAL_VOL_ATTEN0 (BLOCK2)                       ADC2 calibration voltage at atten0                 = 500 R/W (0x7d)
+ADC2_CAL_VOL_ATTEN1 (BLOCK2)                       ADC2 calibration voltage at atten1                 = 244 R/W (0b0111101)
+ADC2_CAL_VOL_ATTEN2 (BLOCK2)                       ADC2 calibration voltage at atten2                 = -4 R/W (0b1000001)
+
+Config fuses:
+WR_DIS (BLOCK0)                                    Disable programming of individual eFuses           = 0 R/W (0x00000000)
+RD_DIS (BLOCK0)                                    Disable reading from BlOCK4-10                     = 0 R/W (0b0000000)
+DIS_ICACHE (BLOCK0)                                Set this bit to disable Icache                     = False R/W (0b0)
+DIS_DCACHE (BLOCK0)                                Set this bit to disable Dcache                     = False R/W (0b0)
+DIS_TWAI (BLOCK0)                                  Set this bit to disable CAN function               = False R/W (0b0)
+DIS_APP_CPU (BLOCK0)                               Disable app cpu                                    = False R/W (0b0)
+DIS_DIRECT_BOOT (BLOCK0)                           Disable direct boot mode                           = False R/W (0b0)
+UART_PRINT_CONTROL (BLOCK0)                        Set the default UART boot message output mode      = Enable R/W (0b00)
+PIN_POWER_SELECTION (BLOCK0)                       Set default power supply for GPIO33-GPIO37; set wh = VDD_SPI R/W (0b1)
+                                                   en SPI flash is initialized
+PSRAM_CAP (BLOCK1)                                 PSRAM capacity                                     = 8M R/W (0b01)
+PSRAM_TEMP (BLOCK1)                                PSRAM temperature                                  = 85C R/W (0b10)
+PSRAM_VENDOR (BLOCK1)                              PSRAM vendor                                       = AP_3v3 R/W (0b01)
+BLOCK_USR_DATA (BLOCK3)                            User data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_SYS_DATA2 (BLOCK10)                          System data part 2 (reserved)
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+
+Flash fuses:
+FLASH_TPUW (BLOCK0)                                Configures flash waiting time after power-up; in u = 0 R/W (0x0)
+                                                   nit of ms. If the value is less than 15; the waiti
+                                                   ng time is the configurable value.  Otherwise; the
+                                                    waiting time is twice the configurable value
+FLASH_ECC_MODE (BLOCK0)                            Flash ECC mode in ROM                              = 16to18 byte R/W (0b0)
+FLASH_TYPE (BLOCK0)                                SPI flash type                                     = 4 data lines R/W (0b0)
+FLASH_PAGE_SIZE (BLOCK0)                           Set Flash page size                                = 0 R/W (0b00)
+FLASH_ECC_EN (BLOCK0)                              Set 1 to enable ECC for flash boot                 = False R/W (0b0)
+FORCE_SEND_RESUME (BLOCK0)                         Set this bit to force ROM code to send a resume co = False R/W (0b0)
+                                                   mmand during SPI boot
+FLASH_CAP (BLOCK1)                                 Flash capacity                                     = None R/W (0b000)
+FLASH_TEMP (BLOCK1)                                Flash temperature                                  = None R/W (0b00)
+FLASH_VENDOR (BLOCK1)                              Flash vendor                                       = None R/W (0b000)
+
+Identity fuses:
+DISABLE_WAFER_VERSION_MAJOR (BLOCK0)               Disables check of wafer version major              = False R/W (0b0)
+DISABLE_BLK_VERSION_MAJOR (BLOCK0)                 Disables check of blk version major                = False R/W (0b0)
+WAFER_VERSION_MINOR_LO (BLOCK1)                    WAFER_VERSION_MINOR least significant bits         = 2 R/W (0b010)
+PKG_VERSION (BLOCK1)                               Package version                                    = 0 R/W (0b000)
+BLK_VERSION_MINOR (BLOCK1)                         BLK_VERSION_MINOR                                  = 3 R/W (0b011)
+WAFER_VERSION_MINOR_HI (BLOCK1)                    WAFER_VERSION_MINOR most significant bit           = False R/W (0b0)
+WAFER_VERSION_MAJOR (BLOCK1)                       WAFER_VERSION_MAJOR                                = 0 R/W (0b00)
+OPTIONAL_UNIQUE_ID (BLOCK2)                        Optional unique 128-bit ID
+   = fb dc 46 1c 33 73 20 90 ff e1 79 4c cd f5 6f d2 R/W
+BLK_VERSION_MAJOR (BLOCK2)                         BLK_VERSION_MAJOR of BLOCK2                        = ADC calib V1 R/W (0b01)
+WAFER_VERSION_MINOR (BLOCK0)                       calc WAFER VERSION MINOR = WAFER_VERSION_MINOR_HI  = 2 R/W (0x2)
+                                                   << 3 + WAFER_VERSION_MINOR_LO (read only)
+
+Jtag fuses:
+SOFT_DIS_JTAG (BLOCK0)                             Set these bits to disable JTAG in the soft way (od = 0 R/W (0b000)
+                                                   d number 1 means disable ). JTAG can be enabled in
+                                                    HMAC module
+DIS_PAD_JTAG (BLOCK0)                              Set this bit to disable JTAG in the hard way. JTAG = False R/W (0b0)
+                                                    is disabled permanently
+STRAP_JTAG_SEL (BLOCK0)                            Set this bit to enable selection between usb_to_jt = False R/W (0b0)
+                                                   ag and pad_to_jtag through strapping gpio10 when b
+                                                   oth reg_dis_usb_jtag and reg_dis_pad_jtag are equa
+                                                   l to 0
+
+Mac fuses:
+MAC (BLOCK1)                                       MAC address
+   = f0:9e:9e:16:4d:74 (OK) R/W
+CUSTOM_MAC (BLOCK3)                                Custom MAC
+   = 00:00:00:00:00:00 (OK) R/W
+
+Security fuses:
+DIS_DOWNLOAD_ICACHE (BLOCK0)                       Set this bit to disable Icache in download mode (b = False R/W (0b0)
+                                                   oot_mode[3:0] is 0; 1; 2; 3; 6; 7)
+DIS_DOWNLOAD_DCACHE (BLOCK0)                       Set this bit to disable Dcache in download mode (  = False R/W (0b0)
+                                                   boot_mode[3:0] is 0; 1; 2; 3; 6; 7)
+DIS_FORCE_DOWNLOAD (BLOCK0)                        Set this bit to disable the function that forces c = False R/W (0b0)
+                                                   hip into download mode
+DIS_DOWNLOAD_MANUAL_ENCRYPT (BLOCK0)               Set this bit to disable flash encryption when in d = False R/W (0b0)
+                                                   ownload boot modes
+SPI_BOOT_CRYPT_CNT (BLOCK0)                        Enables flash encryption when 1 or 3 bits are set  = Disable R/W (0b000)
+                                                   and disabled otherwise
+SECURE_BOOT_KEY_REVOKE0 (BLOCK0)                   Revoke 1st secure boot key                         = False R/W (0b0)
+SECURE_BOOT_KEY_REVOKE1 (BLOCK0)                   Revoke 2nd secure boot key                         = False R/W (0b0)
+SECURE_BOOT_KEY_REVOKE2 (BLOCK0)                   Revoke 3rd secure boot key                         = False R/W (0b0)
+KEY_PURPOSE_0 (BLOCK0)                             Purpose of Key0                                    = USER R/W (0x0)
+KEY_PURPOSE_1 (BLOCK0)                             Purpose of Key1                                    = USER R/W (0x0)
+KEY_PURPOSE_2 (BLOCK0)                             Purpose of Key2                                    = USER R/W (0x0)
+KEY_PURPOSE_3 (BLOCK0)                             Purpose of Key3                                    = USER R/W (0x0)
+KEY_PURPOSE_4 (BLOCK0)                             Purpose of Key4                                    = USER R/W (0x0)
+KEY_PURPOSE_5 (BLOCK0)                             Purpose of Key5                                    = USER R/W (0x0)
+SECURE_BOOT_EN (BLOCK0)                            Set this bit to enable secure boot                 = False R/W (0b0)
+SECURE_BOOT_AGGRESSIVE_REVOKE (BLOCK0)             Set this bit to enable revoking aggressive secure  = False R/W (0b0)
+                                                   boot
+DIS_DOWNLOAD_MODE (BLOCK0)                         Set this bit to disable download mode (boot_mode[3 = False R/W (0b0)
+                                                   :0] = 0; 1; 2; 3; 6; 7)
+ENABLE_SECURITY_DOWNLOAD (BLOCK0)                  Set this bit to enable secure UART download mode   = False R/W (0b0)
+SECURE_VERSION (BLOCK0)                            Secure version (used by ESP-IDF anti-rollback feat = 0 R/W (0x0000)
+                                                   ure)
+BLOCK_KEY0 (BLOCK4)
+  Purpose: USER
+               Key0 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY1 (BLOCK5)
+  Purpose: USER
+               Key1 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY2 (BLOCK6)
+  Purpose: USER
+               Key2 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY3 (BLOCK7)
+  Purpose: USER
+               Key3 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY4 (BLOCK8)
+  Purpose: USER
+               Key4 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+BLOCK_KEY5 (BLOCK9)
+  Purpose: USER
+               Key5 or user data
+   = 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 R/W
+
+Spi Pad fuses:
+SPI_PAD_CONFIG_CLK (BLOCK1)                        SPI_PAD_configure CLK                              = 0 R/W (0b000000)
+SPI_PAD_CONFIG_Q (BLOCK1)                          SPI_PAD_configure Q(D1)                            = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D (BLOCK1)                          SPI_PAD_configure D(D0)                            = 0 R/W (0b000000)
+SPI_PAD_CONFIG_CS (BLOCK1)                         SPI_PAD_configure CS                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_HD (BLOCK1)                         SPI_PAD_configure HD(D3)                           = 0 R/W (0b000000)
+SPI_PAD_CONFIG_WP (BLOCK1)                         SPI_PAD_configure WP(D2)                           = 0 R/W (0b000000)
+SPI_PAD_CONFIG_DQS (BLOCK1)                        SPI_PAD_configure DQS                              = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D4 (BLOCK1)                         SPI_PAD_configure D4                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D5 (BLOCK1)                         SPI_PAD_configure D5                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D6 (BLOCK1)                         SPI_PAD_configure D6                               = 0 R/W (0b000000)
+SPI_PAD_CONFIG_D7 (BLOCK1)                         SPI_PAD_configure D7                               = 0 R/W (0b000000)
+
+Usb fuses:
+DIS_USB_OTG (BLOCK0)                               Set this bit to disable USB function               = False R/W (0b0)
+USB_EXCHG_PINS (BLOCK0)                            Set this bit to exchange USB D+ and D- pins        = False R/W (0b0)
+USB_EXT_PHY_ENABLE (BLOCK0)                        Set this bit to enable external PHY                = False R/W (0b0)
+DIS_USB_JTAG (BLOCK0)                              Set this bit to disable function of usb switch to  = True R/W (0b1)
+                                                   jtag in module of usb device
+DIS_USB_SERIAL_JTAG (BLOCK0)                       Set this bit to disable usb device                 = False R/W (0b0)
+USB_PHY_SEL (BLOCK0)                               This bit is used to switch internal PHY and extern
+   = internal PHY is assigned to USB Device while external PHY is assigned to USB OTG R/W (0b0)
+                                                   al PHY for USB OTG and USB Device
+DIS_USB_SERIAL_JTAG_ROM_PRINT (BLOCK0)             USB printing                                       = Enable R/W (0b0)
+DIS_USB_SERIAL_JTAG_DOWNLOAD_MODE (BLOCK0)         Set this bit to disable UART download mode through = False R/W (0b0)
+                                                    USB
+DIS_USB_OTG_DOWNLOAD_MODE (BLOCK0)                 Set this bit to disable download through USB-OTG   = False R/W (0b0)
+
+Vdd fuses:
+VDD_SPI_XPD (BLOCK0)                               SPI regulator power up signal                      = True R/W (0b1)
+VDD_SPI_TIEH (BLOCK0)                              If VDD_SPI_FORCE is 1; determines VDD_SPI voltage
+   = VDD_SPI connects to VDD3P3_RTC_IO R/W (0b1)
+VDD_SPI_FORCE (BLOCK0)                             Set this bit and force to use the configuration of = True R/W (0b1)
+                                                    eFuse to configure VDD_SPI
+
+Wdt fuses:
+WDT_DELAY_SEL (BLOCK0)                             RTC watchdog timeout threshold; in unit of slow cl = 40000 R/W (0b00)
+                                                   ock cycle
+
+Flash voltage (VDD_SPI) set to 3.3V by efuse.
+
+C:\Espressif\frameworks\esp-idf-v5.4>
