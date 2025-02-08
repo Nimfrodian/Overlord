@@ -1,0 +1,4907 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "bcbfae7e-bc5d-438c-bfcf-6cba95f38660")
+	(paper "A4")
+	(lib_symbols
+		(symbol "74HC4052D_653:74HC4052D,653"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "IC"
+				(at 21.59 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "74HC4052D,653"
+				(at 21.59 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "74HC4052D653"
+				(at 21.59 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/74HC_HCT4052.pdf"
+				(at 21.59 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "74HC(T)4052 - Dual 4-channel analog multiplexer/demultiplexer@en-us"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "1.75"
+				(at 21.59 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "771-74HC4052D-T"
+				(at 21.59 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Nexperia/74HC4052D653?qs=P62ublwmbi9dOtwH%252Bhrppg%3D%3D"
+				(at 21.59 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Nexperia"
+				(at 21.59 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "74HC4052D,653"
+				(at 21.59 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "74HC4052D,653_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 20.32 -20.32)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "2Y0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -15.24 180)
+					(length 5.08)
+					(name "S0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -12.7 180)
+					(length 5.08)
+					(name "1Y3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -10.16 180)
+					(length 5.08)
+					(name "1Y0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -7.62 180)
+					(length 5.08)
+					(name "1Z"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -5.08 180)
+					(length 5.08)
+					(name "1Y1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -2.54 180)
+					(length 5.08)
+					(name "1Y2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 0 180)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "2Y2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "2Z"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 0)
+					(length 5.08)
+					(name "2Y3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -10.16 0)
+					(length 5.08)
+					(name "2Y1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -12.7 0)
+					(length 5.08)
+					(name "~{E}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -15.24 0)
+					(length 5.08)
+					(name "VEE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -17.78 0)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -17.78 180)
+					(length 5.08)
+					(name "S1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:C"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:C_Polarized"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_Polarized"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Polarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "CP_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_Polarized_0_1"
+				(rectangle
+					(start -2.286 0.508)
+					(end 2.286 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 2.286) (xy -0.762 2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.794) (xy -1.27 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.286 -0.508)
+					(end -2.286 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "C_Polarized_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:R"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:+3.3V"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+3.3V"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+3.3V_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3.3V_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0) hide
+					(name "+3.3V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:GND"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0) hide
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 176.53 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0d6a72a3-8f04-4cfa-96cc-3faec680868a")
+	)
+	(junction
+		(at 107.95 99.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "14b5486a-bf52-4f7f-afd2-d39f76c05230")
+	)
+	(junction
+		(at 175.26 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "635f28a3-3dd8-4eca-9c8a-f1d66e0c5612")
+	)
+	(junction
+		(at 157.48 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "773633b2-8bc4-487d-9a5c-6e39d0550da6")
+	)
+	(junction
+		(at 88.9 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7e6b8e80-6459-48da-9d2b-c152dd29e8a2")
+	)
+	(junction
+		(at 107.95 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e65907b-87c2-424a-bc8d-a13caef2c4e3")
+	)
+	(junction
+		(at 116.84 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9aedfcb8-8118-4cd4-b563-6742baf51174")
+	)
+	(junction
+		(at 88.9 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bbfa0358-a197-4430-bb21-a188e6de75bb")
+	)
+	(junction
+		(at 116.84 104.14)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c3d26fad-ffd2-4658-bf23-20d6089ce4a1")
+	)
+	(junction
+		(at 132.08 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e6098240-5efb-4192-adfd-5eef198f18fe")
+	)
+	(junction
+		(at 156.21 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f71d802b-2cea-4351-8596-5240afa524c0")
+	)
+	(wire
+		(pts
+			(xy 116.84 109.22) (xy 116.84 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1465b013-4659-45ef-b5ec-6f163bc2b63b")
+	)
+	(wire
+		(pts
+			(xy 176.53 99.06) (xy 176.53 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20b7aa87-ddc5-4c09-bf61-a34d01d81a9f")
+	)
+	(wire
+		(pts
+			(xy 156.21 91.44) (xy 144.78 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "295aa866-edaa-47cd-a9ce-4f157799fa43")
+	)
+	(wire
+		(pts
+			(xy 144.78 67.31) (xy 144.78 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bae5619-e9ca-4185-b6ed-2aca851dfc16")
+	)
+	(wire
+		(pts
+			(xy 157.48 101.6) (xy 157.48 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3262ce75-b695-413d-810d-2a9409ec92a1")
+	)
+	(wire
+		(pts
+			(xy 144.78 99.06) (xy 176.53 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39608667-b4f0-4a09-a450-a37c07a84d04")
+	)
+	(wire
+		(pts
+			(xy 132.08 67.31) (xy 132.08 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39dcea72-a26f-4e5a-b8e9-7ab6f1809348")
+	)
+	(wire
+		(pts
+			(xy 116.84 104.14) (xy 119.38 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3adb9e4d-ea3e-408e-8899-1bb2e79d4ab6")
+	)
+	(wire
+		(pts
+			(xy 180.34 93.98) (xy 175.26 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41748198-e23e-44cb-9c3e-785a9c329d05")
+	)
+	(wire
+		(pts
+			(xy 116.84 104.14) (xy 116.84 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41d268ed-9127-4cfe-9d50-a3af0b3276a8")
+	)
+	(wire
+		(pts
+			(xy 116.84 106.68) (xy 119.38 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "476cba93-a88a-4020-acd7-4de57d47ab8a")
+	)
+	(wire
+		(pts
+			(xy 144.78 101.6) (xy 157.48 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "477733b0-9841-4791-bce3-ec5aa80c76d6")
+	)
+	(wire
+		(pts
+			(xy 148.59 104.14) (xy 144.78 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b41066b-7621-4371-a306-275d90c5e2b0")
+	)
+	(wire
+		(pts
+			(xy 99.06 88.9) (xy 99.06 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55fe15ac-7cff-4fb9-861a-c405f585b2df")
+	)
+	(wire
+		(pts
+			(xy 165.1 91.44) (xy 165.1 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56bd3980-cd38-4611-bd9d-c5eeaefc7032")
+	)
+	(wire
+		(pts
+			(xy 88.9 91.44) (xy 119.38 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5bc3ef9a-213c-4ab6-ba10-6d2f9afa53e3")
+	)
+	(wire
+		(pts
+			(xy 165.1 91.44) (xy 156.21 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "66e1df5a-b159-472a-adcd-699d2056e0de")
+	)
+	(wire
+		(pts
+			(xy 88.9 96.52) (xy 119.38 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d5cf190-5e06-497a-b73e-21a0273be6d6")
+	)
+	(wire
+		(pts
+			(xy 88.9 96.52) (xy 88.9 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e62af6c-53cb-43cb-8ace-aaf36e26c0ec")
+	)
+	(wire
+		(pts
+			(xy 107.95 99.06) (xy 99.06 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74c4d2a9-04a1-44d4-abd2-13f8aa8d9933")
+	)
+	(wire
+		(pts
+			(xy 107.95 88.9) (xy 119.38 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74fdb924-d264-4557-b593-813ba9cf97d6")
+	)
+	(wire
+		(pts
+			(xy 119.38 99.06) (xy 107.95 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "789fead0-13c0-470f-8fa6-15a6e5281309")
+	)
+	(wire
+		(pts
+			(xy 132.08 66.04) (xy 132.08 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7fb874db-5f4c-4b75-bdb9-828d72a396bb")
+	)
+	(wire
+		(pts
+			(xy 83.82 96.52) (xy 83.82 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "897ca3c0-31c9-44de-a480-eca2c86e73e1")
+	)
+	(wire
+		(pts
+			(xy 175.26 93.98) (xy 144.78 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9539e92f-5991-4fac-a24c-b0ac92fec46d")
+	)
+	(wire
+		(pts
+			(xy 175.26 88.9) (xy 175.26 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "95e897bb-6a0e-4681-9b6e-a21076d45ec8")
+	)
+	(wire
+		(pts
+			(xy 99.06 88.9) (xy 107.95 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b2b6ed0-d64f-4665-ab80-ddf3db471b87")
+	)
+	(wire
+		(pts
+			(xy 116.84 101.6) (xy 119.38 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a229d367-6282-4658-b298-31089406bb1e")
+	)
+	(wire
+		(pts
+			(xy 115.57 93.98) (xy 119.38 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a32d3fcb-ed6f-48ad-8c9e-77a930f090d4")
+	)
+	(wire
+		(pts
+			(xy 116.84 101.6) (xy 116.84 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8c6e304-9cea-4c47-8864-6898f72e228f")
+	)
+	(wire
+		(pts
+			(xy 157.48 101.6) (xy 166.37 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9e9fc6e-4517-48d7-a7fe-c41d4886f185")
+	)
+	(wire
+		(pts
+			(xy 148.59 96.52) (xy 144.78 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad3a7505-1886-4712-ae15-48c7d2dab79b")
+	)
+	(wire
+		(pts
+			(xy 180.34 93.98) (xy 180.34 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b3ef2afa-9a18-44ac-9335-62d400c56aa7")
+	)
+	(wire
+		(pts
+			(xy 88.9 86.36) (xy 88.9 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5bc276a-6b70-4278-8e28-1011dc52773a")
+	)
+	(wire
+		(pts
+			(xy 176.53 99.06) (xy 181.61 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8dcb344-3049-49e8-bbea-282dfd448e49")
+	)
+	(wire
+		(pts
+			(xy 83.82 91.44) (xy 88.9 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc219bb5-e3c6-475f-8c10-25c13a8c249a")
+	)
+	(wire
+		(pts
+			(xy 99.06 99.06) (xy 99.06 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf2ae84b-4d97-41c7-832a-5d60d998aaf9")
+	)
+	(wire
+		(pts
+			(xy 156.21 88.9) (xy 156.21 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd01afa0-9b21-4a6c-be89-379af4496668")
+	)
+	(wire
+		(pts
+			(xy 83.82 91.44) (xy 83.82 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1623b8f-013d-4fb1-9499-12715e2e1a41")
+	)
+	(wire
+		(pts
+			(xy 88.9 96.52) (xy 83.82 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5854459-95c8-48e4-852f-96f5588d429f")
+	)
+	(wire
+		(pts
+			(xy 166.37 101.6) (xy 166.37 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3dae125-3acc-4783-96a4-5ce0c32a4900")
+	)
+	(wire
+		(pts
+			(xy 107.95 86.36) (xy 107.95 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f186dd0b-3d59-4916-9903-f5b35fce599b")
+	)
+	(wire
+		(pts
+			(xy 181.61 99.06) (xy 181.61 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f202264d-4b3d-49bc-bdff-8f3547b3b61a")
+	)
+	(wire
+		(pts
+			(xy 107.95 99.06) (xy 107.95 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4a45c0f-5049-48d0-97ce-17dd9b46a35f")
+	)
+	(wire
+		(pts
+			(xy 132.08 67.31) (xy 144.78 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8c8a121-ca7d-4c82-b100-a1a7c5ab23ad")
+	)
+	(wire
+		(pts
+			(xy 148.59 106.68) (xy 144.78 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fd2aa8a8-db96-4b1d-86e1-ff5e01f4f683")
+	)
+	(global_label "S0"
+		(shape input)
+		(at 148.59 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e029eaab-cbac-477e-a827-574357ff5fb8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 148.59 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "S1"
+		(shape input)
+		(at 148.59 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f486c63a-b971-442f-9353-13a49b3f16a8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 148.59 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(hierarchical_label "Y1"
+		(shape input)
+		(at 100.33 99.06 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "008d10d4-665f-4e4e-be8e-d21009149ae7")
+	)
+	(hierarchical_label "Y0"
+		(shape input)
+		(at 100.33 88.9 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "131a3494-1fbf-4511-afd2-44d74a023b06")
+	)
+	(hierarchical_label "Y4"
+		(shape input)
+		(at 180.34 99.06 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "25cb7277-a01d-407f-9ace-e28997fc65fe")
+	)
+	(hierarchical_label "Y3"
+		(shape input)
+		(at 85.09 96.52 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4ade39b8-1262-4418-ac41-73e9a7e98718")
+	)
+	(hierarchical_label "Y6"
+		(shape input)
+		(at 163.83 91.44 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5020899b-4dd9-43bd-9f36-cf382cdac296")
+	)
+	(hierarchical_label "Y7"
+		(shape input)
+		(at 165.1 101.6 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "66360f40-8f37-41b7-83a2-20f09abddc63")
+	)
+	(hierarchical_label "Ya"
+		(shape output)
+		(at 148.59 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6bff7eea-0972-4fd8-8037-5245d740c2fd")
+	)
+	(hierarchical_label "Y2"
+		(shape input)
+		(at 85.09 91.44 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a30775eb-1d74-46ca-8bee-44cf5d7b0c72")
+	)
+	(hierarchical_label "Y5"
+		(shape input)
+		(at 179.07 93.98 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "cb618bf5-eaff-4ce8-bc4e-361bc9299032")
+	)
+	(hierarchical_label "Yb"
+		(shape output)
+		(at 115.57 93.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e772d1b5-1745-4384-84cf-d621a543b380")
+	)
+	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 132.08 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "06994c9a-3b5d-4a3a-aa39-fc487e5b71ce")
+		(property "Reference" "C18"
+			(at 134.874 71.374 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220uF"
+			(at 134.62 73.406 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
+			(at 133.0452 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/rubycon/25zl220mefc8x11-5/cap-220-f-25v-20/dp/1144699"
+			(at 132.08 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polarized capacitor"
+			(at 132.08 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 132.08 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "98e0ece1-2d8e-4471-a766-e63dca02c965")
+		)
+		(pin "2"
+			(uuid "d6ee2058-89ee-4155-b010-71cd3347a50d")
+		)
+		(instances
+			(project ""
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C18")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C36")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C45")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 180.34 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "06d7ab8c-efff-4a61-9121-0c5ae03863f1")
+		(property "Reference" "C22"
+			(at 182.88 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 182.88 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 181.3052 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
+			(at 180.34 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 180.34 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 180.34 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e3c4e4ee-ebe8-44c6-9427-85e3c815ef5c")
+		)
+		(pin "1"
+			(uuid "a2e16417-2e20-44eb-9bac-f2df992f43dc")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C22")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C40")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C49")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 99.06 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "083537ac-0a49-4220-9954-bc9e3512ecd1")
+		(property "Reference" "C20"
+			(at 100.076 80.518 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 100.33 78.232 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 100.0252 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
+			(at 99.06 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 99.06 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 99.06 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f7e046ab-d41a-464d-bb60-6b8a7dc3737a")
+		)
+		(pin "1"
+			(uuid "98a60105-8722-4148-af91-125273138f6d")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C20")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C38")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C47")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 107.95 78.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "08d81748-11fa-4e7d-925e-f1ba3e2128a7")
+		(property "Reference" "#PWR064"
+			(at 107.95 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 107.95 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.95 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.95 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 107.95 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "583ab177-45d6-485a-9a8f-8f2b5c520762")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR064")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0102")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0121")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR083")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 156.21 85.09 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1cd0d73f-a87a-4598-9afe-fdd4c7e4a819")
+		(property "Reference" "R30"
+			(at 154.94 83.566 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 154.94 85.598 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 157.988 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RC0805JR-074K7P?qs=sGAEpiMZZMvdGkrng054tzomC5y8M3A2PXM7%2FdDmwRmub%2FgmQnZ%252Bqg%3D%3D"
+			(at 156.21 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 156.21 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 156.21 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "69cda89c-8359-42e9-8d7d-4748f36e16ea")
+		)
+		(pin "1"
+			(uuid "c5313f04-ae49-4b2a-a683-68b77274face")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R30")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R46")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R54")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R38")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 107.95 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "20e1b42d-f4a6-48b4-91fc-5d02859cf141")
+		(property "Reference" "R29"
+			(at 109.22 81.026 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 109.22 83.058 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 106.172 82.55 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RC0805JR-074K7P?qs=sGAEpiMZZMvdGkrng054tzomC5y8M3A2PXM7%2FdDmwRmub%2FgmQnZ%252Bqg%3D%3D"
+			(at 107.95 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 107.95 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 107.95 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6d68a300-334b-4fcf-be6c-dbc9bcc2250d")
+		)
+		(pin "1"
+			(uuid "ed6921c7-c01d-4067-b5cb-0d4305450d35")
+		)
+		(instances
+			(project ""
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R29")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R45")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R53")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R37")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 99.06 78.74 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2fa000dd-d92a-4524-9919-2ea11a72966f")
+		(property "Reference" "#PWR063"
+			(at 99.06 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 99.06 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 99.06 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 99.06 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "561bcf38-9cd7-4057-a647-b6c59493fa9a")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR063")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0101")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0120")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR082")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 83.82 107.95 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3a18cc0a-cd2b-4e83-9774-544122a6d210")
+		(property "Reference" "#PWR069"
+			(at 83.82 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 83.82 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.82 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 83.82 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e11f7bb0-4d6f-4079-98c4-b4fd91663203")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR069")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0107")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0126")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR088")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 157.48 107.95 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "52f9dd54-93c4-4022-8ad2-95ad9a95be57")
+		(property "Reference" "R35"
+			(at 156.21 109.474 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 156.21 107.442 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 159.258 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RC0805JR-074K7P?qs=sGAEpiMZZMvdGkrng054tzomC5y8M3A2PXM7%2FdDmwRmub%2FgmQnZ%252Bqg%3D%3D"
+			(at 157.48 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 157.48 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 157.48 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a7e93d87-ce53-4d53-a285-c6d5c14a1868")
+		)
+		(pin "1"
+			(uuid "82388ada-676f-4c93-98e8-fff69401f002")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R35")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R51")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R59")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R43")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 83.82 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "54771fd5-7f49-476c-9a84-bc73b2f812b9")
+		(property "Reference" "C23"
+			(at 77.724 104.648 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 77.724 107.188 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 84.7852 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
+			(at 83.82 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 83.82 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 83.82 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "85e09011-037d-4e44-a100-d4f628c8aead")
+		)
+		(pin "1"
+			(uuid "51321371-588e-46a9-a58d-e23a571d9eeb")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C23")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C41")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C50")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 166.37 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "56c26d7c-c479-48a4-a5f0-6f8e39d61e2c")
+		(property "Reference" "#PWR077"
+			(at 166.37 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 166.37 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 166.37 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 166.37 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7bbb8174-19df-44a3-a8fd-edad2c2f2fdd")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR077")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0115")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0134")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR096")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 83.82 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5ef987f5-6915-41e8-9509-566caa1261a1")
+		(property "Reference" "C19"
+			(at 77.724 83.058 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 77.724 85.598 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 84.7852 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
+			(at 83.82 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 83.82 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 83.82 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e3f59b48-0624-46f2-8349-8c62b8f29dee")
+		)
+		(pin "1"
+			(uuid "5e0cbf01-7614-46e2-8bc4-6ec450a26c7a")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C19")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C37")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C46")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C28")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 83.82 78.74 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5f42da89-9947-426c-a6ff-4e2ad298d9fd")
+		(property "Reference" "#PWR061"
+			(at 83.82 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 83.82 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.82 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 83.82 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "53a6e5ef-4894-476b-bd9c-bf06d97578ee")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR061")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR099")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0118")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR080")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 99.06 109.22 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5ffad39b-530d-457c-be56-eeab725dbc19")
+		(property "Reference" "#PWR071"
+			(at 99.06 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 99.06 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 99.06 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 99.06 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "391813da-110a-4d2f-8045-d97f24fd2ab0")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR071")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0109")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0128")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR090")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 165.1 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "651cf301-fa2b-4a20-af36-df7c78bf83e4")
+		(property "Reference" "C21"
+			(at 158.75 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 159.004 82.804 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 166.0652 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
+			(at 165.1 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 165.1 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 165.1 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9da716d4-1341-4cb0-a60c-2878df1392ac")
+		)
+		(pin "1"
+			(uuid "db1cdd4b-0c61-4534-87bd-7faffe9aa3b5")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C21")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C39")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C48")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 180.34 81.28 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6f9a7459-df24-4d26-bb62-c4be0c17ae54")
+		(property "Reference" "#PWR068"
+			(at 180.34 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 180.34 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 180.34 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 180.34 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 180.34 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aacbdc77-a82d-434f-bb50-bfae56333a09")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR068")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0106")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0125")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR087")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 88.9 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "72c5eb7a-74ee-48c8-97c7-752c00a9a112")
+		(property "Reference" "R28"
+			(at 90.17 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 90.17 83.312 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 87.122 82.55 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RC0805JR-074K7P?qs=sGAEpiMZZMvdGkrng054tzomC5y8M3A2PXM7%2FdDmwRmub%2FgmQnZ%252Bqg%3D%3D"
+			(at 88.9 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 88.9 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 88.9 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ba9a4907-5694-4e00-af9f-35d064422665")
+		)
+		(pin "1"
+			(uuid "851da0f7-9473-4c38-9aa9-b36364af067e")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R28")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R44")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R52")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R36")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 157.48 111.76 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "81d581a3-2fd6-4496-a216-6c7f215866c7")
+		(property "Reference" "#PWR076"
+			(at 157.48 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 157.48 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 157.48 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 157.48 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 157.48 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "45ea0030-d6ea-4a58-815b-888aece2dac4")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR076")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0114")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0133")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR095")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 88.9 78.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8414a6bd-f026-46e1-aa0b-3dc379fa0259")
+		(property "Reference" "#PWR062"
+			(at 88.9 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 88.9 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c44cf8f8-1cf7-444b-99a1-8b28ddfcfde1")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR062")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0100")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0119")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR081")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 176.53 110.49 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "88c17fca-eb86-460e-9600-a48321f5a41c")
+		(property "Reference" "#PWR074"
+			(at 176.53 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 176.53 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 176.53 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 176.53 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 176.53 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "40a10ec1-5bf7-4435-a323-57eb4f1500c4")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR074")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0112")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0131")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR093")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 132.08 66.04 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "91c3ab32-3f79-4808-8f00-44e80a0a7493")
+		(property "Reference" "#PWR059"
+			(at 132.08 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 135.89 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 132.08 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 132.08 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4d57eb77-d3a1-4b71-97ea-ae2c0c71c309")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR059")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR097")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0116")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR078")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 88.9 107.95 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9673e10f-3bdf-471c-b4e3-02c40a7e7aef")
+		(property "Reference" "#PWR070"
+			(at 88.9 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 88.9 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 88.9 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a837bebb-fb3b-42e9-8448-8ea264609ce0")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR070")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0108")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0127")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR089")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 166.37 107.95 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "96e50184-07cc-4d32-836e-e1119e9a9572")
+		(property "Reference" "C26"
+			(at 160.274 108.458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 160.274 110.998 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 167.3352 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
+			(at 166.37 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 166.37 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 166.37 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5524d097-a7ce-4d8e-bc36-0e07763da96e")
+		)
+		(pin "1"
+			(uuid "2096e7e4-968b-47f5-9e11-b2af5cce8638")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C26")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C44")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C53")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C35")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 107.95 109.22 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "99f7a3c9-3f53-44b3-89dd-5fc2c0f4e8c9")
+		(property "Reference" "#PWR072"
+			(at 107.95 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 107.95 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 107.95 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.95 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 107.95 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "59eb0f55-3664-481b-ad32-65176d8a0215")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR072")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0110")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0129")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR091")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 156.21 81.28 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9b257b6d-af2a-4dd2-83f8-0b9f3a71411c")
+		(property "Reference" "#PWR065"
+			(at 156.21 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 156.21 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 156.21 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 156.21 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 156.21 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "073d5865-40ae-4ede-bd12-97995ef8068c")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR065")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0103")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0122")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR084")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 132.08 76.2 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9f0e8d3e-73a0-4cf3-b9a1-c08662ddbe9f")
+		(property "Reference" "#PWR060"
+			(at 132.08 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 134.62 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 132.08 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 132.08 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3481c35e-263a-42b9-94ed-00c354707b0c")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR060")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR098")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0117")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR079")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 99.06 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a3b71cd8-b800-49cf-a4d3-d259e3192df2")
+		(property "Reference" "C24"
+			(at 99.314 109.982 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 99.568 107.696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 100.0252 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
+			(at 99.06 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 99.06 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 99.06 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "fa029ba1-fb55-46f2-9179-2357dd614951")
+		)
+		(pin "1"
+			(uuid "9b70d4ec-9849-4758-8fd5-82c19cf3b14b")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C24")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C42")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C51")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C33")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 181.61 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "af355d32-f7cd-4318-9d05-e02a1412f6b5")
+		(property "Reference" "C25"
+			(at 184.15 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 184.15 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 182.5752 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
+			(at 181.61 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 181.61 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 181.61 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a1ad539a-3c77-4467-b9e3-9a7d216e62d0")
+		)
+		(pin "1"
+			(uuid "cc56ada8-87ee-4a2f-89ff-acb23d5f9740")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "C25")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "C43")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "C52")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "C34")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 175.26 85.09 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b26243a9-d58b-483e-ba8e-2714d6179637")
+		(property "Reference" "R31"
+			(at 173.99 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 173.99 85.852 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 177.038 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RC0805JR-074K7P?qs=sGAEpiMZZMvdGkrng054tzomC5y8M3A2PXM7%2FdDmwRmub%2FgmQnZ%252Bqg%3D%3D"
+			(at 175.26 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 175.26 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 175.26 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2ef83aa5-f11e-41d8-ad39-af4cd428ed47")
+		)
+		(pin "1"
+			(uuid "faca9219-1cb8-469a-b465-9748a8a870d7")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R31")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R47")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R55")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R39")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "74HC4052D_653:74HC4052D,653")
+		(at 119.38 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b6a22f8f-1abd-4832-832e-6810e4dae6c0")
+		(property "Reference" "IC1"
+			(at 132.08 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "74HC4052D,653"
+			(at 132.08 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "74HC4052D653"
+			(at 140.97 183.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/74HC_HCT4052.pdf"
+			(at 140.97 283.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "74HC(T)4052 - Dual 4-channel analog multiplexer/demultiplexer@en-us"
+			(at 119.38 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "1.75"
+			(at 140.97 483.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "771-74HC4052D-T"
+			(at 140.97 583.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Nexperia/74HC4052D653?qs=P62ublwmbi9dOtwH%252Bhrppg%3D%3D"
+			(at 140.97 683.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Nexperia"
+			(at 140.97 783.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "74HC4052D,653"
+			(at 140.97 883.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 119.38 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "1ababeb8-08bc-4829-a79c-f3e251ecce01")
+		)
+		(pin "2"
+			(uuid "34aad576-ef62-4971-bd68-3e2f303b0303")
+		)
+		(pin "14"
+			(uuid "98936385-6cb9-4983-9606-8326df1d42da")
+		)
+		(pin "3"
+			(uuid "8a75eee5-d2a3-42da-8b60-e7dc6f1f7bcc")
+		)
+		(pin "11"
+			(uuid "074087fe-19b6-40c4-9764-d1b6d0f71657")
+		)
+		(pin "4"
+			(uuid "ce94d02c-9f06-4acb-aa8a-5185c7275970")
+		)
+		(pin "10"
+			(uuid "6608c4df-ef27-443d-a3af-af0415a41902")
+		)
+		(pin "8"
+			(uuid "e2425278-de12-4aba-a12d-5808d2ae9723")
+		)
+		(pin "13"
+			(uuid "9ade4083-3b7d-482b-b675-3772465cb48f")
+		)
+		(pin "9"
+			(uuid "49826f7b-e0b0-4d7e-a4b3-3c44bfb02a9e")
+		)
+		(pin "12"
+			(uuid "7bf943e9-fe31-4b6c-b2ac-874e7731b1e7")
+		)
+		(pin "16"
+			(uuid "b2f39ced-12fe-4dc9-821e-3b65b850efcd")
+		)
+		(pin "1"
+			(uuid "fbb85209-cf38-4958-a3cf-0a8e2bfd15eb")
+		)
+		(pin "15"
+			(uuid "945725b8-aa7d-4e77-a4b7-a870e15abccd")
+		)
+		(pin "7"
+			(uuid "bd617543-ed9f-4ff3-a5bc-bfdf944e9975")
+		)
+		(pin "6"
+			(uuid "32f2cd37-a73e-46c7-a208-251468ef83ff")
+		)
+		(instances
+			(project ""
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "IC1")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "IC3")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "IC4")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "IC2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 88.9 104.14 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b88cc4ba-edc2-4f00-844d-4d22d1f0816f")
+		(property "Reference" "R32"
+			(at 90.17 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 90.17 103.378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 87.122 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RC0805JR-074K7P?qs=sGAEpiMZZMvdGkrng054tzomC5y8M3A2PXM7%2FdDmwRmub%2FgmQnZ%252Bqg%3D%3D"
+			(at 88.9 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 88.9 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 88.9 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "55fe1fa0-2edd-4cdd-8339-28b166efa1e3")
+		)
+		(pin "1"
+			(uuid "c60bd60f-6164-4799-9af1-d3c334832903")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R32")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R48")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R56")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R40")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 107.95 105.41 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c0fb086a-0ffe-4cbf-beac-2b2076133006")
+		(property "Reference" "R33"
+			(at 109.22 106.934 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 109.22 104.902 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 106.172 105.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RC0805JR-074K7P?qs=sGAEpiMZZMvdGkrng054tzomC5y8M3A2PXM7%2FdDmwRmub%2FgmQnZ%252Bqg%3D%3D"
+			(at 107.95 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 107.95 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 107.95 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "02ef2b5a-a00a-453e-a0bf-16afbba9877d")
+		)
+		(pin "1"
+			(uuid "f5f7bf86-eeb3-4ac2-afc3-85f34ae1110b")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R33")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R49")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R57")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 176.53 106.68 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c539e438-1e3d-409d-9a85-f2d3c0372f22")
+		(property "Reference" "R34"
+			(at 175.26 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 175.26 105.918 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 178.308 106.68 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RC0805JR-074K7P?qs=sGAEpiMZZMvdGkrng054tzomC5y8M3A2PXM7%2FdDmwRmub%2FgmQnZ%252Bqg%3D%3D"
+			(at 176.53 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 176.53 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Enable" ""
+			(at 176.53 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "752abc07-2f39-4b54-80c4-395d731929b4")
+		)
+		(pin "1"
+			(uuid "22cce80f-1292-421b-bbe7-f96f5dbb27b9")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R34")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R50")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R58")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 116.84 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ce9e4126-68d6-4219-88e2-c73e4f4369a5")
+		(property "Reference" "#PWR073"
+			(at 116.84 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 119.38 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 116.84 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.84 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 116.84 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bfe4167b-8e1b-4732-91cc-f3df0177ee13")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR073")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0111")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0130")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR092")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 181.61 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cfae0ac6-2802-4e66-b0e6-84a684576f70")
+		(property "Reference" "#PWR075"
+			(at 181.61 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 181.61 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 181.61 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 181.61 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 181.61 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "af3d3434-d534-4a55-ad67-13dc0927968d")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR075")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0113")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0132")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR094")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 175.26 81.28 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e3e10fc7-ce83-4716-bc2f-bb6ca86ce49a")
+		(property "Reference" "#PWR067"
+			(at 175.26 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 175.26 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 175.26 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 175.26 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 175.26 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b83fa6f2-9f15-4e6e-aa54-bab3d75ad785")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR067")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0105")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0124")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR086")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 165.1 81.28 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f5bc65ec-1ee8-45e8-9847-8bbc81d3d95e")
+		(property "Reference" "#PWR066"
+			(at 165.1 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 165.1 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 165.1 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 165.1 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bb5a638a-e279-41fb-8dea-9b4d5878eb0c")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR066")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR0104")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR0123")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR085")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

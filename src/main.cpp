@@ -35,9 +35,9 @@ extern "C" void app_main(void)
     xTimerStart(tasks_10ms_timer, 0);
 
 
-    gpio_reset_pin(GPIO_NUM_15);
-    gpio_reset_pin(GPIO_NUM_0);
-    gpio_reset_pin(GPIO_NUM_2);
+    gpio_reset_pin(GPIO_NUM_15);    // TODO
+    gpio_reset_pin(GPIO_NUM_0); // TODO
+    gpio_reset_pin(GPIO_NUM_2); // TODO
     gpio_set_direction(GPIO_NUM_15, GPIO_MODE_OUTPUT);
     gpio_set_direction(GPIO_NUM_0, GPIO_MODE_OUTPUT);
     gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);

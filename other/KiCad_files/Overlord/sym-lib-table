@@ -1,3 +1,5 @@
 (sym_lib_table
-  (lib (name 74HC251D,653)(type Legacy)(uri ${KIPRJMOD}/74HC251D,653.lib)(options "")(descr ""))
+  (version 7)
+  (lib (name "74HC4052D_653")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/74HC4052D_653.kicad_sym")(options "")(descr ""))
+  (lib (name "39502-1011")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/39502-1011.kicad_sym")(options "")(descr ""))
 )

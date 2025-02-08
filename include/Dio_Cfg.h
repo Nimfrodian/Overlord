@@ -32,14 +32,14 @@ typedef enum
 
 const gpio_num_t GPIO_IN[NUM_OF_GPIO_INPUTS] =
 {
-    GPIO_NUM_26,
-    GPIO_NUM_25,
-    GPIO_NUM_36,
-    GPIO_NUM_39,
-    GPIO_NUM_35,
-    GPIO_NUM_34,
-    GPIO_NUM_32,
-    GPIO_NUM_33,
+    GPIO_NUM_6,///< old GPIO_NUM_26,
+    GPIO_NUM_7,///< old GPIO_NUM_25,
+    GPIO_NUM_15,///< old GPIO_NUM_36,
+    GPIO_NUM_16,///< old GPIO_NUM_39,
+    GPIO_NUM_35,///< old GPIO_NUM_35,
+    GPIO_NUM_36,///< old GPIO_NUM_34,
+    GPIO_NUM_37,///< old GPIO_NUM_32,
+    GPIO_NUM_38,///< old GPIO_NUM_33,
 };
 
 typedef enum
@@ -51,8 +51,8 @@ typedef enum
 
 const gpio_num_t GPIO_IN_SEL[NUM_OF_GPIO_IN_SEL] =
 {
-    GPIO_NUM_27,
-    GPIO_NUM_14,
+    GPIO_NUM_3,///< old GPIO_NUM_27,
+    GPIO_NUM_46,///< old GPIO_NUM_14,
 };
 
 typedef enum

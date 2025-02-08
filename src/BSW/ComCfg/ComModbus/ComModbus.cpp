@@ -40,7 +40,7 @@ void ComModbus_init(void)
                 .source_clk = UART_SCLK_APB,
         };
         // Configure MODBUS 2 pins
-        (ESP_OK == uart_set_pin(UART_MODBUS_2, GPIO_NUM_17, GPIO_NUM_16, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE))?
+        (ESP_OK == uart_set_pin(UART_MODBUS_2, GPIO_NUM_10, GPIO_NUM_9, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE))?
             CLI_INFO_1NL("uart_set_pin success") : CLI_INFO_1NL("uart_set_pin fail");
         // Set MODBUS 2 parameters
         (ESP_OK == uart_param_config(UART_MODBUS_2, &uart2_config))?
@@ -79,10 +79,10 @@ void ComModbus_init(void)
         {
             gpio_reset_pin(GPIO_NUM_18);
             gpio_set_direction(GPIO_NUM_18, GPIO_MODE_OUTPUT);
-            gpio_reset_pin(GPIO_NUM_19);
-            gpio_set_direction(GPIO_NUM_19, GPIO_MODE_INPUT);
+            gpio_reset_pin(GPIO_NUM_17);
+            gpio_set_direction(GPIO_NUM_17, GPIO_MODE_INPUT);
         }
-        (ESP_OK == uart_set_pin(UART_MODBUS_1, GPIO_NUM_18, GPIO_NUM_19, DE_RE_PIN_MB1, UART_PIN_NO_CHANGE))?
+        (ESP_OK == uart_set_pin(UART_MODBUS_1, GPIO_NUM_18, GPIO_NUM_17, DE_RE_PIN_MB1, UART_PIN_NO_CHANGE))?
             CLI_INFO_1NL("uart_set_pin success") : CLI_INFO_1NL("uart_set_pin fail");
         // Set MODBUS 1 parameters
         (ESP_OK == uart_param_config(UART_MODBUS_1, &uart1_config))?

@@ -3,14 +3,17 @@
     "3dviewports": [],
     "design_settings": {
       "defaults": {
-        "board_outline_line_width": 0.049999999999999996,
-        "copper_line_width": 0.19999999999999998,
+        "apply_defaults_to_fp_fields": false,
+        "apply_defaults_to_fp_shapes": false,
+        "apply_defaults_to_fp_text": false,
+        "board_outline_line_width": 0.05,
+        "copper_line_width": 0.2,
         "copper_text_italic": false,
         "copper_text_size_h": 1.5,
         "copper_text_size_v": 1.5,
         "copper_text_thickness": 0.3,
         "copper_text_upright": false,
-        "courtyard_line_width": 0.049999999999999996,
+        "courtyard_line_width": 0.05,
         "dimension_precision": 4,
         "dimension_units": 3,
         "dimensions": {
@@ -21,13 +24,13 @@
           "text_position": 0,
           "units_format": 1
         },
-        "fab_line_width": 0.09999999999999999,
+        "fab_line_width": 0.1,
         "fab_text_italic": false,
         "fab_text_size_h": 1.0,
         "fab_text_size_v": 1.0,
         "fab_text_thickness": 0.15,
         "fab_text_upright": false,
-        "other_line_width": 0.09999999999999999,
+        "other_line_width": 0.1,
         "other_text_italic": false,
         "other_text_size_h": 1.0,
         "other_text_size_v": 1.0,
@@ -48,20 +51,21 @@
           "min_clearance": 0.508
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [
-        "silk_edge_clearance|126650000|111450000|fc452143-894e-460f-b924-1413b285dab9|61c52bc8-6658-4cfa-b09b-3e556baa756a",
-        "silk_edge_clearance|126650000|25450000|2853eb8a-15df-40c9-9a5a-fa211f7ffaca|5a34075c-9d7f-4ac5-bb09-5c6f4fe53f3c",
-        "silk_edge_clearance|126650000|25450000|2853eb8a-15df-40c9-9a5a-fa211f7ffaca|87905f3d-4704-43cf-a2ed-033c6a54215b",
-        "silk_edge_clearance|132150000|25450000|2853eb8a-15df-40c9-9a5a-fa211f7ffaca|0906f22b-181a-4fb1-b369-71cd54318a2b",
-        "silk_edge_clearance|132650000|111450000|fc452143-894e-460f-b924-1413b285dab9|9552fb59-5af9-449e-a2b8-146537f72261",
-        "silk_edge_clearance|132650000|111450000|fc452143-894e-460f-b924-1413b285dab9|c7bc2cd4-7f2c-40ed-982e-1c5ec87b6c28",
-        "silk_edge_clearance|179650000|25450000|2853eb8a-15df-40c9-9a5a-fa211f7ffaca|10ff1e78-7417-4f66-a414-2ef54364093c",
-        "silk_edge_clearance|179650000|25450000|2853eb8a-15df-40c9-9a5a-fa211f7ffaca|9495f877-4cc7-4bf8-b813-8accb776ec97",
-        "silk_edge_clearance|180150000|111450000|fc452143-894e-460f-b924-1413b285dab9|a2ceec97-55c3-49f4-b378-c08465b55994",
-        "silk_edge_clearance|79150000|111450000|fc452143-894e-460f-b924-1413b285dab9|25efb9c8-79d3-488d-80b7-c2990c378ab8",
-        "silk_edge_clearance|79150000|111450000|fc452143-894e-460f-b924-1413b285dab9|ebdb4e05-4c51-428f-8b19-90d11152010d",
-        "silk_edge_clearance|79150000|25450000|2853eb8a-15df-40c9-9a5a-fa211f7ffaca|28f8920d-4827-42d2-8e20-753697507c26"
+        "lib_footprint_mismatch|103150000|28959688|dfc6eab1-ac19-4571-b783-e6b4bbba8677|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|155850000|28959688|c884c9c5-9a81-4407-bfbe-8989ccfd861d|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|50450000|28959688|a3324cbd-f0ae-4ab6-9237-8e879327bba6|00000000-0000-0000-0000-000000000000",
+        "silk_edge_clearance|111316000|111500000|fc452143-894e-460f-b924-1413b285dab9|cd4d455d-8c53-4d16-b6a4-8e842e6a09ea",
+        "silk_edge_clearance|147684000|111500000|fc452143-894e-460f-b924-1413b285dab9|fdc6494e-4c77-4652-b5ef-e9459df13820",
+        "silk_edge_clearance|164016000|111500000|fc452143-894e-460f-b924-1413b285dab9|f53851b6-68d6-4f15-bdf0-36aa792a5da2",
+        "silk_edge_clearance|94984000|111500000|fc452143-894e-460f-b924-1413b285dab9|6fc72c47-584a-4437-87cb-d998979b986a"
       ],
       "meta": {
         "filename": "board_design_settings.json",
@@ -80,9 +84,11 @@
         "duplicate_footprints": "warning",
         "extra_footprint": "warning",
         "footprint": "error",
+        "footprint_symbol_mismatch": "warning",
         "footprint_type_mismatch": "ignore",
         "hole_clearance": "error",
         "hole_near_hole": "error",
+        "holes_co_located": "warning",
         "invalid_outline": "error",
         "isolated_copper": "warning",
         "item_on_disabled_layer": "error",
@@ -123,27 +129,24 @@
         "max_error": 0.005,
         "min_clearance": 0.0,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.024999999999999998,
+        "min_copper_edge_clearance": 0.025,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
-        "min_microvia_diameter": 0.19999999999999998,
-        "min_microvia_drill": 0.09999999999999999,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
         "min_silk_clearance": 0.0,
-        "min_text_height": 0.7999999999999999,
+        "min_text_height": 0.8,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.19999999999999998,
-        "min_via_annular_width": 0.049999999999999996,
-        "min_via_diameter": 0.39999999999999997,
+        "min_track_width": 0.2,
+        "min_via_annular_width": 0.05,
+        "min_via_diameter": 0.4,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
         {
-          "td_allow_use_two_tracks": true,
-          "td_curve_segcount": 5,
-          "td_on_pad_in_zone": false,
           "td_onpadsmd": true,
           "td_onroundshapesonly": false,
           "td_ontrackend": false,
@@ -152,29 +155,35 @@
       ],
       "teardrop_parameters": [
         {
+          "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
           "td_maxlen": 1.0,
+          "td_on_pad_in_zone": false,
           "td_target_name": "td_round_shape",
           "td_width_to_size_filter_ratio": 0.9
         },
         {
+          "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
           "td_maxlen": 1.0,
+          "td_on_pad_in_zone": false,
           "td_target_name": "td_rect_shape",
           "td_width_to_size_filter_ratio": 0.9
         },
         {
+          "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
           "td_maxlen": 1.0,
+          "td_on_pad_in_zone": false,
           "td_target_name": "td_track_end",
           "td_width_to_size_filter_ratio": 0.9
         }
@@ -185,6 +194,32 @@
         0.75,
         1.0
       ],
+      "tuning_pattern_settings": {
+        "diff_pair_defaults": {
+          "corner_radius_percentage": 80,
+          "corner_style": 1,
+          "max_amplitude": 1.0,
+          "min_amplitude": 0.2,
+          "single_sided": false,
+          "spacing": 1.0
+        },
+        "diff_pair_skew_defaults": {
+          "corner_radius_percentage": 80,
+          "corner_style": 1,
+          "max_amplitude": 1.0,
+          "min_amplitude": 0.2,
+          "single_sided": false,
+          "spacing": 0.6
+        },
+        "single_track_defaults": {
+          "corner_radius_percentage": 80,
+          "corner_style": 1,
+          "max_amplitude": 1.0,
+          "min_amplitude": 0.2,
+          "single_sided": false,
+          "spacing": 0.6
+        }
+      },
       "via_dimensions": [
         {
           "diameter": 0.0,
@@ -204,7 +239,113 @@
       "mfg": "",
       "mpn": ""
     },
-    "layer_presets": [],
+    "layer_presets": [
+      {
+        "activeLayer": -2,
+        "layers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59
+        ],
+        "name": "noFabLayer",
+        "renderLayers": [
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          164,
+          165
+        ]
+      }
+    ],
     "viewports": []
   },
   "boards": [],
@@ -448,6 +589,40 @@
         "via_diameter": 0.8,
         "via_drill": 0.4,
         "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.75,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.1,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.45,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "USB",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.25,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6
       }
     ],
     "meta": {
@@ -457,15 +632,15 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Default",
+        "netclass": "Power",
         "pattern": "+12V"
       },
       {
-        "netclass": "Default",
+        "netclass": "Power",
         "pattern": "+3V3"
       },
       {
-        "netclass": "Default",
+        "netclass": "Power",
         "pattern": "+5V"
       },
       {
@@ -859,6 +1034,18 @@
       {
         "netclass": "Default",
         "pattern": "Y8"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "USB+5V"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "+3.3V"
+      },
+      {
+        "netclass": "USB",
+        "pattern": "D*"
       }
     ]
   },
@@ -867,7 +1054,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "PCB_actual_gerber_v2.0_revA/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -878,7 +1065,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
-    "bom_export_filename": "",
+    "bom_export_filename": "Overlord_BOM.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -928,11 +1115,71 @@
           "label": "DNP",
           "name": "${DNP}",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Height",
+          "name": "Height",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer_Name",
+          "name": "Manufacturer_Name",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer_Part_Number",
+          "name": "Manufacturer_Part_Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Mouser Part Number",
+          "name": "Mouser Part Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Mouser Price/Stock",
+          "name": "Mouser Price/Stock",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Enable",
+          "name": "Sim.Enable",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
-      "name": "Grouped By Value",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -980,6 +1227,22 @@
     [
       "b05fe6d7-2198-4616-b68d-60ce1e3d6296",
       "Root"
+    ],
+    [
+      "22bce7d2-5a01-4501-8164-494c6866cf71",
+      "InputMux"
+    ],
+    [
+      "fe912d6e-7d2c-499a-8714-bffe9dd94d38",
+      "InputMux1"
+    ],
+    [
+      "a3b8431d-f055-4ba3-acea-821685791c18",
+      "InputMux2"
+    ],
+    [
+      "ee175e2e-a3c3-4789-aca4-0962a9c7b5a8",
+      "InputMux3"
     ]
   ],
   "text_variables": {}
