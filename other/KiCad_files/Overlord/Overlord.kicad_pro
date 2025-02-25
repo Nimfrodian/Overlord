@@ -59,13 +59,9 @@
         }
       ],
       "drc_exclusions": [
-        "lib_footprint_mismatch|103150000|28959688|dfc6eab1-ac19-4571-b783-e6b4bbba8677|00000000-0000-0000-0000-000000000000",
-        "lib_footprint_mismatch|155850000|28959688|c884c9c5-9a81-4407-bfbe-8989ccfd861d|00000000-0000-0000-0000-000000000000",
-        "lib_footprint_mismatch|50450000|28959688|a3324cbd-f0ae-4ab6-9237-8e879327bba6|00000000-0000-0000-0000-000000000000",
-        "silk_edge_clearance|111316000|111500000|fc452143-894e-460f-b924-1413b285dab9|cd4d455d-8c53-4d16-b6a4-8e842e6a09ea",
-        "silk_edge_clearance|147684000|111500000|fc452143-894e-460f-b924-1413b285dab9|fdc6494e-4c77-4652-b5ef-e9459df13820",
-        "silk_edge_clearance|164016000|111500000|fc452143-894e-460f-b924-1413b285dab9|f53851b6-68d6-4f15-bdf0-36aa792a5da2",
-        "silk_edge_clearance|94984000|111500000|fc452143-894e-460f-b924-1413b285dab9|6fc72c47-584a-4437-87cb-d998979b986a"
+        "lib_footprint_mismatch|103150000|28859688|dfc6eab1-ac19-4571-b783-e6b4bbba8677|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|155850000|28859688|c884c9c5-9a81-4407-bfbe-8989ccfd861d|00000000-0000-0000-0000-000000000000",
+        "lib_footprint_mismatch|50450000|28859688|a3324cbd-f0ae-4ab6-9237-8e879327bba6|00000000-0000-0000-0000-000000000000"
       ],
       "meta": {
         "filename": "board_design_settings.json",
@@ -1054,7 +1050,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "PCB_actual_gerber_v2.0_revA/",
+      "plot": "PCB_actual_gerber_v2.0_revB/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",

@@ -1770,15 +1770,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 132.08 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "98e0ece1-2d8e-4471-a766-e63dca02c965")
 		)
@@ -1860,15 +1851,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 180.34 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "e3c4e4ee-ebe8-44c6-9427-85e3c815ef5c")
 		)
@@ -1942,15 +1924,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 99.06 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 99.06 82.55 0)
 			(effects
 				(font
@@ -2118,15 +2091,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 156.21 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "69cda89c-8359-42e9-8d7d-4748f36e16ea")
 		)
@@ -2200,15 +2164,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 107.95 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 107.95 82.55 0)
 			(effects
 				(font
@@ -2453,15 +2408,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 157.48 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "a7e93d87-ce53-4d53-a285-c6d5c14a1868")
 		)
@@ -2535,15 +2481,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 83.82 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 83.82 104.14 0)
 			(effects
 				(font
@@ -2702,15 +2639,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 83.82 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 83.82 82.55 0)
 			(effects
 				(font
@@ -2955,15 +2883,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 165.1 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "9da716d4-1341-4cb0-a60c-2878df1392ac")
 		)
@@ -3115,15 +3034,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 88.9 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 88.9 82.55 0)
 			(effects
 				(font
@@ -3599,15 +3509,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 166.37 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "5524d097-a7ce-4d8e-bc36-0e07763da96e")
 		)
@@ -3922,15 +3823,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 99.06 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "fa029ba1-fb55-46f2-9179-2357dd614951")
 		)
@@ -4004,15 +3896,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 181.61 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 181.61 106.68 0)
 			(effects
 				(font
@@ -4095,15 +3978,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 175.26 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 175.26 85.09 0)
 			(effects
 				(font
@@ -4244,15 +4118,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 119.38 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "5"
 			(uuid "1ababeb8-08bc-4829-a79c-f3e251ecce01")
 		)
@@ -4377,15 +4242,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 88.9 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "55fe1fa0-2edd-4cdd-8339-28b166efa1e3")
 		)
@@ -4468,15 +4324,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 107.95 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "02ef2b5a-a00a-453e-a0bf-16afbba9877d")
 		)
@@ -4550,15 +4397,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 176.53 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 176.53 106.68 0)
 			(effects
 				(font
