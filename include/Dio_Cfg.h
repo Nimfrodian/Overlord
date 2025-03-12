@@ -58,41 +58,41 @@ const gpio_num_t GPIO_IN_SEL[NUM_OF_GPIO_IN_SEL] =
 typedef enum
 {
     // indexes are sorted in a way that allows easier indexing on hardware level
-    INPUT_INDX_05 = 0,      ///< 00
-    INPUT_INDX_00,          ///< 01
-    INPUT_INDX_16,          ///< 02
-    INPUT_INDX_21,          ///< 03
-    INPUT_INDX_29,          ///< 04
-    INPUT_INDX_24,          ///< 05
-    INPUT_INDX_13,          ///< 06
-    INPUT_INDX_08,          ///< 07
+    INPUT_INDX_02 = 0,      ///< 00
+    INPUT_INDX_07,          ///< 01
+    INPUT_INDX_15,          ///< 02
+    INPUT_INDX_10,          ///< 03
+    INPUT_INDX_31,          ///< 04
+    INPUT_INDX_26,          ///< 05
+    INPUT_INDX_23,          ///< 06
+    INPUT_INDX_18,          ///< 07
 
-    INPUT_INDX_06,          ///< 08
-    INPUT_INDX_03,          ///< 09
-    INPUT_INDX_19,          ///< 10
-    INPUT_INDX_22,          ///< 11
-    INPUT_INDX_30,          ///< 12
-    INPUT_INDX_27,          ///< 13
-    INPUT_INDX_14,          ///< 14
-    INPUT_INDX_11,          ///< 15
+    INPUT_INDX_01,          ///< 08
+    INPUT_INDX_04,          ///< 09
+    INPUT_INDX_12,          ///< 10
+    INPUT_INDX_09,          ///< 11
+    INPUT_INDX_28,          ///< 12
+    INPUT_INDX_25,          ///< 13
+    INPUT_INDX_20,          ///< 14
+    INPUT_INDX_17,          ///< 15
 
-    INPUT_INDX_07,          ///< 16
-    INPUT_INDX_01,          ///< 17
-    INPUT_INDX_17,          ///< 18
-    INPUT_INDX_23,          ///< 19
-    INPUT_INDX_31,          ///< 20
-    INPUT_INDX_25,          ///< 21
-    INPUT_INDX_15,          ///< 22
-    INPUT_INDX_09,          ///< 23
+    INPUT_INDX_00,          ///< 16
+    INPUT_INDX_06,          ///< 17
+    INPUT_INDX_14,          ///< 18
+    INPUT_INDX_08,          ///< 19
+    INPUT_INDX_30,          ///< 20
+    INPUT_INDX_24,          ///< 21
+    INPUT_INDX_22,          ///< 22
+    INPUT_INDX_16,          ///< 23
 
-    INPUT_INDX_04,          ///< 24
-    INPUT_INDX_02,          ///< 25
-    INPUT_INDX_18,          ///< 26
-    INPUT_INDX_20,          ///< 27
-    INPUT_INDX_28,          ///< 28
-    INPUT_INDX_26,          ///< 29
-    INPUT_INDX_12,          ///< 30
-    INPUT_INDX_10,          ///< 31
+    INPUT_INDX_03,          ///< 24
+    INPUT_INDX_05,          ///< 25
+    INPUT_INDX_13,          ///< 26
+    INPUT_INDX_11,          ///< 27
+    INPUT_INDX_29,          ///< 28
+    INPUT_INDX_27,          ///< 29
+    INPUT_INDX_21,          ///< 30
+    INPUT_INDX_19,          ///< 31
     NUM_OF_INPUT_INDX
 } BSW_Dio_inputIndxType;
 

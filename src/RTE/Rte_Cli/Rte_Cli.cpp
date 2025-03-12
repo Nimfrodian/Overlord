@@ -4,7 +4,7 @@
 #include "driver/uart.h"
 
 
-#define UART_BAUD (921600u)
+#define UART_BAUD (115200u)
 #define UART_NUM UART_NUM_0
 #define BUF_SIZE (1024)
 

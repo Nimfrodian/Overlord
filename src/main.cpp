@@ -33,23 +33,6 @@ extern "C" void app_main(void)
 
     // Start the timer
     xTimerStart(tasks_10ms_timer, 0);
-
-
-    gpio_reset_pin(GPIO_NUM_15);    // TODO
-    gpio_reset_pin(GPIO_NUM_0); // TODO
-    gpio_reset_pin(GPIO_NUM_2); // TODO
-    gpio_set_direction(GPIO_NUM_15, GPIO_MODE_OUTPUT);
-    gpio_set_direction(GPIO_NUM_0, GPIO_MODE_OUTPUT);
-    gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);
-    uint8_t counter = 0;
-    while (1)
-    {
-        gpio_set_level(GPIO_NUM_15, counter & 0x01);
-        gpio_set_level(GPIO_NUM_0, counter & 0x02);
-        gpio_set_level(GPIO_NUM_2, counter & 0x04);
-        counter++;
-        vTaskDelay(pdMS_TO_TICKS(10));
-    }
 }
 
 static void tasks_10ms_callback(TimerHandle_t xTimer)
@@ -64,13 +47,5 @@ static void tasks_10ms_callback(TimerHandle_t xTimer)
     Rte_Dio_runnable_10ms();
 
     // run CLI runnable
-    Rte_Cli_run();
-
-    static uint8_t cntr = 0;
-    if (cntr == 0)
-    {
-        CLI_INFO_0NL("Counter rolled over");
-    }
-    cntr++;
-
+    //Rte_Cli_run();
 }
