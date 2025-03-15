@@ -1,0 +1,23 @@
+This guide will help you set up the Modbus RTU Relay board to function with the Overlord system
+
+Hardware:
+- Relay board
+- Power supply
+- USB-to-RS485 converter
+
+0. install SSCOM program and drivers for RS485 converter
+
+1a. connect RS485 A connector to relay board's A connector, and same for B connector
+1b. connect RS485 to PC and power on relay board
+
+2. in SSCOM, select your COM port (check drivers if not found) for the RS485 converter
+3. click openCOM button to open COM port
+4. select baud rate 9600
+5. read the device's current address by sending 00 03 40 00 00 01. Response should be
+	YY 03 02 00 YY ## ##, where YY is device address and "## ##" is the CRC
+6. set device address by sending YY 06 40 00 00 XX, where XX is the new device address
+7. set baudrate to 256000 by sending 01 06 20 00 00 07 
+8. change baudrate setting to 256000 in program
+
+9. confirm changes by repeating step 5 and verifying change
+10. device is now ready for use

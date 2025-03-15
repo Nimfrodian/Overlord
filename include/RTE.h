@@ -4,12 +4,13 @@
 #include "driver/gpio.h"
 #include "driver/twai.h"
 
+#include "mdll.h"
 #include "RelayControl.h"
 #include "ComModbus.h"
 #include "ComCan.h"
 #include "SDM120M.h"
 #include "Dio_Cfg.h"
-#include "Cli.h"
+#include "sera.h"
 
 const int node_id = 1;
 
@@ -29,9 +30,5 @@ extern void Rte_Sdm120m_init(void);
 extern void Rte_Sdm120m_runnable_10ms(void);
 extern const char* Rte_Sdm120m_read_dataName(uint8_t VarIndx);
 extern uint16_t Rte_Sdm120m_read_moduleId(uint8_t ModuleIndx);
-
-// CLI
-extern void Rte_Cli_init(void);
-extern void Rte_Cli_run(void);
 
 #endif
