@@ -1,0 +1,5 @@
+By using the button on the SDM120M and short/long pressing it, configure the device as follows
+
+baudrate 9600
+parity None ("n")
+Check for ID in code
