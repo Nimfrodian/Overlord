@@ -7,6 +7,7 @@
 #include "canm.h" ///< CAN module
 #include "rtdb.h" ///< Real Time Database module
 #include "dmas.h" ///< Direct Memory Access Server module
+#include "tmra.h" ///< Timer module
 
 #include "mdll.h" ///< Module List
 

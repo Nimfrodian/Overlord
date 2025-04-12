@@ -120,11 +120,6 @@ void canm_transceive_run_5ms(void)
             uint32_t rxId = rxMessage.identifier;
             switch (rxId)
             {
-                case 0x95:  // message CAN_COMMAND_MESSAGE
-                {
-                    canm_saveMsg(CAN_COMMAND_MESSAGE, &rxMessage);
-                    break;
-                }
                 // message CAN_DMAS_COMMAND_MESSAGE
                 // fallthrough
                 case (0x10):    // DMAS_TU8
