@@ -11,6 +11,13 @@ extern "C" void app_main(void)
         };
         tmra_init(&TmraCfg);
 
+        tTIMH_INITDATA_STR timh_cfgData_str =
+        {
+            .nr_moduleId_U32 = MODULE_TIMH,
+            .timh_ti_us_sysTimeFunc_pfS64 = &tmra_ti_us_getCurrentTime_S64,
+        };
+        timh_init(&timh_cfgData_str);
+
         tERRH_INITDATA_STR ErrhCfg =
         {
             .nr_moduleId_U32 = MODULE_ERRH,
@@ -22,21 +29,21 @@ extern "C" void app_main(void)
             .nr_moduleId_U32 = MODULE_SERA,
         };
         sera_init(&SeraCfg);
-        sera_print("Sera module initialized\n");
+        sera_print("SERA module initialized\n");
 
         tCANM_INITDATA_STR CanmCfg =
         {
             .nr_moduleId_U32 = MODULE_CANM,
         };
         canm_init(&CanmCfg);
-        sera_print("Canm module initialized\n");
+        sera_print("CANM module initialized\n");
 
         tRTDB_INITDATA_STR RtdbCfg =
         {
             .nr_moduleId_U32 = MODULE_RTDB,
         };
         rtdb_init(&RtdbCfg);
-        sera_print("Rtdb module initialized\n");
+        sera_print("RTDB module initialized\n");
 
         tDMAS_INITDATA_STR DmasCfg =
         {
@@ -45,16 +52,20 @@ extern "C" void app_main(void)
         dmas_init(&DmasCfg);
         sera_print("DMAS module initialized\n");
 
+        tDIOM_INITDATA_STR DiomCfg =
+        {
+            .nr_moduleId_U32 = MODULE_DIOM,
+        };
+        diom_init(&DiomCfg);
+        sera_print("DIOM module initialized\n");
+
         sera_print("Initialization time: %lli us\n", timh_ti_us_readSystemTime_S64());
     }
 
-    gpio_reset_pin(GPIO_NUM_13);
-    gpio_reset_pin(GPIO_NUM_14);
-    gpio_reset_pin(GPIO_NUM_21);
-    gpio_set_direction(GPIO_NUM_13, GPIO_MODE_OUTPUT);
-    gpio_set_direction(GPIO_NUM_14, GPIO_MODE_OUTPUT);
-    gpio_set_direction(GPIO_NUM_21, GPIO_MODE_OUTPUT);
+    pina_setGpioAsOutput(PINA_LED_0);
+    pina_setGpioAsOutput(PINA_LED_1);
+    pina_setGpioAsOutput(PINA_LED_2);
 
     sera_print("Setting init complete LED ON\n");
-    gpio_set_level(GPIO_NUM_13, 1);
+    pina_setGpioLevel(PINA_LED_0, 1);
 }

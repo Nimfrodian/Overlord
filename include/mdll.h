@@ -18,4 +18,5 @@ enum moduleList
     MODULE_TMRA,
     MODULE_RTDB,
     MODULE_DMAS,
+    MODULE_DIOM,
 };

@@ -17,22 +17,32 @@ typedef struct
 
 typedef enum
 {
-    // OUTPUTS
-    PINA_OUT_NUM_0 = GPIO_NUM_3,
-    PINA_OUT_NUM_1 = GPIO_NUM_46,
-    PINA_OUT_NUM_2 = GPIO_NUM_9,
-    PINA_OUT_NUM_3 = GPIO_NUM_10,
-    PINA_OUT_NUM_4 = GPIO_NUM_11,
-    PINA_OUT_NUM_5 = GPIO_NUM_12,
-    PINA_OUT_NUM_6 = GPIO_NUM_13,
-    PINA_OUT_NUM_7 = GPIO_NUM_14,
-    PINA_OUT_NUM_8 = GPIO_NUM_21,
-    PINA_OUT_NUM_9 = GPIO_NUM_45,
+    PINA_MUX_IN_0 = GPIO_NUM_7,     ///< Multiplexor 1 output pin 0
+    PINA_MUX_IN_1 = GPIO_NUM_6,     ///< Multiplexor 1 output pin 1
+    PINA_MUX_IN_2 = GPIO_NUM_16,    ///< Multiplexor 2 output pin 0
+    PINA_MUX_IN_3 = GPIO_NUM_15,    ///< Multiplexor 2 output pin 1
+    PINA_MUX_IN_4 = GPIO_NUM_36,    ///< Multiplexor 3 output pin 0
+    PINA_MUX_IN_5 = GPIO_NUM_35,    ///< Multiplexor 3 output pin 1
+    PINA_MUX_IN_6 = GPIO_NUM_38,    ///< Multiplexor 4 output pin 0
+    PINA_MUX_IN_7 = GPIO_NUM_37,    ///< Multiplexor 4 output pin 1
 
+    PINA_MUX_OUT_0 = GPIO_NUM_3,    ///< Multiplexors select pin 0
+    PINA_MUX_OUT_1 = GPIO_NUM_46,   ///< Multiplexors select pin 1
 
-    PINA_OUT_NUM_10 = GPIO_NUM_15,  ///< LED R
-    PINA_OUT_NUM_11 = GPIO_NUM_16,  ///< LED G
-    PINA_OUT_NUM_12 = GPIO_NUM_17,  ///< LED B
+    PINA_CAN_TX = GPIO_NUM_5,       ///< CAN TX pin
+    PINA_CAN_RX = GPIO_NUM_4,       ///< CAN RX pin
+
+    PINA_MB_1_TX = GPIO_NUM_18,     ///< RS485 TX pin
+    PINA_MB_1_RX = GPIO_NUM_17,      ///< RS485 RX pin
+    PINA_MB_1_DE = GPIO_NUM_11,     ///< RS485 DE pin
+
+    PINA_MB_2_TX = GPIO_NUM_10,      ///< RS485 TX pin
+    PINA_MB_2_RX = GPIO_NUM_9,      ///< RS485 RX pin
+    PINA_MB_2_DE = GPIO_NUM_12,     ///< RS485 DE pin
+
+    PINA_LED_0 = GPIO_NUM_13,       ///< LED on connection board
+    PINA_LED_1 = GPIO_NUM_14,       ///< LED on connection board
+    PINA_LED_2 = GPIO_NUM_21,       ///< LED on connection board
 
     // INPUTS
     PINA_IN_NUM_0 = GPIO_NUM_38,
@@ -52,6 +62,13 @@ void pina_init(tPINA_INITDATA_STR* PinaCfg);
  * @return (void)
  */
 void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, bool Value);
+
+/**
+ * @brief Function gets GPIO output to desired value
+ * @param GpioNum GPIO pin to get value from
+ * @return (void)
+ */
+bool pina_getGpioLevel(PINA_nr_GPIO_NUM_E GpioNum);
 
 /**
  * @brief Function sets GPIO pin as output

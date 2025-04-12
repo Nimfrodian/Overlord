@@ -26,6 +26,11 @@ void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, bool Value)
     gpio_set_level((gpio_num_t) GpioNum, Value);
 }
 
+bool pina_getGpioLevel(PINA_nr_GPIO_NUM_E GpioNum)
+{
+    return gpio_get_level((gpio_num_t) GpioNum);
+}
+
 void pina_setGpioAsOutput(PINA_nr_GPIO_NUM_E GpioNum)
 {
     gpio_reset_pin((gpio_num_t) GpioNum);
