@@ -13,32 +13,60 @@ void Modbus1_task(void* param)
     while (1)
     {
         // check UART input buffer and parse data
-        tU32 currRelayStates_U32 = 0; // TODO
+        static tU32 currRelayStates_U32 = 0;    // TODO: update with an array for when more than 4 modules are used
+        static tU8 lastSentState_U8 = 0;
+        tU8 buffer[32]= {0};
+        volatile tU8 length_U8 = 0;
+        length_U8 = uart_read_bytes(MBCM_MB1_UART_NUM_STR, buffer, 100, 0);
+        if (length_U8)
+        {
+            if (0x08 == buffer[5])   // check if written relays is 8 - it means all relays were written to
+            {
+                tU8 relayId_U8 = buffer[0];   // get relay ID
+                currRelayStates_U32 &= ~(0xFF << ((relayId_U8 - 1) * 8));
+                currRelayStates_U32 |= ((uint32_t)lastSentState_U8 << (relayId_U8 - 1) * 8);
+            }
+        }
+        uart_flush_input(MBCM_MB1_UART_NUM_STR);
 
         // cycle through all modbus modules and send command to update if neccessary
         // start with a different module each time
+        // TODO: add relay invert
+        rtdb_write_tU32S(MBCM_X_DESIREDRELAYSTATES_U32, rtdb_read_tU32S(DIOM_TI_INPUTSTATES_U32));
         tU8 desiredRelayState_U32 = (tU8) rtdb_read_tU32S(MBCM_X_DESIREDRELAYSTATES_U32);
-        //if (currRelayStates_U32 != desiredRelayState_U32)
+        static tU8 prevI = 0;
+        tU8 currI = 0;
+        for (tU8 i = 0; i < 4; i++)
         {
-            tU8 MbMsgData[10];
-            MbMsgData[0] = 0x01;                    // ID
-            MbMsgData[1] = 0x0F;                    // function code
-            MbMsgData[2] = 0x00;                    // Relay start address
-            MbMsgData[3] = 0x00;                    // Relay start address
-            MbMsgData[4] = 0x00;                    // Number of relays
-            MbMsgData[5] = 0x08;                    // Number of relays
-            MbMsgData[6] = 0x01;                    // following bytes
-            MbMsgData[7] = desiredRelayState_U32;   // bitmap of new relay statuses
-            unsigned int crc = crcm_CRC16(MbMsgData, 8);
-            MbMsgData[8] = (crc >> 8) & 0xFF;       // CRC HI
-            MbMsgData[9] = (crc >> 0) & 0xFF;       // CRC LOW
-            // send command to update relay states
-            pina_setGpioLevel(PINA_MB_1_DE, 1); // set DE pin high
-            uart_write_bytes(MBCM_MB1_UART_NUM_STR, (const char*) MbMsgData, 10);
-            uart_wait_tx_done(MBCM_MB1_UART_NUM_STR, pdMS_TO_TICKS(1));
-            pina_setGpioLevel(PINA_MB_1_DE, 0); // set DE pin low
-            currRelayStates_U32 = desiredRelayState_U32;    // TODO: remove
+            currI = prevI + i;
+            if (currI >= 4) currI -= 4; // wrap around
+            tU8 currRelayState_U8 = (currRelayStates_U32 >> currI) & 0xFF;   // get current relay state
+            tU8 desiredRelayState_U8 = (desiredRelayState_U32 >> currI) & 0xFF;   // get desired relay state
+            if (currRelayState_U8 != desiredRelayState_U8)
+            {
+                tU8 MbMsgData[10];
+                MbMsgData[0] = currI + 1;               // ID
+                MbMsgData[1] = 0x0F;                    // function code
+                MbMsgData[2] = 0x00;                    // Relay start address
+                MbMsgData[3] = 0x00;                    // Relay start address
+                MbMsgData[4] = 0x00;                    // Number of relays
+                MbMsgData[5] = 0x08;                    // Number of relays
+                MbMsgData[6] = 0x01;                    // following bytes
+                MbMsgData[7] = desiredRelayState_U8;    // bitmap of new relay statuses
+                lastSentState_U8 = MbMsgData[7];
+                unsigned int crc = crcm_CRC16(MbMsgData, 8);
+                MbMsgData[8] = (crc >> 8) & 0xFF;       // CRC HI
+                MbMsgData[9] = (crc >> 0) & 0xFF;       // CRC LOW
+                // send command to update relay states
+                pina_setGpioLevel(PINA_MB_1_DE, 1); // set DE pin high
+                uart_write_bytes(MBCM_MB1_UART_NUM_STR, (const char*) MbMsgData, 10);
+                uart_wait_tx_done(MBCM_MB1_UART_NUM_STR, pdMS_TO_TICKS(1));
+                pina_setGpioLevel(PINA_MB_1_DE, 0); // set DE pin low
+                break;
+            }
         }
+        prevI = currI + 1; // update previous index
+        if (prevI >= 4) prevI -= 4; // wrap around
         vTaskDelay(pdMS_TO_TICKS(rtdb_read_tU32S(MBCM_TI_US_TASKPERIODRELAY_U32) / 1000));
     }
     // delete task if illegal state was reached
