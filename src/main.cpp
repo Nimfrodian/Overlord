@@ -59,6 +59,13 @@ extern "C" void app_main(void)
         diom_init(&DiomCfg);
         sera_print("DIOM module initialized\n");
 
+        tMBCM_INITDATA_STR MbcmCfg =
+        {
+            .nr_moduleId_U32 = MODULE_MBCM,
+        };
+        mbcm_init(&MbcmCfg);
+        sera_print("MBCM module initialized\n");
+
         sera_print("Initialization time: %lli us\n", timh_ti_us_readSystemTime_S64());
     }
 

@@ -33,10 +33,10 @@ typedef enum
     PINA_CAN_RX = GPIO_NUM_4,       ///< CAN RX pin
 
     PINA_MB_1_TX = GPIO_NUM_18,     ///< RS485 TX pin
-    PINA_MB_1_RX = GPIO_NUM_17,      ///< RS485 RX pin
+    PINA_MB_1_RX = GPIO_NUM_17,     ///< RS485 RX pin
     PINA_MB_1_DE = GPIO_NUM_11,     ///< RS485 DE pin
 
-    PINA_MB_2_TX = GPIO_NUM_10,      ///< RS485 TX pin
+    PINA_MB_2_TX = GPIO_NUM_10,     ///< RS485 TX pin
     PINA_MB_2_RX = GPIO_NUM_9,      ///< RS485 RX pin
     PINA_MB_2_DE = GPIO_NUM_12,     ///< RS485 DE pin
 

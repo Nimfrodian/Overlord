@@ -82,3 +82,19 @@ int64_t timh_ti_us_readSystemTime_S64(void)
     }
     return ti_us_sysTime_S64;
 }
+
+void timh_delayMicroseconds(int64_t delay_us)
+{
+    if (false == timh_s_moduleInit_tB)
+    {
+        errh_reportError(ERRH_ERROR_CRITICAL, timh_nr_moduleId_U32, 0, TIMH_API_DELAY_US_U32, ERRH_MODULE_NOT_INIT);
+    }
+    else
+    {
+        int64_t startTime_S64 = timh_ti_us_readSystemTime_S64();
+        while ((timh_ti_us_readSystemTime_S64() - startTime_S64) < delay_us)
+        {
+            // wait
+        }
+    }
+}

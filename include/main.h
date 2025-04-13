@@ -9,6 +9,7 @@
 #include "dmas.h" ///< Direct Memory Access Server module
 #include "tmra.h" ///< Timer module
 #include "diom.h" ///< Digital Input Output module
+#include "mbcm.h" ///< Modbus Control module
 
 #include "mdll.h" ///< Module List
 
