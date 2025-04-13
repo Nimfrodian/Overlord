@@ -12,4 +12,4 @@
 
 #include "mdll.h" ///< Module List
 
-#define MAIN_TI_ms_TASK_DELAY_U32 ((uint32_t) 10)
+#define MAIN_TI_ms_TASK_DELAY_U32 ((uint32_t) 5)

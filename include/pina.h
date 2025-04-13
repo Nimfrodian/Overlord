@@ -17,14 +17,14 @@ typedef struct
 
 typedef enum
 {
-    PINA_MUX_IN_0 = GPIO_NUM_7,     ///< Multiplexor 1 output pin 0
-    PINA_MUX_IN_1 = GPIO_NUM_6,     ///< Multiplexor 1 output pin 1
-    PINA_MUX_IN_2 = GPIO_NUM_16,    ///< Multiplexor 2 output pin 0
-    PINA_MUX_IN_3 = GPIO_NUM_15,    ///< Multiplexor 2 output pin 1
-    PINA_MUX_IN_4 = GPIO_NUM_36,    ///< Multiplexor 3 output pin 0
-    PINA_MUX_IN_5 = GPIO_NUM_35,    ///< Multiplexor 3 output pin 1
-    PINA_MUX_IN_6 = GPIO_NUM_38,    ///< Multiplexor 4 output pin 0
-    PINA_MUX_IN_7 = GPIO_NUM_37,    ///< Multiplexor 4 output pin 1
+    PINA_MUX_IN_0 = GPIO_NUM_6,     ///< Multiplexor 1 output pin 0
+    PINA_MUX_IN_1 = GPIO_NUM_7,     ///< Multiplexor 1 output pin 1
+    PINA_MUX_IN_2 = GPIO_NUM_15,    ///< Multiplexor 2 output pin 0
+    PINA_MUX_IN_3 = GPIO_NUM_16,    ///< Multiplexor 2 output pin 1
+    PINA_MUX_IN_4 = GPIO_NUM_35,    ///< Multiplexor 3 output pin 0
+    PINA_MUX_IN_5 = GPIO_NUM_36,    ///< Multiplexor 3 output pin 1
+    PINA_MUX_IN_6 = GPIO_NUM_37,    ///< Multiplexor 4 output pin 0
+    PINA_MUX_IN_7 = GPIO_NUM_38,    ///< Multiplexor 4 output pin 1
 
     PINA_MUX_OUT_0 = GPIO_NUM_3,    ///< Multiplexors select pin 0
     PINA_MUX_OUT_1 = GPIO_NUM_46,   ///< Multiplexors select pin 1

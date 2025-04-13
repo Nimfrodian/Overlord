@@ -29,9 +29,7 @@ typedef struct
 typedef enum
 {
     // TX
-    CAN_REPLY_MESSAGE0 = 0,
-    CAN_REPLY_MESSAGE1,
-    CAN_ERROR_MESSAGE0,
+    CAN_ERROR_MESSAGE0 = 0,
     CAN_ERROR_MESSAGE1,
     CAN_ERROR_MESSAGE2,
     CAN_ERROR_MESSAGE3,
