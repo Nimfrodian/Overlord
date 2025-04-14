@@ -23,9 +23,10 @@ void Modbus1_task(void* param)
             if (0x08 == buffer[5])   // check if written relays is 8 - it means all relays were written to
             {
                 tU8 boardIndex_U8 = buffer[0] - 1;
-                if ((boardIndex_U8 < MBCM_MAX_RELAY_BOARDS_U32) && (boardIndex_U8 >= 0))
+                if (boardIndex_U8 < MBCM_MAX_RELAY_BOARDS_U32)
                 {
                     currRelayStates_aU8[boardIndex_U8] = lastSentState_U8;
+                    rtdb_write_tU8S((tU8SEnumT)(MBCM_X_ACTUALRELAYSTATES_AU8_0 + boardIndex_U8), lastSentState_U8);
                 }
                 else
                 {

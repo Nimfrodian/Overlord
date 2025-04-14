@@ -17,6 +17,7 @@
 typedef struct
 {
     uint32_t nr_moduleId_U32;       ///< ID of the module
+    uint32_t ti_ms_taskDelay_U32;   ///< time in ms between task executions
 } tCANM_INITDATA_STR;
 
 typedef struct
@@ -52,6 +53,7 @@ typedef enum
 
     // RX
     CAN_DMAS_COMMAND_MESSAGE,
+    CAN_RELAY_INVERT_REQUEST_MESSAGE,
 
     NUM_OF_CAN_MSG
 } tCANM_CANMSGINDX_E;

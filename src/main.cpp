@@ -34,6 +34,7 @@ extern "C" void app_main(void)
         tCANM_INITDATA_STR CanmCfg =
         {
             .nr_moduleId_U32 = MODULE_CANM,
+            .ti_ms_taskDelay_U32 = MAIN_TI_ms_TASK_DELAY_U32, // executed in main task
         };
         canm_init(&CanmCfg);
         sera_print("CANM module initialized\n");
