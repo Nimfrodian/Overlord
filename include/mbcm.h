@@ -11,6 +11,9 @@
 #include "driver/uart.h"
 
 #define MBCM_API_INIT_U32                  ((uint32_t) 1)
+#define MBCM_API_MB1_RUN_U32               ((uint32_t) 2)
+
+#define MBCM_MAX_RELAY_BOARDS_U32          ((uint32_t) 16)   ///< max number of relay boards
 
 #define MBCM_MB1_BAUDRATE_U32   ((uint32_t) 256000)   ///< baudrate for Modbus 1
 #define MBCM_MB2_BAUDRATE_U32   ((uint32_t)   9600)   ///< baudrate for Modbus 2

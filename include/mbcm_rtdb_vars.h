@@ -16,9 +16,9 @@
  * note; min, default and max can be left empty if their value is not limited or relevant
  * [varType]    [arrName]                              [SIZE (optional)]; ///< [unit]  [min]  [default]  [max]    [comment]
  */
-tU32S    mbcm_ti_us_taskPeriodRelay_U32;         ///< [us]  [MBCM_TI_US_MIN_TASK_TIME_RELAY_U32]     [MBCM_TI_US_DEF_TASK_TIME_RELAY_U32]     [MBCM_TI_US_MAX_TASK_TIME_RELAY_U32]      [Time in us between Modbus messages for Relay modules]
-tU32S    mbcm_ti_us_taskPeriodPwrMeter_U32;      ///< [us]  [MBCM_TI_US_MIN_TASK_TIME_PWRMETER_U32]  [MBCM_TI_US_DEF_TASK_TIME_PWRMETER_U32]  [MBCM_TI_US_MAX_TASK_TIME_PWRMETER_U32]   [Time in us between Modbus messages for Power Meter modules]
+tU32S    mbcm_ti_us_taskPeriodRelay_U32;           ///< [us]  [MBCM_TI_US_MIN_TASK_TIME_RELAY_U32]     [MBCM_TI_US_DEF_TASK_TIME_RELAY_U32]     [MBCM_TI_US_MAX_TASK_TIME_RELAY_U32]      [Time in us between Modbus messages for Relay modules]
+tU32S    mbcm_ti_us_taskPeriodPwrMeter_U32;        ///< [us]  [MBCM_TI_US_MIN_TASK_TIME_PWRMETER_U32]  [MBCM_TI_US_DEF_TASK_TIME_PWRMETER_U32]  [MBCM_TI_US_MAX_TASK_TIME_PWRMETER_U32]   [Time in us between Modbus messages for Power Meter modules]
 
-tU32S    mbcm_x_desiredRelayStates_U32;          ///< []    [0]                                      [0]                                      [0xFFFFFFFF]                              [Desired relay states as 32 bit mask]
+tU8S     mbcm_x_desiredRelayStates_aU8       [16]; ///< []    [0]                                      [0]                                      [0xFF]                                    [Desired relay states as 8 bit mask, 1 for each relay module. Max 16 relay modules for a total of 128 relays]
 
 #endif

@@ -13,7 +13,7 @@ void Modbus1_task(void* param)
     while (1)
     {
         // check UART input buffer and parse data
-        static tU32 currRelayStates_U32 = 0;    // TODO: update with an array for when more than 4 modules are used
+        static tU8 currRelayStates_aU8[MBCM_MAX_RELAY_BOARDS_U32] = {};
         static tU8 lastSentState_U8 = 0;
         tU8 buffer[32]= {0};
         volatile tU8 length_U8 = 0;
@@ -22,26 +22,36 @@ void Modbus1_task(void* param)
         {
             if (0x08 == buffer[5])   // check if written relays is 8 - it means all relays were written to
             {
-                tU8 relayId_U8 = buffer[0];   // get relay ID
-                currRelayStates_U32 &= ~(0xFF << ((relayId_U8 - 1) * 8));
-                currRelayStates_U32 |= ((uint32_t)lastSentState_U8 << (relayId_U8 - 1) * 8);
+                tU8 boardIndex_U8 = buffer[0] - 1;
+                if ((boardIndex_U8 < MBCM_MAX_RELAY_BOARDS_U32) && (boardIndex_U8 >= 0))
+                {
+                    currRelayStates_aU8[boardIndex_U8] = lastSentState_U8;
+                }
+                else
+                {
+                    errh_reportError(ERRH_ERROR_CRITICAL, mbcm_nr_moduleId_U32, boardIndex_U8, MBCM_API_MB1_RUN_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
+                }
             }
         }
         uart_flush_input(MBCM_MB1_UART_NUM_STR);
 
-        // cycle through all modbus modules and send command to update if neccessary
-        // start with a different module each time
+        // cycle through all modbus modules and send command to update if neccessary. Start with a different module each time
         // TODO: add relay invert
-        rtdb_write_tU32S(MBCM_X_DESIREDRELAYSTATES_U32, rtdb_read_tU32S(DIOM_TI_INPUTSTATES_U32));
-        tU8 desiredRelayState_U32 = (tU8) rtdb_read_tU32S(MBCM_X_DESIREDRELAYSTATES_U32);
+        // First four IDs are reserved for GPIO controlled relay boards
+        rtdb_write_tU8S(MBCM_X_DESIREDRELAYSTATES_AU8_0, (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >>  0) & 0xFF);
+        rtdb_write_tU8S(MBCM_X_DESIREDRELAYSTATES_AU8_1, (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >>  8) & 0xFF);
+        rtdb_write_tU8S(MBCM_X_DESIREDRELAYSTATES_AU8_2, (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> 16) & 0xFF);
+        rtdb_write_tU8S(MBCM_X_DESIREDRELAYSTATES_AU8_3, (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> 24) & 0xFF);
+
         static tU8 prevI = 0;
         tU8 currI = 0;
-        for (tU8 i = 0; i < 4; i++)
+        for (tU8 i = 0; i < MBCM_MAX_RELAY_BOARDS_U32; i++)
         {
             currI = prevI + i;
-            if (currI >= 4) currI -= 4; // wrap around
-            tU8 currRelayState_U8 = (currRelayStates_U32 >> currI) & 0xFF;   // get current relay state
-            tU8 desiredRelayState_U8 = (desiredRelayState_U32 >> currI) & 0xFF;   // get desired relay state
+            if (currI >= MBCM_MAX_RELAY_BOARDS_U32) currI -= MBCM_MAX_RELAY_BOARDS_U32; // wrap around
+
+            tU8 currRelayState_U8 = currRelayStates_aU8[currI];   // get current relay state
+            tU8 desiredRelayState_U8 = rtdb_read_tU8S((tU8SEnumT)(MBCM_X_DESIREDRELAYSTATES_AU8_0 + currI));   // get desired relay state
             if (currRelayState_U8 != desiredRelayState_U8)
             {
                 tU8 MbMsgData[10];
@@ -66,7 +76,7 @@ void Modbus1_task(void* param)
             }
         }
         prevI = currI + 1; // update previous index
-        if (prevI >= 4) prevI -= 4; // wrap around
+        if (prevI >= MBCM_MAX_RELAY_BOARDS_U32) prevI -= MBCM_MAX_RELAY_BOARDS_U32; // wrap around
         vTaskDelay(pdMS_TO_TICKS(rtdb_read_tU32S(MBCM_TI_US_TASKPERIODRELAY_U32) / 1000));
     }
     // delete task if illegal state was reached

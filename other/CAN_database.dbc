@@ -44,50 +44,50 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
 
 BO_ 24 DMAS_cmd_msg_tE: 8 Vector__XXX
  SG_ DMAS_payload_tE : 32|32@1+ (1,0) [0|4294967295] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 23 DMAS_cmd_msg_tB: 8 Vector__XXX
- SG_ DMAS_payload_tB : 24|1@1+ (1,0) [0|1] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_payload_tB : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 22 DMAS_cmd_msg_tF32: 8 Vector__XXX
  SG_ DMAS_payload_tF32 : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 21 DMAS_cmd_msg_tS32: 8 Vector__XXX
  SG_ DMAS_payload_tS32 : 32|32@1- (1,0) [-2147483648|2147483647] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 20 DMAS_cmd_msg_tS16: 8 Vector__XXX
  SG_ DMAS_payload_tS16 : 32|16@1- (1,0) [-32768|32767] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 19 DMAS_cmd_msg_tS8: 8 Vector__XXX
  SG_ DMAS_payload_tS8 : 32|8@1- (1,0) [-128|127] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 18 DMAS_cmd_msg_tU32: 8 Vector__XXX
  SG_ DMAS_payload_tU32 : 32|32@1+ (1,0) [0|4294967295] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 17 DMAS_cmd_msg_tU16: 8 Vector__XXX
  SG_ DMAS_payload_tU16 : 32|16@1+ (1,0) [0|65535] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 32 DMAS_res_msg: 8 Vector__XXX
@@ -97,8 +97,8 @@ BO_ 32 DMAS_res_msg: 8 Vector__XXX
 
 BO_ 16 DMAS_cmd_msg_tU8: 8 Vector__XXX
  SG_ DMAS_payload_tU8 : 32|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_stream_time : 16|8@1+ (1,0) [0|255] "" Vector__XXX
- SG_ DMAS_var_index : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_stream_time : 24|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DMAS_var_index : 16|8@1+ (1,0) [0|255] "" Vector__XXX
  SG_ DMAS_cmd_mode : 0|8@1+ (1,0) [0|255] "" Vector__XXX
 
 BO_ 83 Dimmer_errh_msg3: 8 Vector__XXX

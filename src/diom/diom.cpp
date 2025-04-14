@@ -43,7 +43,7 @@ static void IRAM_ATTR diom_updateCooldownTimer_isr(tDIOM_GPIODATA_STR* GpioData_
     }
 
     // update cooldown timer
-    tU32 ti_us_taskTime_U32 = rtdb_read_tU32S(DIOM_TI_TASKTIME_U32);
+    tU32 ti_us_taskTime_U32 = rtdb_read_tU32S(DIOM_TI_US_TASKTIME_U32);
     GpioData_pStr->ti_us_cooldownTime_U32 -= (GpioData_pStr->ti_us_cooldownTime_U32 > ti_us_taskTime_U32) ? ti_us_taskTime_U32 : GpioData_pStr->ti_us_cooldownTime_U32;
 }
 
@@ -56,7 +56,7 @@ static void IRAM_ATTR diom_checkPin_isr(tDIOM_GPIODATA_STR* GpioData_pStr, bool 
         {
             GpioData_pStr->output_B = NewState_B;    // update output state
         }
-        GpioData_pStr->ti_us_cooldownTime_U32 = rtdb_read_tU32S(DIOM_TI_COOLDOWNPERIOD_U32);    // set cooldown time
+        GpioData_pStr->ti_us_cooldownTime_U32 = rtdb_read_tU32S(DIOM_TI_US_COOLDOWNPERIOD_U32);    // set cooldown time
         GpioData_pStr->lastReadState_B = NewState_B;    // update last read state
     }
 }
@@ -97,13 +97,13 @@ static bool IRAM_ATTR diom_run_isr(gptimer_handle_t timer, const gptimer_alarm_e
         tempGpioStatusMask_U32 |= diom_x_gpioData_astr[i_U32].output_B << i_U32;
     }
     diom_x_gpioStates_U32 = tempGpioStatusMask_U32;
-    rtdb_write_tU32S(DIOM_TI_INPUTSTATES_U32, diom_x_gpioStates_U32);    // update RTDB with new GPIO states
+    rtdb_write_tU32S(DIOM_X_INPUTSTATES_U32, diom_x_gpioStates_U32);    // update RTDB with new GPIO states
 
     // update mux selector and restart timer
     muxSelect_U8++;
     pina_setGpioLevel((PINA_nr_GPIO_NUM_E) diom_x_muxOut_astr[0], (muxSelect_U8 >> 0) & 0x01);
     pina_setGpioLevel((PINA_nr_GPIO_NUM_E) diom_x_muxOut_astr[1], (muxSelect_U8 >> 1) & 0x01);
-    diom_h_timerHandler_str.alarmConfig_str.alarm_count = rtdb_read_tU32S(DIOM_TI_TASKTIME_U32);
+    diom_h_timerHandler_str.alarmConfig_str.alarm_count = rtdb_read_tU32S(DIOM_TI_US_TASKTIME_U32);
     tmra_startTimer(&diom_h_timerHandler_str); // restart timer
     return 1;    // return 1 to keep the timer running
 }
@@ -153,7 +153,7 @@ void diom_init(tDIOM_INITDATA_STR* DiomCfg)
         };
         diom_h_timerHandler_str.cbs = cbsInitial;
         diom_h_timerHandler_str.timerConfig_str = timer_config;
-        diom_h_timerHandler_str.alarmConfig_str.alarm_count = rtdb_read_tU32S(DIOM_TI_TASKTIME_U32);
+        diom_h_timerHandler_str.alarmConfig_str.alarm_count = rtdb_read_tU32S(DIOM_TI_US_TASKTIME_U32);
         tmra_createTimer(&diom_h_timerHandler_str);
         tmra_startTimer(&diom_h_timerHandler_str);
     }
