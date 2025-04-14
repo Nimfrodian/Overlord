@@ -36,13 +36,28 @@ void Modbus1_task(void* param)
         }
         uart_flush_input(MBCM_MB1_UART_NUM_STR);
 
-        // cycle through all modbus modules and send command to update if neccessary. Start with a different module each time
-        // TODO: add relay invert
-        // First four IDs are reserved for GPIO controlled relay boards
-        rtdb_write_tU8S(MBCM_X_DESIREDRELAYSTATES_AU8_0, (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >>  0) & 0xFF);
-        rtdb_write_tU8S(MBCM_X_DESIREDRELAYSTATES_AU8_1, (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >>  8) & 0xFF);
-        rtdb_write_tU8S(MBCM_X_DESIREDRELAYSTATES_AU8_2, (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> 16) & 0xFF);
-        rtdb_write_tU8S(MBCM_X_DESIREDRELAYSTATES_AU8_3, (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> 24) & 0xFF);
+        tU8 gpioState[4] = {};
+        gpioState[0] = (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >>  0) & 0xFF;
+        gpioState[1] = (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >>  8) & 0xFF;
+        gpioState[2] = (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> 16) & 0xFF;
+        gpioState[3] = (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> 24) & 0xFF;
+
+        tU8 invertReq[MBCM_MAX_RELAY_BOARDS_U32] = {};
+        for (tU8 i = 0; i < MBCM_MAX_RELAY_BOARDS_U32; i++)
+        {
+            for (tU8 j = 0; j < 8; j++)
+            {
+                invertReq[i] |= (rtdb_read_tBS((tBSEnumT)(CANM_S_RXRELAYINVERTREQ_AB_0 + i*8 + j))) << j;
+            }
+            if (i < 4)
+            {
+                rtdb_write_tU8S((tU8SEnumT)(MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), invertReq[i] ^ gpioState[i]);
+            }
+            else
+            {
+                rtdb_write_tU8S((tU8SEnumT)(MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), invertReq[i]);
+            }
+        }
 
         static tU8 prevI = 0;
         tU8 currI = 0;
