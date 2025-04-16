@@ -4,8 +4,8 @@
 #include "rtdb.h"
 
 #define MBCM_TI_US_MIN_TASK_TIME_RELAY_U32 ((uint32_t) 10)          //  10 us between queries
-#define MBCM_TI_US_DEF_TASK_TIME_RELAY_U32 ((uint32_t) 2000)        //   2 ms between queries
-#define MBCM_TI_US_MAX_TASK_TIME_RELAY_U32 ((uint32_t) 10000)       //  10 ms between queries
+#define MBCM_TI_US_DEF_TASK_TIME_RELAY_U32 ((uint32_t) 5000)       //    5 ms between queries
+#define MBCM_TI_US_MAX_TASK_TIME_RELAY_U32 ((uint32_t) 100000)      //  100 ms between queries
 
 
 #define MBCM_TI_US_MIN_TASK_TIME_PWRMETER_U32 ((uint32_t) 10)       //  10 us between queries

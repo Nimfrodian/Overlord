@@ -24,6 +24,9 @@ void sera_init(tSERA_INITDATA_STR* SeraCfg)
             .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
             .rx_flow_ctrl_thresh = 0,
             .source_clk = UART_SCLK_APB,
+            .flags = {
+                .backup_before_sleep = 0,
+            },
         };
         uart_param_config(UART_NUM_0, &uart_config);
         uart_driver_install(UART_NUM_0, 1024 * 2, 0, 0, NULL, 0);

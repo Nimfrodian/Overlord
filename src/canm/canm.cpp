@@ -63,8 +63,6 @@ void canm_init(tCANM_INITDATA_STR* CanmCfg)
             canm_x_canMsgs_astr[canMsgIndx_U16].canMsg_str.data[7] = 0;
         }
 
-        canm_rtdb_init();
-
         // initialize CAN Module
         twai_driver_install(&canm_x_genConfig_str, &canm_x_timingConfig_str, &canm_x_filter_str);
 
@@ -169,20 +167,20 @@ void canm_transceive_run_5ms(void)
                 }
                 // send 0x111 Relay feedback status
                 {
-                    static twai_message_t canMsg_0x110 = {};
-                    canMsg_0x110.identifier = 0x111;
-                    canMsg_0x110.data_length_code = 8;
+                    static twai_message_t canMsg_0x111 = {};
+                    canMsg_0x111.identifier = 0x111;
+                    canMsg_0x111.data_length_code = 8;
                     for (tU8 byteIndx_U8 = 0; byteIndx_U8 < 8; byteIndx_U8++)
                     {
-                        canMsg_0x110.data[byteIndx_U8] = 0;    // clear the data location
+                        canMsg_0x111.data[byteIndx_U8] = 0;    // clear the data location
                         for (tU8 bitIndx_U8 = 0; bitIndx_U8 < 8; bitIndx_U8++)
                         {
-                            tU32 index_U32 = (CANM_S_TXRELAYSTATES_AB_0 + (byteIndx_U8 * 8) + bitIndx_U8) + 64;
-                            rtdb_write_tBS((tBSEnumT) index_U32, (rtdb_read_tU8S((tU8SEnumT)(MBCM_X_ACTUALRELAYSTATES_AU8_0 + byteIndx_U8)) >> bitIndx_U8) & 0x01);    // copy from Relay state
-                            canMsg_0x110.data[byteIndx_U8] |= (rtdb_read_tBS((tBSEnumT) index_U32) << bitIndx_U8);
+                            tU32 index_U32 = (CANM_S_TXRELAYSTATES_AB_64 + (byteIndx_U8 * 8) + bitIndx_U8);
+                            rtdb_write_tBS((tBSEnumT) index_U32, (rtdb_read_tU8S((tU8SEnumT)(MBCM_X_ACTUALRELAYSTATES_AU8_8 + byteIndx_U8)) >> bitIndx_U8) & 0x01);    // copy from Relay state
+                            canMsg_0x111.data[byteIndx_U8] |= (rtdb_read_tBS((tBSEnumT) index_U32) << bitIndx_U8);
                         }
                     }
-                    twai_transmit(&canMsg_0x110, 0);
+                    twai_transmit(&canMsg_0x111, 0);
                 }
                 cntr_100ms = 0;
             }

@@ -1,4 +1,5 @@
-#include "rtdb.h"
+#include "crcm.h"
+#include "esp_rom_crc.h"
 
 // Modbus CRC tables
 const tU8 _auchCRCHi[256] =
@@ -40,7 +41,7 @@ const tU8 _auchCRCLo[256] =
   0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86, 0x82, 0x42, 0x43, 0x83, 0x41, 0x81, 0x80, 0x40
 };
 
-tU16 crcm_CRC16(tU8* str, tU32 usDataLen)
+tU16 crcm_CRC16_Modbus(tU8* str, tU32 usDataLen)
 {
     tU8 uchCRCHi = 0xFF;    // high byte of CRC initialized
     tU8 uchCRCLo = 0xFF;    // low byte of CRC initialized
@@ -52,4 +53,9 @@ tU16 crcm_CRC16(tU8* str, tU32 usDataLen)
         uchCRCLo = _auchCRCLo[uIndex];
     }
     return (uchCRCHi << 8 | uchCRCLo);
+}
+
+tU32 crcm_CRC32(const tU8* data_U8, tU32 length_U32)
+{
+    return (tU32) esp_rom_crc32_le(0, data_U8, length_U32);
 }

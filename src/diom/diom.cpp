@@ -133,8 +133,6 @@ void diom_init(tDIOM_INITDATA_STR* DiomCfg)
             pina_setGpioAsOutput((PINA_nr_GPIO_NUM_E) diom_x_muxOut_astr[i_U32]);
         }
 
-        diom_rtdb_init();    // initialize RTDB
-
         // start timer for the task
         static gptimer_config_t timer_config =
         {

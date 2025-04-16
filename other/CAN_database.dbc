@@ -1,7 +1,7 @@
 VERSION ""
 
 
-NS_ : 
+NS_ :
 	NS_DESC_
 	CM_
 	BA_DEF_
@@ -41,6 +41,72 @@ VAL_TABLE_ DMAS_TIME_TABLE 5 "stream 5000ms" 4 "stream 1000ms" 3 "stream 500ms" 
 
 BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ DMAS_var_type : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 273 RelayFeedback_64_127: 8 Vector__XXX
+ SG_ RelaySts_125 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_124 : 62|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_123 : 61|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_122 : 60|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_121 : 59|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_120 : 58|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_119 : 57|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_118 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_117 : 55|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_116 : 54|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_115 : 53|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_114 : 52|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_113 : 51|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_112 : 50|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_111 : 49|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_110 : 48|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_110 : 47|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_109 : 46|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_108 : 45|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_107 : 44|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_106 : 43|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_105 : 42|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_104 : 41|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_103 : 40|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_102 : 39|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_101 : 38|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_100 : 37|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_99 : 36|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_98 : 35|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_97 : 34|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_96 : 33|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_95 : 32|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_94 : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_93 : 30|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_92 : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_91 : 28|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_90 : 27|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_80 : 26|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_89 : 25|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_88 : 24|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_87 : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_86 : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_85 : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_84 : 20|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_83 : 19|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_82 : 18|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_81 : 17|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_80 : 16|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_79 : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_78 : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_77 : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_76 : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_75 : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_74 : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_73 : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_72 : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_71 : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_70 : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_69 : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_68 : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_67 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_66 : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_65 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ RelaySts_64 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
 
 BO_ 24 DMAS_cmd_msg_tE: 8 Vector__XXX
  SG_ DMAS_payload_tE : 32|32@1+ (1,0) [0|4294967295] "" Vector__XXX
@@ -333,7 +399,7 @@ BO_ 336 GpioSts: 8 Vector__XXX
  SG_ Gpio_State_01 : 1|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ Gpio_State_00 : 0|1@1+ (1,0) [0|1] "" Vector__XXX
 
-BO_ 272 RelayFeedback: 8 Vector__XXX
+BO_ 272 RelayFeedback_0_63: 8 Vector__XXX
  SG_ RelaySts_63 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ RelaySts_62 : 62|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ RelaySts_61 : 61|1@1+ (1,0) [0|1] "" Vector__XXX

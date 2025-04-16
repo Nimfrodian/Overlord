@@ -12,12 +12,13 @@ void Modbus1_task(void* param)
 {
     while (1)
     {
+        tU32 taskPeriod_U32 = rtdb_read_tU32S(MBCM_TI_US_TASKPERIODRELAY_U32);
         // check UART input buffer and parse data
         static tU8 currRelayStates_aU8[MBCM_MAX_RELAY_BOARDS_U32] = {};
         static tU8 lastSentState_U8 = 0;
         tU8 buffer[32]= {0};
         volatile tU8 length_U8 = 0;
-        length_U8 = uart_read_bytes(MBCM_MB1_UART_NUM_STR, buffer, 100, 0);
+        length_U8 = uart_read_bytes(MBCM_MB1_UART_NUM_STR, buffer, 32, 0);
         if (length_U8)
         {
             if (0x08 == buffer[5])   // check if written relays is 8 - it means all relays were written to
@@ -32,6 +33,10 @@ void Modbus1_task(void* param)
                 {
                     errh_reportError(ERRH_ERROR_CRITICAL, mbcm_nr_moduleId_U32, boardIndex_U8, MBCM_API_MB1_RUN_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
                 }
+            }
+            else
+            {
+                errh_reportError(ERRH_NOTIF, mbcm_nr_moduleId_U32, 0, MBCM_API_MB1_RUN_U32, MBCM_ERR_WRONG_DATA_U32);
             }
         }
         uart_flush_input(MBCM_MB1_UART_NUM_STR);
@@ -80,20 +85,17 @@ void Modbus1_task(void* param)
                 MbMsgData[6] = 0x01;                    // following bytes
                 MbMsgData[7] = desiredRelayState_U8;    // bitmap of new relay statuses
                 lastSentState_U8 = MbMsgData[7];
-                unsigned int crc = crcm_CRC16(MbMsgData, 8);
+                unsigned int crc = crcm_CRC16_Modbus(MbMsgData, 8);
                 MbMsgData[8] = (crc >> 8) & 0xFF;       // CRC HI
                 MbMsgData[9] = (crc >> 0) & 0xFF;       // CRC LOW
                 // send command to update relay states
-                pina_setGpioLevel(PINA_MB_1_DE, 1); // set DE pin high
                 uart_write_bytes(MBCM_MB1_UART_NUM_STR, (const char*) MbMsgData, 10);
-                uart_wait_tx_done(MBCM_MB1_UART_NUM_STR, pdMS_TO_TICKS(1));
-                pina_setGpioLevel(PINA_MB_1_DE, 0); // set DE pin low
                 break;
             }
         }
         prevI = currI + 1; // update previous index
         if (prevI >= MBCM_MAX_RELAY_BOARDS_U32) prevI -= MBCM_MAX_RELAY_BOARDS_U32; // wrap around
-        vTaskDelay(pdMS_TO_TICKS(rtdb_read_tU32S(MBCM_TI_US_TASKPERIODRELAY_U32) / 1000));
+        vTaskDelay(pdMS_TO_TICKS(taskPeriod_U32 / 1000));
     }
     // delete task if illegal state was reached
     vTaskDelete( NULL );
@@ -124,8 +126,6 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
         mbcm_nr_moduleId_U32 = mbcmCfg->nr_moduleId_U32;
         mbcm_s_moduleInit_tB = true;    // only init once
 
-        mbcm_rtdb_init();    // initialize RTDB
-
         pina_setGpioAsOutput(PINA_MB_1_DE);
         pina_setGpioAsOutput(PINA_MB_2_DE);
 
@@ -142,9 +142,9 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
                 .backup_before_sleep = 0,
             }
         };
-        uart_set_pin(MBCM_MB1_UART_NUM_STR, PINA_MB_1_TX, PINA_MB_1_RX, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
-        uart_param_config(MBCM_MB1_UART_NUM_STR, &uart1_config);
         uart_driver_install(MBCM_MB1_UART_NUM_STR, 1024, 0, 0, NULL, 0);
+        uart_param_config(MBCM_MB1_UART_NUM_STR, &uart1_config);
+        uart_set_pin(MBCM_MB1_UART_NUM_STR, PINA_MB_1_TX, PINA_MB_1_RX, PINA_MB_1_DE, UART_PIN_NO_CHANGE);
         uart_set_mode(MBCM_MB1_UART_NUM_STR, UART_MODE_RS485_HALF_DUPLEX);
 
         // Set Modbus 2 UART parameters
@@ -160,9 +160,9 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
                 .backup_before_sleep = 0,
             }
         };
-        uart_set_pin(MBCM_MB2_UART_NUM_STR, PINA_MB_2_TX, PINA_MB_2_RX, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
-        uart_param_config(MBCM_MB2_UART_NUM_STR, &uart2_config);
         uart_driver_install(MBCM_MB2_UART_NUM_STR, 1024, 0, 0, NULL, 0);
+        uart_param_config(MBCM_MB2_UART_NUM_STR, &uart2_config);
+        uart_set_pin(MBCM_MB2_UART_NUM_STR, PINA_MB_2_TX, PINA_MB_2_RX, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
         uart_set_mode(MBCM_MB2_UART_NUM_STR, UART_MODE_RS485_HALF_DUPLEX);
 
         xTaskCreatePinnedToCore(
