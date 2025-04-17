@@ -13,6 +13,7 @@
 #define ERRH_API_CAN_COMPOSE_U32                ((uint32_t) 3)
 
 #define ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32   ((uint32_t) 1)
+#define ERRH_ERR_ACCESS_NULL_PTR_U32            ((uint32_t) 2)
 
 
 

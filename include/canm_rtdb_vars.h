@@ -8,9 +8,9 @@
  * [varType]    [arrName]                              [SIZE (optional)]; ///< [unit]  [min]  [default]  [max]    [comment]
  */
 
-tBS    canm_s_rxRelayInvertReq_aB   [128]; ///< []  [0]  [0]  [1]   [Relay invert requests]
+tBS    rtdb_canm_s_rxRelayInvertReq_aB   [128]; ///< []  [0]  [0]  [1]   [Relay invert requests]
 
-tBS    canm_s_txGpioStates_aB       [32];  ///< []  [0]  [0]  [1]   [State of GPIOs]
-tBS    canm_s_txRelayStates_aB      [128]; ///< []  [0]  [0]  [1]   [State of relays]
+tBS    rtdb_canm_s_txGpioStates_aB       [32];  ///< []  [0]  [0]  [1]   [State of GPIOs]
+tBS    rtdb_canm_s_txRelayStates_aB      [128]; ///< []  [0]  [0]  [1]   [State of relays]
 
 #endif

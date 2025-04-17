@@ -150,6 +150,8 @@ extern "C" void app_main(void)
 
         dmas_run_5ms();
 
+        diom_run_5ms();
+
         vTaskDelay(MAIN_TI_ms_TASK_DELAY_U32 / portTICK_PERIOD_MS);
     }
 }

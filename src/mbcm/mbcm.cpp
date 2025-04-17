@@ -12,7 +12,7 @@ void Modbus1_task(void* param)
 {
     while (1)
     {
-        tU32 taskPeriod_U32 = rtdb_read_tU32S(MBCM_TI_US_TASKPERIODRELAY_U32);
+        tU32 taskPeriod_U32 = rtdb_read_tU32S(RTDB_MBCM_TI_US_TASKPERIODRELAY_U32);
         // check UART input buffer and parse data
         static tU8 currRelayStates_aU8[MBCM_MAX_RELAY_BOARDS_U32] = {};
         static tU8 lastSentState_U8 = 0;
@@ -27,7 +27,7 @@ void Modbus1_task(void* param)
                 if (boardIndex_U8 < MBCM_MAX_RELAY_BOARDS_U32)
                 {
                     currRelayStates_aU8[boardIndex_U8] = lastSentState_U8;
-                    rtdb_write_tU8S((tU8SEnumT)(MBCM_X_ACTUALRELAYSTATES_AU8_0 + boardIndex_U8), lastSentState_U8);
+                    rtdb_write_tU8S((tU8SEnumT)(RTDB_MBCM_X_ACTUALRELAYSTATES_AU8_0 + boardIndex_U8), lastSentState_U8);
                 }
                 else
                 {
@@ -42,25 +42,25 @@ void Modbus1_task(void* param)
         uart_flush_input(MBCM_MB1_UART_NUM_STR);
 
         tU8 gpioState[4] = {};
-        gpioState[0] = (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >>  0) & 0xFF;
-        gpioState[1] = (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >>  8) & 0xFF;
-        gpioState[2] = (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> 16) & 0xFF;
-        gpioState[3] = (rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> 24) & 0xFF;
+        gpioState[0] = (rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32) >>  0) & 0xFF;
+        gpioState[1] = (rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32) >>  8) & 0xFF;
+        gpioState[2] = (rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32) >> 16) & 0xFF;
+        gpioState[3] = (rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32) >> 24) & 0xFF;
 
         tU8 invertReq[MBCM_MAX_RELAY_BOARDS_U32] = {};
         for (tU8 i = 0; i < MBCM_MAX_RELAY_BOARDS_U32; i++)
         {
             for (tU8 j = 0; j < 8; j++)
             {
-                invertReq[i] |= (rtdb_read_tBS((tBSEnumT)(CANM_S_RXRELAYINVERTREQ_AB_0 + i*8 + j))) << j;
+                invertReq[i] |= (rtdb_read_tBS((tBSEnumT)(RTDB_CANM_S_RXRELAYINVERTREQ_AB_0 + i*8 + j))) << j;
             }
             if (i < 4)
             {
-                rtdb_write_tU8S((tU8SEnumT)(MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), invertReq[i] ^ gpioState[i]);
+                rtdb_write_tU8S((tU8SEnumT)(RTDB_MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), invertReq[i] ^ gpioState[i]);
             }
             else
             {
-                rtdb_write_tU8S((tU8SEnumT)(MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), invertReq[i]);
+                rtdb_write_tU8S((tU8SEnumT)(RTDB_MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), invertReq[i]);
             }
         }
 
@@ -72,7 +72,7 @@ void Modbus1_task(void* param)
             if (currI >= MBCM_MAX_RELAY_BOARDS_U32) currI -= MBCM_MAX_RELAY_BOARDS_U32; // wrap around
 
             tU8 currRelayState_U8 = currRelayStates_aU8[currI];   // get current relay state
-            tU8 desiredRelayState_U8 = rtdb_read_tU8S((tU8SEnumT)(MBCM_X_DESIREDRELAYSTATES_AU8_0 + currI));   // get desired relay state
+            tU8 desiredRelayState_U8 = rtdb_read_tU8S((tU8SEnumT)(RTDB_MBCM_X_DESIREDRELAYSTATES_AU8_0 + currI));   // get desired relay state
             if (currRelayState_U8 != desiredRelayState_U8)
             {
                 tU8 MbMsgData[10];
@@ -105,7 +105,13 @@ void Modbus2_task(void* param)
 {
     while (1)
     {
-        vTaskDelay(pdMS_TO_TICKS(rtdb_read_tU32S(MBCM_TI_US_TASKPERIODPWRMETER_U32) / 1000));
+        // check UART input buffer and parse data
+        // TODO
+
+        // write next request
+        // TODO
+
+        vTaskDelay(pdMS_TO_TICKS(rtdb_read_tU32S(RTDB_MBCM_TI_US_TASKPERIODPWRMETER_U32) / 1000));
     }
     // delete task if illegal state was reached
     vTaskDelete( NULL );
@@ -162,7 +168,7 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
         };
         uart_driver_install(MBCM_MB2_UART_NUM_STR, 1024, 0, 0, NULL, 0);
         uart_param_config(MBCM_MB2_UART_NUM_STR, &uart2_config);
-        uart_set_pin(MBCM_MB2_UART_NUM_STR, PINA_MB_2_TX, PINA_MB_2_RX, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+        uart_set_pin(MBCM_MB2_UART_NUM_STR, PINA_MB_2_TX, PINA_MB_2_RX, PINA_MB_2_DE, UART_PIN_NO_CHANGE);
         uart_set_mode(MBCM_MB2_UART_NUM_STR, UART_MODE_RS485_HALF_DUPLEX);
 
         xTaskCreatePinnedToCore(

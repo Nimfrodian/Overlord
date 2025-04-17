@@ -141,8 +141,8 @@ void canm_transceive_run_5ms(void)
                         canMsg_0x150.data[byteIndx_U8] = 0;    // clear the data location
                         for (tU8 bitIndx_U8 = 0; bitIndx_U8 < 8; bitIndx_U8++)
                         {
-                            tU8 index_U8 = (CANM_S_TXGPIOSTATES_AB_0 + (byteIndx_U8 * 8) + bitIndx_U8);
-                            rtdb_write_tBS((tBSEnumT) index_U8, rtdb_read_tU32S(DIOM_X_INPUTSTATES_U32) >> (byteIndx_U8*8 + bitIndx_U8) & 0x01);    // copy from GPIO state
+                            tU8 index_U8 = (RTDB_CANM_S_TXGPIOSTATES_AB_0 + (byteIndx_U8 * 8) + bitIndx_U8);
+                            rtdb_write_tBS((tBSEnumT) index_U8, rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32) >> (byteIndx_U8*8 + bitIndx_U8) & 0x01);    // copy from GPIO state
                             canMsg_0x150.data[byteIndx_U8] |= (rtdb_read_tBS((tBSEnumT) index_U8) << bitIndx_U8);
                         }
                     }
@@ -158,8 +158,8 @@ void canm_transceive_run_5ms(void)
                         canMsg_0x110.data[byteIndx_U8] = 0;    // clear the data location
                         for (tU8 bitIndx_U8 = 0; bitIndx_U8 < 8; bitIndx_U8++)
                         {
-                            tU32 index_U32 = (CANM_S_TXRELAYSTATES_AB_0 + (byteIndx_U8 * 8) + bitIndx_U8);
-                            rtdb_write_tBS((tBSEnumT) index_U32, (rtdb_read_tU8S((tU8SEnumT)(MBCM_X_ACTUALRELAYSTATES_AU8_0 + byteIndx_U8)) >> bitIndx_U8) & 0x01);    // copy from Relay state
+                            tU32 index_U32 = (RTDB_CANM_S_TXRELAYSTATES_AB_0 + (byteIndx_U8 * 8) + bitIndx_U8);
+                            rtdb_write_tBS((tBSEnumT) index_U32, (rtdb_read_tU8S((tU8SEnumT)(RTDB_MBCM_X_ACTUALRELAYSTATES_AU8_0 + byteIndx_U8)) >> bitIndx_U8) & 0x01);    // copy from Relay state
                             canMsg_0x110.data[byteIndx_U8] |= (rtdb_read_tBS((tBSEnumT) index_U32) << bitIndx_U8);
                         }
                     }
@@ -175,8 +175,8 @@ void canm_transceive_run_5ms(void)
                         canMsg_0x111.data[byteIndx_U8] = 0;    // clear the data location
                         for (tU8 bitIndx_U8 = 0; bitIndx_U8 < 8; bitIndx_U8++)
                         {
-                            tU32 index_U32 = (CANM_S_TXRELAYSTATES_AB_64 + (byteIndx_U8 * 8) + bitIndx_U8);
-                            rtdb_write_tBS((tBSEnumT) index_U32, (rtdb_read_tU8S((tU8SEnumT)(MBCM_X_ACTUALRELAYSTATES_AU8_8 + byteIndx_U8)) >> bitIndx_U8) & 0x01);    // copy from Relay state
+                            tU32 index_U32 = (RTDB_CANM_S_TXRELAYSTATES_AB_64 + (byteIndx_U8 * 8) + bitIndx_U8);
+                            rtdb_write_tBS((tBSEnumT) index_U32, (rtdb_read_tU8S((tU8SEnumT)(RTDB_MBCM_X_ACTUALRELAYSTATES_AU8_8 + byteIndx_U8)) >> bitIndx_U8) & 0x01);    // copy from Relay state
                             canMsg_0x111.data[byteIndx_U8] |= (rtdb_read_tBS((tBSEnumT) index_U32) << bitIndx_U8);
                         }
                     }
@@ -202,7 +202,7 @@ void canm_transceive_run_5ms(void)
                     for (tU8 i = 0; i < 64; i++)
                     {
                         tB relayInvertReq_B = (rxMessage.data[i / 8] >> (i % 8)) & 0x01;
-                        rtdb_write_tBS((tBSEnumT)(CANM_S_RXRELAYINVERTREQ_AB_0 + i), relayInvertReq_B);
+                        rtdb_write_tBS((tBSEnumT)(RTDB_CANM_S_RXRELAYINVERTREQ_AB_0 + i), relayInvertReq_B);
                     }
                     break;
                 }
@@ -211,7 +211,7 @@ void canm_transceive_run_5ms(void)
                     for (tU8 i = 0; i < 64; i++)
                     {
                         tB relayInvertReq_B = (rxMessage.data[i / 8] >> (i % 8)) & 0x01;
-                        rtdb_write_tBS((tBSEnumT)(CANM_S_RXRELAYINVERTREQ_AB_0 + i + 64), relayInvertReq_B);
+                        rtdb_write_tBS((tBSEnumT)(RTDB_CANM_S_RXRELAYINVERTREQ_AB_0 + i + 64), relayInvertReq_B);
                     }
                     break;
                 }

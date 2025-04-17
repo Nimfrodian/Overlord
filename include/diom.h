@@ -47,3 +47,4 @@ typedef enum
 #define DIOM_MUX_NUM_OF_OUTPUTS_U32 ((uint32_t) 2)
 
 void diom_init(tDIOM_INITDATA_STR* DiomCfg);
+void diom_run_5ms(void);
