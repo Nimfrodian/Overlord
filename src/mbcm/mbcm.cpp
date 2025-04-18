@@ -3,10 +3,31 @@
 #include "tmra.h"
 #include "pina.h"
 #include "crcm.h"
+#include "nvsm.h"
 #include "mbcm_rtdb.h"
 
 static uint32_t mbcm_nr_moduleId_U32 = 0;
 static bool mbcm_s_moduleInit_tB = false;
+
+static const char* mbcm_x_nvsKey_aSTR[MBCM_MAX_RELAY_BOARDS_U32] =
+{
+    "INV_REL_ST_0",     // Invert relay state 0
+    "INV_REL_ST_1",     // Invert relay state 1
+    "INV_REL_ST_2",     // Invert relay state 2
+    "INV_REL_ST_3",     // Invert relay state 3
+    "INV_REL_ST_4",     // Invert relay state 4
+    "INV_REL_ST_5",     // Invert relay state 5
+    "INV_REL_ST_6",     // Invert relay state 6
+    "INV_REL_ST_7",     // Invert relay state 7
+    "INV_REL_ST_8",     // Invert relay state 8
+    "INV_REL_ST_9",     // Invert relay state 9
+    "INV_REL_ST_10",    // Invert relay state 10
+    "INV_REL_ST_11",    // Invert relay state 11
+    "INV_REL_ST_12",    // Invert relay state 12
+    "INV_REL_ST_13",    // Invert relay state 13
+    "INV_REL_ST_14",    // Invert relay state 14
+    "INV_REL_ST_15",    // Invert relay state 15
+};
 
 void Modbus1_task(void* param)
 {
@@ -47,20 +68,27 @@ void Modbus1_task(void* param)
         gpioState[2] = (rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32) >> 16) & 0xFF;
         gpioState[3] = (rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32) >> 24) & 0xFF;
 
-        tU8 invertReq[MBCM_MAX_RELAY_BOARDS_U32] = {};
+        static tU8 prevInvReq_U8[MBCM_MAX_RELAY_BOARDS_U32] = {};
+        tU8 currInvertReq_U8[MBCM_MAX_RELAY_BOARDS_U32] = {};
         for (tU8 i = 0; i < MBCM_MAX_RELAY_BOARDS_U32; i++)
         {
             for (tU8 j = 0; j < 8; j++)
             {
-                invertReq[i] |= (rtdb_read_tBS((tBSEnumT)(RTDB_CANM_S_RXRELAYINVERTREQ_AB_0 + i*8 + j))) << j;
+                currInvertReq_U8[i] |= (rtdb_read_tBS((tBSEnumT)(RTDB_CANM_S_RXRELAYINVERTREQ_AB_0 + i*8 + j))) << j;
             }
+            if (currInvertReq_U8[i] != prevInvReq_U8[i])
+            {
+                nvsm_write_tU8S(mbcm_x_nvsKey_aSTR[i], currInvertReq_U8[i]);   // write to NVS
+                prevInvReq_U8[i] = currInvertReq_U8[i];
+            }
+
             if (i < 4)
             {
-                rtdb_write_tU8S((tU8SEnumT)(RTDB_MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), invertReq[i] ^ gpioState[i]);
+                rtdb_write_tU8S((tU8SEnumT)(RTDB_MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), currInvertReq_U8[i] ^ gpioState[i]);
             }
             else
             {
-                rtdb_write_tU8S((tU8SEnumT)(RTDB_MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), invertReq[i]);
+                rtdb_write_tU8S((tU8SEnumT)(RTDB_MBCM_X_DESIREDRELAYSTATES_AU8_0 + i), currInvertReq_U8[i]);
             }
         }
 
@@ -117,6 +145,27 @@ void Modbus2_task(void* param)
     vTaskDelete( NULL );
 }
 
+static void mbcm_updateDesiredRelayState(const char* name, tBSEnumT index)
+{
+    for (tU8 i = 0; i < MBCM_MAX_RELAY_BOARDS_U32; i++)
+    {
+        tU8 invertRelayState_U8 = 0;
+        tU32 error_U32 = nvsm_read_tU8S(name, &invertRelayState_U8);
+        if (ESP_ERR_NVS_NOT_FOUND == error_U32)
+        {
+            nvsm_write_tU8S(name, 0);
+        }
+        else if (ESP_OK != error_U32)
+        {
+            errh_reportError(ERRH_WARNING, mbcm_nr_moduleId_U32, error_U32, MBCM_API_INIT_U32, NVSM_ERR_CANNOT_READ_U8);
+        }
+        for (tU8 j = 0; j < 8; j++)
+        {
+            rtdb_write_tBS((tBSEnumT) (index + j), (invertRelayState_U8 >> j) & 0x01);
+        }
+    }
+}
+
 void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
 {
     if (true == mbcm_s_moduleInit_tB)
@@ -134,6 +183,23 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
 
         pina_setGpioAsOutput(PINA_MB_1_DE);
         pina_setGpioAsOutput(PINA_MB_2_DE);
+
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[0],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_0);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[1],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_8);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[2],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_16);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[3],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_24);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[4],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_32);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[5],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_40);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[6],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_48);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[7],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_56);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[8],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_64);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[9],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_72);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[10], RTDB_CANM_S_RXRELAYINVERTREQ_AB_80);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[11], RTDB_CANM_S_RXRELAYINVERTREQ_AB_88);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[12], RTDB_CANM_S_RXRELAYINVERTREQ_AB_96);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[13], RTDB_CANM_S_RXRELAYINVERTREQ_AB_104);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[14], RTDB_CANM_S_RXRELAYINVERTREQ_AB_112);
+        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[15], RTDB_CANM_S_RXRELAYINVERTREQ_AB_120);  // initializes to index 127
 
         // Set Modbus 1 UART parameters
         uart_config_t uart1_config = {

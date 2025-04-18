@@ -24,6 +24,14 @@ extern "C" void app_main(void)
         };
         errh_init(&ErrhCfg);
 
+        tNVSM_INITDATA_STR NvsmCfg =
+        {
+            .nr_moduleId_U32 = MODULE_NVSM,
+            .ti_ms_taskDelay_U32 = MAIN_TI_ms_TASK_DELAY_U32, // executed in main task
+        };
+        nvsm_init(&NvsmCfg);
+        sera_print("NVSM module initialized\n");
+
         tSERA_INITDATA_STR SeraCfg =
         {
             .nr_moduleId_U32 = MODULE_SERA,
@@ -151,6 +159,8 @@ extern "C" void app_main(void)
         dmas_run_5ms();
 
         diom_run_5ms();
+
+        nvsm_run_5ms();
 
         vTaskDelay(MAIN_TI_ms_TASK_DELAY_U32 / portTICK_PERIOD_MS);
     }
