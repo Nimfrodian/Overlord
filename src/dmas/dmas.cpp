@@ -3,9 +3,9 @@
 #include "rtdb.h"
 #include <vector>
 #include <algorithm> // for std::find_if
+#include "mdll.h"
 
 static bool dmas_s_moduleInit_tB = false;
-static uint32_t dmas_nr_moduleId_U32 = 0;
 
 using namespace std;
 static vector<tDMAS_STREAMING_STR> dmas_x_streamingData_astr(DMAS_MAX_NUM_OF_STREAMABLE_VARS_U8);
@@ -42,7 +42,7 @@ tU32 dmas_U32_ms_getStreamingTime( tDMAS_STREAMINGTIMETYPE_E StreamingTimeSelect
     }
     else
     {
-        errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_TIME_INDEX);
+        errh_reportError(ERRH_ERROR_LOW, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_TIME_INDEX);
     }
     return ti_ms_toReturn_U32;
 }
@@ -53,15 +53,14 @@ void dmas_init(tDMAS_INITDATA_STR* DmasCfg)
 {
     if (true == dmas_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+        errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == DmasCfg)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, dmas_nr_moduleId_U32, 0, DMAS_API_INIT_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_DMAS, 0, DMAS_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
-        dmas_nr_moduleId_U32 = DmasCfg->nr_moduleId_U32;
         dmas_s_moduleInit_tB = true;    // only init once
 
         for (int i = 0; i < DMAS_MAX_NUM_OF_STREAMABLE_VARS_U8; ++i)
@@ -99,7 +98,7 @@ void dmas_run_5ms(void)
 
                 if (it != dmas_x_streamingData_astr.end())
                 {
-                    errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_ADD_EXISTING_STREAM_U32);
+                    errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_ADD_EXISTING_STREAM_U32);
                 }
                 else
                 {
@@ -129,7 +128,7 @@ void dmas_run_5ms(void)
                 }
                 else
                 {
-                    errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_REMOVE_NONEXISTING_STREAM_U32);
+                    errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_REMOVE_NONEXISTING_STREAM_U32);
                 }
                 break;
             }
@@ -187,13 +186,13 @@ void dmas_run_5ms(void)
                     }
                     default:
                     {
-                        errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_UNIT_TYPE_U32);
+                        errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_UNIT_TYPE_U32);
                         break;
                     }
 
                     if (errCode)
                     {
-                        errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_RTDB_WRITE_ERR_U32);
+                        errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_RTDB_WRITE_ERR_U32);
                     }
                 }
                 break;
@@ -252,13 +251,13 @@ void dmas_run_5ms(void)
                     }
                     default:
                     {
-                        errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_UNIT_TYPE_U32);
+                        errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_UNIT_TYPE_U32);
                         break;
                     }
 
                     if (errCode)
                     {
-                        errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_RTDB_OVERWRITE_ERR_U32);
+                        errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_RTDB_OVERWRITE_ERR_U32);
                     }
                 }
                 break;
@@ -315,20 +314,20 @@ void dmas_run_5ms(void)
                     }
                     default:
                     {
-                        errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_UNIT_TYPE_U32);
+                        errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_UNIT_TYPE_U32);
                         break;
                     }
 
                     if (errCode)
                     {
-                        errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_RTDB_RELEASEOVERWRITE_ERR_U32);
+                        errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_RTDB_RELEASEOVERWRITE_ERR_U32);
                     }
                 }
                 break;
             }
             default:
             {
-                errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_COMMAND_TYPE_U32);
+                errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_COMMAND_TYPE_U32);
                 break;
             }
         }
@@ -447,7 +446,7 @@ tDMAS_MESSAGEDATA_STR dmas_getReadyData(void)
                     }
                     default:
                     {
-                        errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_UNIT_TYPE_U32);
+                        errh_reportError(ERRH_NOTIF, MODULE_DMAS, 0, DMAS_API_RUN_U32, DMAS_ERR_WRONG_UNIT_TYPE_U32);
                         break;
                     }
                 }
@@ -463,7 +462,7 @@ void dmas_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
 {
     if (false == dmas_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, ERRH_MODULE_NOT_INIT);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_DMAS, 0, DMAS_API_CAN_PARSE_U32, ERRH_MODULE_NOT_INIT);
     }
     else
     {
@@ -473,20 +472,20 @@ void dmas_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
 
         if (true == dmas_x_inputData_str.dataReady_U8)
         {
-            errh_reportError(ERRH_WARNING, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_DATA_OVERWRITE_U32);
+            errh_reportError(ERRH_WARNING, MODULE_DMAS, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_DATA_OVERWRITE_U32);
         }
 
         if (DMAS_NUM_OF_MODES <= modeType_U32)
         {
-            errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_MODE_OUT_OF_BOUNDS_U32);
+            errh_reportError(ERRH_ERROR_LOW, MODULE_DMAS, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_MODE_OUT_OF_BOUNDS_U32);
         }
         else if (DMAS_UNDEFINED <= varType_U32)
         {
-            errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_VAR_TYPE_OUT_OF_BOUNDS_U32);
+            errh_reportError(ERRH_ERROR_LOW, MODULE_DMAS, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_VAR_TYPE_OUT_OF_BOUNDS_U32);
         }
         else if ((DMAS_NUM_OF_STREAMABLE_TIMES <= streamIntervalIndex_U32) && (DMAS_MODE_READ_REQ == modeType_U32))
         {
-            errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_TIME_INDEX);
+            errh_reportError(ERRH_ERROR_LOW, MODULE_DMAS, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_TIME_INDEX);
         }
         else
         {

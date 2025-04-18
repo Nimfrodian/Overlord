@@ -1,7 +1,7 @@
 #include "nvsm.h"
 #include "errh.h"
+#include "mdll.h"
 
-static uint32_t nvsm_nr_moduleId_U32 = 0;
 static bool nvsm_s_moduleInit_tB = false;
 static uint32_t nvsm_ti_ms_taskDelay_U32 = 0;
 
@@ -13,11 +13,11 @@ void nvsm_init(tNVSM_INITDATA_STR* nvsmCfg)
 {
     if (true == nvsm_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_NOTIF, nvsm_nr_moduleId_U32, 0, NVSM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+        errh_reportError(ERRH_NOTIF, MODULE_NVSM, 0, NVSM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == nvsmCfg)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, nvsm_nr_moduleId_U32, 0, NVSM_API_INIT_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_NVSM, 0, NVSM_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
@@ -29,7 +29,7 @@ void nvsm_init(tNVSM_INITDATA_STR* nvsmCfg)
             tU32 errFlashErase = nvs_flash_erase();
             if (ESP_OK != errFlashErase)
             {
-                errh_reportError(ERRH_ERROR_HIGH, nvsm_nr_moduleId_U32, errFlashErase, NVSM_API_INIT_U32, NVSM_ERR_CANNOT_ERASE_FLASH_U32);
+                errh_reportError(ERRH_ERROR_HIGH, MODULE_NVSM, errFlashErase, NVSM_API_INIT_U32, NVSM_ERR_CANNOT_ERASE_FLASH_U32);
             }
             else
             {
@@ -39,7 +39,7 @@ void nvsm_init(tNVSM_INITDATA_STR* nvsmCfg)
         }
         if (ESP_OK != errFlashInit_U32)
         {
-            errh_reportError(ERRH_ERROR_HIGH, nvsm_nr_moduleId_U32, errFlashInit_U32, NVSM_API_INIT_U32, NVSM_ERR_CANNOT_INIT_FLASH_U32);
+            errh_reportError(ERRH_ERROR_HIGH, MODULE_NVSM, errFlashInit_U32, NVSM_API_INIT_U32, NVSM_ERR_CANNOT_INIT_FLASH_U32);
         }
         else
         {
@@ -47,12 +47,11 @@ void nvsm_init(tNVSM_INITDATA_STR* nvsmCfg)
 
             if (ESP_OK != errOpen)
             {
-                errh_reportError(ERRH_ERROR_HIGH, nvsm_nr_moduleId_U32, errFlashInit_U32, NVSM_API_INIT_U32, NVSM_ERR_CANNOT_OPEN_FLASH_U32);
+                errh_reportError(ERRH_ERROR_HIGH, MODULE_NVSM, errFlashInit_U32, NVSM_API_INIT_U32, NVSM_ERR_CANNOT_OPEN_FLASH_U32);
             }
             else
             {
                 nvsm_s_moduleInit_tB = true;
-                nvsm_nr_moduleId_U32 = nvsmCfg->nr_moduleId_U32;
                 nvsm_ti_ms_taskDelay_U32 = nvsmCfg->ti_ms_taskDelay_U32;
             }
         }
@@ -64,7 +63,7 @@ tU32 nvsm_read_tU8S(const char* key_pU8, tU8* value_pU8)
     tU32 err_U32 = nvs_get_u8(nvsm_x_nvsHandle_STR, key_pU8, value_pU8);
     if (ESP_OK != err_U32)
     {
-        errh_reportError(ERRH_WARNING, nvsm_nr_moduleId_U32, err_U32, NVSM_API_NVSM_READ_U8, NVSM_ERR_CANNOT_READ_U8);
+        errh_reportError(ERRH_WARNING, MODULE_NVSM, err_U32, NVSM_API_NVSM_READ_U8, NVSM_ERR_CANNOT_READ_U8);
     }
     return err_U32;
 }
@@ -74,7 +73,7 @@ void nvsm_write_tU8S(const char* key_pU8, tU8 value_U8)
     tU32 err_U32 = nvs_set_u8(nvsm_x_nvsHandle_STR, key_pU8, value_U8);
     if (ESP_OK != err_U32)
     {
-        errh_reportError(ERRH_WARNING, nvsm_nr_moduleId_U32, err_U32, NVSM_API_NVSM_WRITE_U8, NVSM_ERR_CANNOT_WRITE_U8);
+        errh_reportError(ERRH_WARNING, MODULE_NVSM, err_U32, NVSM_API_NVSM_WRITE_U8, NVSM_ERR_CANNOT_WRITE_U8);
     }
     else
     {
@@ -87,7 +86,7 @@ tU32 nvsm_read_tU32S(const char* key_pU8, tU32* value_pU32)
     tU32 err_U32 = nvs_get_u32(nvsm_x_nvsHandle_STR, key_pU8, value_pU32);
     if (ESP_OK != err_U32)
     {
-        errh_reportError(ERRH_WARNING, nvsm_nr_moduleId_U32, err_U32, NVSM_API_NVSM_READ_U32, NVSM_ERR_CANNOT_READ_U32);
+        errh_reportError(ERRH_WARNING, MODULE_NVSM, err_U32, NVSM_API_NVSM_READ_U32, NVSM_ERR_CANNOT_READ_U32);
     }
     return err_U32;
 }
@@ -97,7 +96,7 @@ void nvsm_write_tU32S(const char* key_pU8, tU32 value_U32)
     tU32 err_U32 = nvs_set_u32(nvsm_x_nvsHandle_STR, key_pU8, value_U32);
     if (ESP_OK != err_U32)
     {
-        errh_reportError(ERRH_WARNING, nvsm_nr_moduleId_U32, err_U32, NVSM_API_NVSM_WRITE_U32, NVSM_ERR_CANNOT_WRITE_U32);
+        errh_reportError(ERRH_WARNING, MODULE_NVSM, err_U32, NVSM_API_NVSM_WRITE_U32, NVSM_ERR_CANNOT_WRITE_U32);
     }
     else
     {
@@ -116,7 +115,7 @@ void nvsm_run_5ms(void)
             tU32 err_U32 = nvs_commit(nvsm_x_nvsHandle_STR);
             if (ESP_OK != err_U32)
             {
-                errh_reportError(ERRH_WARNING, nvsm_nr_moduleId_U32, err_U32, NVSM_API_NVSM_RUN_U32, NVSM_ERR_CANNOT_WRITE_U32);
+                errh_reportError(ERRH_WARNING, MODULE_NVSM, err_U32, NVSM_API_NVSM_RUN_U32, NVSM_ERR_CANNOT_WRITE_U32);
             }
         }
         nvsmTaskCounter_U32 = 0;

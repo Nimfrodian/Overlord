@@ -1,22 +1,21 @@
 #include "pina.h"
 #include "esp_attr.h"
+#include "mdll.h"
 
 static bool pina_s_moduleInit_tB = false;
-static uint32_t pina_nr_moduleId_U32 = 0;
 
 void pina_init(tPINA_INITDATA_STR* PinaCfg)
 {
     if (true == pina_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_NOTIF, pina_nr_moduleId_U32, 0, PINA_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+        errh_reportError(ERRH_NOTIF, MODULE_PINA, 0, PINA_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == PinaCfg)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, pina_nr_moduleId_U32, 0, PINA_API_INIT_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_PINA, 0, PINA_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
-        pina_nr_moduleId_U32 = PinaCfg->nr_moduleId_U32;
         pina_s_moduleInit_tB = true;
     }
 }

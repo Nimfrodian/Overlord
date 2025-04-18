@@ -1,8 +1,8 @@
 #include "canm.h"
 #include "canm_rtdb.h"
+#include "mdll.h"
 
 static bool canm_s_moduleInit_tB = false;
-static uint32_t canm_nr_moduleId_U32 = 0;
 static uint32_t canm_ti_ms_taskDelay_U32 = 0;
 
 const twai_general_config_t canm_x_genConfig_str =
@@ -35,11 +35,11 @@ void canm_init(tCANM_INITDATA_STR* CanmCfg)
 {
     if (true == canm_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_NOTIF, canm_nr_moduleId_U32, 0, CANM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+        errh_reportError(ERRH_NOTIF, MODULE_CANM, 0, CANM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == CanmCfg)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, canm_nr_moduleId_U32, 0, CANM_API_INIT_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_CANM, 0, CANM_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
@@ -70,7 +70,6 @@ void canm_init(tCANM_INITDATA_STR* CanmCfg)
 
         canm_ti_ms_taskDelay_U32 = CanmCfg->ti_ms_taskDelay_U32;
 
-        canm_nr_moduleId_U32 = CanmCfg->nr_moduleId_U32;
         canm_s_moduleInit_tB = true;    // only init once
     }
 }
@@ -119,11 +118,13 @@ void canm_transceive_run_5ms(void)
     }
     // (new) transmit
     {
-        static uint32_t cntr_10ms = 0;  // counter for 10ms transmit
+        static uint32_t cntr_10ms = 0;   // counter for  10ms transmit
         static uint32_t cntr_100ms = 0;  // counter for 100ms transmit
+        static uint32_t cntr_1s = 0;     // counter for    1s transmit
         {
             cntr_10ms += canm_ti_ms_taskDelay_U32;
             cntr_100ms += canm_ti_ms_taskDelay_U32;
+            cntr_1s += canm_ti_ms_taskDelay_U32;
 
             if (10 <= cntr_10ms)
             {
@@ -183,6 +184,49 @@ void canm_transceive_run_5ms(void)
                     twai_transmit(&canMsg_0x111, 0);
                 }
                 cntr_100ms = 0;
+            }
+            if (cntr_1s > 1000)
+            {
+                // send 0x1F5 + id + varIndx message for power meter, one power meter's info per second
+                {
+                    twai_message_t canMsg_sdm120m[11] = {}; // 11 messages per power module
+                    static tU8 moduleIndx = 0;  // up to CANM_MAX_PWR_METERS_U32
+                    for (tU8 i = 0; i < 11; i++)
+                    {
+                        canMsg_sdm120m[i].identifier = 0x1F5 + i + moduleIndx * 11;
+                        canMsg_sdm120m[i].data_length_code = 8;
+
+                        tU32 data_0 = 0;    //  0 - 31 bits
+                        tU32 data_1 = 0;    // 32 - 63 bits
+                        tF32 data_0_f32 = 0.0f;
+                        tF32 data_1_f32 = 0.0f;
+                        // TODO: if (SIGNAL_OK == rtdb_getSS(...))
+                        data_0_f32 = rtdb_read_tF32S((tF32SEnumT)(RTDB_MBCM_X_SDM120MREADINGS_0_AF32_0 + (i * 2) + 0 + moduleIndx * 21)); // 0,2,4,6,8,10,12,14,16,18,20   21,23,25,27,29,31,33,35,37,39,41 ...
+                        data_0 = *(tU32*)((void*) &data_0_f32);
+                        if (i < 10) // Skip last one as that would be index 21 - out of bounds
+                        {
+                            data_1_f32 = rtdb_read_tF32S((tF32SEnumT)(RTDB_MBCM_X_SDM120MREADINGS_0_AF32_0 + (i * 2) + 1 + moduleIndx * 21)); // 1,3,5,7,9,11,13,15,17,19   22,24,26,28,30,32,34,36,38,40 ...
+                            data_1 = *(tU32*)((void*) &data_1_f32);
+                        }
+                        data_1 = *(tU32*)((void*) &data_1_f32);
+                        canMsg_sdm120m[i].data[0] = (data_0 >> 0) & 0xFF;
+                        canMsg_sdm120m[i].data[1] = (data_0 >> 8) & 0xFF;
+                        canMsg_sdm120m[i].data[2] = (data_0 >> 16) & 0xFF;
+                        canMsg_sdm120m[i].data[3] = (data_0 >> 24) & 0xFF;
+
+                        canMsg_sdm120m[i].data[4] = (data_1 >> 0) & 0xFF;
+                        canMsg_sdm120m[i].data[5] = (data_1 >> 8) & 0xFF;
+                        canMsg_sdm120m[i].data[6] = (data_1 >> 16) & 0xFF;
+                        canMsg_sdm120m[i].data[7] = (data_1 >> 24) & 0xFF;
+                        twai_transmit(&canMsg_sdm120m[i], 0);
+                    }
+                    moduleIndx++;
+                    if (moduleIndx >= CANM_MAX_PWR_METERS_U32)
+                    {
+                        moduleIndx = 0;
+                    }
+                }
+                cntr_1s = 0;
             }
         }
     }

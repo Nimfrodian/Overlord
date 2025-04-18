@@ -16,7 +16,6 @@
 
 typedef struct
 {
-    uint32_t nr_moduleId_U32;       ///< ID of the module
 } tDIOM_INITDATA_STR;
 
 typedef struct

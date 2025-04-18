@@ -4,9 +4,9 @@
 #include "pina.h"
 #include "crcm.h"
 #include "nvsm.h"
+#include "mdll.h"
 #include "mbcm_rtdb.h"
 
-static uint32_t mbcm_nr_moduleId_U32 = 0;
 static bool mbcm_s_moduleInit_tB = false;
 
 static const char* mbcm_x_nvsKey_aSTR[MBCM_MAX_RELAY_BOARDS_U32] =
@@ -38,7 +38,7 @@ void Modbus1_task(void* param)
         static tU8 currRelayStates_aU8[MBCM_MAX_RELAY_BOARDS_U32] = {};
         static tU8 lastSentState_U8 = 0;
         tU8 buffer[32]= {0};
-        volatile tU8 length_U8 = 0;
+        tU8 length_U8 = 0;
         length_U8 = uart_read_bytes(MBCM_MB1_UART_NUM_STR, buffer, 32, 0);
         if (length_U8)
         {
@@ -52,12 +52,12 @@ void Modbus1_task(void* param)
                 }
                 else
                 {
-                    errh_reportError(ERRH_ERROR_CRITICAL, mbcm_nr_moduleId_U32, boardIndex_U8, MBCM_API_MB1_RUN_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
+                    errh_reportError(ERRH_ERROR_CRITICAL, MODULE_MBCM, boardIndex_U8, MBCM_API_MB1_RUN_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
                 }
             }
             else
             {
-                errh_reportError(ERRH_NOTIF, mbcm_nr_moduleId_U32, 0, MBCM_API_MB1_RUN_U32, MBCM_ERR_WRONG_DATA_U32);
+                errh_reportError(ERRH_NOTIF, MODULE_MBCM, 0, MBCM_API_MB1_RUN_U32, MBCM_ERR_WRONG_DATA_U32);
             }
         }
         uart_flush_input(MBCM_MB1_UART_NUM_STR);
@@ -133,11 +133,59 @@ void Modbus2_task(void* param)
 {
     while (1)
     {
+        static tU8 varIndx_U8 = 0; // current variable index, 0-20
+        static tU8 boardIndx_U8 = 0; // current board index, 0-20
         // check UART input buffer and parse data
-        // TODO
+        tU8 buffer[32]= {0};
+        tU8 length_U8 = 0;
+        length_U8 = uart_read_bytes(MBCM_MB2_UART_NUM_STR, buffer, 32, 0);
+        if (length_U8)
+        {
+            if ((buffer[0] - 1) == boardIndx_U8)
+            {
+                uint32_t temp = ((uint32_t)buffer[3] << 24) |
+                ((uint32_t)buffer[4] << 16) |
+                ((uint32_t)buffer[5] << 8)  |
+                ((uint32_t)buffer[6] << 0);
+                float result = *((float *)&temp); // convert uint32_t value to float variable
+                rtdb_write_tF32S((tF32SEnumT)(RTDB_MBCM_X_SDM120MREADINGS_0_AF32_0 + boardIndx_U8 * 21 + varIndx_U8), result); // store the result
+            }
+            else
+            {
+                rtdb_setSS_tF32S((tF32SEnumT)(RTDB_MBCM_X_SDM120MREADINGS_0_AF32_0 + boardIndx_U8 * 21 + varIndx_U8), SIGNAL_MISSING);
+                errh_reportError(ERRH_NOTIF, MODULE_MBCM, 0, MBCM_API_MB2_RUN_U32, MBCM_ERR_WRONG_DATA_U32);
+            }
+        }
+        else
+        {
+            rtdb_setSS_tF32S((tF32SEnumT)(RTDB_MBCM_X_SDM120MREADINGS_0_AF32_0 + boardIndx_U8 * 21 + varIndx_U8), SIGNAL_MISSING);
+        }
+
+        varIndx_U8++;
+        if (varIndx_U8 >= SDM120M_NUM_OF_READ)
+        {
+            varIndx_U8 = 0; // reset index
+            boardIndx_U8++;
+            if (boardIndx_U8 >= MBCM_MAX_PWR_METERS_U32)
+            {
+                boardIndx_U8 = 0;
+            }
+        }
+        uart_flush_input(MBCM_MB2_UART_NUM_STR);
 
         // write next request
-        // TODO
+        tU8 MbMsgData[8];
+        MbMsgData[0] = boardIndx_U8 + 1;        // ID
+        MbMsgData[1] = 0x04;                    // function code
+        MbMsgData[2] = (mbcm_sdm120mStartAddrs_aU16[varIndx_U8] >> 8) & 0xFF;   // Data Reg High HI
+        MbMsgData[3] = (mbcm_sdm120mStartAddrs_aU16[varIndx_U8] >> 0) & 0xFF;   // Data Reg High LO
+        MbMsgData[4] = 0x00;                    // Number of relays
+        MbMsgData[5] = 0x02;                    // Number of relays
+        unsigned int crc = crcm_CRC16_Modbus(MbMsgData, 6);
+        MbMsgData[6] = (crc >> 8) & 0xFF;       // CRC HI
+        MbMsgData[7] = (crc >> 0) & 0xFF;       // CRC LOW
+        // send command to read state
+        uart_write_bytes(MBCM_MB2_UART_NUM_STR, (const char*) MbMsgData, 8);
 
         vTaskDelay(pdMS_TO_TICKS(rtdb_read_tU32S(RTDB_MBCM_TI_US_TASKPERIODPWRMETER_U32) / 1000));
     }
@@ -157,7 +205,7 @@ static void mbcm_updateDesiredRelayState(const char* name, tBSEnumT index)
         }
         else if (ESP_OK != error_U32)
         {
-            errh_reportError(ERRH_WARNING, mbcm_nr_moduleId_U32, error_U32, MBCM_API_INIT_U32, NVSM_ERR_CANNOT_READ_U8);
+            errh_reportError(ERRH_WARNING, MODULE_MBCM, error_U32, MBCM_API_INIT_U32, NVSM_ERR_CANNOT_READ_U8);
         }
         for (tU8 j = 0; j < 8; j++)
         {
@@ -170,15 +218,14 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
 {
     if (true == mbcm_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_NOTIF, mbcm_nr_moduleId_U32, 0, MBCM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+        errh_reportError(ERRH_NOTIF, MODULE_MBCM, 0, MBCM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == mbcmCfg)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, mbcm_nr_moduleId_U32, 0, MBCM_API_INIT_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_MBCM, 0, MBCM_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
-        mbcm_nr_moduleId_U32 = mbcmCfg->nr_moduleId_U32;
         mbcm_s_moduleInit_tB = true;    // only init once
 
         pina_setGpioAsOutput(PINA_MB_1_DE);
@@ -236,6 +283,9 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
         uart_param_config(MBCM_MB2_UART_NUM_STR, &uart2_config);
         uart_set_pin(MBCM_MB2_UART_NUM_STR, PINA_MB_2_TX, PINA_MB_2_RX, PINA_MB_2_DE, UART_PIN_NO_CHANGE);
         uart_set_mode(MBCM_MB2_UART_NUM_STR, UART_MODE_RS485_HALF_DUPLEX);
+
+        uart_flush_input(MBCM_MB1_UART_NUM_STR);
+        uart_flush_input(MBCM_MB2_UART_NUM_STR);
 
         xTaskCreatePinnedToCore(
         Modbus1_task,    // Function that should be called

@@ -28,7 +28,6 @@
 
 typedef struct
 {
-    uint32_t nr_moduleId_U32;       ///< ID of the module
     uint32_t ti_ms_taskDelay_U32;   ///< time in ms between task executions
 } tNVSM_INITDATA_STR;
 

@@ -1,17 +1,17 @@
 #include "sera.h"
+#include "mdll.h"
 
 static bool sera_s_moduleInit_tB = false;
-static uint32_t sera_nr_moduleId_U32 = 0;
 
 void sera_init(tSERA_INITDATA_STR* SeraCfg)
 {
     if (true == sera_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_NOTIF, sera_nr_moduleId_U32, 0, SERA_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+        errh_reportError(ERRH_NOTIF, MODULE_SERA, 0, SERA_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == SeraCfg)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, sera_nr_moduleId_U32, 0, SERA_API_INIT_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_SERA, 0, SERA_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
@@ -31,7 +31,6 @@ void sera_init(tSERA_INITDATA_STR* SeraCfg)
         uart_param_config(UART_NUM_0, &uart_config);
         uart_driver_install(UART_NUM_0, 1024 * 2, 0, 0, NULL, 0);
 
-        sera_nr_moduleId_U32 = SeraCfg->nr_moduleId_U32;
         sera_s_moduleInit_tB = true;
     }
 }
@@ -42,11 +41,11 @@ uint32_t sera_print(const char* Text, ...)
 
     if (false == sera_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_WARNING, sera_nr_moduleId_U32, 0, SERA_API_WRITE_U32, ERRH_MODULE_NOT_INIT);
+        errh_reportError(ERRH_WARNING, MODULE_SERA, 0, SERA_API_WRITE_U32, ERRH_MODULE_NOT_INIT);
     }
     else if (NULL == Text)
     {
-        errh_reportError(ERRH_WARNING, sera_nr_moduleId_U32, 0, SERA_API_WRITE_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_WARNING, MODULE_SERA, 0, SERA_API_WRITE_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
@@ -84,11 +83,11 @@ uint32_t sera_read(char* Buffer, uint32_t BuffLength)
     uint32_t bytesRead = 0;
     if (false == sera_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_WARNING, sera_nr_moduleId_U32, 0, SERA_API_READ_U32, ERRH_MODULE_NOT_INIT);
+        errh_reportError(ERRH_WARNING, MODULE_SERA, 0, SERA_API_READ_U32, ERRH_MODULE_NOT_INIT);
     }
     else if (NULL == Buffer)
     {
-        errh_reportError(ERRH_WARNING, sera_nr_moduleId_U32, 0, SERA_API_READ_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_WARNING, MODULE_SERA, 0, SERA_API_READ_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {

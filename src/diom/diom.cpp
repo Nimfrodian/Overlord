@@ -1,9 +1,9 @@
 #include "diom.h"
 #include "rtdb.h"
 #include "tmra.h"
+#include "mdll.h"
 #include "diom_rtdb.h"
 
-static uint32_t diom_nr_moduleId_U32 = 0;
 static bool diom_s_moduleInit_tB = false;
 static tTMRA_TIMERDATA_STR diom_h_timerHandler_str = tmra_emptyTimerData_str;
 
@@ -114,15 +114,14 @@ void diom_init(tDIOM_INITDATA_STR* DiomCfg)
 {
     if (true == diom_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_NOTIF, diom_nr_moduleId_U32, 0, DIOM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+        errh_reportError(ERRH_NOTIF, MODULE_DIOM, 0, DIOM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == DiomCfg)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, diom_nr_moduleId_U32, 0, DIOM_API_INIT_U32, ERRH_POINTER_IS_NULL);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_DIOM, 0, DIOM_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
-        diom_nr_moduleId_U32 = DiomCfg->nr_moduleId_U32;
         diom_s_moduleInit_tB = true;    // only init once
 
         // set gpio pins as inputs/outputs

@@ -12,11 +12,11 @@
 
 #define CANM_API_INIT_U32                  ((uint32_t) 1)
 
-#define CANM_TI_ms_TASK_DELAY_U32 ((uint32_t) 2)
+#define CANM_MAX_RELAY_BOARDS_U32          ((uint32_t) 16)   ///< max number of relay boards. Id's 1-16
+#define CANM_MAX_PWR_METERS_U32            ((uint32_t) 20)   ///< max number of power meters. Id's 1-20
 
 typedef struct
 {
-    uint32_t nr_moduleId_U32;       ///< ID of the module
     uint32_t ti_ms_taskDelay_U32;   ///< time in ms between task executions
 } tCANM_INITDATA_STR;
 

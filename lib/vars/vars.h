@@ -17,7 +17,7 @@
 #define TB_MAX (1)
 #define TE_MIN (0)
 #define TE_MAX (TU32_MAX)
-#define TF32_MIN (FLT_MIN)
+#define TF32_MIN (-FLT_MAX)
 #define TF32_MAX (FLT_MAX)
 
 typedef uint8_t tU8;

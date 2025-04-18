@@ -26,7 +26,6 @@
 
 typedef struct
 {
-    uint32_t nr_moduleId_U32;       ///< ID of the module
 } tTMRA_INITDATA_STR;
 
 typedef gptimer_handle_t tTMRA_TIMERHANDLE_STR;

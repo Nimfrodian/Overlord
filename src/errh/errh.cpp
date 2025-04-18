@@ -1,9 +1,9 @@
 #include "errh.h"
 #include <vector>
 #include "esp_attr.h"
+#include "mdll.h"
 
 static bool errh_s_moduleInit_tB = false;
-static uint32_t errh_nr_moduleId_U32 = 0;
 
 static std::vector<tERRH_ERRORDATA_STR> errh_x_errors_vstr(ERRH_NR_ERROR_BUFFER_SIZE_U32);  // list of currently active errors
 static uint32_t errh_nr_activeErrorCount_U32 = 0;                                           // number of (unique) logged errors
@@ -12,7 +12,7 @@ void errh_init(tERRH_INITDATA_STR* ErrhCfg)
 {
     if (true == errh_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_NOTIF, errh_nr_moduleId_U32, 0, ERRH_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+        errh_reportError(ERRH_NOTIF, MODULE_ERRH, 0, ERRH_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (nullptr == ErrhCfg)
     {
@@ -26,7 +26,6 @@ void errh_init(tERRH_INITDATA_STR* ErrhCfg)
     }
     else
     {
-        errh_nr_moduleId_U32 = ErrhCfg->nr_moduleId_U32;
         errh_s_moduleInit_tB = true;
     }
 }
@@ -106,7 +105,7 @@ tERRH_ERRORDATA_STR errh_readError(uint32_t ErrorIndx)
     };
     if (errh_nr_activeErrorCount_U32 <= ErrorIndx)
     {
-        errh_reportError(ERRH_WARNING, errh_nr_moduleId_U32, 0, ERRH_API_READ_ERROR_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
+        errh_reportError(ERRH_WARNING, MODULE_ERRH, 0, ERRH_API_READ_ERROR_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
     }
     else
     {
@@ -162,7 +161,7 @@ bool errh_canMsgCompose_100ms(uint8_t** DataPtr_MpU8)
     bool messagesComposed_tB = false;
     if (false == errh_s_moduleInit_tB)
     {
-        errh_reportError(ERRH_ERROR_CRITICAL, errh_nr_moduleId_U32, 0, ERRH_API_CAN_COMPOSE_U32, ERRH_MODULE_NOT_INIT);
+        errh_reportError(ERRH_ERROR_CRITICAL, MODULE_ERRH, 0, ERRH_API_CAN_COMPOSE_U32, ERRH_MODULE_NOT_INIT);
     }
     else
     {

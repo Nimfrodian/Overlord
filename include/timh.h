@@ -16,7 +16,6 @@
 
 typedef struct
 {
-    uint32_t nr_moduleId_U32;       ///< ID of the module
     int64_t (*timh_ti_us_sysTimeFunc_pfS64)(void);   ///< pointer to system time function
 } tTIMH_INITDATA_STR;
 
