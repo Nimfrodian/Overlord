@@ -15,7 +15,7 @@
 #define NVSM_API_NVSM_READ_U32             ((uint32_t) 3)
 #define NVSM_API_NVSM_WRITE_U32            ((uint32_t) 4)
 #define NVSM_API_NVSM_READ_U8              ((uint32_t) 5)
-#define NVSM_API_NVSM_WRITE_U8             ((uint32_t)64)
+#define NVSM_API_NVSM_WRITE_U8             ((uint32_t) 6)
 
 #define NVSM_ERR_CANNOT_ERASE_FLASH_U32    ((uint32_t) 1)
 #define NVSM_ERR_CANNOT_INIT_FLASH_U32     ((uint32_t) 2)

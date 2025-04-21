@@ -13,6 +13,7 @@
 #define MBCM_API_INIT_U32                  ((uint32_t) 1)
 #define MBCM_API_MB1_RUN_U32               ((uint32_t) 2)
 #define MBCM_API_MB2_RUN_U32               ((uint32_t) 3)
+#define MBCM_API_MB_PRERUN_U32             ((uint32_t) 4)
 
 #define MBCM_ERR_WRONG_DATA_U32            ((uint32_t) 1)
 

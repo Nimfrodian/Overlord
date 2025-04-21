@@ -117,6 +117,7 @@ void nvsm_run_5ms(void)
             {
                 errh_reportError(ERRH_WARNING, MODULE_NVSM, err_U32, NVSM_API_NVSM_RUN_U32, NVSM_ERR_CANNOT_WRITE_U32);
             }
+            nvsm_s_commitFlag_tB = false;
         }
         nvsmTaskCounter_U32 = 0;
     }

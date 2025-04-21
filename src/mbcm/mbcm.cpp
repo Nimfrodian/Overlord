@@ -8,6 +8,7 @@
 #include "mbcm_rtdb.h"
 
 static bool mbcm_s_moduleInit_tB = false;
+static tU8 currRelayStates_aU8[MBCM_MAX_RELAY_BOARDS_U32] = {};
 
 static const char* mbcm_x_nvsKey_aSTR[MBCM_MAX_RELAY_BOARDS_U32] =
 {
@@ -35,7 +36,6 @@ void Modbus1_task(void* param)
     {
         tU32 taskPeriod_U32 = rtdb_read_tU32S(RTDB_MBCM_TI_US_TASKPERIODRELAY_U32);
         // check UART input buffer and parse data
-        static tU8 currRelayStates_aU8[MBCM_MAX_RELAY_BOARDS_U32] = {};
         static tU8 lastSentState_U8 = 0;
         tU8 buffer[32]= {0};
         tU8 length_U8 = 0;
@@ -193,23 +193,94 @@ void Modbus2_task(void* param)
     vTaskDelete( NULL );
 }
 
-static void mbcm_updateDesiredRelayState(const char* name, tBSEnumT index)
+void Modbus_prerunTask(void* param)
+{
+    for (tU8 rel_indx = 0; rel_indx < MBCM_MAX_RELAY_BOARDS_U32; rel_indx++)
+    {
+        tU8 MbMsgData[8];
+        MbMsgData[0] = rel_indx + 1;            // ID
+        MbMsgData[1] = 0x01;                    // function code
+        MbMsgData[2] = 0x00;                    // Relay start address
+        MbMsgData[3] = 0x00;                    // Relay start address
+        MbMsgData[4] = 0x00;                    // Number of relays
+        MbMsgData[5] = 0x08;                    // Number of relays
+        unsigned int crc = crcm_CRC16_Modbus(MbMsgData, 8);
+        MbMsgData[6] = (crc >> 8) & 0xFF;       // CRC HI
+        MbMsgData[7] = (crc >> 0) & 0xFF;       // CRC LOW
+        // send command to update relay states
+        uart_write_bytes(MBCM_MB1_UART_NUM_STR, (const char*) MbMsgData, 8);
+        vTaskDelay(pdMS_TO_TICKS(5));
+
+        // Read current relay states
+        tU8 buffer[32]= {0};
+        tU8 length_U8 = 0;
+        length_U8 = uart_read_bytes(MBCM_MB1_UART_NUM_STR, buffer, 32, 0);
+        if (length_U8)
+        {
+            if (0x01 == buffer[2])   // check if written relays is 8 - it means all relays were written to
+            {
+                tU8 boardIndex_U8 = buffer[0] - 1;
+                if (boardIndex_U8 < MBCM_MAX_RELAY_BOARDS_U32)
+                {
+                    currRelayStates_aU8[boardIndex_U8] = buffer[3];
+                    rtdb_write_tU8S((tU8SEnumT)(RTDB_MBCM_X_ACTUALRELAYSTATES_AU8_0 + boardIndex_U8), currRelayStates_aU8[boardIndex_U8]);
+                }
+                else
+                {
+                    errh_reportError(ERRH_ERROR_CRITICAL, MODULE_MBCM, boardIndex_U8, MBCM_API_MB_PRERUN_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
+                }
+            }
+            else
+            {
+                errh_reportError(ERRH_NOTIF, MODULE_MBCM, 0, MBCM_API_MB_PRERUN_U32, MBCM_ERR_WRONG_DATA_U32);
+            }
+        }
+        uart_flush_input(MBCM_MB1_UART_NUM_STR);
+    }
+
+    {
+        // Start the command tasks
+        xTaskCreatePinnedToCore(
+        Modbus1_task,    // Function that should be called
+        "Modbus1_task",   // Name of the task (for debugging)
+        8192,            // Stack size (bytes)
+        NULL,            // Parameter to pass
+        1,               // Task priority
+        NULL,            // Task handle
+        1                // run on core 1
+        );
+
+        xTaskCreatePinnedToCore(
+        Modbus2_task,    // Function that should be called
+        "Modbus2_task",   // Name of the task (for debugging)
+        8192,            // Stack size (bytes)
+        NULL,            // Parameter to pass
+        1,               // Task priority
+        NULL,            // Task handle
+        1                // run on core 1
+        );
+    }
+    vTaskDelete( NULL ); // task completed
+}
+
+static void mbcm_updateDesiredRelayState(void)
 {
     for (tU8 i = 0; i < MBCM_MAX_RELAY_BOARDS_U32; i++)
     {
         tU8 invertRelayState_U8 = 0;
-        tU32 error_U32 = nvsm_read_tU8S(name, &invertRelayState_U8);
+        tU32 error_U32 = nvsm_read_tU8S(mbcm_x_nvsKey_aSTR[i], &invertRelayState_U8);
         if (ESP_ERR_NVS_NOT_FOUND == error_U32)
         {
-            nvsm_write_tU8S(name, 0);
+            nvsm_write_tU8S(mbcm_x_nvsKey_aSTR[i], 0);
         }
         else if (ESP_OK != error_U32)
         {
             errh_reportError(ERRH_WARNING, MODULE_MBCM, error_U32, MBCM_API_INIT_U32, NVSM_ERR_CANNOT_READ_U8);
         }
+
         for (tU8 j = 0; j < 8; j++)
         {
-            rtdb_write_tBS((tBSEnumT) (index + j), (invertRelayState_U8 >> j) & 0x01);
+            rtdb_write_tBS((tBSEnumT) (RTDB_CANM_S_RXRELAYINVERTREQ_AB_0 + i*8 + j), (invertRelayState_U8 >> j) & 0x01);
         }
     }
 }
@@ -228,25 +299,7 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
     {
         mbcm_s_moduleInit_tB = true;    // only init once
 
-        pina_setGpioAsOutput(PINA_MB_1_DE);
-        pina_setGpioAsOutput(PINA_MB_2_DE);
-
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[0],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_0);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[1],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_8);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[2],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_16);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[3],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_24);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[4],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_32);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[5],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_40);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[6],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_48);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[7],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_56);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[8],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_64);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[9],  RTDB_CANM_S_RXRELAYINVERTREQ_AB_72);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[10], RTDB_CANM_S_RXRELAYINVERTREQ_AB_80);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[11], RTDB_CANM_S_RXRELAYINVERTREQ_AB_88);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[12], RTDB_CANM_S_RXRELAYINVERTREQ_AB_96);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[13], RTDB_CANM_S_RXRELAYINVERTREQ_AB_104);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[14], RTDB_CANM_S_RXRELAYINVERTREQ_AB_112);
-        mbcm_updateDesiredRelayState(mbcm_x_nvsKey_aSTR[15], RTDB_CANM_S_RXRELAYINVERTREQ_AB_120);  // initializes to index 127
+        mbcm_updateDesiredRelayState();
 
         // Set Modbus 1 UART parameters
         uart_config_t uart1_config = {
@@ -288,18 +341,8 @@ void mbcm_init(tMBCM_INITDATA_STR* mbcmCfg)
         uart_flush_input(MBCM_MB2_UART_NUM_STR);
 
         xTaskCreatePinnedToCore(
-        Modbus1_task,    // Function that should be called
-        "Modbus1_task",   // Name of the task (for debugging)
-        8192,            // Stack size (bytes)
-        NULL,            // Parameter to pass
-        1,               // Task priority
-        NULL,            // Task handle
-        1                // run on core 1
-        );
-
-        xTaskCreatePinnedToCore(
-        Modbus2_task,    // Function that should be called
-        "Modbus2_task",   // Name of the task (for debugging)
+        Modbus_prerunTask,    // Function that should be called
+        "Modbus_prerunTask",   // Name of the task (for debugging)
         8192,            // Stack size (bytes)
         NULL,            // Parameter to pass
         1,               // Task priority
