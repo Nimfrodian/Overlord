@@ -228,6 +228,35 @@ void canm_transceive_run_5ms(void)
                 }
                 cntr_1s = 0;
             }
+
+            // event based
+            {
+                for (tU8 i = 0; i < 10; i++) // TODO: update 10 dimmer outputs
+                {
+                    if (rtdb_read_tBS((tBSEnumT)(RTDB_DIMH_S_TXDIMMERRDYFLAG_AB_0 + i)))
+                    {
+                        rtdb_write_tBS((tBSEnumT)(RTDB_DIMH_S_TXDIMMERRDYFLAG_AB_0 + i), 0);
+                        tU16 dimmVal_U16 = rtdb_read_tU16S((tU16SEnumT) (RTDB_DIMH_X_TXDIMMERVAL_AU16_0 + i));
+                        tU32 dimmTime_U32 = rtdb_read_tU32S((tU32SEnumT) (RTDB_DIMH_TI_MS_TXDIMMERTIME_AU32_0 + i));
+                        tU32 dimmMask_U32 = 1 << i;
+                        twai_message_t canMsg_dimmer = {};
+                        canMsg_dimmer.identifier = 0x95;
+                        canMsg_dimmer.data_length_code = 8;
+
+
+                        canMsg_dimmer.data[0] = (dimmTime_U32 >>  0) & 0xFF;
+                        canMsg_dimmer.data[1] = (dimmTime_U32 >>  8) & 0xFF;
+                        canMsg_dimmer.data[2] = (dimmTime_U32 >> 16) & 0xFF;
+                        canMsg_dimmer.data[3] = (dimmVal_U16 >> 0) & 0xFF;
+                        canMsg_dimmer.data[4] = (dimmVal_U16 >> 8) & 0x03;
+                        canMsg_dimmer.data[5] = (dimmMask_U32 >>  0) & 0xFF;
+                        canMsg_dimmer.data[6] = (dimmMask_U32 >>  8) & 0xFF;
+                        canMsg_dimmer.data[7] = (dimmMask_U32 >> 16) & 0xFF;
+
+                        twai_transmit(&canMsg_dimmer, 0);
+                    }
+                }
+            }
         }
     }
 
@@ -257,6 +286,57 @@ void canm_transceive_run_5ms(void)
                         tB relayInvertReq_B = (rxMessage.data[i / 8] >> (i % 8)) & 0x01;
                         rtdb_write_tBS((tBSEnumT)(RTDB_CANM_S_RXRELAYINVERTREQ_AB_0 + i + 64), relayInvertReq_B);
                     }
+                    break;
+                }
+                // message CAN_DIMMER_EXT_COMMAND_MESSAGE
+                case (0x95):
+                {
+                    tU32 indexes_U32 = (rxMessage.data[5] << 0) |
+                                       (rxMessage.data[6] << 8) |
+                                       (rxMessage.data[7] << 16);
+                    tU16 dimmVal_U16 = ((rxMessage.data[3] & 0xFF) << 0) |
+                                        ((rxMessage.data[4] & 0x03) << 8);
+                    for (tU8 i = 0; i < 32; i++)
+                    {
+                        if ((indexes_U32 >> i) & 0x01)
+                        {
+                            rtdb_write_tU16S((tU16SEnumT) (RTDB_DIMH_X_TXDIMMERVAL_AU16_0 + i), dimmVal_U16);
+                        }
+                    }
+                    break;
+                }
+                // message CAN_DIMMER_STATUS_MESSAGE_0
+                case (0x96):
+                {
+                    tU16 dimmActVal_U16[5] = {0};
+                    dimmActVal_U16[0] = ((rxMessage.data[0] >> 0) & 0xFF) | ((rxMessage.data[1] & 0x03) << 8);
+                    dimmActVal_U16[1] = ((rxMessage.data[1] >> 2) & 0x3F) | ((rxMessage.data[2] & 0x0F) << 6);
+                    dimmActVal_U16[2] = ((rxMessage.data[2] >> 4) & 0x0F) | ((rxMessage.data[3] & 0x3F) << 4);
+                    dimmActVal_U16[3] = ((rxMessage.data[3] >> 6) & 0x03) | ((rxMessage.data[4] & 0xFF) << 2);
+                    dimmActVal_U16[4] = ((rxMessage.data[5] >> 0) & 0xFF) | ((rxMessage.data[6] & 0x03) << 8);
+
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_0), dimmActVal_U16[0]);
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_1), dimmActVal_U16[1]);
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_2), dimmActVal_U16[2]);
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_3), dimmActVal_U16[3]);
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_4), dimmActVal_U16[4]);
+                    break;
+                }
+                // message CAN_DIMMER_STATUS_MESSAGE_1
+                case (0x97):
+                {
+                    tU16 dimmActVal_U16[5] = {0};
+                    dimmActVal_U16[0] = ((rxMessage.data[0] >> 0) & 0xFF) | ((rxMessage.data[1] & 0x03) << 8);
+                    dimmActVal_U16[1] = ((rxMessage.data[1] >> 2) & 0x3F) | ((rxMessage.data[2] & 0x0F) << 6);
+                    dimmActVal_U16[2] = ((rxMessage.data[2] >> 4) & 0x0F) | ((rxMessage.data[3] & 0x3F) << 4);
+                    dimmActVal_U16[3] = ((rxMessage.data[3] >> 6) & 0x03) | ((rxMessage.data[4] & 0xFF) << 2);
+                    dimmActVal_U16[4] = ((rxMessage.data[5] >> 0) & 0xFF) | ((rxMessage.data[6] & 0x03) << 8);
+
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_5), dimmActVal_U16[0]);
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_6), dimmActVal_U16[1]);
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_7), dimmActVal_U16[2]);
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_8), dimmActVal_U16[3]);
+                    rtdb_write_tU16S((tU16SEnumT) (RTDB_CANM_X_RXACTDIMMVAL_AU16_9), dimmActVal_U16[4]);
                     break;
                 }
                 // message CAN_DMAS_COMMAND_MESSAGE

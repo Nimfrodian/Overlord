@@ -58,6 +58,11 @@ extern "C" void app_main(void)
         mbcm_init(&MbcmCfg);
         sera_print("MBCM module initialized\n");
 
+        tDIMH_INITDATA_STR DimhCfg =
+        {};
+        dimh_init(&DimhCfg);
+        sera_print("DIMH module initialized\n");
+
         sera_print("Initialization time: %lli us\n", timh_ti_us_readSystemTime_S64());
     }
 
@@ -144,6 +149,8 @@ extern "C" void app_main(void)
         diom_run_5ms();
 
         nvsm_run_5ms();
+
+        dimh_run_5ms();
 
         vTaskDelay(MAIN_TI_ms_TASK_DELAY_U32 / portTICK_PERIOD_MS);
     }

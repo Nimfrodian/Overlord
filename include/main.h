@@ -11,6 +11,7 @@
 #include "diom.h" ///< Digital Input Output module
 #include "mbcm.h" ///< Modbus Control module
 #include "nvsm.h" ///< Non-volatile Storage module
+#include "dimh.h" ///< Dimmer Handler module
 
 #include "mdll.h" ///< Module List
 

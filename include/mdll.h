@@ -21,4 +21,5 @@ enum moduleList
     MODULE_DIOM,
     MODULE_MBCM,
     MODULE_NVSM,
+    MODULE_DIMH,
 };
