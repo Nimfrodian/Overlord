@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.508
+          "min_clearance": 0.0
         }
       },
       "diff_pair_dimensions": [
@@ -186,6 +186,7 @@
       ],
       "track_widths": [
         0.0,
+        0.25,
         0.5,
         0.75,
         1.0
@@ -1050,7 +1051,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "PCB_actual_gerber_v2.0_revB/",
+      "plot": "PCB_actual_gerber_v2.1_revA/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -1239,6 +1240,10 @@
     [
       "ee175e2e-a3c3-4789-aca4-0962a9c7b5a8",
       "InputMux3"
+    ],
+    [
+      "47bbeb8c-794b-466a-b335-e524cad181ef",
+      "Power Conversion"
     ]
   ],
   "text_variables": {}

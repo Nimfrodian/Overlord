@@ -1,7 +1,7 @@
 VERSION ""
 
 
-NS_ :
+NS_ : 
 	NS_DESC_
 	CM_
 	BA_DEF_
@@ -41,6 +41,9 @@ VAL_TABLE_ DMAS_TIME_TABLE 5 "stream 5000ms" 4 "stream 1000ms" 3 "stream 500ms" 
 
 BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ DMAS_var_type : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 48 Lux_Measurement: 8 Vector__XXX
+ SG_ Lux : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "" Vector__XXX
 
 BO_ 273 RelayFeedback_64_127: 8 Vector__XXX
  SG_ RelaySts_125 : 63|1@1+ (1,0) [0|1] "" Vector__XXX
@@ -1363,6 +1366,7 @@ VAL_ 32 DMAS_var_type 8 "DMAS_TES" 7 "DMAS_TBS" 6 "DMAS_TF32S" 5 "DMAS_TS32" 4 "
 VAL_ 32 DMAS_stream_time 5 "stream 5000ms" 4 "stream 1000ms" 3 "stream 500ms" 2 "stream 100ms" 1 "stream 50ms" 0 "stream 10ms" ;
 VAL_ 16 DMAS_stream_time 5 "stream 5000ms" 4 "stream 1000ms" 3 "stream 500ms" 2 "stream 100ms" 1 "stream 50ms" 0 "stream 10ms" ;
 VAL_ 16 DMAS_cmd_mode 4 "DMAS_MODE_STOPOVERWRITE" 3 "DMAS_MODE_OVERWRITE" 2 "DMAS_MODE_WRITE" 1 "DMAS_MODE_STOP_READ" 0 "DMAS_MODE_READ_REQ" ;
+SIG_VALTYPE_ 48 Lux : 1;
 SIG_VALTYPE_ 22 DMAS_payload_tF32 : 1;
 SIG_VALTYPE_ 511 TotalReactEnrgy_kVArh : 1;
 SIG_VALTYPE_ 510 TotalActvEnergy_kWh : 1;
