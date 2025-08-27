@@ -7367,6 +7367,12 @@
 		(uuid "32f872e9-a9fe-43ac-9535-582d3acf0014")
 	)
 	(junction
+		(at 58.42 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "33cf7200-a618-4c84-89c7-c8a75824e7e9")
+	)
+	(junction
 		(at 187.96 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7491,12 +7497,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a404fe07-f1fe-4919-ab07-0a1766dbe428")
-	)
-	(junction
-		(at 58.42 142.24)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a43b22eb-ba6b-41b4-9e76-62f242b61186")
 	)
 	(junction
 		(at 85.09 187.96)
@@ -17400,75 +17400,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 58.42 138.43 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0e1f20d2-6416-4d0f-be0e-389c35cb09ca")
-		(property "Reference" "C8"
-			(at 59.944 137.16 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10uF"
-			(at 61.976 140.97 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 59.3852 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=349EhDEZ59qKIX0T0PKtPw%3D%3D"
-			(at 58.42 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 58.42 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "520609be-90cf-4299-99e6-441701f15cb1")
-		)
-		(pin "2"
-			(uuid "33570b2f-b4ca-4cac-971f-df8968c208c2")
-		)
-		(instances
-			(project "Overlord"
-				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296"
-					(reference "C8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
 		(at 240.03 172.72 0)
 		(unit 1)
@@ -20571,6 +20502,75 @@
 			(project "Overlord"
 				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296"
 					(reference "C13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 58.42 138.43 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5627f589-94e4-4bf3-ae83-6de6fc174c53")
+		(property "Reference" "C4"
+			(at 63.754 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "22uF"
+			(at 64.262 140.716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 59.3852 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/Samsung-Electro-Mechanics/CL21A226MAYNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj9e2R%2FOkAO5o4FNiyGuFzx8%3D"
+			(at 58.42 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 58.42 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2415af82-4383-4799-a43b-2d9c2c3913c5")
+		)
+		(pin "1"
+			(uuid "765b444a-166d-4dbc-9de1-f91b181ea93e")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296"
+					(reference "C4")
 					(unit 1)
 				)
 			)
