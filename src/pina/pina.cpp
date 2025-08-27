@@ -34,7 +34,7 @@ void pina_setGpioAsOutput(PINA_nr_GPIO_NUM_E GpioNum)
 {
     gpio_reset_pin((gpio_num_t) GpioNum);
     gpio_intr_disable((gpio_num_t) GpioNum);
-    gpio_pulldown_dis((gpio_num_t) GpioNum);
+    gpio_pulldown_en((gpio_num_t) GpioNum);
     gpio_pullup_dis((gpio_num_t) GpioNum);
     gpio_set_direction((gpio_num_t) GpioNum, GPIO_MODE_OUTPUT);
 }

@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "bcbfae7e-bc5d-438c-bfcf-6cba95f38660")
 	(paper "A4")
 	(lib_symbols
@@ -137,132 +137,6 @@
 					)
 				)
 				(pin passive line
-					(at 25.4 -15.24 180)
-					(length 5.08)
-					(name "S0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 -12.7 180)
-					(length 5.08)
-					(name "1Y3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 -10.16 180)
-					(length 5.08)
-					(name "1Y0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 -7.62 180)
-					(length 5.08)
-					(name "1Z"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 -5.08 180)
-					(length 5.08)
-					(name "1Y1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 -2.54 180)
-					(length 5.08)
-					(name "1Y2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 25.4 0 180)
-					(length 5.08)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at 0 -2.54 0)
 					(length 5.08)
 					(name "2Y2"
@@ -389,6 +263,132 @@
 					)
 				)
 				(pin passive line
+					(at 25.4 0 180)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -2.54 180)
+					(length 5.08)
+					(name "1Y2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -5.08 180)
+					(length 5.08)
+					(name "1Y1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -7.62 180)
+					(length 5.08)
+					(name "1Z"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -10.16 180)
+					(length 5.08)
+					(name "1Y0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -12.7 180)
+					(length 5.08)
+					(name "1Y3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -15.24 180)
+					(length 5.08)
+					(name "S0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
 					(at 25.4 -17.78 180)
 					(length 5.08)
 					(name "S1"
@@ -407,9 +407,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:C"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0.254)
 			)
@@ -482,7 +485,7 @@
 			(symbol "C_0_1"
 				(polyline
 					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
+						(xy -2.032 0.762) (xy 2.032 0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -494,7 +497,7 @@
 				)
 				(polyline
 					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -543,9 +546,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -664,6 +670,198 @@
 					)
 				)
 			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:Varistor"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "RV"
+				(at 3.175 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Varistor"
+				(at -3.175 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Voltage dependent resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Name" "kicad_builtin_varistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "SUBCKT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=A 2=B"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Params" "threshold=1k"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "VDR resistance"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "RV_* Varistor*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Varistor_0_0"
+				(text "U"
+					(at -1.778 -2.032 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "Varistor_0_1"
+				(polyline
+					(pts
+						(xy -1.905 2.54) (xy -1.905 1.27) (xy 1.905 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Varistor_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+3.3V"
 			(power)
@@ -741,7 +939,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -753,7 +951,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -767,7 +965,8 @@
 			(symbol "+3.3V_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "+3.3V"
 						(effects
 							(font
@@ -784,6 +983,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
@@ -863,7 +1063,8 @@
 			(symbol "GND_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "GND"
 						(effects
 							(font
@@ -880,7 +1081,14 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(junction
+		(at 261.62 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0451aa77-7a91-4b50-9ea1-41dce229cac2")
 	)
 	(junction
 		(at 176.53 99.06)
@@ -895,10 +1103,22 @@
 		(uuid "14b5486a-bf52-4f7f-afd2-d39f76c05230")
 	)
 	(junction
+		(at 242.57 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "61f6a4fb-d563-48f1-baeb-3ae4a1261e90")
+	)
+	(junction
 		(at 175.26 93.98)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "635f28a3-3dd8-4eca-9c8a-f1d66e0c5612")
+	)
+	(junction
+		(at 254 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "641fbbcd-2e02-4d48-8487-0fd2177888e3")
 	)
 	(junction
 		(at 157.48 101.6)
@@ -937,16 +1157,40 @@
 		(uuid "9aedfcb8-8118-4cd4-b563-6742baf51174")
 	)
 	(junction
+		(at 246.38 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b1b6b92d-0934-4ee4-8a66-9f4440a105f2")
+	)
+	(junction
 		(at 88.9 91.44)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bbfa0358-a197-4430-bb21-a188e6de75bb")
 	)
 	(junction
+		(at 257.81 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c1724b2e-f3f7-4be0-b74f-122a980a3f77")
+	)
+	(junction
 		(at 116.84 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c3d26fad-ffd2-4658-bf23-20d6089ce4a1")
+	)
+	(junction
+		(at 238.76 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ccef4a34-f4eb-4c9e-941e-d0738b9874be")
+	)
+	(junction
+		(at 250.19 90.17)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e0aa2e86-cc59-4256-853c-1fc95c95534b")
 	)
 	(junction
 		(at 138.43 63.5)
@@ -962,6 +1206,26 @@
 	)
 	(wire
 		(pts
+			(xy 250.19 81.28) (xy 250.19 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07ad8fea-d95b-44d0-b26e-28c2aa521323")
+	)
+	(wire
+		(pts
+			(xy 265.43 88.9) (xy 265.43 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08d72976-77a3-4947-990a-76f73f18889f")
+	)
+	(wire
+		(pts
 			(xy 138.43 63.5) (xy 144.78 63.5)
 		)
 		(stroke
@@ -969,6 +1233,16 @@
 			(type default)
 		)
 		(uuid "0bf6e04c-4970-428e-bf21-2b9da3eecaba")
+	)
+	(wire
+		(pts
+			(xy 215.9 68.58) (xy 219.71 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "131b6180-2b80-497e-a920-9f8f51d61515")
 	)
 	(wire
 		(pts
@@ -982,6 +1256,16 @@
 	)
 	(wire
 		(pts
+			(xy 227.33 66.04) (xy 257.81 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16536968-409b-4c82-accf-424f79c33ab6")
+	)
+	(wire
+		(pts
 			(xy 130.81 73.66) (xy 130.81 72.39)
 		)
 		(stroke
@@ -992,6 +1276,16 @@
 	)
 	(wire
 		(pts
+			(xy 227.33 71.12) (xy 250.19 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d8f93f2-4fd4-4780-9d46-4787e09dfe7e")
+	)
+	(wire
+		(pts
 			(xy 176.53 99.06) (xy 176.53 102.87)
 		)
 		(stroke
@@ -999,6 +1293,16 @@
 			(type default)
 		)
 		(uuid "20b7aa87-ddc5-4c09-bf61-a34d01d81a9f")
+	)
+	(wire
+		(pts
+			(xy 250.19 88.9) (xy 250.19 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25e2f9e9-6586-40d3-98be-e89cfe7a1847")
 	)
 	(wire
 		(pts
@@ -1032,6 +1336,16 @@
 	)
 	(wire
 		(pts
+			(xy 215.9 73.66) (xy 219.71 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31070555-71a9-4e73-a92d-78d876f63468")
+	)
+	(wire
+		(pts
 			(xy 157.48 101.6) (xy 157.48 104.14)
 		)
 		(stroke
@@ -1039,6 +1353,16 @@
 			(type default)
 		)
 		(uuid "3262ce75-b695-413d-810d-2a9409ec92a1")
+	)
+	(wire
+		(pts
+			(xy 254 90.17) (xy 250.19 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "35988062-e06a-4c9d-acd4-a13e58c5c5f5")
 	)
 	(wire
 		(pts
@@ -1112,6 +1436,16 @@
 	)
 	(wire
 		(pts
+			(xy 227.33 78.74) (xy 238.76 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47e86c31-45da-43e1-b4a0-61ed5b0cbe4c")
+	)
+	(wire
+		(pts
 			(xy 148.59 104.14) (xy 144.78 104.14)
 		)
 		(stroke
@@ -1129,6 +1463,26 @@
 			(type default)
 		)
 		(uuid "4b84985a-e777-4c37-bb65-a79ce32e7057")
+	)
+	(wire
+		(pts
+			(xy 254 88.9) (xy 254 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4cf5199c-20d9-42fe-afa8-f545ef272142")
+	)
+	(wire
+		(pts
+			(xy 261.62 88.9) (xy 261.62 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "506a9480-dfd3-4cca-be20-7006ade47337")
 	)
 	(wire
 		(pts
@@ -1172,6 +1526,16 @@
 	)
 	(wire
 		(pts
+			(xy 250.19 90.17) (xy 246.38 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "638f5f41-a29a-4701-ad2f-1655de83ab17")
+	)
+	(wire
+		(pts
 			(xy 165.1 91.44) (xy 156.21 91.44)
 		)
 		(stroke
@@ -1179,6 +1543,46 @@
 			(type default)
 		)
 		(uuid "66e1df5a-b159-472a-adcd-699d2056e0de")
+	)
+	(wire
+		(pts
+			(xy 227.33 68.58) (xy 254 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67595639-4c44-470b-a828-ae1e488be051")
+	)
+	(wire
+		(pts
+			(xy 215.9 63.5) (xy 219.71 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "678003e5-f386-4ebe-bec5-6c49ae3e2622")
+	)
+	(wire
+		(pts
+			(xy 261.62 63.5) (xy 261.62 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68ea2912-2749-478f-96b6-8634593d4c1b")
+	)
+	(wire
+		(pts
+			(xy 227.33 63.5) (xy 261.62 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a68222e-10ed-4c46-87d9-6f88ab7c01a3")
 	)
 	(wire
 		(pts
@@ -1222,6 +1626,16 @@
 	)
 	(wire
 		(pts
+			(xy 261.62 90.17) (xy 257.81 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77a9a02c-513a-4f17-8275-0374cf2ba9e7")
+	)
+	(wire
+		(pts
 			(xy 119.38 99.06) (xy 107.95 99.06)
 		)
 		(stroke
@@ -1252,6 +1666,16 @@
 	)
 	(wire
 		(pts
+			(xy 257.81 81.28) (xy 257.81 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b06d63a-bc63-45b3-b6dc-27fa4a81ce57")
+	)
+	(wire
+		(pts
 			(xy 130.81 63.5) (xy 134.62 63.5)
 		)
 		(stroke
@@ -1259,6 +1683,36 @@
 			(type default)
 		)
 		(uuid "90667e65-0c8d-4cfd-8296-d2b343f859ab")
+	)
+	(wire
+		(pts
+			(xy 215.9 78.74) (xy 219.71 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90ae037f-b70c-4068-9b51-8fc401612c80")
+	)
+	(wire
+		(pts
+			(xy 238.76 88.9) (xy 238.76 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9191dfcd-5bf4-4fa0-99df-b50cc7810156")
+	)
+	(wire
+		(pts
+			(xy 246.38 81.28) (xy 246.38 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92d6d265-a6de-4afd-9f5f-1d851ba2cc98")
 	)
 	(wire
 		(pts
@@ -1272,6 +1726,16 @@
 	)
 	(wire
 		(pts
+			(xy 265.43 81.28) (xy 265.43 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "954652e8-0d67-4ddb-aaff-c711f5d4a7bd")
+	)
+	(wire
+		(pts
 			(xy 175.26 88.9) (xy 175.26 93.98)
 		)
 		(stroke
@@ -1282,6 +1746,16 @@
 	)
 	(wire
 		(pts
+			(xy 257.81 88.9) (xy 257.81 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b0ea5bd-0c08-4534-a7ed-837f73ac7d2d")
+	)
+	(wire
+		(pts
 			(xy 99.06 88.9) (xy 107.95 88.9)
 		)
 		(stroke
@@ -1289,6 +1763,16 @@
 			(type default)
 		)
 		(uuid "9b2b6ed0-d64f-4665-ab80-ddf3db471b87")
+	)
+	(wire
+		(pts
+			(xy 227.33 60.96) (xy 265.43 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e36ecaa-683c-4f08-8d10-746aa33bbda9")
 	)
 	(wire
 		(pts
@@ -1309,6 +1793,16 @@
 			(type default)
 		)
 		(uuid "a32d3fcb-ed6f-48ad-8c9e-77a930f090d4")
+	)
+	(wire
+		(pts
+			(xy 242.57 90.17) (xy 246.38 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a88693ee-3a9e-4374-85ba-f56177db13c3")
 	)
 	(wire
 		(pts
@@ -1342,6 +1836,26 @@
 	)
 	(wire
 		(pts
+			(xy 215.9 71.12) (xy 219.71 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aea485c0-6aba-40f7-84d8-58252cb8bfc3")
+	)
+	(wire
+		(pts
+			(xy 254 68.58) (xy 254 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1de9713-b7fd-4b71-a66e-8ffcaf9b3db8")
+	)
+	(wire
+		(pts
 			(xy 180.34 93.98) (xy 180.34 88.9)
 		)
 		(stroke
@@ -1352,6 +1866,16 @@
 	)
 	(wire
 		(pts
+			(xy 242.57 81.28) (xy 242.57 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4e83e01-3a08-4b20-8d9a-75f89bb43bcc")
+	)
+	(wire
+		(pts
 			(xy 88.9 86.36) (xy 88.9 91.44)
 		)
 		(stroke
@@ -1359,6 +1883,26 @@
 			(type default)
 		)
 		(uuid "b5bc276a-6b70-4278-8e28-1011dc52773a")
+	)
+	(wire
+		(pts
+			(xy 215.9 76.2) (xy 219.71 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b69d3ff7-c911-4d42-a004-f72a66aafa05")
+	)
+	(wire
+		(pts
+			(xy 227.33 76.2) (xy 242.57 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b811f9d0-1c28-41f8-a79f-e7b7790ca729")
 	)
 	(wire
 		(pts
@@ -1392,6 +1936,26 @@
 	)
 	(wire
 		(pts
+			(xy 257.81 90.17) (xy 254 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c12a4545-c1a8-47d7-8c15-79fc921eeea2")
+	)
+	(wire
+		(pts
+			(xy 238.76 78.74) (xy 238.76 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c49c1b6d-dadf-415c-8a66-85357301ecb8")
+	)
+	(wire
+		(pts
 			(xy 138.43 63.5) (xy 138.43 64.77)
 		)
 		(stroke
@@ -1422,6 +1986,16 @@
 	)
 	(wire
 		(pts
+			(xy 227.33 73.66) (xy 246.38 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce5ec797-0372-4107-b620-a28776952069")
+	)
+	(wire
+		(pts
 			(xy 83.82 91.44) (xy 83.82 86.36)
 		)
 		(stroke
@@ -1442,6 +2016,26 @@
 	)
 	(wire
 		(pts
+			(xy 238.76 90.17) (xy 238.76 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5ef65f9-aefc-4f08-95c8-3721e1725aee")
+	)
+	(wire
+		(pts
+			(xy 242.57 90.17) (xy 238.76 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d87bf131-aceb-4850-a5e8-daf4fab78572")
+	)
+	(wire
+		(pts
 			(xy 166.37 101.6) (xy 166.37 104.14)
 		)
 		(stroke
@@ -1449,6 +2043,16 @@
 			(type default)
 		)
 		(uuid "e3dae125-3acc-4783-96a4-5ce0c32a4900")
+	)
+	(wire
+		(pts
+			(xy 265.43 90.17) (xy 261.62 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed8823b2-4ff6-4448-9acc-6907f1fd27a0")
 	)
 	(wire
 		(pts
@@ -1472,6 +2076,16 @@
 	)
 	(wire
 		(pts
+			(xy 242.57 88.9) (xy 242.57 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f259b8d7-5617-4b48-8c73-001364ccec9a")
+	)
+	(wire
+		(pts
 			(xy 107.95 99.06) (xy 107.95 101.6)
 		)
 		(stroke
@@ -1482,6 +2096,16 @@
 	)
 	(wire
 		(pts
+			(xy 215.9 60.96) (xy 219.71 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f79e08be-ce64-447e-95e0-893a1a3305fd")
+	)
+	(wire
+		(pts
 			(xy 148.59 106.68) (xy 144.78 106.68)
 		)
 		(stroke
@@ -1489,6 +2113,26 @@
 			(type default)
 		)
 		(uuid "fd2aa8a8-db96-4b1d-86e1-ff5e01f4f683")
+	)
+	(wire
+		(pts
+			(xy 246.38 88.9) (xy 246.38 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff25e8a4-0035-40a9-a898-886fa5744dca")
+	)
+	(wire
+		(pts
+			(xy 215.9 66.04) (xy 219.71 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff961efa-6f6b-4e32-b72e-db5b84ce00ca")
 	)
 	(global_label "S0"
 		(shape input)
@@ -1543,6 +2187,17 @@
 	)
 	(hierarchical_label "Y0"
 		(shape input)
+		(at 215.9 60.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0b7b3a0a-b3c8-4e69-aae8-14e875a94c5e")
+	)
+	(hierarchical_label "Y0"
+		(shape input)
 		(at 100.33 88.9 90)
 		(effects
 			(font
@@ -1551,6 +2206,17 @@
 			(justify left)
 		)
 		(uuid "131a3494-1fbf-4511-afd2-44d74a023b06")
+	)
+	(hierarchical_label "Y7"
+		(shape input)
+		(at 215.9 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "191e567a-9f4a-4c9b-8e69-30ec39e67807")
 	)
 	(hierarchical_label "Y4"
 		(shape input)
@@ -1562,6 +2228,28 @@
 			(justify right)
 		)
 		(uuid "25cb7277-a01d-407f-9ace-e28997fc65fe")
+	)
+	(hierarchical_label "Y2"
+		(shape input)
+		(at 215.9 66.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "295ae41d-a8de-43ba-bf78-23c4144c5f66")
+	)
+	(hierarchical_label "Y5"
+		(shape input)
+		(at 215.9 73.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2b0474b9-0c4d-43ca-8b19-85b12e603a57")
 	)
 	(hierarchical_label "Y3"
 		(shape input)
@@ -1585,6 +2273,28 @@
 		)
 		(uuid "5020899b-4dd9-43bd-9f36-cf382cdac296")
 	)
+	(hierarchical_label "Y6"
+		(shape input)
+		(at 215.9 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "537bec3e-75d7-4808-a894-8bcec179eacb")
+	)
+	(hierarchical_label "Y3"
+		(shape input)
+		(at 215.9 68.58 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "64bb1d3d-5aea-42a3-b274-dec20fd46cb2")
+	)
 	(hierarchical_label "Y7"
 		(shape input)
 		(at 165.1 101.6 270)
@@ -1607,6 +2317,17 @@
 		)
 		(uuid "6bff7eea-0972-4fd8-8037-5245d740c2fd")
 	)
+	(hierarchical_label "Y4"
+		(shape input)
+		(at 215.9 71.12 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8451317e-c0e8-4be3-9c3d-cd1a2b76ab0d")
+	)
 	(hierarchical_label "Y2"
 		(shape input)
 		(at 85.09 91.44 90)
@@ -1628,6 +2349,17 @@
 			(justify left)
 		)
 		(uuid "cb618bf5-eaff-4ce8-bc4e-361bc9299032")
+	)
+	(hierarchical_label "Y1"
+		(shape input)
+		(at 215.9 63.5 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d23cd7fb-32d2-4ad4-8fab-cd7dd7920f6b")
 	)
 	(hierarchical_label "Yb"
 		(shape output)
@@ -1881,6 +2613,89 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 223.52 68.58 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1b342698-dd0c-4141-82e5-b8481bc9d58d")
+		(property "Reference" "R73"
+			(at 223.774 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "120"
+			(at 219.456 71.12 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.52 66.802 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/multicomp/mcwr04x1200ftl/res-120r-1-0-0625w-thick-film/dp/2447103"
+			(at 223.52 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d3ba545a-d246-475f-a6ad-9fea7c2bb395")
+		)
+		(pin "2"
+			(uuid "2c930bea-e286-40bb-98a5-47ae198a2774")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R73")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R75")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R76")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R74")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 156.21 85.09 0)
 		(mirror y)
 		(unit 1)
@@ -2043,6 +2858,89 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 223.52 63.5 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "245753df-81ab-4f59-9c5c-bc5286bad263")
+		(property "Reference" "R81"
+			(at 223.774 66.04 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "120"
+			(at 219.456 66.04 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.52 61.722 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/multicomp/mcwr04x1200ftl/res-120r-1-0-0625w-thick-film/dp/2447103"
+			(at 223.52 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9ae8a31d-cc6d-4b6e-a92d-18077c106bc9")
+		)
+		(pin "2"
+			(uuid "0305d145-921c-4fa8-af5e-79a322bab5e1")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R81")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R83")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R84")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R82")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 99.06 78.74 180)
 		(unit 1)
@@ -2114,6 +3012,132 @@
 				)
 				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
 					(reference "#PWR082")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Varistor")
+		(at 238.76 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3891813b-b50d-4a8d-a6dc-541737ade831")
+		(property "Reference" "RV1"
+			(at 232.918 83.312 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TVS 3V3"
+			(at 228.092 86.868 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 236.982 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/VC080503C100RP?qs=rkpzBHNK1wY3%252Bqkb7qwFxQ%3D%3D"
+			(at 238.76 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage dependent resistor"
+			(at 238.76 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_varistor"
+			(at 238.76 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 238.76 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=B"
+			(at 238.76 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "threshold=1k"
+			(at 238.76 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 238.76 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "99c5ac38-178b-475c-85cc-6ae3d08043d7")
+		)
+		(pin "1"
+			(uuid "b893dd83-0801-46b8-8a93-773a7c84edb9")
+		)
+		(instances
+			(project ""
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "RV1")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "RV3")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "RV4")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "RV2")
 					(unit 1)
 				)
 			)
@@ -2192,6 +3216,135 @@
 				)
 				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
 					(reference "#PWR088")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Varistor")
+		(at 242.57 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "44f460c1-41bb-48f4-95cb-d6766bfd9ca2")
+		(property "Reference" "RV5"
+			(at 245.11 84.0132 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TVS 3V3"
+			(at 245.11 86.5532 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 240.792 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/VC080503C100RP?qs=rkpzBHNK1wY3%252Bqkb7qwFxQ%3D%3D"
+			(at 242.57 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage dependent resistor"
+			(at 242.57 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_varistor"
+			(at 242.57 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 242.57 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=B"
+			(at 242.57 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "threshold=1k"
+			(at 242.57 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 242.57 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a5fbae0b-8746-4a6a-98be-3ccf95ed7b52")
+		)
+		(pin "1"
+			(uuid "c836960a-371b-48f8-98b8-75f8210cdc25")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "RV5")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "RV7")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "RV8")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "RV6")
 					(unit 1)
 				)
 			)
@@ -2360,6 +3513,89 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 223.52 76.2 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "558167f7-3ab0-4d5b-8f0a-6c3728e57237")
+		(property "Reference" "R61"
+			(at 223.774 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "120"
+			(at 219.456 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.52 74.422 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/multicomp/mcwr04x1200ftl/res-120r-1-0-0625w-thick-film/dp/2447103"
+			(at 223.52 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e47b8596-7f50-4fbb-99dd-3284fcad4228")
+		)
+		(pin "2"
+			(uuid "490257a0-c353-4502-8e50-02a3bf4ef4ae")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R61")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R63")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R64")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R62")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 166.37 111.76 0)
 		(unit 1)
@@ -2431,6 +3667,135 @@
 				)
 				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
 					(reference "#PWR096")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Varistor")
+		(at 246.38 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5b889937-38ba-4726-a58d-f2d3f7f66f0c")
+		(property "Reference" "RV9"
+			(at 248.92 84.0132 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TVS 3V3"
+			(at 248.92 86.5532 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 244.602 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/VC080503C100RP?qs=rkpzBHNK1wY3%252Bqkb7qwFxQ%3D%3D"
+			(at 246.38 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage dependent resistor"
+			(at 246.38 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_varistor"
+			(at 246.38 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 246.38 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=B"
+			(at 246.38 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "threshold=1k"
+			(at 246.38 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 246.38 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0a77d91b-5eda-45d8-b87e-7f3f865b6af9")
+		)
+		(pin "1"
+			(uuid "fb65fba4-c2c3-49a3-a3c1-874f8b48f5d2")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "RV9")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "RV11")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "RV12")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "RV10")
 					(unit 1)
 				)
 			)
@@ -2667,6 +4032,89 @@
 				)
 				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
 					(reference "#PWR090")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 223.52 66.04 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "644820d2-ec6c-4eb3-abde-a209eb5599da")
+		(property "Reference" "R77"
+			(at 223.774 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "120"
+			(at 219.456 68.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.52 64.262 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/multicomp/mcwr04x1200ftl/res-120r-1-0-0625w-thick-film/dp/2447103"
+			(at 223.52 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0204d185-8667-4516-8454-42708525ce4a")
+		)
+		(pin "2"
+			(uuid "7591ef4f-47c6-4e00-984a-fc4e8acf6091")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R77")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R79")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R80")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R78")
 					(unit 1)
 				)
 			)
@@ -2913,6 +4361,135 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Varistor")
+		(at 257.81 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7ba4aed5-3b7d-4d38-8959-3f0ea627ba7f")
+		(property "Reference" "RV21"
+			(at 260.35 84.0132 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TVS 3V3"
+			(at 260.35 86.5532 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 256.032 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/VC080503C100RP?qs=rkpzBHNK1wY3%252Bqkb7qwFxQ%3D%3D"
+			(at 257.81 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage dependent resistor"
+			(at 257.81 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_varistor"
+			(at 257.81 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 257.81 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=B"
+			(at 257.81 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "threshold=1k"
+			(at 257.81 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 257.81 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "95ea9e52-63ac-4fbb-a69f-fc4478e0db42")
+		)
+		(pin "1"
+			(uuid "f45ef3ea-8f3e-4faf-b577-d344038e6de5")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "RV21")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "RV27")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "RV30")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "RV24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3V")
 		(at 157.48 111.76 180)
 		(unit 1)
@@ -3138,6 +4715,135 @@
 				)
 				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
 					(reference "#PWR093")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Varistor")
+		(at 250.19 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8c5c9f97-058c-48e3-b396-2cae065d30cd")
+		(property "Reference" "RV13"
+			(at 252.73 84.0132 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TVS 3V3"
+			(at 252.73 86.5532 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 248.412 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/VC080503C100RP?qs=rkpzBHNK1wY3%252Bqkb7qwFxQ%3D%3D"
+			(at 250.19 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage dependent resistor"
+			(at 250.19 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_varistor"
+			(at 250.19 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 250.19 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=B"
+			(at 250.19 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "threshold=1k"
+			(at 250.19 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 250.19 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "85d47fcf-6175-4d9e-a970-766f4f0483a5")
+		)
+		(pin "1"
+			(uuid "490a2cf1-bb62-438a-95d1-880d8e549944")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "RV13")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "RV17")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "RV19")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "RV15")
 					(unit 1)
 				)
 			)
@@ -3694,6 +5400,218 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 223.52 73.66 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a682b914-677e-4178-a4dc-bd0c43ae31e2")
+		(property "Reference" "R65"
+			(at 223.774 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "120"
+			(at 219.456 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.52 71.882 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/multicomp/mcwr04x1200ftl/res-120r-1-0-0625w-thick-film/dp/2447103"
+			(at 223.52 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bb275b54-b283-46c2-acfe-a24cbed7366b")
+		)
+		(pin "2"
+			(uuid "4d46eed0-2497-4462-ac39-ab714d6ad743")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R65")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R67")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R68")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R66")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Varistor")
+		(at 265.43 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7d0037c-3d7d-4a2e-b772-2c1f12ace20e")
+		(property "Reference" "RV23"
+			(at 267.97 84.0132 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TVS 3V3"
+			(at 267.97 86.5532 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 263.652 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/VC080503C100RP?qs=rkpzBHNK1wY3%252Bqkb7qwFxQ%3D%3D"
+			(at 265.43 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage dependent resistor"
+			(at 265.43 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_varistor"
+			(at 265.43 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 265.43 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=B"
+			(at 265.43 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "threshold=1k"
+			(at 265.43 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 265.43 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f49967c1-19e3-4ac6-ad42-ef9b32103ec7")
+		)
+		(pin "1"
+			(uuid "ce761357-c2bb-4abe-acef-f32503bd0e9d")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "RV23")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "RV29")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "RV32")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "RV26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 181.61 106.68 0)
 		(unit 1)
@@ -4114,6 +6032,89 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 223.52 71.12 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bbc80c5d-c129-4e2d-8724-c891f38c1243")
+		(property "Reference" "R69"
+			(at 223.774 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "120"
+			(at 219.456 73.66 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.52 69.342 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/multicomp/mcwr04x1200ftl/res-120r-1-0-0625w-thick-film/dp/2447103"
+			(at 223.52 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "696204a0-0961-4962-8f2e-1d95c5342a66")
+		)
+		(pin "2"
+			(uuid "9b1994d3-3590-4997-b9a6-66da34aa31c9")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R69")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R71")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R72")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R70")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 107.95 105.41 0)
 		(mirror x)
 		(unit 1)
@@ -4270,6 +6271,135 @@
 				)
 				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
 					(reference "R42")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Varistor")
+		(at 261.62 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c69b2e91-111b-4737-b124-e3939b94622d")
+		(property "Reference" "RV22"
+			(at 264.16 84.0132 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TVS 3V3"
+			(at 264.16 86.5532 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 259.842 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/VC080503C100RP?qs=rkpzBHNK1wY3%252Bqkb7qwFxQ%3D%3D"
+			(at 261.62 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage dependent resistor"
+			(at 261.62 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_varistor"
+			(at 261.62 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 261.62 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=B"
+			(at 261.62 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "threshold=1k"
+			(at 261.62 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 261.62 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c33f877a-cc31-4f46-aa60-4e8029fd225c")
+		)
+		(pin "1"
+			(uuid "b86ca498-ec8d-493b-abf4-63517bd2ed12")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "RV22")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "RV28")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "RV31")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "RV25")
 					(unit 1)
 				)
 			)
@@ -4511,6 +6641,212 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 238.76 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d205c3c9-1f22-456d-83e5-905d32d98895")
+		(property "Reference" "#PWR011"
+			(at 238.76 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 238.76 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 238.76 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c81a1226-2815-48d7-b62d-249930038280")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "#PWR011")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "#PWR015")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "#PWR021")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Varistor")
+		(at 254 85.09 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d7d6ce32-3baf-43a5-bb15-d47fe7e3c971")
+		(property "Reference" "RV14"
+			(at 256.54 84.0132 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "TVS 3V3"
+			(at 256.54 86.5532 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 252.222 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/VC080503C100RP?qs=rkpzBHNK1wY3%252Bqkb7qwFxQ%3D%3D"
+			(at 254 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Voltage dependent resistor"
+			(at 254 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_varistor"
+			(at 254 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 254 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=A 2=B"
+			(at 254 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Params" "threshold=1k"
+			(at 254 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 254 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d30b7991-e628-4698-a200-2a3fb0a081c3")
+		)
+		(pin "1"
+			(uuid "45226cb2-6190-4ad9-a2a8-70e7a48d15cb")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "RV14")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "RV18")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "RV20")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "RV16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 130.81 68.58 180)
 		(unit 1)
@@ -4668,6 +7004,87 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 223.52 78.74 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f10146f1-2b42-4af8-a9a2-4715ab9784f4")
+		(property "Reference" "R14"
+			(at 223.774 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "120"
+			(at 219.456 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.52 76.962 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/multicomp/mcwr04x1200ftl/res-120r-1-0-0625w-thick-film/dp/2447103"
+			(at 223.52 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "75dac176-b188-42db-9d49-8a309d811ddd")
+		)
+		(pin "2"
+			(uuid "6508f092-17ae-41d1-967b-0fd933d7fa5b")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R14")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R24")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R60")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 165.1 81.28 0)
 		(mirror x)
@@ -4740,6 +7157,89 @@
 				)
 				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
 					(reference "#PWR085")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 223.52 60.96 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fa4e28a9-35e1-4321-a94f-7d7067287ba2")
+		(property "Reference" "R85"
+			(at 223.774 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "120"
+			(at 219.456 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.52 59.182 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://si.farnell.com/multicomp/mcwr04x1200ftl/res-120r-1-0-0625w-thick-film/dp/2447103"
+			(at 223.52 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b5738445-64d0-4f56-9bc9-24febbdf9b87")
+		)
+		(pin "2"
+			(uuid "b6affba8-ed82-4a62-b189-9257b006b7bd")
+		)
+		(instances
+			(project "Overlord"
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/22bce7d2-5a01-4501-8164-494c6866cf71"
+					(reference "R85")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/a3b8431d-f055-4ba3-acea-821685791c18"
+					(reference "R87")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/ee175e2e-a3c3-4789-aca4-0962a9c7b5a8"
+					(reference "R88")
+					(unit 1)
+				)
+				(path "/b05fe6d7-2198-4616-b68d-60ce1e3d6296/fe912d6e-7d2c-499a-8714-bffe9dd94d38"
+					(reference "R86")
 					(unit 1)
 				)
 			)
