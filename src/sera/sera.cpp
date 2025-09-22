@@ -1,7 +1,7 @@
 #include "sera.h"
 #include "mdll.h"
 
-static bool sera_s_moduleInit_tB = false;
+static tB sera_s_moduleInit_tB = false;
 
 void sera_init(tSERA_INITDATA_STR* SeraCfg)
 {

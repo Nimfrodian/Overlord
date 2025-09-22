@@ -7,7 +7,7 @@
 #include "mdll.h"
 #include "mbcm_rtdb.h"
 
-static bool mbcm_s_moduleInit_tB = false;
+static tB mbcm_s_moduleInit_tB = false;
 static tU8 currRelayStates_aU8[MBCM_MAX_RELAY_BOARDS_U32] = {};
 
 static const char* mbcm_x_nvsKey_aSTR[MBCM_MAX_RELAY_BOARDS_U32] =

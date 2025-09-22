@@ -112,7 +112,7 @@ typedef struct tDMAS_STREAMING_STR
     tDMAS_STREAMINGSTATETYPE_E streaming_U8;        ///< streaming state
 
     // Equality operator to check if two streaming datas are the same
-    bool operator==(const tDMAS_STREAMING_STR& other) const {
+    tB operator==(const tDMAS_STREAMING_STR& other) const {
         return (varIndex_U32 == other.varIndex_U32) && (varType_U32 == other.varType_U32);
     }
 } tDMAS_STREAMING_STR;

@@ -2,7 +2,7 @@
 #include "errh.h"
 #include "mdll.h"
 
-static bool nvsm_s_moduleInit_tB = false;
+static tB nvsm_s_moduleInit_tB = false;
 static uint32_t nvsm_ti_ms_taskDelay_U32 = 0;
 
 static nvs_handle_t nvsm_x_nvsHandle_STR;

@@ -20,6 +20,9 @@
 #define TF32_MIN (-FLT_MAX)
 #define TF32_MAX (FLT_MAX)
 
+#define NO_ERROR ((tU32) 0)
+#define ERROR ((tU32) 1)
+
 typedef uint8_t tU8;
 typedef uint16_t tU16;
 typedef uint32_t tU32;
@@ -29,3 +32,13 @@ typedef int32_t tS32;
 typedef tU8 tB;
 typedef tU32 tE;
 typedef float tF32;
+
+typedef struct
+{
+    uint16_t year_U16;
+    uint8_t month_U8;
+    uint8_t day_U8;
+    uint8_t hour_U8;
+    uint8_t minute_U8;
+    uint8_t second_U8;
+} tVARS_TIMEDATA_STR;

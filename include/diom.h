@@ -20,8 +20,8 @@ typedef struct
 
 typedef struct
 {
-    bool output_B;
-    bool lastReadState_B;
+    tB output_B;
+    tB lastReadState_B;
     tU32 ti_us_cooldownTime_U32;
 } tDIOM_GPIODATA_STR;
 

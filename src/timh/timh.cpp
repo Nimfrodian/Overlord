@@ -3,9 +3,9 @@
 #include "mdll.h"
 #include "esp_attr.h"
 
-static bool timh_s_moduleInit_tB = false;
+static tB timh_s_moduleInit_tB = false;
 
-static tTIMH_TIMEDATA_STR timh_ti_timeData_str =
+static tVARS_TIMEDATA_STR timh_ti_timeData_str =
     {
         .year_U16 = 0,
         .month_U8 = 0,
@@ -63,7 +63,7 @@ void timh_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
         }
 }
 
-tTIMH_TIMEDATA_STR timh_ti_readCurrentTime(void)
+tVARS_TIMEDATA_STR timh_ti_readCurrentGlobalTime(void)
 {
     return timh_ti_timeData_str;
 }
