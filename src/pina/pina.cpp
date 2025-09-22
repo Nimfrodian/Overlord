@@ -2,7 +2,7 @@
 #include "esp_attr.h"
 #include "mdll.h"
 
-static bool pina_s_moduleInit_tB = false;
+static tB pina_s_moduleInit_tB = false;
 
 void pina_init(tPINA_INITDATA_STR* PinaCfg)
 {
@@ -20,12 +20,12 @@ void pina_init(tPINA_INITDATA_STR* PinaCfg)
     }
 }
 
-void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, bool Value)
+void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, tB Value)
 {
     gpio_set_level((gpio_num_t) GpioNum, Value);
 }
 
-bool pina_getGpioLevel(PINA_nr_GPIO_NUM_E GpioNum)
+tB pina_getGpioLevel(PINA_nr_GPIO_NUM_E GpioNum)
 {
     return gpio_get_level((gpio_num_t) GpioNum);
 }

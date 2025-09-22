@@ -2,7 +2,7 @@
 #include "rtdb_vars.h"
 #include "mdll.h"
 
-static bool tmra_s_moduleInit_tB = false;
+static tB tmra_s_moduleInit_tB = false;
 static tTMRA_TIMERHANDLE_STR tmra_x_internalTimer_strc;
 
 static const gptimer_config_t tmra_x_internalTimerConfig_strc = {

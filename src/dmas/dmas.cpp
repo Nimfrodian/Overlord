@@ -5,7 +5,7 @@
 #include <algorithm> // for std::find_if
 #include "mdll.h"
 
-static bool dmas_s_moduleInit_tB = false;
+static tB dmas_s_moduleInit_tB = false;
 
 using namespace std;
 static vector<tDMAS_STREAMING_STR> dmas_x_streamingData_astr(DMAS_MAX_NUM_OF_STREAMABLE_VARS_U8);

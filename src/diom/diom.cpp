@@ -4,7 +4,7 @@
 #include "mdll.h"
 #include "diom_rtdb.h"
 
-static bool diom_s_moduleInit_tB = false;
+static tB diom_s_moduleInit_tB = false;
 static tTMRA_TIMERDATA_STR diom_h_timerHandler_str = tmra_emptyTimerData_str;
 
 static tU32 diom_ti_us_task_time_U32 = DIOM_TI_US_DEF_TASK_TIME_U32;
@@ -50,7 +50,7 @@ static void IRAM_ATTR diom_updateCooldownTimer_isr(tDIOM_GPIODATA_STR* GpioData_
     GpioData_pStr->ti_us_cooldownTime_U32 -= (GpioData_pStr->ti_us_cooldownTime_U32 > ti_us_taskTime_U32) ? ti_us_taskTime_U32 : GpioData_pStr->ti_us_cooldownTime_U32;
 }
 
-static void IRAM_ATTR diom_checkPin_isr(tDIOM_GPIODATA_STR* GpioData_pStr, bool NewState_B)
+static void IRAM_ATTR diom_checkPin_isr(tDIOM_GPIODATA_STR* GpioData_pStr, tB NewState_B)
 {
     // if state changed then update output if it's not in cooldown, otherwise refresh cooldown timer
     if (NewState_B != GpioData_pStr->lastReadState_B)
@@ -143,6 +143,7 @@ void diom_init(tDIOM_INITDATA_STR* DiomCfg)
             .intr_priority = 0,
             .flags = {
                 .intr_shared = 0,
+                .allow_pd = 0,
                 .backup_before_sleep = 0,
             }
         };

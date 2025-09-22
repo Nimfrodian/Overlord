@@ -60,14 +60,14 @@ void pina_init(tPINA_INITDATA_STR* PinaCfg);
  * @param Value value to apply
  * @return (void)
  */
-void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, bool Value);
+void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, tB Value);
 
 /**
  * @brief Function gets GPIO output to desired value
  * @param GpioNum GPIO pin to get value from
  * @return (void)
  */
-bool pina_getGpioLevel(PINA_nr_GPIO_NUM_E GpioNum);
+tB pina_getGpioLevel(PINA_nr_GPIO_NUM_E GpioNum);
 
 /**
  * @brief Function sets GPIO pin as output

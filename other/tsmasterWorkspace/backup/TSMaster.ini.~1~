@@ -1,0 +1,153 @@
+﻿[TSMaster]
+DebugMode=0
+LogVerbose=6
+Bounds=154,54,3250,1350
+Maximized=0
+AutoGenConstDef=0
+AutoGenDBConstDef=0
+DisableCrashDialog=0
+UseOutputDbg=1
+SelTxSgn=1
+DisplayHex=1
+DisplaySym=1
+Skin=
+SkinPalette=
+ColorfulMDI=0
+DelConfOnFormDel=1
+AutoSaveBeforeRun=0
+AutoCopyDBToLocal=0
+CustomFont=
+TraceFont=
+AutoHandleCANUB=1
+AutoHandleFlexRayUB=1
+AutoSavePrj=0
+DelHistoryConfOnSave=1
+DisableToast=0
+DisplayFormByPage=0
+ShowTabGroups=1
+Magnetic=1
+AppName=TSMaster
+
+[app_conn_callback_before_connect]
+Signal Server=300
+CAN RBS=100
+CoSimController=100
+Measurement Controller=500
+FlexRay RBS=100
+J1939 TP=400
+Ethernet RBS=100
+Channel Selection=200
+MDI Manager=600
+TSMaster Main Application=100
+FlexRay RBS Controller=100
+Graphics=100
+CAN / CAN FD Trace 1=100
+
+[app_conn_callback_after_connect]
+CAN RBS=300
+FlexRay RBS=100
+LIN RBS=350
+Ethernet RBS=100
+J1939 TP=100
+MP Library Manager=400
+Measurement Comment Manager=200
+Ribbon Manager=700
+MDI Manager=500
+TSMaster Main Application=100
+Graphics=100
+
+[app_conn_callback_before_disconnect]
+LIN RBS=100
+Signal Server=400
+MDI Manager=500
+J1939 TP=300
+
+[app_conn_callback_after_disconnect]
+CAN RBS=300
+CoSimController=100
+Measurement Controller=800
+FlexRay RBS=100
+Bus Log Engine=400
+Ethernet RBS=100
+MP Library Manager=700
+Ribbon Manager=600
+MDI Manager=200
+TSMaster Main Application=100
+CAN / CAN FD Trace 1=100
+Graphics=100
+CAN Transmit=100
+
+[OnlineReplay]
+CANCount=0
+
+[TsRPC]
+Actv=1
+SizeBytes=1048576
+
+[TsRPCIP]
+Enabled=0
+Port=2809
+Proto=0
+FileCnt=0
+
+[TTsSimManager]
+FullSim=0
+Speed=1
+Step=0.1
+
+[ChannelMappings]
+CANChnCount=1
+CAN0=0,0,9,0,0,-1,0,250,2000,TSMaster,
+LINChnCount=0
+FlexRayChnCount=0
+EthernetChnCount=0
+AIChnCount=0
+AOChnCount=0
+DIChnCount=0
+DOChnCount=0
+GPSChnCount=0
+
+[RTL_Form_Position]
+TfrmTSMaster_0=154,54,3250,1350
+TfrmHardware=2178,399,2982,1000
+TfrmCANDatabase1=349,280,1365,911
+
+[UserVariables]
+Count=0
+
+[PluginManager]
+ExternalCount=0
+
+[BusStatistics]
+Enabled=1
+
+[app_hw_selector_conf]
+FEnableTSync=0
+FActiveWirelessOBD=
+FEnableTSWirelessOBD=0
+DeviceCount=0
+FEnableEthernetInterfaceDevice=0
+FNetIfNum=0
+
+[HWModeConfig]
+FHWRealVehicleMeasurementMode=0
+
+[hw_app_chn_0]
+CANdo_CAN_conf={"FControllerType":0,"FClockMHz":80,"FTSeg1Abr":119,"FTSeg2Abr":40,"FSjwAbr":40,"FPrescalerAbr":1,"FTSeg1Dbr":29,"FTSeg2Dbr":10,"FSjwDbr":10,"FPrescalerDbr":1,"FArbitrationBaudrateBps":250000,"FDataBaudrateBps":2000000,"FSamplingPointMul10Percent":750}
+CANdo_CAN_FilterEn=0
+CANdo_CAN_FilterStr=XXXXXXXXXXX
+
+[MpGen]
+CAN_CAN_database=1
+CAN_CAN_databaseAlias=
+
+[CAN_Databases]
+DBFilesCount=1
+DBFiles0=.\DB\CAN\CAN_database.pdbc
+DBOriCount=1
+DBOri0=..\..\..\..\..\..\..\..\Documents\PlatformIO\Projects\Overlord\other\CAN_database.dbc
+ChnCANCount=1
+ChnCAN0=0
+PropertyHeight=298
+PropertyVisible=1
+HWChnCount=2

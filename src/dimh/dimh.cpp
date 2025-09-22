@@ -3,7 +3,7 @@
 #include "mdll.h"
 #include "nvsm.h"
 
-static bool dimh_s_moduleInit_tB = false;
+static tB dimh_s_moduleInit_tB = false;
 
 static tU32 dimh_s_prevGpioStates = 0;
 

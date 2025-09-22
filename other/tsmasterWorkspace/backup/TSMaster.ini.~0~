@@ -1,0 +1,41 @@
+﻿[TSMaster]
+DebugMode=0
+
+[app_conn_callback_before_connect]
+Signal Server=300
+CAN RBS=100
+CoSimController=100
+Measurement Controller=500
+FlexRay RBS=100
+J1939 TP=400
+Ethernet RBS=100
+Channel Selection=200
+MDI Manager=600
+
+[app_conn_callback_after_connect]
+CAN RBS=300
+FlexRay RBS=100
+LIN RBS=350
+Ethernet RBS=100
+J1939 TP=100
+MP Library Manager=400
+Measurement Comment Manager=200
+Ribbon Manager=700
+MDI Manager=500
+
+[app_conn_callback_before_disconnect]
+LIN RBS=100
+Signal Server=400
+MDI Manager=500
+J1939 TP=300
+
+[app_conn_callback_after_disconnect]
+CAN RBS=300
+CoSimController=100
+Measurement Controller=800
+FlexRay RBS=100
+Bus Log Engine=400
+Ethernet RBS=100
+MP Library Manager=700
+Ribbon Manager=600
+MDI Manager=200

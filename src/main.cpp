@@ -16,7 +16,11 @@ extern "C" void app_main(void)
         timh_init(&timh_cfgData_str);
 
         tERRH_INITDATA_STR ErrhCfg =
-        {};
+        {
+            .ti_us_readSystemTimeCallback_S64 = tmra_ti_us_getCurrentTime_S64,
+            .ti_readCurrentGlobalTimeCallback_S64 = timh_ti_readCurrentGlobalTime,
+            .reportErrorCallback = ERRH_INTERNAL_CALLBACK,
+        };
         errh_init(&ErrhCfg);
 
         tSERA_INITDATA_STR SeraCfg =
@@ -31,16 +35,13 @@ extern "C" void app_main(void)
         nvsm_init(&NvsmCfg);
         sera_print("NVSM module initialized\n");
 
-        tCANM_INITDATA_STR CanmCfg =
+        tCANP_INITDATA_STR CanpCfg =
         {
             .ti_ms_taskDelay_U32 = MAIN_TI_ms_TASK_DELAY_U32, // executed in main task
         };
-        canm_init(&CanmCfg);
-        sera_print("CANM module initialized\n");
+        canp_init(&CanpCfg);
 
-        tRTDB_INITDATA_STR RtdbCfg =
-        {};
-        rtdb_init(&RtdbCfg);
+        rtdp_init();
         sera_print("RTDB module initialized\n");
 
         tDMAS_INITDATA_STR DmasCfg =
