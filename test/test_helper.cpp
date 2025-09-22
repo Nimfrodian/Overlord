@@ -22,16 +22,6 @@ tERRH_ERRORDATA_STR noErrorCode =
     .count_U8 = 0,
 };
 
-static void testErrhCallback(tERRH_ERRORTYPE_E ErrorLvl, uint32_t ModuleId, uint32_t InstanceId, uint32_t ApiId, uint32_t ErrorId)
-{
-    lastErrorCode.moduleId = ModuleId;
-    lastErrorCode.instanceId = InstanceId;
-    lastErrorCode.apiId = ApiId;
-    lastErrorCode.errorId = ErrorId;
-    lastErrorCode.errorLvl = ErrorLvl;
-    lastErrorCode.count_U8 = 1;
-}
-
 static int64_t (helper_ti_us_readSystemTimeCallback_S64)(void)
 {
     static int64_t time = 0;
@@ -50,6 +40,19 @@ static tVARS_TIMEDATA_STR (helper_ti_readCurrentGlobalTimeCallback_S64)(void)
     };
     timedate.second_U8++;
     return timedate;
+}
+
+static void testErrhCallback(tERRH_ERRORTYPE_E ErrorLvl, uint32_t ModuleId, uint32_t InstanceId, uint32_t ApiId, uint32_t ErrorId)
+{
+    lastErrorCode.moduleId = ModuleId;
+    lastErrorCode.instanceId = InstanceId;
+    lastErrorCode.apiId = ApiId;
+    lastErrorCode.errorId = ErrorId;
+    lastErrorCode.errorLvl = ErrorLvl;
+    lastErrorCode.ti_globalTime = helper_ti_readCurrentGlobalTimeCallback_S64();
+    lastErrorCode.ti_us_timestamp = helper_ti_us_readSystemTimeCallback_S64();
+    lastErrorCode.s_sentOnCan_U8 = 1;
+    lastErrorCode.count_U8 = 1;
 }
 
 void test_errh_setUp(void)
@@ -72,11 +75,6 @@ void test_errh_tearDown(void)
     lastErrorCode.errorId = 0;
     lastErrorCode.errorLvl = ERRH_ERRORTYPE_UNDEF;
     lastErrorCode.count_U8 = 0;
-}
-
-tERRH_ERRORDATA_STR test_errh_getLastError(void)
-{
-    return lastErrorCode;
 }
 
 void test_errh_isLastErrorAsExpected(tERRH_ERRORDATA_STR expected)

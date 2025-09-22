@@ -3,9 +3,10 @@
 #include "canm.h"
 #include "mdll.h"
 
-
-static tB (send)(const tCANM_MSG *msg){return NO_ERROR;};
-static tB (receive)(tCANM_MSG *msg){return NO_ERROR;};
+/* LCOV_EXCL_START */
+static tB send(const tCANM_MSG *msg){return NO_ERROR;}
+static tB receive(tCANM_MSG *msg){return NO_ERROR;}
+/* LCOV_EXCL_STOP */
 
 void test_canm_init_reinit(void)
 {
