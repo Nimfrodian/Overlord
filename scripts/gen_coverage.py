@@ -2,7 +2,7 @@ import subprocess
 from pathlib import Path
 Import("env")
 
-def generate_coverage(source, target, env):
+def generate_coverage(env):
     build_dir = Path(env.subst("$BUILD_DIR"))
     project_dir = Path(env.subst("$PROJECT_DIR"))
     coverage_dir = build_dir / "coverage_report"
@@ -22,4 +22,4 @@ def generate_coverage(source, target, env):
         "-o", str(coverage_html)
     ], check=True)
 
-env.AddPostAction("$BUILD_DIR/program.exe", generate_coverage)
+generate_coverage(env)
