@@ -5,7 +5,6 @@
 #include "crcm.h"
 #include "nvsm.h"
 #include "mdll.h"
-#include "mbcm_rtdb.h"
 
 static tB mbcm_s_moduleInit_tB = false;
 static tU8 currRelayStates_aU8[MBCM_MAX_RELAY_BOARDS_U32] = {};

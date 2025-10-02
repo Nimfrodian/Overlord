@@ -2,13 +2,13 @@
 #include "rtdb.h"
 #include "tmra.h"
 #include "mdll.h"
-#include "diom_rtdb.h"
+#include "rtdb.h"
 
 static tB diom_s_moduleInit_tB = false;
 static tTMRA_TIMERDATA_STR diom_h_timerHandler_str = tmra_emptyTimerData_str;
 
-static tU32 diom_ti_us_task_time_U32 = DIOM_TI_US_DEF_TASK_TIME_U32;
-static tU32 diom_ti_us_cooldown_U32 = DIOM_TI_US_DEF_COOLDOWN_TIME_U32;
+static tU32 diom_ti_us_task_time_U32 = rtdb_read_tU32S(RTDB_DIOM_TI_US_TASKTIME_U32);
+static tU32 diom_ti_us_cooldown_U32 = rtdb_read_tU32S(RTDB_DIOM_TI_US_COOLDOWNPERIOD_U32);
 
 static const tDIOM_MUXINPUTPIN_E diom_x_muxIn_astr[DIOM_MUX_NUM_OF_INPUTS_U32] =
 {

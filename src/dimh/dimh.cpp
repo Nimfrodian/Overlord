@@ -1,5 +1,5 @@
 #include "dimh.h"
-#include "dimh_rtdb.h"
+#include "rtdb.h"
 #include "mdll.h"
 #include "nvsm.h"
 

@@ -33,5 +33,4 @@
 # folders
 .pio/
 .vs/
-.vscode/
 sdkconfig.old

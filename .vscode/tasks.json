@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "PlatformIO",
+            "task": "Pre-Debug",
+            "problemMatcher": [
+                "$platformio"
+            ],
+            "label": "PlatformIO: Pre-Debug"
+        },
+        {
+            "label": "Build current file with PIO",
+            "type": "shell",
+            "command": "pio",
+            "args": [
+              "test",
+              "-e",
+              "localhost_test",
+              "--without-uploading",
+              "--without-testing",
+              "--filter",
+              "${fileBasenameNoExtension}"
+            ],
+            "problemMatcher": ["$gcc"],
+            "group": {
+              "kind": "build",
+              "isDefault": true
+            }
+        }
+    ]
+}
