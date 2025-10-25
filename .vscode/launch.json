@@ -16,7 +16,7 @@
             "cwd": "${workspaceFolder}",
             "MIMode": "gdb",
             "miDebuggerPath": "gdb.exe",
-            "stopAtEntry": true,
+            "stopAtEntry": false,
             "args": [],
             "preLaunchTask": "Build current file with PIO"
         },

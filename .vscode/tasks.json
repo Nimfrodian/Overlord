@@ -20,7 +20,8 @@
               "--without-uploading",
               "--without-testing",
               "--filter",
-              "${fileBasenameNoExtension}"
+              "${fileBasenameNoExtension}",
+              "-vvv"
             ],
             "problemMatcher": ["$gcc"],
             "group": {

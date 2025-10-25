@@ -11,7 +11,7 @@ static tB receive(tCANM_MSG *msg){return NO_ERROR;}
 void test_canm_init_normal_init(void)
 {
     tCANM_INITDATA_STR canmInitCfg_str = {
-    .ti_ms_taskDelay_U32  = TEST_ti_ms_EXECUTION_TIME_U32,
+    .ti_ms_taskDelay_U32  = TEST_ti_ms_MAIN_FUNC_CYCLE_TIME_U32,
     .canm_send_callback = send,
     .canm_receive_callback = receive,
     };

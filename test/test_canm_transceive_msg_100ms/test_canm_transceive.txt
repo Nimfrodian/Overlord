@@ -1,0 +1,148 @@
+#include "test_helper.h"
+#include <unity.h>
+#include "canm.h"
+#include "rtdb.h"
+#include "mdll.h"
+#include <vector>
+#include <cstdio>
+using namespace std;
+
+#define TEST_ti_ms_TOTAL_EXECUTION_TIME_U32 ((tU32) 50000)
+
+static tU32 totalMsgsSent = 0;
+static tU32 totalTimeRun_ms = 0;
+static vector<tCANM_MSG> messages = {};
+
+static tB (send)(const tCANM_MSG *msg)
+{
+    messages.push_back(*msg);
+    totalMsgsSent++;
+    return NO_ERROR;
+};
+static tB (receive)(tCANM_MSG *msg){return NO_ERROR;};
+
+static tU32 run_canm_runnable(void)
+{
+    canm_transceive_run_5ms();
+    totalTimeRun_ms += TEST_ti_ms_MAIN_FUNC_CYCLE_TIME_U32;
+    return totalTimeRun_ms;
+}
+
+static tS32 verify_message_ID_in_vector(uint32_t msgId)
+{
+    for (size_t i = 0; i < messages.size(); ++i)
+    {
+        if (messages[i].identifier == msgId)
+        {
+            return static_cast<tS32>(i);
+        }
+    }
+    return -1; // Not found
+}
+
+static void remove_message_ID_in_vector(tU32 msgId)
+{
+    for (size_t i = 0; i < messages.size(); ++i)
+    {
+        if (messages[i].identifier == msgId)
+        {
+            messages.erase(messages.begin() + msgId);
+            return;
+        }
+    }
+}
+
+static void check_new_msg_tx_and_timing()
+{
+    messages.clear();
+    for (tU8 moduleIndx = 0; moduleIndx <= CANM_MAX_PWR_METERS_U32; moduleIndx++)
+    {
+        for (tU8 msgIndx = 0; msgIndx < 11; msgIndx++)
+        {
+            tU32 id = 0x1F5 + msgIndx + moduleIndx * 11;
+            rtdb_write_tF32S((tF32SEnumT)(RTDB_MBCM_X_SDM120MREADINGS_0_AF32_0 + (msgIndx * 2) + 0 + moduleIndx * 21), 0xA5*(msgIndx+1) + moduleIndx);
+            if (msgIndx < 10) rtdb_write_tF32S((tF32SEnumT)(RTDB_MBCM_X_SDM120MREADINGS_0_AF32_0 + (msgIndx * 2) + 1 + moduleIndx * 21), 0x5A*(msgIndx+1) + moduleIndx);
+        }
+    }
+
+    for (tU32 ti_ms_executionTime_U32  = totalTimeRun_ms;
+              ti_ms_executionTime_U32 <= (TEST_ti_ms_TOTAL_EXECUTION_TIME_U32 + totalTimeRun_ms);
+              ti_ms_executionTime_U32 += TEST_ti_ms_MAIN_FUNC_CYCLE_TIME_U32)
+    {
+        tU32 totalRuntime_ms = run_canm_runnable();
+
+        if ((totalRuntime_ms % 10) == 0)
+        {
+            // no messages
+        }
+        if ((totalRuntime_ms % 100) == 0)
+        {
+            // TODO: change timing method to be independant from test ordering
+            tS32 msg0x150Pos = verify_message_ID_in_vector(0x150);
+            tS32 msg0x110Pos = verify_message_ID_in_vector(0x110);
+            tS32 msg0x111Pos = verify_message_ID_in_vector(0x111);
+            UNITY_TEST_ASSERT_EQUAL_UINT8(true, msg0x150Pos >= 0, __LINE__, "Message ID 0x150 not found");
+            UNITY_TEST_ASSERT_EQUAL_UINT8(true, msg0x110Pos >= 0, __LINE__, "Message ID 0x110 not found");
+            UNITY_TEST_ASSERT_EQUAL_UINT8(true, msg0x111Pos >= 0, __LINE__, "Message ID 0x111 not found");
+            remove_message_ID_in_vector(0x150);
+            remove_message_ID_in_vector(0x110);
+            remove_message_ID_in_vector(0x111);
+        }
+        if ((totalRuntime_ms % 1000) == 0)
+        {
+            static tU8 moduleIndx = 0;
+            char text[128] = {0};
+
+            for (tU8 msgIndx = 0; msgIndx < 11; msgIndx++)
+            {
+                tU32 id = 0x1F5 + msgIndx + moduleIndx * 11;
+                sprintf(text, "Message ID 0x%X not found at time %d ms", id, totalRuntime_ms);
+                tS32 vectorMsgIndx = verify_message_ID_in_vector(id);
+                UNITY_TEST_ASSERT_EQUAL_UINT8(true, vectorMsgIndx >= 0, __LINE__, text);
+                tU32 firstVar =  ((messages[vectorMsgIndx].data[3] << 24) | (messages[vectorMsgIndx].data[2] << 16) | (messages[vectorMsgIndx].data[1] << 8) | (messages[vectorMsgIndx].data[0] << 0));
+                tU32 secondVar = ((messages[vectorMsgIndx].data[7] << 24) | (messages[vectorMsgIndx].data[6] << 16) | (messages[vectorMsgIndx].data[5] << 8) | (messages[vectorMsgIndx].data[4] << 0));
+                sprintf(text, "firstVar incorrect at time %d ms, msgIndx %d. moduleIndx %d, msgId 0x%x", totalRuntime_ms, msgIndx, moduleIndx, id);
+                UNITY_TEST_ASSERT_EQUAL_FLOAT(0xA5*(msgIndx+1) + moduleIndx, *(tF32*)((void*) &firstVar), __LINE__, text);
+                sprintf(text, "secondVar incorrect at time %d ms, msgIndx %d. moduleIndx %d, msgId 0x%x", totalRuntime_ms, msgIndx, moduleIndx, id);
+                UNITY_TEST_ASSERT_EQUAL_FLOAT(0x5A*(msgIndx+1) + moduleIndx, *(tF32*)((void*) &secondVar), __LINE__, text);
+                remove_message_ID_in_vector(id);
+            }
+
+            moduleIndx++;
+            if (moduleIndx >= CANM_MAX_PWR_METERS_U32)
+            {
+                moduleIndx = 0;
+            }
+        }
+
+        char text[128] = {0};
+        if (messages.size()) sprintf(text, "Some messages are unaccounted for. First unaccounted message's ID is 0x%X. Time: %d", messages[0].identifier, totalTimeRun_ms);
+        UNITY_TEST_ASSERT_EQUAL_UINT8(0, messages.size(), __LINE__, text);
+    }
+}
+
+void check_for_errors_at_the_end(void)
+{
+    tERRH_ERRORDATA_STR expectedError = noErrorCode;
+    expectedError.moduleId = MODULE_CANM;
+    test_errh_isLastErrorAsExpected(expectedError);
+}
+
+int main(int argc, char **argv) {
+    UNITY_BEGIN();
+
+    tCANM_INITDATA_STR canmInitCfg_str = {
+    .ti_ms_taskDelay_U32  = TEST_ti_ms_MAIN_FUNC_CYCLE_TIME_U32,
+    .canm_send_callback = send,
+    .canm_receive_callback = receive,
+    };
+    tCANM_INITDATA_STR* canmInitCfg_pstr = &canmInitCfg_str;
+    canm_init(canmInitCfg_pstr);
+
+    RUN_TEST(check_new_msg_tx_and_timing);
+    RUN_TEST(check_for_errors_at_the_end);
+
+    UNITY_END();
+
+    return 0;
+}

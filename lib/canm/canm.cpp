@@ -92,19 +92,12 @@ void canm_transceive_run_5ms(void)
     }
     // (new) transmit
     {
-        static uint32_t cntr_10ms = 0;   // counter for  10ms transmit
         static uint32_t cntr_100ms = 0;  // counter for 100ms transmit
-        static uint32_t cntr_1s = 0;     // counter for    1s transmit
+        static uint32_t cntr_1000ms = 0; // counter for    1s transmit
         {
-            tU32 ti_ms_taskDelay = canm_x_config_str.ti_ms_taskDelay_U32;
-            cntr_10ms += ti_ms_taskDelay;
-            cntr_100ms += ti_ms_taskDelay;
-            cntr_1s += ti_ms_taskDelay;
+            cntr_100ms += canm_x_config_str.ti_ms_taskDelay_U32;
+            cntr_1000ms += canm_x_config_str.ti_ms_taskDelay_U32;
 
-            if (10 <= cntr_10ms)
-            {
-                cntr_10ms = 0;
-            }
             if (100 <= cntr_100ms)
             {
                 // send 0x150 GPIO feedback status
@@ -115,10 +108,11 @@ void canm_transceive_run_5ms(void)
                     for (tU8 byteIndx_U8 = 0; byteIndx_U8 < 4; byteIndx_U8++)
                     {
                         canMsg_0x150.data[byteIndx_U8] = 0;    // clear the data location
+                        tU32 gpioStates = rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32);
                         for (tU8 bitIndx_U8 = 0; bitIndx_U8 < 8; bitIndx_U8++)
                         {
                             tU8 index_U8 = (RTDB_CANM_S_TXGPIOSTATES_AB_0 + (byteIndx_U8 * 8) + bitIndx_U8);
-                            rtdb_write_tBS((tBSEnumT) index_U8, rtdb_read_tU32S(RTDB_DIOM_X_INPUTSTATES_U32) >> (byteIndx_U8*8 + bitIndx_U8) & 0x01);    // copy from GPIO state
+                            rtdb_write_tBS((tBSEnumT) index_U8, gpioStates >> (byteIndx_U8*8 + bitIndx_U8) & 0x01);    // copy from GPIO state
                             canMsg_0x150.data[byteIndx_U8] |= (rtdb_read_tBS((tBSEnumT) index_U8) << bitIndx_U8);
                         }
                     }
@@ -160,7 +154,7 @@ void canm_transceive_run_5ms(void)
                 }
                 cntr_100ms = 0;
             }
-            if (cntr_1s > 1000)
+            if (1000 <= cntr_1000ms)
             {
                 // send 0x1F5 + id + varIndx message for power meter, one power meter's info per second
                 {
@@ -201,7 +195,7 @@ void canm_transceive_run_5ms(void)
                         moduleIndx = 0;
                     }
                 }
-                cntr_1s = 0;
+                cntr_1000ms = 0;
             }
 
             // event based
@@ -211,9 +205,9 @@ void canm_transceive_run_5ms(void)
                     if (rtdb_read_tBS((tBSEnumT)(RTDB_DIMH_S_TXDIMMERRDYFLAG_AB_0 + i)))
                     {
                         rtdb_write_tBS((tBSEnumT)(RTDB_DIMH_S_TXDIMMERRDYFLAG_AB_0 + i), 0);
-                        tU16 dimmVal_U16 = rtdb_read_tU16S((tU16SEnumT) (RTDB_DIMH_X_TXDIMMERVAL_AU16_0 + i));
                         tU32 dimmTime_U32 = rtdb_read_tU32S((tU32SEnumT) (RTDB_DIMH_TI_MS_TXDIMMERTIME_AU32_0 + i));
-                        tU32 dimmMask_U32 = 1 << i;
+                        tU16 dimmVal_U16 = rtdb_read_tU16S((tU16SEnumT) (RTDB_DIMH_X_TXDIMMERVAL_AU16_0 + i));
+                        tU32 dimmMask_U32 = 0x01 << i;
                         tCANM_MSG canMsg_dimmer = {};
                         canMsg_dimmer.identifier = 0x95;
                         canMsg_dimmer.data_length_code = 8;

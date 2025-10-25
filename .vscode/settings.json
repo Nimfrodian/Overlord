@@ -63,9 +63,11 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "*.ipp": "cpp",
-        "compare": "cpp"
+        "compare": "cpp",
+        "text_encoding": "cpp",
+        "variant": "cpp"
     },
     "gcovViewer.buildDirectories": [
-        "c:\\Users\\Nimfrodian\\Documents\\PlatformIO\\Projects\\Overlord\\.pio\\build\\localhost_test"
+        "c:\\Users\\Nimfrodian\\Documents\\Overlord\\.pio\\build\\localhost_test"
     ]
 }

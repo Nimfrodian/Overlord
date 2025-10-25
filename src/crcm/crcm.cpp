@@ -3,6 +3,11 @@
     extern "C" {
         #include "esp_rom_crc.h"
     }
+#else
+uint32_t esp_rom_crc32_le(uint32_t crc, uint8_t const *buf, uint32_t len)
+{
+    return 0;
+}
 #endif
 
 // Modbus CRC tables
@@ -61,9 +66,5 @@ tU16 crcm_CRC16_Modbus(tU8* str, tU32 usDataLen)
 
 tU32 crcm_CRC32(const tU8* data_U8, tU32 length_U32)
 {
-    #if defined(PLATFORM_ESP32)
-        return (tU32) esp_rom_crc32_le(0, data_U8, length_U32);
-    #elif defined(PLATFORM_LOCALHOST)
-        return (tU32) 0;
-    #endif
+    return (tU32) esp_rom_crc32_le(0, data_U8, length_U32);
 }

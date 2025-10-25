@@ -151,7 +151,7 @@ ChnCANCount=1
 PropertyHeight=298
 PropertyVisible=1
 HWChnCount=2
-UICommon=0,-1,0,0,Q0FOIERhdGFiYXNl,100,287,2045479113592649721,0
+UICommon=0,-1,0,0,Q0FOIERhdGFiYXNl,100,512,2045479113592649721,0
 UIFilter=
 DBFiles0=.\DB\CAN\CAN_database.pdbc
 DBOri0=..\CAN_database.dbc
@@ -213,9 +213,9 @@ TfrmEthernetRBS=0
 
 [Pg0]
 Count=3
-f0=TfrmCANFDTrace,0,0,0,806,556,0,0,1107,398,1
-f1=TfrmGraphics,0,806,0,909,1170,0,0,1088,606,1
-f2=TfrmCANFDTransmit,0,0,556,806,631,0,0,1061,564,1
+f0=TfrmCANFDTransmit,0,0,556,806,631,0,0,1061,564,1
+f1=TfrmCANFDTrace,0,0,0,806,556,0,0,1107,398,1
+f2=TfrmGraphics,0,806,0,909,1170,0,0,1088,606,1
 HiddenCount=2
 h0=TfrmCANDatabase,0,79,91,1016,631,0,0,1016,631,1
 h1=TfrmMeasurementSetup,0,182,182,836,524,182,182,836,524,1
@@ -249,6 +249,6 @@ M3=0,1,62,-1,3,TfrmCANDatabase,CAN Database
 M4=0,1,245,-1,4,TfrmMeasurementSetup,Measurement Setup
 
 [MeasSetup]
-UICommon=0,-1,0,0,TWVhc3VyZW1lbnQgU2V0dXA_,100,40,174233471228626566,0
+UICommon=0,-1,0,0,TWVhc3VyZW1lbnQgU2V0dXA_,100,72,174233471228626566,0
 UIFilter=
 Zoom=1

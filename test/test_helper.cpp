@@ -1,5 +1,6 @@
 #include "test_helper.h"
 #include <stdio.h>
+#include <stdarg.h>
 
 static tERRH_ERRORDATA_STR lastErrorCode;
 tERRH_ERRORDATA_STR noErrorCode =
@@ -79,11 +80,54 @@ void test_errh_tearDown(void)
 
 void test_errh_isLastErrorAsExpected(tERRH_ERRORDATA_STR expected)
 {
-    UNITY_TEST_ASSERT_EQUAL_UINT32(expected.moduleId, lastErrorCode.moduleId, 0, "Module ID is not correct!");
-    UNITY_TEST_ASSERT_EQUAL_UINT32(expected.instanceId, lastErrorCode.instanceId, 0, "Instance ID is not correct!");
-    UNITY_TEST_ASSERT_EQUAL_UINT32(expected.apiId, lastErrorCode.apiId, 0, "API ID is not correct!");
-    UNITY_TEST_ASSERT_EQUAL_UINT32(expected.errorId, lastErrorCode.errorId, 0, "Error ID is not correct!");
-    UNITY_TEST_ASSERT_EQUAL_UINT32(expected.errorLvl, lastErrorCode.errorLvl, 0, "Error Level is not correct!");
+    tB asExpected = true;
+    char text[256] = {0};
+    tU8 textPos = 0;
+
+    if (expected.moduleId != lastErrorCode.moduleId)
+    {
+        asExpected = false;
+        textPos += sprintf(&text[textPos], "Module ID expected %u, was %u | ", expected.moduleId, lastErrorCode.moduleId);
+    }
+    if (expected.instanceId != lastErrorCode.instanceId)
+    {
+        asExpected = false;
+        textPos += sprintf(&text[textPos], "Instance ID expected %u, was %u | ", expected.instanceId, lastErrorCode.instanceId);
+    }
+    if (expected.apiId != lastErrorCode.apiId)
+    {
+        asExpected = false;
+        textPos += sprintf(&text[textPos], "API ID expected %u, was %u | ", expected.apiId, lastErrorCode.apiId);
+    }
+    if (expected.errorId != lastErrorCode.errorId)
+    {
+        asExpected = false;
+        textPos += sprintf(&text[textPos], "Error ID expected %u, was %u | ", expected.errorId, lastErrorCode.errorId);
+    }
+    if (expected.errorLvl != lastErrorCode.errorLvl)
+    {
+        asExpected = false;
+        textPos += sprintf(&text[textPos], "Error Level expected %u, was %u | ", expected.errorLvl, lastErrorCode.errorLvl);
+    }
+
+    UNITY_TEST_ASSERT(asExpected, __LINE__, text);
+}
+
+char* errorline(const char* text_form, ...) {
+    static char buffer[1024];
+    va_list args;
+    va_start(args, text_form);
+    vsnprintf(buffer, sizeof(buffer), text_form, args);
+    va_end(args);
+    return buffer;
+}
+
+tU32 extract_u32_from_bytes(const tU8* data)
+{
+    return ((tU32)data[0]) |
+           ((tU32)data[1] << 8) |
+           ((tU32)data[2] << 16) |
+           ((tU32)data[3] << 24);
 }
 
 tB rtdb_lock_callback(void)
