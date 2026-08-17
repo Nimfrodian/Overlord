@@ -1,7 +1,7 @@
 VERSION ""
 
 
-NS_ : 
+NS_ :
 	NS_DESC_
 	CM_
 	BA_DEF_
@@ -504,6 +504,7 @@ BO_ 503 RC_SDM120M_1_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 502 RC_SDM120M_1_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 501 RC_SDM120M_1_0: 8 RoomController
@@ -546,6 +547,7 @@ BO_ 514 RC_SDM120M_2_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 513 RC_SDM120M_2_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 512 RC_SDM120M_2_0: 8 RoomController
@@ -588,6 +590,7 @@ BO_ 525 RC_SDM120M_3_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 524 RC_SDM120M_3_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 523 RC_SDM120M_3_0: 8 RoomController
@@ -630,6 +633,7 @@ BO_ 536 RC_SDM120M_4_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 535 RC_SDM120M_4_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 534 RC_SDM120M_4_0: 8 RoomController
@@ -672,6 +676,7 @@ BO_ 547 RC_SDM120M_5_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 546 RC_SDM120M_5_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 545 RC_SDM120M_5_0: 8 RoomController
@@ -714,6 +719,7 @@ BO_ 558 RC_SDM120M_6_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 557 RC_SDM120M_6_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 556 RC_SDM120M_6_0: 8 RoomController
@@ -756,6 +762,7 @@ BO_ 569 RC_SDM120M_7_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 568 RC_SDM120M_7_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 567 RC_SDM120M_7_0: 8 RoomController
@@ -798,6 +805,7 @@ BO_ 580 RC_SDM120M_8_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 579 RC_SDM120M_8_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 578 RC_SDM120M_8_0: 8 RoomController
@@ -840,6 +848,7 @@ BO_ 591 RC_SDM120M_9_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 590 RC_SDM120M_9_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 589 RC_SDM120M_9_0: 8 RoomController
@@ -882,6 +891,7 @@ BO_ 602 RC_SDM120M_10_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 601 RC_SDM120M_10_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 600 RC_SDM120M_10_0: 8 RoomController
@@ -924,6 +934,7 @@ BO_ 613 RC_SDM120M_11_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 612 RC_SDM120M_11_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 611 RC_SDM120M_11_0: 8 RoomController
@@ -966,6 +977,7 @@ BO_ 624 RC_SDM120M_12_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 623 RC_SDM120M_12_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 622 RC_SDM120M_12_0: 8 RoomController
@@ -1008,6 +1020,7 @@ BO_ 635 RC_SDM120M_13_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 634 RC_SDM120M_13_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 633 RC_SDM120M_13_0: 8 RoomController
@@ -1050,6 +1063,7 @@ BO_ 646 RC_SDM120M_14_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 645 RC_SDM120M_14_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 644 RC_SDM120M_14_0: 8 RoomController
@@ -1092,6 +1106,7 @@ BO_ 657 RC_SDM120M_15_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 656 RC_SDM120M_15_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 655 RC_SDM120M_15_0: 8 RoomController
@@ -1134,6 +1149,7 @@ BO_ 668 RC_SDM120M_16_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 667 RC_SDM120M_16_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 666 RC_SDM120M_16_0: 8 RoomController
@@ -1176,6 +1192,7 @@ BO_ 679 RC_SDM120M_17_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 678 RC_SDM120M_17_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 677 RC_SDM120M_17_0: 8 RoomController
@@ -1218,6 +1235,7 @@ BO_ 690 RC_SDM120M_18_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 689 RC_SDM120M_18_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 688 RC_SDM120M_18_0: 8 RoomController
@@ -1260,6 +1278,7 @@ BO_ 701 RC_SDM120M_19_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 700 RC_SDM120M_19_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 699 RC_SDM120M_19_0: 8 RoomController
@@ -1302,6 +1321,7 @@ BO_ 712 RC_SDM120M_20_2: 8 Vector__XXX
  SG_ ReactPwr_VAr : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "VAr" Vector__XXX
 
 BO_ 711 RC_SDM120M_20_1: 8 Vector__XXX
+ SG_ AprntPwr_VA : 32|32@1- (1,0) [-3.4E+038|3.4E+038] "VA" Vector__XXX
  SG_ ActivePwr_W : 0|32@1- (1,0) [-3.4E+038|3.4E+038] "W" Vector__XXX
 
 BO_ 710 RC_SDM120M_20_0: 8 RoomController
@@ -1386,6 +1406,7 @@ SIG_VALTYPE_ 504 Frequency_Hz : 1;
 SIG_VALTYPE_ 503 PwrFctr : 1;
 SIG_VALTYPE_ 503 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 502 ActivePwr_W : 1;
+SIG_VALTYPE_ 502 AprntPwr_VA : 1;
 SIG_VALTYPE_ 501 Current_A : 1;
 SIG_VALTYPE_ 501 Voltage_V : 1;
 SIG_VALTYPE_ 522 TotalReactEnrgy_kVArh : 1;
@@ -1406,6 +1427,7 @@ SIG_VALTYPE_ 515 Frequency_Hz : 1;
 SIG_VALTYPE_ 514 PwrFctr : 1;
 SIG_VALTYPE_ 514 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 513 ActivePwr_W : 1;
+SIG_VALTYPE_ 513 AprntPwr_VA : 1;
 SIG_VALTYPE_ 512 Current_A : 1;
 SIG_VALTYPE_ 512 Voltage_V : 1;
 SIG_VALTYPE_ 533 TotalReactEnrgy_kVArh : 1;
@@ -1426,6 +1448,7 @@ SIG_VALTYPE_ 526 Frequency_Hz : 1;
 SIG_VALTYPE_ 525 PwrFctr : 1;
 SIG_VALTYPE_ 525 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 524 ActivePwr_W : 1;
+SIG_VALTYPE_ 524 AprntPwr_VA : 1;
 SIG_VALTYPE_ 523 Current_A : 1;
 SIG_VALTYPE_ 523 Voltage_V : 1;
 SIG_VALTYPE_ 544 TotalReactEnrgy_kVArh : 1;
@@ -1446,6 +1469,7 @@ SIG_VALTYPE_ 537 Frequency_Hz : 1;
 SIG_VALTYPE_ 536 PwrFctr : 1;
 SIG_VALTYPE_ 536 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 535 ActivePwr_W : 1;
+SIG_VALTYPE_ 535 AprntPwr_VA : 1;
 SIG_VALTYPE_ 534 Current_A : 1;
 SIG_VALTYPE_ 534 Voltage_V : 1;
 SIG_VALTYPE_ 555 TotalReactEnrgy_kVArh : 1;
@@ -1466,6 +1490,7 @@ SIG_VALTYPE_ 548 Frequency_Hz : 1;
 SIG_VALTYPE_ 547 PwrFctr : 1;
 SIG_VALTYPE_ 547 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 546 ActivePwr_W : 1;
+SIG_VALTYPE_ 546 AprntPwr_VA : 1;
 SIG_VALTYPE_ 545 Current_A : 1;
 SIG_VALTYPE_ 545 Voltage_V : 1;
 SIG_VALTYPE_ 566 TotalReactEnrgy_kVArh : 1;
@@ -1486,6 +1511,7 @@ SIG_VALTYPE_ 559 Frequency_Hz : 1;
 SIG_VALTYPE_ 558 PwrFctr : 1;
 SIG_VALTYPE_ 558 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 557 ActivePwr_W : 1;
+SIG_VALTYPE_ 557 AprntPwr_VA : 1;
 SIG_VALTYPE_ 556 Current_A : 1;
 SIG_VALTYPE_ 556 Voltage_V : 1;
 SIG_VALTYPE_ 577 TotalReactEnrgy_kVArh : 1;
@@ -1506,6 +1532,7 @@ SIG_VALTYPE_ 570 Frequency_Hz : 1;
 SIG_VALTYPE_ 569 PwrFctr : 1;
 SIG_VALTYPE_ 569 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 568 ActivePwr_W : 1;
+SIG_VALTYPE_ 568 AprntPwr_VA : 1;
 SIG_VALTYPE_ 567 Current_A : 1;
 SIG_VALTYPE_ 567 Voltage_V : 1;
 SIG_VALTYPE_ 588 TotalReactEnrgy_kVArh : 1;
@@ -1526,6 +1553,7 @@ SIG_VALTYPE_ 581 Frequency_Hz : 1;
 SIG_VALTYPE_ 580 PwrFctr : 1;
 SIG_VALTYPE_ 580 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 579 ActivePwr_W : 1;
+SIG_VALTYPE_ 579 AprntPwr_VA : 1;
 SIG_VALTYPE_ 578 Current_A : 1;
 SIG_VALTYPE_ 578 Voltage_V : 1;
 SIG_VALTYPE_ 599 TotalReactEnrgy_kVArh : 1;
@@ -1546,6 +1574,7 @@ SIG_VALTYPE_ 592 Frequency_Hz : 1;
 SIG_VALTYPE_ 591 PwrFctr : 1;
 SIG_VALTYPE_ 591 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 590 ActivePwr_W : 1;
+SIG_VALTYPE_ 590 AprntPwr_VA : 1;
 SIG_VALTYPE_ 589 Current_A : 1;
 SIG_VALTYPE_ 589 Voltage_V : 1;
 SIG_VALTYPE_ 610 TotalReactEnrgy_kVArh : 1;
@@ -1566,6 +1595,7 @@ SIG_VALTYPE_ 603 Frequency_Hz : 1;
 SIG_VALTYPE_ 602 PwrFctr : 1;
 SIG_VALTYPE_ 602 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 601 ActivePwr_W : 1;
+SIG_VALTYPE_ 601 AprntPwr_VA : 1;
 SIG_VALTYPE_ 600 Current_A : 1;
 SIG_VALTYPE_ 600 Voltage_V : 1;
 SIG_VALTYPE_ 621 TotalReactEnrgy_kVArh : 1;
@@ -1586,6 +1616,7 @@ SIG_VALTYPE_ 614 Frequency_Hz : 1;
 SIG_VALTYPE_ 613 PwrFctr : 1;
 SIG_VALTYPE_ 613 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 612 ActivePwr_W : 1;
+SIG_VALTYPE_ 612 AprntPwr_VA : 1;
 SIG_VALTYPE_ 611 Current_A : 1;
 SIG_VALTYPE_ 611 Voltage_V : 1;
 SIG_VALTYPE_ 632 TotalReactEnrgy_kVArh : 1;
@@ -1606,6 +1637,7 @@ SIG_VALTYPE_ 625 Frequency_Hz : 1;
 SIG_VALTYPE_ 624 PwrFctr : 1;
 SIG_VALTYPE_ 624 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 623 ActivePwr_W : 1;
+SIG_VALTYPE_ 623 AprntPwr_VA : 1;
 SIG_VALTYPE_ 622 Current_A : 1;
 SIG_VALTYPE_ 622 Voltage_V : 1;
 SIG_VALTYPE_ 643 TotalReactEnrgy_kVArh : 1;
@@ -1626,6 +1658,7 @@ SIG_VALTYPE_ 636 Frequency_Hz : 1;
 SIG_VALTYPE_ 635 PwrFctr : 1;
 SIG_VALTYPE_ 635 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 634 ActivePwr_W : 1;
+SIG_VALTYPE_ 634 AprntPwr_VA : 1;
 SIG_VALTYPE_ 633 Current_A : 1;
 SIG_VALTYPE_ 633 Voltage_V : 1;
 SIG_VALTYPE_ 654 TotalReactEnrgy_kVArh : 1;
@@ -1646,6 +1679,7 @@ SIG_VALTYPE_ 647 Frequency_Hz : 1;
 SIG_VALTYPE_ 646 PwrFctr : 1;
 SIG_VALTYPE_ 646 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 645 ActivePwr_W : 1;
+SIG_VALTYPE_ 645 AprntPwr_VA : 1;
 SIG_VALTYPE_ 644 Current_A : 1;
 SIG_VALTYPE_ 644 Voltage_V : 1;
 SIG_VALTYPE_ 665 TotalReactEnrgy_kVArh : 1;
@@ -1666,6 +1700,7 @@ SIG_VALTYPE_ 658 Frequency_Hz : 1;
 SIG_VALTYPE_ 657 PwrFctr : 1;
 SIG_VALTYPE_ 657 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 656 ActivePwr_W : 1;
+SIG_VALTYPE_ 656 AprntPwr_VA : 1;
 SIG_VALTYPE_ 655 Current_A : 1;
 SIG_VALTYPE_ 655 Voltage_V : 1;
 SIG_VALTYPE_ 676 TotalReactEnrgy_kVArh : 1;
@@ -1686,6 +1721,7 @@ SIG_VALTYPE_ 669 Frequency_Hz : 1;
 SIG_VALTYPE_ 668 PwrFctr : 1;
 SIG_VALTYPE_ 668 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 667 ActivePwr_W : 1;
+SIG_VALTYPE_ 667 AprntPwr_VA : 1;
 SIG_VALTYPE_ 666 Current_A : 1;
 SIG_VALTYPE_ 666 Voltage_V : 1;
 SIG_VALTYPE_ 687 TotalReactEnrgy_kVArh : 1;
@@ -1706,6 +1742,7 @@ SIG_VALTYPE_ 680 Frequency_Hz : 1;
 SIG_VALTYPE_ 679 PwrFctr : 1;
 SIG_VALTYPE_ 679 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 678 ActivePwr_W : 1;
+SIG_VALTYPE_ 678 AprntPwr_VA : 1;
 SIG_VALTYPE_ 677 Current_A : 1;
 SIG_VALTYPE_ 677 Voltage_V : 1;
 SIG_VALTYPE_ 698 TotalReactEnrgy_kVArh : 1;
@@ -1726,6 +1763,7 @@ SIG_VALTYPE_ 691 Frequency_Hz : 1;
 SIG_VALTYPE_ 690 PwrFctr : 1;
 SIG_VALTYPE_ 690 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 689 ActivePwr_W : 1;
+SIG_VALTYPE_ 689 AprntPwr_VA : 1;
 SIG_VALTYPE_ 688 Current_A : 1;
 SIG_VALTYPE_ 688 Voltage_V : 1;
 SIG_VALTYPE_ 709 TotalReactEnrgy_kVArh : 1;
@@ -1746,6 +1784,7 @@ SIG_VALTYPE_ 702 Frequency_Hz : 1;
 SIG_VALTYPE_ 701 PwrFctr : 1;
 SIG_VALTYPE_ 701 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 700 ActivePwr_W : 1;
+SIG_VALTYPE_ 700 AprntPwr_VA : 1;
 SIG_VALTYPE_ 699 Current_A : 1;
 SIG_VALTYPE_ 699 Voltage_V : 1;
 SIG_VALTYPE_ 720 TotalReactEnrgy_kVArh : 1;
@@ -1766,6 +1805,7 @@ SIG_VALTYPE_ 713 Frequency_Hz : 1;
 SIG_VALTYPE_ 712 PwrFctr : 1;
 SIG_VALTYPE_ 712 ReactPwr_VAr : 1;
 SIG_VALTYPE_ 711 ActivePwr_W : 1;
+SIG_VALTYPE_ 711 AprntPwr_VA : 1;
 SIG_VALTYPE_ 710 Current_A : 1;
 SIG_VALTYPE_ 710 Voltage_V : 1;
 
