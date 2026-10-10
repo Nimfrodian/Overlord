@@ -77,6 +77,7 @@ extern "C" void app_main(void)
     // Main loop
     while(1)
     {
+        //rework from here
         {
             tCANM_X_CANMSGDATA_STR* rxDataPtr = canm_pstr_readCanMsgData(CAN_DMAS_COMMAND_MESSAGE);
             if (1 == rxDataPtr->canRdyForParse_tB)

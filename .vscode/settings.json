@@ -65,7 +65,13 @@
         "*.ipp": "cpp",
         "compare": "cpp",
         "text_encoding": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "charconv": "cpp",
+        "format": "cpp",
+        "span": "cpp",
+        "bit": "cpp",
+        "concepts": "cpp",
+        "numbers": "cpp"
     },
     "gcovViewer.buildDirectories": [
         "c:\\Users\\Nimfrodian\\Documents\\Overlord\\.pio\\build\\localhost_test"

@@ -114,6 +114,7 @@ GPSChnCount=0
 TfrmTSMaster_0=1720,0,3440,1400
 TfrmHardware=2178,399,2982,1000
 TfrmCANDatabase1=349,280,1365,911
+TfrmTCPIPStack=2201,443,2959,957
 
 [UserVariables]
 Count=0
